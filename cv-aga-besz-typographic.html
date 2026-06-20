@@ -1,22 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agnieszka Besz — CV</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
 <style>
   :root {
     --sans: -apple-system, "Helvetica Neue", Arial, sans-serif;
     --mono: "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
-    --ink: #111; --gray: #777;
+    --site: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --ink: #111; --gray: #777; --bg: #fff; --hair: #e6e6e8; --accent: #c2410c;
+  }
+  html[data-theme="dark"] {
+    --ink: #e9e9ec; --gray: #9a9ea6; --bg: #16161a; --hair: #2b2b31; --accent: #fb7a4b;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
-    font-family: var(--sans); color: var(--ink); background: #fff;
-    font-size: 12px; line-height: 1.55; max-width: 800px; margin: 40px auto; padding: 0 40px;
+    font-family: var(--sans); color: var(--ink); background: var(--bg);
+    font-size: 12px; line-height: 1.55;
     -webkit-font-smoothing: antialiased;
+    transition: background .2s ease, color .2s ease;
   }
+  .cv-wrap { max-width: 800px; margin: 0 auto; padding: 36px 40px 64px; }
 
   /* Header */
   .name { font-family: var(--sans); font-weight: 500; font-size: 46px; letter-spacing: 0.5px; margin: 0 0 6px; }
@@ -55,7 +66,10 @@
 
   @page { size: A4; margin: 0; }
   @media print {
-    body { margin: 0; max-width: none; padding: 6mm 12mm; font-size: 9.7px; line-height: 1.4; }
+    body { margin: 0; background: #fff; color: #111; font-size: 9.7px; line-height: 1.4; }
+    html[data-theme="dark"] { --ink: #111; --gray: #777; --bg: #fff; --hair: #e6e6e8; }
+    header.site { display: none; }
+    .cv-wrap { max-width: none; margin: 0; padding: 6mm 12mm; }
     .name { font-size: 26px; margin-bottom: 2px; }
     .subtitle { font-size: 10px; margin-bottom: 6px; }
     .contact { font-size: 9.5px; line-height: 1.4; margin-bottom: 9px; }
@@ -75,16 +89,46 @@
     a { color: var(--ink); }
   }
 
-  .download { position: fixed; top: 18px; right: 18px; font-family: var(--sans); font-size: 12px;
-    font-weight: 600; text-decoration: none; color: #fff; background: #111; padding: 9px 16px;
-    border-radius: 7px; box-shadow: 0 2px 10px rgba(0,0,0,.14); transition: background .15s; }
-  .download:hover { background: #333; }
-  @media print { .download { display: none; } }
+  /* Site header — shared with the rest of the site */
+  header.site { border-bottom: 1px solid var(--hair); font-family: var(--site); }
+  .site-in { max-width: 800px; margin: 0 auto; padding: 18px 40px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { font-weight: 700; font-size: 18px; letter-spacing: -.2px; text-decoration: none; color: var(--ink); }
+  .brand:hover { color: var(--accent); }
+  .nav { display: flex; align-items: center; gap: 20px; }
+  .nav a { font-size: 15px; font-weight: 500; color: var(--gray); text-decoration: none; }
+  .nav a:hover, .nav a.active { color: var(--accent); }
+  .dl { font-size: 13.5px; font-weight: 600; text-decoration: none; color: #fff !important;
+    background: var(--accent); padding: 7px 13px; border-radius: 7px; }
+  .dl:hover { opacity: .9; }
+  .toggle { background: none; border: none; cursor: pointer; color: var(--gray);
+    padding: 4px; display: inline-flex; align-items: center; border-radius: 6px; }
+  .toggle:hover { color: var(--accent); }
+  .toggle svg { width: 20px; height: 20px; }
+  html[data-theme="dark"] .sun { display: none; }
+  html[data-theme="light"] .moon { display: none; }
+  @media (max-width: 560px) { .site-in { padding: 16px 24px; } .nav { gap: 12px; } .nav a { font-size: 13.5px; } }
 </style>
 </head>
 <body>
 
-  <a class="download" href="cv-aga-besz-typographic.pdf" download>↓ Download PDF</a>
+  <header class="site">
+    <div class="site-in">
+      <a class="brand" href="index.html">Agnieszka Besz</a>
+      <nav class="nav">
+        <a href="index.html#writing">Writing</a>
+        <a class="active" href="cv-aga-besz-typographic.html">CV</a>
+        <a href="mailto:aga@besz.me">Contact</a>
+        <a class="dl" href="cv-aga-besz-typographic.pdf" download>↓ PDF</a>
+        <button class="toggle" id="theme" aria-label="Toggle color theme" title="Toggle theme">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="cv-wrap">
 
   <div class="name">Agnieszka Besz</div>
   <div class="subtitle">engineering &amp; technology leader — games &amp; real-time systems</div>
@@ -236,5 +280,22 @@
     </div>
 
   </div>
+  </main>
+
+  <script>
+    (function(){
+      var root=document.documentElement;
+      var saved=localStorage.getItem("theme");
+      if(saved){root.setAttribute("data-theme",saved);}
+      else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){
+        root.setAttribute("data-theme","dark");
+      }
+      document.getElementById("theme").addEventListener("click",function(){
+        var next=root.getAttribute("data-theme")==="dark"?"light":"dark";
+        root.setAttribute("data-theme",next);
+        localStorage.setItem("theme",next);
+      });
+    })();
+  </script>
 </body>
 </html>
