@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agnieszka Besz — CV</title>
+<style>
+  :root {
+    --sans: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono: "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+    --ink: #111; --gray: #777;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans); color: var(--ink); background: #fff;
+    font-size: 12px; line-height: 1.55; max-width: 800px; margin: 40px auto; padding: 0 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Header */
+  .name { font-family: var(--sans); font-weight: 500; font-size: 46px; letter-spacing: 0.5px; margin: 0 0 6px; }
+  .subtitle { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; color: var(--ink); margin: 0 0 20px; }
+  .contact { font-family: var(--sans); font-size: 11px; line-height: 1.7; margin: 0 0 30px; }
+  .contact a { color: var(--ink); text-decoration: none; }
+
+  /* Two-column body */
+  .cols { display: flex; gap: 7%; align-items: flex-start; }
+  .left  { flex: 0 0 60%; }
+  .right { flex: 0 0 33%; }
+
+  h2 {
+    font-family: var(--sans); font-weight: 600; font-size: 16px; text-transform: lowercase;
+    letter-spacing: 0.2px; margin: 0 0 10px; padding-bottom: 4px; border-bottom: 1.5px solid var(--ink);
+  }
+  .right h2 { font-size: 15px; }
+  section { margin-bottom: 24px; }
+  .right section { margin-bottom: 22px; }
+
+  p { margin: 0; }
+  .about { font-size: 11.5px; }
+
+  .role { margin-bottom: 15px; }
+  .role-title { font-family: var(--sans); font-weight: 700; font-size: 12.5px; }
+  .role-title .org { font-weight: 400; }
+  .role-dates { font-family: var(--sans); font-style: italic; color: var(--gray); font-size: 10.5px; margin: 1px 0 4px; }
+  .role ul { margin: 0; padding-left: 15px; }
+  .role li { font-size: 11px; line-height: 1.5; margin-bottom: 2.5px; }
+
+  .right p, .right li { font-size: 11px; line-height: 1.5; }
+  .right ul { margin: 0; padding-left: 14px; }
+  .right li { margin-bottom: 6px; }
+  .blk { margin-bottom: 10px; }
+  .blk .yr { color: var(--gray); }
+
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { margin: 0; max-width: none; padding: 6mm 12mm; font-size: 9.7px; line-height: 1.4; }
+    .name { font-size: 26px; margin-bottom: 2px; }
+    .subtitle { font-size: 10px; margin-bottom: 6px; }
+    .contact { font-size: 9.5px; line-height: 1.4; margin-bottom: 9px; }
+    .cols { gap: 6%; page-break-inside: avoid; }
+    h2 { font-size: 13.5px; margin-bottom: 7px; padding-bottom: 3px; page-break-after: avoid; }
+    .right h2 { font-size: 12.5px; }
+    section { margin-bottom: 9px; }
+    .right section { margin-bottom: 9px; }
+    .about { font-size: 10px; line-height: 1.4; }
+    .role { margin-bottom: 5px; page-break-inside: avoid; }
+    .role-title { font-size: 11px; }
+    .role-dates { font-size: 9.5px; margin: 1px 0 3px; }
+    .role li { font-size: 9.7px; line-height: 1.4; margin-bottom: 1.5px; }
+    .right p, .right li { font-size: 9.7px; line-height: 1.4; }
+    .right li { margin-bottom: 3.5px; }
+    .blk { margin-bottom: 6px; }
+    a { color: var(--ink); }
+  }
+</style>
+</head>
+<body>
+
+  <div class="name">Agnieszka Besz</div>
+  <div class="subtitle">engineering &amp; technology leader — games &amp; real-time systems</div>
+  <div class="contact">
+    london, united kingdom<br>
+    aga@besz.me<br>
+    LinkedIn: linkedin.com/in/agabesz<br>
+    GitHub: github.com/aixaCode
+  </div>
+
+  <div class="cols">
+
+    <!-- LEFT -->
+    <div class="left">
+      <section>
+        <h2>about</h2>
+        <p class="about">I've spent more than a decade building games and the teams behind them — from live mobile titles to a large, open-source 3D social platform. Along the way I stopped thinking of the job as just engineering and started running it like a business: I own the strategy and the budget, negotiate the engine and vendor contracts, and care as much about getting the product into people's hands as about the code underneath. I led a full ground-up rebuild of our client and grew the team from a handful of engineers into a real organisation with its own managers and QA. But the part I care about most isn't the tech — it's the people building it: I give them clarity, clear the obstacles, hire people better than me, and trust them. I lead with data over opinion, keep things simple, use AI as a real part of how we work, and I still read the code.</p>
+      </section>
+
+      <section>
+        <h2>work experience</h2>
+
+        <div class="role">
+          <div class="role-title">VP of Engineering <span class="org">— Decentraland, London</span></div>
+          <div class="role-dates">2025 – Present</div>
+          <ul>
+            <li>Led the ground-up rebuild of the client — replacing the legacy web client with a new modular, open-source desktop client, now the platform's primary client in production.</li>
+            <li>Set technical direction, strategy, and OKRs, data-first — telemetry decides what we build, cut, and prioritize.</li>
+            <li>Owned the technology budget and led engine licensing/contract negotiations with Unity.</li>
+            <li>Expanded distribution: Epic Games Store, code-signed Windows builds, and launcher/onboarding reliability.</li>
+            <li>Scaled from a single ~5-engineer team to multiple teams with engineering managers and QA leads; built the hiring process, career ladder, and performance-management cadence.</li>
+            <li>Built AI into the engineering process (AI review on every PR, AI-assisted QA), drove adoption across teams, and use it daily in my own analysis.</li>
+            <li>Shipped ~75 public builds/year (weekly-or-faster): terrain/LOD rendering, a major engine upgrade, a server-authoritative CRDT, hang detection with crash reporting, and automated performance tests gating every PR.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Engineering Manager <span class="org">— Decentraland, London</span></div>
+          <div class="role-dates">2022 – 2025</div>
+          <ul>
+            <li>Grew and led the client team from ~5 to 10+ engineers; led the rebuild that replaced the legacy web client and stood up the new desktop client's architecture.</li>
+            <li>Drove the client's strategic KPIs — loading time, stability, frame rate — and the tech-debt program behind them.</li>
+            <li>Rebuilt how the team shipped: predictable cadence, monitoring, and a QA bar every build had to clear.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Head of Frontend Development <span class="org">— Ten Square Games</span></div>
+          <div class="role-dates">2021 – 2022</div>
+          <ul>
+            <li>Engineering leadership for a 45+ person technology department across seven live game teams.</li>
+            <li>Scaled the department from ~25 to 45+ engineers during a major growth phase.</li>
+            <li>Modernized lifecycle tooling and drove adoption of shared libraries — faster iteration for every team.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Technical Manager <span class="org">— Rovio (now Sega), Helsinki</span></div>
+          <div class="role-dates">2019 – 2021</div>
+          <ul>
+            <li>Led development of Angry Birds Journey from concept to soft launch, and the programming team behind it; mentored and grew the team.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Senior Game Programmer <span class="org">— Next Games (now Netflix), Helsinki</span></div>
+          <div class="role-dates">2017 – 2019</div>
+          <ul>
+            <li>Stranger Things: Puzzle Tales and The Walking Dead: No Man's Land (Android/iOS) — core game systems, new mechanics, and live-ops engineering.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Associate Lead Programmer → Programmer <span class="org">— Ubisoft RedLynx, Helsinki</span></div>
+          <div class="role-dates">2015 – 2017</div>
+          <ul>
+            <li>South Park: Phone Destroyer (real-time synchronous PvP, Android/iOS) — built core systems, multiplayer, AI, UI; led performance optimization and a team of programmers.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-title">Earlier roles</div>
+          <div class="role-dates">2012 – 2015</div>
+          <ul>
+            <li>Turku University of Applied Sciences — Lecturer / Project Engineer; INTERMARUM — Programmer (shipped Leisure Suit Larry: Reloaded); Kiwi Flying Mad — Programmer &amp; Co-founder of an indie studio.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+      <section>
+        <h2>education</h2>
+        <div class="blk">Doctoral studies (not completed), Computer Science — Turku &amp; Opole Univ. of Technology <span class="yr">(2013 – 2015)</span></div>
+        <div class="blk">MSc, Computer Science — Opole University of Technology <span class="yr">(2012 – 2013)</span></div>
+        <div class="blk">BSc, Computer Science — Opole University of Technology <span class="yr">(2008 – 2012)</span>; exchange year at Vaasa UAS, Finland</div>
+      </section>
+
+      <section>
+        <h2>leadership</h2>
+        <ul>
+          <li>Strategy &amp; OKRs</li>
+          <li>Budget &amp; cost ownership</li>
+          <li>Vendor &amp; partner management</li>
+          <li>Cross-functional leadership</li>
+          <li>Distribution / go-to-market</li>
+          <li>Org design, hiring &amp; performance mgmt</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>technical</h2>
+        <ul>
+          <li>Real-time multiplayer &amp; rendering</li>
+          <li>Performance optimization</li>
+          <li>QA &amp; release engineering</li>
+          <li>Live operations</li>
+          <li>AI in engineering workflows</li>
+          <li>Unity / C#, architecture</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>tools</h2>
+        <ul>
+          <li>Unity / C#</li>
+          <li>Git &amp; GitHub CI/CD</li>
+          <li>Sentry, Grafana</li>
+          <li>Jira, Notion, Slack</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>languages</h2>
+        <ul>
+          <li>Polish (native)</li>
+          <li>English (professional)</li>
+          <li>Finnish (elementary)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>recognition</h2>
+        <div class="blk">DirectX 11 Competition</div>
+        <div class="blk">Best Pitch — Startup Journey Demo Day</div>
+        <div class="blk">3 publications (mobile AR, driving-inspection tooling, shooting-sports apps)</div>
+      </section>
+    </div>
+
+  </div>
+</body>
+</html>

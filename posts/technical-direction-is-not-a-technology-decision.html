@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technical Direction Is Not a Technology Decision — Agnieszka Besz</title>
+<meta name="description" content="The best technical decisions are rarely driven by technology. They're driven by a clear understanding of where the company wants to go.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#fdfdfd; --fg:#222127; --muted:#6b6f76; --line:#e6e6e8;
+    --accent:#c2410c; --card:#f6f6f7;
+    --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --maxw:720px;
+  }
+  html[data-theme="dark"]{
+    --bg:#16161a; --fg:#e9e9ec; --muted:#9a9ea6; --line:#2b2b31;
+    --accent:#fb7a4b; --card:#1e1e23;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;font-family:var(--font);background:var(--bg);color:var(--fg);
+    line-height:1.65;font-size:17px;
+    font-feature-settings:"cv05","cv11","ss01";
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    transition:background .2s ease,color .2s ease;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  a{color:inherit;}
+
+  /* Header */
+  header.site{border-bottom:1px solid var(--line);}
+  .site-in{max-width:var(--maxw);margin:0 auto;padding:20px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{font-weight:700;font-size:18px;letter-spacing:-.2px;text-decoration:none;}
+  .brand:hover{color:var(--accent);}
+  .nav{display:flex;align-items:center;gap:22px;}
+  .nav a{font-size:15px;font-weight:500;color:var(--muted);text-decoration:none;}
+  .nav a:hover{color:var(--accent);}
+  .toggle{background:none;border:none;cursor:pointer;color:var(--muted);
+    padding:4px;display:inline-flex;align-items:center;border-radius:6px;}
+  .toggle:hover{color:var(--accent);}
+  .toggle svg{width:20px;height:20px;}
+  html[data-theme="dark"] .sun{display:none;}
+  html[data-theme="light"] .moon{display:none;}
+  @media(max-width:520px){.nav{gap:16px;}.nav a{font-size:14px;}}
+
+  /* Article */
+  .article{padding:44px 0 16px;}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;
+    color:var(--muted);text-decoration:none;margin-bottom:26px;}
+  .back:hover{color:var(--accent);}
+  .back svg{width:15px;height:15px;}
+  .article h1{font-size:34px;font-weight:700;letter-spacing:-1px;line-height:1.15;margin:0 0 12px;}
+  @media(max-width:520px){.article h1{font-size:28px;}}
+  .meta{display:flex;align-items:center;gap:6px;color:var(--muted);
+    font-size:13.5px;margin:0 0 32px;}
+  .meta svg{width:15px;height:15px;}
+
+  .body p{font-size:18px;line-height:1.7;margin:0 0 20px;}
+  .body .q{margin:24px 0;padding-left:18px;border-left:3px solid var(--accent);}
+  .body .q span{display:block;font-weight:500;margin:5px 0;}
+  .body .pull{font-size:23px;font-weight:600;letter-spacing:-.4px;line-height:1.35;
+    margin:30px 0;}
+  hr.end{border:none;border-top:1px solid var(--line);margin:40px 0 0;}
+
+  /* Footer */
+  footer{border-top:1px solid var(--line);margin-top:32px;}
+  .foot-in{max-width:var(--maxw);margin:0 auto;padding:26px 24px 40px;
+    display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
+    color:var(--muted);font-size:13.5px;}
+  .social{display:flex;gap:16px;}
+  .social a{color:var(--muted);text-decoration:none;}
+  .social a:hover{color:var(--accent);}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="site-in">
+    <a class="brand" href="../">Agnieszka Besz</a>
+    <nav class="nav">
+      <a href="../#writing">Writing</a>
+      <a href="../cv-aga-besz-typographic.pdf">CV</a>
+      <a href="mailto:aga@besz.me">Contact</a>
+      <button class="toggle" id="theme" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="article">
+    <a class="back" href="../#writing">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+      All writing
+    </a>
+
+    <h1>Technical Direction Is Not a Technology Decision</h1>
+    <div class="meta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>
+      Jun 20, 2026
+    </div>
+
+    <div class="body">
+      <p>One thing I've noticed over the years is that engineering teams love talking about technology.</p>
+
+      <div class="q">
+        <span>Should we move to microservices?</span>
+        <span>Should we rewrite the system?</span>
+        <span>Should we adopt a new framework?</span>
+        <span>Should we build our own solution?</span>
+      </div>
+
+      <p>I've been part of many of those discussions myself. They are important discussions to have.</p>
+      <p>But looking back, I think many of them started from the wrong place.</p>
+      <p>The best technical decisions I've seen were rarely driven by technology itself. They were driven by a clear understanding of where the company wanted to go.</p>
+      <p>When that direction is clear, technology choices become much easier.</p>
+      <p>When it isn't, teams can spend months debating solutions without ever agreeing on the actual problem.</p>
+
+      <p>I learned this most clearly during the rebuild of Decentraland's client.</p>
+      <p>From the outside, it looked like a large technology project. We rebuilt the client from the ground up.</p>
+      <p>What is interesting is that we didn't change the engine.</p>
+      <p>The old client was built in Unity. The new client was built in Unity as well.</p>
+      <p>If the goal had been choosing better technology, that would be a strange outcome.</p>
+
+      <p>The real goal was improving the experience for users.</p>
+      <div class="q">
+        <span>We wanted larger social events.</span>
+        <span>Better graphics.</span>
+        <span>More stable performance.</span>
+        <span>More people sharing the same space without everything falling apart.</span>
+      </div>
+
+      <p>Once we defined the outcome we were after, many technical decisions became surprisingly obvious.</p>
+      <p>Some parts were worth replacing. Some parts were worth keeping.</p>
+      <p>The technology followed the strategy, not the other way around.</p>
+
+      <p>Since then, I've started looking at technical direction differently.</p>
+      <p>Whenever a discussion becomes focused on tools, frameworks, or architecture, I usually try to step back and ask a different question:</p>
+
+      <p class="pull">What are we actually trying to achieve?</p>
+
+      <p>Most of the time, the answer to that question tells us far more than another architecture diagram ever will.</p>
+
+      <hr class="end">
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>© <span id="yr">2026</span> Agnieszka Besz</span>
+    <div class="social">
+      <a href="https://github.com/aixaCode">GitHub</a>
+      <a href="https://www.linkedin.com/in/agabesz">LinkedIn</a>
+      <a href="mailto:aga@besz.me">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var root=document.documentElement;
+    var saved=localStorage.getItem("theme");
+    if(saved){root.setAttribute("data-theme",saved);}
+    else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){
+      root.setAttribute("data-theme","dark");
+    }
+    document.getElementById("theme").addEventListener("click",function(){
+      var next=root.getAttribute("data-theme")==="dark"?"light":"dark";
+      root.setAttribute("data-theme",next);
+      localStorage.setItem("theme",next);
+    });
+    document.getElementById("yr").textContent=new Date().getFullYear();
+  })();
+</script>
+
+</body>
+</html>

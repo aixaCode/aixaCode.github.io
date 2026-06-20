@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prioritization Is Constraint Management — Agnieszka Besz</title>
+<meta name="description" content="Prioritization isn't ranking good ideas. It's identifying the most important constraint and helping the organization move through it.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#fdfdfd; --fg:#222127; --muted:#6b6f76; --line:#e6e6e8;
+    --accent:#c2410c; --card:#f6f6f7;
+    --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --maxw:720px;
+  }
+  html[data-theme="dark"]{
+    --bg:#16161a; --fg:#e9e9ec; --muted:#9a9ea6; --line:#2b2b31;
+    --accent:#fb7a4b; --card:#1e1e23;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;font-family:var(--font);background:var(--bg);color:var(--fg);
+    line-height:1.65;font-size:17px;
+    font-feature-settings:"cv05","cv11","ss01";
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    transition:background .2s ease,color .2s ease;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  a{color:inherit;}
+
+  /* Header */
+  header.site{border-bottom:1px solid var(--line);}
+  .site-in{max-width:var(--maxw);margin:0 auto;padding:20px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{font-weight:700;font-size:18px;letter-spacing:-.2px;text-decoration:none;}
+  .brand:hover{color:var(--accent);}
+  .nav{display:flex;align-items:center;gap:22px;}
+  .nav a{font-size:15px;font-weight:500;color:var(--muted);text-decoration:none;}
+  .nav a:hover{color:var(--accent);}
+  .toggle{background:none;border:none;cursor:pointer;color:var(--muted);
+    padding:4px;display:inline-flex;align-items:center;border-radius:6px;}
+  .toggle:hover{color:var(--accent);}
+  .toggle svg{width:20px;height:20px;}
+  html[data-theme="dark"] .sun{display:none;}
+  html[data-theme="light"] .moon{display:none;}
+  @media(max-width:520px){.nav{gap:16px;}.nav a{font-size:14px;}}
+
+  /* Article */
+  .article{padding:44px 0 16px;}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;
+    color:var(--muted);text-decoration:none;margin-bottom:26px;}
+  .back:hover{color:var(--accent);}
+  .back svg{width:15px;height:15px;}
+  .article h1{font-size:34px;font-weight:700;letter-spacing:-1px;line-height:1.15;margin:0 0 12px;}
+  @media(max-width:520px){.article h1{font-size:28px;}}
+  .meta{display:flex;align-items:center;gap:6px;color:var(--muted);
+    font-size:13.5px;margin:0 0 32px;}
+  .meta svg{width:15px;height:15px;}
+
+  .body p{font-size:18px;line-height:1.7;margin:0 0 20px;}
+  .body .q{margin:24px 0;padding-left:18px;border-left:3px solid var(--accent);}
+  .body .q span{display:block;font-weight:500;margin:5px 0;}
+  .body .pull{font-size:23px;font-weight:600;letter-spacing:-.4px;line-height:1.35;
+    margin:30px 0;}
+  hr.end{border:none;border-top:1px solid var(--line);margin:40px 0 0;}
+
+  /* Footer */
+  footer{border-top:1px solid var(--line);margin-top:32px;}
+  .foot-in{max-width:var(--maxw);margin:0 auto;padding:26px 24px 40px;
+    display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
+    color:var(--muted);font-size:13.5px;}
+  .social{display:flex;gap:16px;}
+  .social a{color:var(--muted);text-decoration:none;}
+  .social a:hover{color:var(--accent);}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="site-in">
+    <a class="brand" href="../">Agnieszka Besz</a>
+    <nav class="nav">
+      <a href="../#writing">Writing</a>
+      <a href="../cv-aga-besz-typographic.pdf">CV</a>
+      <a href="mailto:aga@besz.me">Contact</a>
+      <button class="toggle" id="theme" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="article">
+    <a class="back" href="../#writing">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+      All writing
+    </a>
+
+    <h1>Prioritization Is Constraint Management</h1>
+    <div class="meta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>
+      Jun 20, 2026
+    </div>
+
+    <div class="body">
+      <p>For a long time, I thought prioritization was about finding the best idea.</p>
+      <p>The longer I've worked in engineering leadership, the more I've realized that's usually not the problem.</p>
+      <p>Most teams don't suffer from a lack of good ideas.</p>
+      <p>They suffer from having too many.</p>
+
+      <div class="q">
+        <span>Performance improvements.</span>
+        <span>Technical debt.</span>
+        <span>New features.</span>
+        <span>Infrastructure.</span>
+        <span>Developer experience.</span>
+        <span>QA automation.</span>
+        <span>Better onboarding.</span>
+        <span>Better analytics.</span>
+        <span>Creator tooling.</span>
+      </div>
+
+      <p>Most of them are valuable. Most of them will eventually need to happen.</p>
+      <p>The hard part is deciding what matters now.</p>
+
+      <p>One thing that helped me think about prioritization differently was realizing that every organization has a bottleneck.</p>
+      <p>There is always something limiting progress.</p>
+
+      <div class="q">
+        <span>Sometimes it's acquisition.</span>
+        <span>Sometimes it's retention.</span>
+        <span>Sometimes it's stability.</span>
+        <span>Sometimes it's delivery speed.</span>
+        <span>Sometimes it's simply not having enough people.</span>
+      </div>
+
+      <p>The challenge is identifying what that constraint is and focusing on it long enough to make a meaningful difference.</p>
+      <p>I've seen teams spend months optimizing parts of the system that were already working reasonably well while ignoring the thing that was actually holding the business back.</p>
+      <p>I've made that mistake myself.</p>
+
+      <p>At Decentraland we constantly had more opportunities than capacity.</p>
+
+      <div class="q">
+        <span>We could improve performance.</span>
+        <span>We could invest in creator tooling.</span>
+        <span>We could modernize infrastructure.</span>
+        <span>We could improve QA automation.</span>
+        <span>We could improve publishing workflows.</span>
+      </div>
+
+      <p>All of those things mattered.</p>
+      <p>The difficult part wasn't deciding whether they were good ideas.</p>
+      <p>The difficult part was understanding which one was the limiting factor at that particular moment.</p>
+
+      <p>A few years ago, we experimented with a more structured approach to prioritization.</p>
+      <p>We collected initiatives from across the organization and scored them against a set of criteria: strategic alignment, expected impact, effort, risk, dependencies and team capacity.</p>
+      <p>On paper, it looked great.</p>
+      <p>Everyone understood the process. The scoring was transparent. The decisions felt objective.</p>
+      <p>And to be fair, it solved a lot of problems. Discussions became less emotional and more data driven.</p>
+      <p>But over time I noticed something interesting.</p>
+      <p>The framework was very good at telling us what fit within our available capacity.</p>
+      <p>It was much less effective at telling us what was actually most important.</p>
+      <p>Projects with a clear scope, lower risk and predictable delivery tended to score well.</p>
+      <p>Initiatives tackling fundamental business problems often carried more uncertainty. They were harder to estimate, harder to shape and harder to fit neatly into a planning cycle.</p>
+      <p>As a result, the framework sometimes pushed us toward the most achievable work rather than the most impactful work.</p>
+      <p>Everything looked rational on paper. The spreadsheet made sense. The scores made sense. The roadmap made sense.</p>
+      <p>Yet sometimes the most important problem remained untouched.</p>
+
+      <p>I saw a similar tension when using Shape Up.</p>
+      <p>There are many things I genuinely like about the methodology.</p>
+
+      <div class="q">
+        <span>The focus on appetite instead of estimates.</span>
+        <span>The emphasis on betting rather than commitments.</span>
+        <span>The discipline of shaping work before handing it to teams.</span>
+      </div>
+
+      <p>Those are valuable ideas.</p>
+      <p>But like every framework, it has trade-offs.</p>
+      <p>If you're not careful, the conversation becomes focused on shaping work into something deliverable rather than understanding whether that work addresses the biggest constraint facing the business.</p>
+      <p>Teams become very efficient at producing output. Projects get completed. Cycles get closed. Roadmaps move forward.</p>
+      <p>Yet the underlying bottleneck remains exactly where it was.</p>
+      <p>Looking back, I think we sometimes spent too much time asking:</p>
+      <p class="pull">"Can we fit this into the next cycle?"</p>
+      <p>and not enough time asking:</p>
+      <p class="pull">"If we solve this, what actually changes for our users or the business?"</p>
+
+      <p>One example that stuck with me was support and bug management.</p>
+      <p>At one point we shifted some capacity away from support-related work and toward feature delivery and events.</p>
+      <p>Looking at it in isolation, it seemed reasonable. Features were important. Events were important. Nothing looked obviously wrong.</p>
+      <p>A few weeks later, the bug backlog started growing rapidly.</p>
+      <p>The product hadn't suddenly become worse. The team hadn't become less capable.</p>
+      <p>We had simply stopped investing in the thing that was constraining us.</p>
+      <p>The system behaved exactly as expected.</p>
+      <p>That experience taught me that prioritization decisions don't disappear just because we don't explicitly make them.</p>
+      <p>If we don't choose where capacity goes, the system chooses for us.</p>
+      <p>And usually the feedback arrives later, when it's much more expensive to fix.</p>
+
+      <p>Another lesson I've learned is that the best priority often changes.</p>
+      <p>A year ago, performance might have been the biggest problem. Six months later it might be creator adoption. A few months after that it might be operational scalability.</p>
+      <p>The answer changes because the system changes.</p>
+      <p>That's why I tend to be skeptical of fixed roadmaps that pretend priorities are static.</p>
+      <p>The work that creates the most value is often whatever removes the biggest constraint today.</p>
+
+      <p>When I look at a proposal now, I rarely start with "Is this a good idea?" Instead I ask:</p>
+
+      <div class="q">
+        <span>"What problem is this solving?"</span>
+        <span>"What is currently limiting us?"</span>
+        <span>"What becomes possible if we do this?"</span>
+        <span>"What happens if we don't?"</span>
+      </div>
+
+      <p>Those questions usually lead to much better conversations.</p>
+
+      <p>I've also noticed something interesting about experienced leaders.</p>
+      <p>The best ones I've worked with are not necessarily better at generating ideas. They are better at identifying bottlenecks.</p>
+      <p>They have a clearer understanding of where the organization is stuck and what needs to move first.</p>
+
+      <p>That's ultimately how I think about prioritization today.</p>
+      <p>Not as a ranking exercise. Not as a scoring framework. Not as a battle between competing projects.</p>
+      <p class="pull">Prioritization is the ongoing process of identifying the most important constraint and helping the organization move through it.</p>
+      <p>Everything else is secondary.</p>
+
+      <hr class="end">
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>© <span id="yr">2026</span> Agnieszka Besz</span>
+    <div class="social">
+      <a href="https://github.com/aixaCode">GitHub</a>
+      <a href="https://www.linkedin.com/in/agabesz">LinkedIn</a>
+      <a href="mailto:aga@besz.me">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var root=document.documentElement;
+    var saved=localStorage.getItem("theme");
+    if(saved){root.setAttribute("data-theme",saved);}
+    else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){
+      root.setAttribute("data-theme","dark");
+    }
+    document.getElementById("theme").addEventListener("click",function(){
+      var next=root.getAttribute("data-theme")==="dark"?"light":"dark";
+      root.setAttribute("data-theme",next);
+      localStorage.setItem("theme",next);
+    });
+    document.getElementById("yr").textContent=new Date().getFullYear();
+  })();
+</script>
+
+</body>
+</html>
