@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agnieszka Besz — CV</title>
+<title>About — Agnieszka Besz</title>
+<meta name="description" content="About Agnieszka Besz, engineering and technology leader in games and real-time systems.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +15,7 @@
     --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     --mono: "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
     --site: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    --ink: #111; --gray: #777; --bg: #fff; --hair: #e6e6e8; --accent: #c2410c;
+    --ink: #222127; --gray: #6b6f76; --bg: #fdfdfd; --hair: #e6e6e8; --accent: #c2410c;
   }
   html[data-theme="dark"] {
     --ink: #e9e9ec; --gray: #9a9ea6; --bg: #16161a; --hair: #2b2b31; --accent: #fb7a4b;
@@ -29,13 +30,14 @@
     -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
     transition: background .2s ease, color .2s ease;
   }
-  .cv-wrap { max-width: 720px; margin: 0 auto; padding: 44px 24px 72px; }
+  .cv-wrap { max-width: 720px; margin: 0 auto; padding: 52px 24px 48px; }
 
   /* Header */
-  .name { font-family: var(--sans); font-weight: 700; font-size: 40px; letter-spacing: -1px; line-height: 1.1; margin: 0 0 8px; }
-  .subtitle { font-family: var(--sans); font-size: 18px; font-weight: 500; color: var(--ink); margin: 0 0 18px; }
-  .contact { font-family: var(--sans); font-size: 14.5px; line-height: 1.7; color: var(--gray); margin: 0 0 16px; }
+  .name { font-family: var(--sans); font-weight: 700; font-size: 46px; letter-spacing: -1.8px; line-height: 1.05; margin: 0 0 10px; }
+  .subtitle { font-family: var(--sans); font-size: 17px; font-weight: 500; color: var(--ink); margin: 0 0 20px; }
+  .contact { display: flex; flex-wrap: wrap; gap: 8px 16px; font-family: var(--sans); font-size: 14.5px; color: var(--gray); margin: 0 0 18px; }
   .contact a { color: var(--ink); text-decoration: none; }
+  .contact a:hover { color: var(--accent); }
 
   /* Two-column body */
   .cols { display: flex; gap: 7%; align-items: flex-start; }
@@ -43,10 +45,10 @@
   .right { flex: 0 0 33%; }
 
   h2 {
-    font-family: var(--sans); font-weight: 700; font-size: 22px; text-transform: lowercase;
-    letter-spacing: -.3px; margin: 0 0 14px; padding-bottom: 6px; border-bottom: 1.5px solid var(--ink);
+    font-family: var(--sans); font-weight: 700; font-size: 12px; text-transform: uppercase;
+    letter-spacing: .12em; color: var(--accent); margin: 0 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--hair);
   }
-  .right h2 { font-size: 19px; }
+  .right h2 { font-size: 12px; }
   section { margin-bottom: 30px; }
   .right section { margin-bottom: 26px; }
 
@@ -54,9 +56,9 @@
   .about { font-size: 16.5px; }
 
   .role { margin-bottom: 20px; }
-  .role-title { font-family: var(--sans); font-weight: 700; font-size: 17px; }
+  .role-title { font-family: var(--sans); font-weight: 700; font-size: 16.5px; letter-spacing: -.15px; }
   .role-title .org { font-weight: 400; }
-  .role-dates { font-family: var(--sans); font-style: italic; color: var(--gray); font-size: 13.5px; margin: 2px 0 6px; }
+  .role-dates { font-family: var(--mono); color: var(--gray); font-size: 11.5px; letter-spacing: .02em; margin: 3px 0 7px; }
   .role ul { margin: 0; padding-left: 18px; }
   .role li { font-size: 15.5px; line-height: 1.6; margin-bottom: 5px; }
 
@@ -95,35 +97,51 @@
   header.site { border-bottom: 1px solid var(--hair); font-family: var(--site); }
   .site-in { max-width: 720px; margin: 0 auto; padding: 20px 24px;
     display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .brand { font-weight: 700; font-size: 18px; letter-spacing: -.2px; text-decoration: none; color: var(--ink); }
+  .brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; font-size: 18px; letter-spacing: -.2px; text-decoration: none; color: var(--ink); }
+  .brand::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: var(--accent); transform: rotate(12deg); }
   .brand:hover { color: var(--accent); }
-  .nav { display: flex; align-items: center; gap: 20px; }
+  .nav { display: flex; align-items: center; gap: 22px; }
   .nav a { font-size: 15px; font-weight: 500; color: var(--gray); text-decoration: none; }
   .nav a:hover, .nav a.active { color: var(--accent); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 34px; }
   .cv-dl { display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
-    color: var(--ink); border: 1px solid var(--hair); border-radius: 999px; padding: 8px 16px;
-    font-family: var(--sans); font-size: 14px; font-weight: 600; margin: 0 0 34px;
+    color: var(--ink); border: 1px solid var(--hair); border-radius: 999px; padding: 7px 15px;
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
     transition: border-color .15s, color .15s; }
   .cv-dl:hover { color: var(--accent); border-color: var(--accent); }
-  @media print { .cv-dl { display: none; } }
+  .cv-dl:first-child { color: var(--bg); background: var(--ink); border-color: var(--ink); }
+  .cv-dl:first-child:hover { color: #fff; background: var(--accent); border-color: var(--accent); }
+  @media print { .actions { display: none; } }
   .toggle { background: none; border: none; cursor: pointer; color: var(--gray);
     padding: 4px; display: inline-flex; align-items: center; border-radius: 6px; }
   .toggle:hover { color: var(--accent); }
   .toggle svg { width: 20px; height: 20px; }
   html[data-theme="dark"] .sun { display: none; }
   html[data-theme="light"] .moon { display: none; }
-  @media (max-width: 560px) { .site-in { padding: 16px 24px; } .nav { gap: 12px; } .nav a { font-size: 13.5px; } }
+  footer { border-top: 1px solid var(--hair); margin-top: 24px; }
+  .foot-in { max-width: 720px; margin: 0 auto; padding: 26px 24px 40px; display: flex;
+    flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between;
+    color: var(--gray); font-size: 13.5px; }
+  .social { display: flex; gap: 16px; }
+  .social a { color: var(--gray); text-decoration: none; }
+  .social a:hover { color: var(--accent); }
+  @media print { footer { display: none; } }
+  @media (max-width: 680px) {
+    .cv-wrap { padding-top: 40px; }
+    .cols { display: block; }
+    .left, .right { width: 100%; }
+    .right { padding-top: 4px; }
+  }
+  @media (max-width: 560px) { .nav { gap: 16px; } .nav a { font-size: 14px; } .name { font-size: 38px; } }
 </style>
 </head>
 <body>
 
   <header class="site">
     <div class="site-in">
-      <a class="brand" href="index.html">Agnieszka Besz</a>
+      <a class="brand" href="index.html">Writing</a>
       <nav class="nav">
-        <a href="index.html">Writing</a>
-        <a class="active" href="cv-aga-besz-typographic.html">CV</a>
-        <a href="mailto:aga@besz.me">Contact</a>
+        <a class="active" href="cv-aga-besz-typographic.html" aria-current="page">About</a>
         <button class="toggle" id="theme" aria-label="Toggle color theme" title="Toggle theme">
           <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
           <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
@@ -137,13 +155,16 @@
   <div class="name">Agnieszka Besz</div>
   <div class="subtitle">engineering &amp; technology leader — games &amp; real-time systems</div>
   <div class="contact">
-    london, united kingdom<br>
-    aga@besz.me<br>
-    LinkedIn: linkedin.com/in/agabesz<br>
-    GitHub: github.com/aixaCode
+    <span>London, United Kingdom</span>
+    <a href="mailto:aga@besz.me">aga@besz.me</a>
+    <a href="https://www.linkedin.com/in/agabesz">LinkedIn</a>
+    <a href="https://github.com/aixaCode">GitHub</a>
   </div>
 
-  <a class="cv-dl" href="cv-aga-besz-typographic.pdf" download>↓ Download PDF</a>
+  <div class="actions">
+    <a class="cv-dl" href="mailto:aga@besz.me">Contact me</a>
+    <a class="cv-dl" href="cv-aga-besz-typographic.pdf" download>↓ Download CV</a>
+  </div>
 
   <div class="cols">
 
@@ -288,6 +309,17 @@
   </div>
   </main>
 
+  <footer>
+    <div class="foot-in">
+      <span>© <span id="yr">2026</span> Agnieszka Besz</span>
+      <div class="social">
+        <a href="https://github.com/aixaCode">GitHub</a>
+        <a href="https://www.linkedin.com/in/agabesz">LinkedIn</a>
+        <a href="mailto:aga@besz.me">Email</a>
+      </div>
+    </div>
+  </footer>
+
   <script>
     (function(){
       var root=document.documentElement;
@@ -301,6 +333,7 @@
         root.setAttribute("data-theme",next);
         localStorage.setItem("theme",next);
       });
+      document.getElementById("yr").textContent=new Date().getFullYear();
     })();
   </script>
 </body>

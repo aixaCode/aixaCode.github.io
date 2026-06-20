@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agnieszka Besz — Engineering & Technology Leader</title>
-<meta name="description" content="Agnieszka Besz — engineering and technology leader in games and real-time systems. Writing on building and leading teams.">
+<title>Writing — Agnieszka Besz</title>
+<meta name="description" content="Writing on building and leading engineering teams by Agnieszka Besz.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +37,8 @@
   header.site{border-bottom:1px solid var(--line);}
   .site-in{max-width:var(--maxw);margin:0 auto;padding:20px 24px;
     display:flex;align-items:center;justify-content:space-between;gap:16px;}
-  .brand{font-weight:700;font-size:18px;letter-spacing:-.2px;text-decoration:none;}
+  .brand{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:18px;letter-spacing:-.2px;text-decoration:none;}
+  .brand::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--accent);transform:rotate(12deg);}
   .brand:hover{color:var(--accent);}
   .nav{display:flex;align-items:center;gap:22px;}
   .nav a{font-size:15px;font-weight:500;color:var(--muted);text-decoration:none;}
@@ -50,32 +51,24 @@
   html[data-theme="light"] .moon{display:none;}
   @media(max-width:520px){.nav{gap:16px;}.nav a{font-size:14px;}}
 
-  /* Intro */
-  .intro{padding:56px 0 12px;}
-  .intro h1{font-size:38px;font-weight:700;letter-spacing:-1.2px;line-height:1.1;margin:0 0 12px;}
-  .intro .tag{font-size:19px;color:var(--fg);font-weight:500;margin:0 0 10px;}
-  .intro p{font-size:17px;color:var(--muted);margin:0 0 22px;max-width:600px;}
-  .links{display:flex;flex-wrap:wrap;gap:8px 10px;font-size:14.5px;}
-  .links a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;
-    color:var(--fg);border:1px solid var(--line);border-radius:999px;
-    padding:6px 14px;font-weight:500;transition:border-color .15s,color .15s;}
-  .links a:hover{color:var(--accent);border-color:var(--accent);}
-  @media(max-width:520px){.intro h1{font-size:31px;}}
-
   /* Writing list */
-  .writing{padding:40px 0 24px;}
-  .writing > h2{font-size:24px;font-weight:700;letter-spacing:-.4px;margin:0 0 4px;}
-  .writing .sub{color:var(--muted);font-size:15px;margin:0 0 28px;}
-  ul.posts{list-style:none;margin:0;padding:0;}
-  ul.posts li{padding:0 0 30px;margin:0 0 30px;border-bottom:1px solid var(--line);}
+  .writing{padding:64px 0 40px;}
+  .writing > h1{font-size:42px;font-weight:700;letter-spacing:-1.6px;line-height:1.05;margin:0 0 9px;}
+  .writing .sub{color:var(--muted);font-size:15px;margin:0 0 38px;}
+  ul.posts{list-style:none;counter-reset:posts;margin:0;padding:0;}
+  ul.posts li{counter-increment:posts;position:relative;padding:0 0 32px 44px;margin:0 0 32px;border-bottom:1px solid var(--line);}
+  ul.posts li::before{content:"0" counter(posts);position:absolute;left:0;top:4px;color:var(--accent);
+    font-size:11px;font-weight:700;letter-spacing:.08em;font-variant-numeric:tabular-nums;}
   ul.posts li:last-child{border-bottom:none;margin-bottom:0;}
-  .post-title{font-size:20px;font-weight:600;letter-spacing:-.3px;text-decoration:none;
-    line-height:1.3;display:inline-block;}
-  .post-title:hover{color:var(--accent);text-decoration:underline;text-underline-offset:3px;}
+  .post-title{font-size:21px;font-weight:600;letter-spacing:-.45px;text-decoration:none;
+    line-height:1.3;display:inline;transition:color .15s ease;}
+  .post-title::after{content:" ↗";font-size:.72em;color:var(--muted);transition:color .15s ease;}
+  .post-title:hover,.post-title:hover::after{color:var(--accent);}
   .meta{display:flex;align-items:center;gap:6px;color:var(--muted);
-    font-size:13.5px;margin:7px 0 9px;}
-  .meta svg{width:15px;height:15px;}
-  .desc{margin:0;color:var(--muted);font-size:16px;}
+    font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin:9px 0 10px;}
+  .meta svg{display:none;}
+  .desc{margin:0;color:var(--muted);font-size:15.5px;max-width:610px;}
+  @media(max-width:520px){.writing{padding-top:46px}.writing > h1{font-size:36px}ul.posts li{padding-left:34px}.post-title{font-size:19px}}
 
   /* Footer */
   footer{border-top:1px solid var(--line);margin-top:24px;}
@@ -91,11 +84,9 @@
 
 <header class="site">
   <div class="site-in">
-    <a class="brand" href="#top">Agnieszka Besz</a>
+    <a class="brand" href="index.html" aria-current="page">Writing</a>
     <nav class="nav">
-      <a href="#top">Writing</a>
-      <a href="cv-aga-besz-typographic.html">CV</a>
-      <a href="mailto:aga@besz.me">Contact</a>
+      <a href="cv-aga-besz-typographic.html">About</a>
       <button class="toggle" id="theme" aria-label="Toggle color theme" title="Toggle theme">
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
@@ -108,20 +99,8 @@
 
 <main class="wrap">
 
-  <section class="intro">
-    <h1>Agnieszka Besz</h1>
-    <p class="tag">Engineering &amp; technology leader — games &amp; real-time systems.</p>
-    <p>More than a decade building games and the teams behind them — most recently a large, open-source 3D social platform. I run technology like a business and care most about the people building it.</p>
-    <div class="links">
-      <a href="cv-aga-besz-typographic.pdf">Download CV</a>
-      <a href="mailto:aga@besz.me">aga@besz.me</a>
-      <a href="https://github.com/aixaCode">GitHub</a>
-      <a href="https://www.linkedin.com/in/agabesz">LinkedIn</a>
-    </div>
-  </section>
-
   <section class="writing" id="writing">
-    <h2>Writing</h2>
+    <h1>Writing</h1>
     <p class="sub">Notes on building and leading engineering teams.</p>
 
     <ul class="posts">
@@ -148,7 +127,7 @@
 
 <footer>
   <div class="foot-in">
-    <span>© <span id="yr">2026</span> Agnieszka Besz</span>
+    <span>© <span id="yr">2026</span></span>
     <div class="social">
       <a href="https://github.com/aixaCode">GitHub</a>
       <a href="https://www.linkedin.com/in/agabesz">LinkedIn</a>
