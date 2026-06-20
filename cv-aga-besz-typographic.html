@@ -74,9 +74,17 @@
     .blk { margin-bottom: 6px; }
     a { color: var(--ink); }
   }
+
+  .download { position: fixed; top: 18px; right: 18px; font-family: var(--sans); font-size: 12px;
+    font-weight: 600; text-decoration: none; color: #fff; background: #111; padding: 9px 16px;
+    border-radius: 7px; box-shadow: 0 2px 10px rgba(0,0,0,.14); transition: background .15s; }
+  .download:hover { background: #333; }
+  @media print { .download { display: none; } }
 </style>
 </head>
 <body>
+
+  <a class="download" href="cv-aga-besz-typographic.pdf" download>↓ Download PDF</a>
 
   <div class="name">Agnieszka Besz</div>
   <div class="subtitle">engineering &amp; technology leader — games &amp; real-time systems</div>
