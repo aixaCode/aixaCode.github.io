@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About — Agnieszka Besz</title>
-<meta name="description" content="About Agnieszka Besz, engineering and technology leader in games and real-time systems.">
+<title>CV — Agnieszka Besz</title>
+<meta name="description" content="CV of Agnieszka Besz, engineering and technology leader in consumer products and real-time systems.">
+<meta name="robots" content="noindex">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +15,6 @@
   :root {
     --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     --mono: "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
-    --site: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     --ink: #222127; --gray: #6b6f76; --bg: #fdfdfd; --hair: #e6e6e8; --accent: #c2410c;
   }
   html[data-theme="dark"] {
@@ -68,11 +68,20 @@
   .blk { margin-bottom: 12px; }
   .blk .yr { color: var(--gray); }
 
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 34px; }
+  .cv-dl { display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    color: var(--ink); border: 1px solid var(--hair); border-radius: 999px; padding: 7px 15px;
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    transition: border-color .15s, color .15s; }
+  .cv-dl:hover { color: var(--accent); border-color: var(--accent); }
+  .cv-dl:first-child { color: var(--bg); background: var(--ink); border-color: var(--ink); }
+  .cv-dl:first-child:hover { color: #fff; background: var(--accent); border-color: var(--accent); }
+
   @page { size: A4; margin: 0; }
   @media print {
     body { margin: 0; background: #fff; color: #111; font-size: 9.2px; line-height: 1.35; }
     html[data-theme="dark"] { --ink: #111; --gray: #777; --bg: #fff; --hair: #e6e6e8; }
-    header.site { display: none; }
+    .actions { display: none; }
     .cv-wrap { max-width: none; margin: 0; padding: 5mm 12mm; }
     .name { font-size: 23px; margin-bottom: 2px; }
     .subtitle { font-size: 9.5px; margin-bottom: 5px; }
@@ -93,67 +102,21 @@
     a { color: var(--ink); }
   }
 
-  /* Site header — shared with the rest of the site */
-  header.site { border-bottom: 1px solid var(--hair); font-family: var(--site); }
-  .site-in { max-width: 720px; margin: 0 auto; padding: 20px 24px;
-    display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; font-size: 18px; letter-spacing: -.2px; text-decoration: none; color: var(--ink); }
-  .brand::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: var(--accent); transform: rotate(12deg); }
-  .brand:hover { color: var(--accent); }
-  .nav { display: flex; align-items: center; gap: 22px; }
-  .nav a { font-size: 15px; font-weight: 500; color: var(--gray); text-decoration: none; }
-  .nav a:hover, .nav a.active { color: var(--accent); }
-  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 34px; }
-  .cv-dl { display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
-    color: var(--ink); border: 1px solid var(--hair); border-radius: 999px; padding: 7px 15px;
-    font-family: var(--sans); font-size: 14px; font-weight: 600;
-    transition: border-color .15s, color .15s; }
-  .cv-dl:hover { color: var(--accent); border-color: var(--accent); }
-  .cv-dl:first-child { color: var(--bg); background: var(--ink); border-color: var(--ink); }
-  .cv-dl:first-child:hover { color: #fff; background: var(--accent); border-color: var(--accent); }
-  @media print { .actions { display: none; } }
-  .toggle { background: none; border: none; cursor: pointer; color: var(--gray);
-    padding: 4px; display: inline-flex; align-items: center; border-radius: 6px; }
-  .toggle:hover { color: var(--accent); }
-  .toggle svg { width: 20px; height: 20px; }
-  html[data-theme="dark"] .sun { display: none; }
-  html[data-theme="light"] .moon { display: none; }
-  footer { border-top: 1px solid var(--hair); margin-top: 24px; }
-  .foot-in { max-width: 720px; margin: 0 auto; padding: 26px 24px 40px; display: flex;
-    flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between;
-    color: var(--gray); font-size: 13.5px; }
-  .social { display: flex; gap: 16px; }
-  .social a { color: var(--gray); text-decoration: none; }
-  .social a:hover { color: var(--accent); }
-  @media print { footer { display: none; } }
   @media (max-width: 680px) {
     .cv-wrap { padding-top: 40px; }
     .cols { display: block; }
     .left, .right { width: 100%; }
     .right { padding-top: 4px; }
   }
-  @media (max-width: 560px) { .nav { gap: 16px; } .nav a { font-size: 14px; } .name { font-size: 38px; } }
+  @media (max-width: 560px) { .name { font-size: 38px; } }
 </style>
 </head>
 <body>
 
-  <header class="site">
-    <div class="site-in">
-      <a class="brand" href="index.html">Writing</a>
-      <nav class="nav">
-        <a class="active" href="cv-aga-besz-typographic.html" aria-current="page">About</a>
-        <button class="toggle" id="theme" aria-label="Toggle color theme" title="Toggle theme">
-          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
-          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
-        </button>
-      </nav>
-    </div>
-  </header>
-
   <main class="cv-wrap">
 
   <div class="name">Agnieszka Besz</div>
-  <div class="subtitle">engineering &amp; technology leader — games &amp; real-time systems</div>
+  <div class="subtitle">engineering &amp; technology leader — consumer products &amp; real-time systems</div>
   <div class="contact">
     <span>London, United Kingdom</span>
     <a href="mailto:aga@besz.me">aga@besz.me</a>
@@ -163,7 +126,7 @@
 
   <div class="actions">
     <a class="cv-dl" href="mailto:aga@besz.me">Contact me</a>
-    <a class="cv-dl" href="cv-aga-besz-typographic.pdf" download>↓ Download CV</a>
+    <a class="cv-dl" href="cv-aga-besz-product.pdf" download>↓ Download CV</a>
   </div>
 
   <div class="cols">
@@ -172,7 +135,7 @@
     <div class="left">
       <section>
         <h2>about</h2>
-        <p class="about">I've spent more than a decade building games and the teams behind them, from live mobile titles to a large open-source 3D social platform. At some point the job stopped being just engineering. I own the strategy and the budget, negotiate engine and vendor contracts, and care as much about getting the product into people's hands as about the code underneath. At Decentraland I led a ground-up rebuild of our client and grew the team from a handful of engineers into an organisation with its own managers and QA. The part I enjoy most is the people side: giving teams clarity, removing obstacles, and hiring people who are better than me. I lead with data rather than opinion, keep things simple, use AI as a normal part of how we work, and I still read the code.</p>
+        <p class="about">I'm an engineering leader with more than a decade of experience building consumer software used by millions of people, most of it real-time and mobile. At Decentraland I run engineering for a large open-source social platform: I own the technology strategy and budget, negotiate vendor contracts, and led a ground-up rebuild of our main consumer application, now the primary client in production. I grew the team from a handful of engineers into an organisation with its own managers and QA, and built the hiring process and career ladder behind it. I lead with data rather than opinion, care a lot about reliability and how fast we ship, use AI as a normal part of how we work, and I still read the code.</p>
       </section>
 
       <section>
@@ -182,13 +145,13 @@
           <div class="role-title">VP of Engineering <span class="org">— Decentraland, London</span></div>
           <div class="role-dates">2025 – Present</div>
           <ul>
-            <li>Led the ground-up rebuild of the client, replacing the legacy web client with a modular, open-source desktop client that is now the platform's primary client in production.</li>
+            <li>Led the ground-up rebuild of the platform's main consumer application, replacing a legacy web client with a modular, open-source desktop app that is now the primary client in production.</li>
             <li>Set technical direction and OKRs, using telemetry to decide what we build, what we cut, and what comes first.</li>
-            <li>Owned the technology budget and negotiated engine licensing and contracts with Unity.</li>
-            <li>Expanded distribution to the Epic Games Store, added code-signed Windows builds, and improved launcher and onboarding reliability.</li>
+            <li>Owned the technology budget and negotiated licensing and contracts with our main platform vendor (Unity).</li>
+            <li>Expanded distribution to new channels, added code-signed builds, and improved installer, onboarding, and update reliability.</li>
             <li>Grew engineering from a single team of ~5 into multiple teams with engineering managers and QA leads. Built the hiring process, career ladder, and performance reviews.</li>
             <li>Made AI a normal part of the engineering process: AI review on every PR, AI-assisted QA, and adoption across teams. I use it daily in my own analysis.</li>
-            <li>Shipped ~75 public builds a year, weekly or faster: terrain and LOD rendering, a major engine upgrade, a server-authoritative CRDT, hang detection with crash reporting, and automated performance tests gating every PR.</li>
+            <li>Shipped ~75 public releases a year, weekly or faster, with crash reporting, hang detection, and automated performance tests gating every PR.</li>
           </ul>
         </div>
 
@@ -196,9 +159,9 @@
           <div class="role-title">Engineering Manager <span class="org">— Decentraland, London</span></div>
           <div class="role-dates">2022 – 2025</div>
           <ul>
-            <li>Grew the client team from ~5 to 10+ engineers and led the rebuild that replaced the legacy web client, including the new desktop client's architecture.</li>
-            <li>Owned the client's strategic KPIs (loading time, stability, frame rate) and the tech-debt program behind them.</li>
-            <li>Changed how the team shipped: a predictable cadence, monitoring, and a QA bar every build had to clear.</li>
+            <li>Grew the client team from ~5 to 10+ engineers and led the rebuild that replaced the legacy web client, including the new application's architecture.</li>
+            <li>Owned the product's strategic KPIs (loading time, stability, responsiveness) and the tech-debt program behind them.</li>
+            <li>Changed how the team shipped: a predictable cadence, monitoring, and a QA bar every release had to clear.</li>
           </ul>
         </div>
 
@@ -206,7 +169,7 @@
           <div class="role-title">Head of Frontend Development <span class="org">— Ten Square Games</span></div>
           <div class="role-dates">2021 – 2022</div>
           <ul>
-            <li>Engineering leadership for a 45+ person technology department across seven live game teams.</li>
+            <li>Engineering leadership for a 45+ person technology department across seven live consumer products.</li>
             <li>Grew the department from ~25 to 45+ engineers during a major growth phase.</li>
             <li>Modernized lifecycle tooling and drove adoption of shared libraries across teams, so every team could iterate faster.</li>
           </ul>
@@ -216,15 +179,15 @@
           <div class="role-title">Technical Manager <span class="org">— Rovio (now Sega), Helsinki</span></div>
           <div class="role-dates">2019 – 2021</div>
           <ul>
-            <li>Led development of Angry Birds Journey from concept to soft launch and managed, mentored, and grew the programming team behind it.</li>
+            <li>Led development of a new mobile product (Angry Birds Journey) from concept to soft launch and managed, mentored, and grew the programming team behind it.</li>
           </ul>
         </div>
 
         <div class="role">
-          <div class="role-title">Senior Game Programmer <span class="org">— Next Games (now Netflix), Helsinki</span></div>
+          <div class="role-title">Senior Software Engineer <span class="org">— Next Games (now Netflix), Helsinki</span></div>
           <div class="role-dates">2017 – 2019</div>
           <ul>
-            <li>Stranger Things: Puzzle Tales and The Walking Dead: No Man's Land (Android/iOS) — core game systems, new mechanics, and live-ops engineering.</li>
+            <li>Core systems, new features, and live-operations engineering on two live mobile products with large audiences (Stranger Things: Puzzle Tales, The Walking Dead: No Man's Land).</li>
           </ul>
         </div>
 
@@ -232,7 +195,7 @@
           <div class="role-title">Associate Lead Programmer → Programmer <span class="org">— Ubisoft RedLynx, Helsinki</span></div>
           <div class="role-dates">2015 – 2017</div>
           <ul>
-            <li>South Park: Phone Destroyer (real-time synchronous PvP, Android/iOS) — built core systems, multiplayer, AI, UI; led performance optimization and a team of programmers.</li>
+            <li>Built core systems, real-time synchronous multiplayer, and UI for a live mobile product (South Park: Phone Destroyer); led performance optimization and a small team of programmers.</li>
           </ul>
         </div>
 
@@ -240,7 +203,7 @@
           <div class="role-title">Earlier roles</div>
           <div class="role-dates">2012 – 2015</div>
           <ul>
-            <li>Turku University of Applied Sciences — Lecturer / Project Engineer; INTERMARUM — Programmer (shipped Leisure Suit Larry: Reloaded); Kiwi Flying Mad — Programmer &amp; Co-founder of an indie studio.</li>
+            <li>Turku University of Applied Sciences — Lecturer / Project Engineer; INTERMARUM — Programmer; Kiwi Flying Mad — Programmer &amp; Co-founder of an indie studio.</li>
           </ul>
         </div>
       </section>
@@ -270,19 +233,19 @@
       <section>
         <h2>technical</h2>
         <ul>
-          <li>Real-time multiplayer &amp; rendering</li>
+          <li>Consumer apps at scale</li>
+          <li>Reliability &amp; observability</li>
           <li>Performance optimization</li>
-          <li>QA &amp; release engineering</li>
-          <li>Live operations</li>
+          <li>Release engineering &amp; CI/CD</li>
+          <li>Real-time systems</li>
           <li>AI in engineering workflows</li>
-          <li>Unity / C#, architecture</li>
         </ul>
       </section>
 
       <section>
         <h2>tools</h2>
         <ul>
-          <li>Unity / C#</li>
+          <li>C# / Unity</li>
           <li>Git &amp; GitHub CI/CD</li>
           <li>Sentry, Grafana</li>
           <li>Jira, Notion, Slack</li>
@@ -309,17 +272,6 @@
   </div>
   </main>
 
-  <footer>
-    <div class="foot-in">
-      <span>© <span id="yr">2026</span> Agnieszka Besz</span>
-      <div class="social">
-        <a href="https://github.com/aixaCode">GitHub</a>
-        <a href="https://www.linkedin.com/in/agabesz">LinkedIn</a>
-        <a href="mailto:aga@besz.me">Email</a>
-      </div>
-    </div>
-  </footer>
-
   <script>
     (function(){
       var root=document.documentElement;
@@ -328,12 +280,6 @@
       else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){
         root.setAttribute("data-theme","dark");
       }
-      document.getElementById("theme").addEventListener("click",function(){
-        var next=root.getAttribute("data-theme")==="dark"?"light":"dark";
-        root.setAttribute("data-theme",next);
-        localStorage.setItem("theme",next);
-      });
-      document.getElementById("yr").textContent=new Date().getFullYear();
     })();
   </script>
 </body>
