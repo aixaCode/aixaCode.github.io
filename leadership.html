@@ -47,16 +47,22 @@
     <h2>The Wrong Scoreboard</h2>
     <p>Many leadership mistakes start with a reasonable substitution. Impact is hard to measure, so we measure output. Trust feels risky, so we add approvals. Ownership is unclear, so we add process. Alignment is missing, so we add meetings.</p>
     <p>The substitute is easier to observe, but further away from what we actually wanted. This is the pattern I try to catch in myself and in the systems around me.</p>
-    <div class="diagram"><pre class="mermaid">graph TD
-  Impact["Impact is hard to see"] --> Activity["Activity becomes the scoreboard"]
-  Trust["Trust feels risky"] --> Approval["Approvals replace ownership"]
-  Ambiguity["Strategy feels unclear"] --> Implementation["Leaders drift into implementation"]
-  Pressure["Everything feels urgent"] --> Drift["Priorities drift toward visibility"]
-  Activity --> Question["What actually changed?"]
-  Approval --> Question
-  Implementation --> Question
-  Drift --> Question</pre></div>
-    <p class="callout">The better question is not "what did we finish?" It is "what changed?"</p>
+    <div class="diagram"><pre class="mermaid">flowchart LR
+  A["Real goal<br/>Better product, stronger team, clearer ownership"] --> B["Hard to measure<br/>Impact takes time and evidence"]
+  B --> C["Easy proxy<br/>Output, approvals, meetings, status"]
+  C --> D["Behavior rewarded<br/>Ship more, escalate more, report more"]
+  D --> E["Hidden cost<br/>Less judgment, weaker ownership, more dependency"]
+  E --> F["Better question<br/>What actually changed?"]
+
+  classDef goal fill:#fff7ed,stroke:#c2410c,color:#222127;
+  classDef risk fill:#f6f6f7,stroke:#b7bbc2,color:#222127;
+  classDef cost fill:#fee2e2,stroke:#dc2626,color:#222127;
+  classDef question fill:#ecfdf5,stroke:#059669,color:#222127;
+  class A goal;
+  class B,C,D risk;
+  class E cost;
+  class F question;</pre></div>
+    <p class="callout">This is the trap I watch for: the proxy starts as a reasonable way to see progress, then becomes the thing people optimize for.</p>
   </section>
 
   <section>
