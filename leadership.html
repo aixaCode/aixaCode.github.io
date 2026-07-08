@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leadership - Agnieszka Besz</title>
-<meta name="description" content="Leadership principles and operating model by Agnieszka Besz.">
+<meta name="description" content="Agnieszka Besz on engineering leadership, ownership, trust, process, feedback loops and the wrong scoreboard.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -25,29 +25,75 @@
 </header>
 <main class="wrap">
   <section class="hero">
-    <p class="eyebrow">Leadership as a system</p>
-    <h1>Engineering leadership is clarity, not ceremony.</h1>
-    <p class="lead">My leadership work is built around a simple operating question: what problem are we solving, how will we know it worked, who owns it and what tradeoff are we making?</p>
+    <p class="eyebrow">Leadership philosophy</p>
+    <h1>The organization learns what leadership rewards.</h1>
+    <p class="lead">I think a lot about the scoreboards we create as leaders. If we reward activity, people create activity. If we reward escalation, people escalate. If we reward clarity, ownership and outcomes, the organization gets better at thinking.</p>
+    <p class="lead secondary">My leadership style is direct, practical and usually starts with the same questions: what problem are we solving, what would change if we succeed, who owns the decision and what tradeoff are we accepting?</p>
   </section>
+
   <section>
-    <h2>Principles</h2>
+    <h2>How I Work</h2>
     <div class="grid">
-      <div class="card"><h3>Outcome over output</h3><p>Do not reward busyness. Reward impact, judgment, ownership, reliability and measurable improvement.</p></div>
-      <div class="card"><h3>Clarity before process</h3><p>If a problem keeps recurring, first check ownership, alignment and decision rights. Add process only when it earns its place.</p></div>
-      <div class="card"><h3>Technical direction follows product direction</h3><p>The best technical choices start from where the company needs to go, not from the most interesting technology.</p></div>
-      <div class="card"><h3>Quality is systemic</h3><p>Crashes, regressions and slow releases are usually system problems. Fix the loop, not only the incident.</p></div>
+      <div class="card"><h3>Outcome over movement</h3><p>I am suspicious of work that looks productive immediately. Shipping matters, but the question is what became better for users, creators or the business.</p></div>
+      <div class="card"><h3>Clarity before comfort</h3><p>Ambiguity often feels kinder in the moment. Usually it only delays the cost. I would rather make expectations, ownership and tradeoffs explicit early.</p></div>
+      <div class="card"><h3>Trust as behavior</h3><p>Trust is not a message. It is who gets context, who gets to decide, who is allowed to be wrong and who owns the consequences.</p></div>
+      <div class="card"><h3>Process earns its place</h3><p>Process is useful when it solves a real failure mode. I try not to solve ownership, trust or clarity problems by adding more coordination cost.</p></div>
+      <div class="card"><h3>Lead the what</h3><p>My job is to make the outcome and constraints clear enough that other people can choose the method. Every decision I absorb teaches the team who gets to think.</p></div>
+      <div class="card"><h3>Build capability</h3><p>Being needed can feel like impact, but repeated dependency is fragility. I want managers, leads and teams to make better decisions without waiting for me.</p></div>
     </div>
   </section>
+
   <section>
-    <h2>Leadership case study</h2>
+    <h2>The Wrong Scoreboard</h2>
+    <p>Many leadership mistakes start with a reasonable substitution. Impact is hard to measure, so we measure output. Trust feels risky, so we add approvals. Ownership is unclear, so we add process. Alignment is missing, so we add meetings.</p>
+    <p>The substitute is easier to observe, but further away from what we actually wanted. This is the pattern I try to catch in myself and in the systems around me.</p>
     <div class="diagram"><pre class="mermaid">graph TD
-  Problem[Repeated ambiguity] --> Ownership[Clear ownership]
-  Ownership --> Managers[Manager capacity]
-  Managers --> Teams[Multiple teams]
-  Teams --> QA[QA ownership]
-  Teams --> Metrics[Outcome-linked metrics]
-  Metrics --> Decisions[Better decisions]</pre></div>
-    <p>Scaling a team from a small engineering group into multiple teams is not a headcount story. The work is creating ownership, management capacity, hiring standards, career expectations and enough operating rhythm that people can make good decisions without waiting for one person.</p>
+  Impact["Impact is hard to see"] --> Activity["Activity becomes the scoreboard"]
+  Trust["Trust feels risky"] --> Approval["Approvals replace ownership"]
+  Ambiguity["Strategy feels unclear"] --> Implementation["Leaders drift into implementation"]
+  Pressure["Everything feels urgent"] --> Drift["Priorities drift toward visibility"]
+  Activity --> Question["What actually changed?"]
+  Approval --> Question
+  Implementation --> Question
+  Drift --> Question</pre></div>
+    <p class="callout">The better question is not "what did we finish?" It is "what changed?"</p>
+  </section>
+
+  <section>
+    <h2>Operating Questions</h2>
+    <table class="decision-table">
+      <thead><tr><th>Pattern</th><th>What I watch for</th><th>Question I ask</th></tr></thead>
+      <tbody>
+        <tr><td>Activity replacing progress</td><td>Busy teams, full roadmaps, many updates, unclear user or business change.</td><td>What actually changes if this works?</td></tr>
+        <tr><td>Control replacing trust</td><td>Important decisions keep returning upward because the system feels safer that way.</td><td>Am I reducing risk, or removing someone else's opportunity to think?</td></tr>
+        <tr><td>Process replacing clarity</td><td>New meetings, templates or approval flows appear before the failure mode is named.</td><td>Is this a process problem, an ownership problem or a clarity problem?</td></tr>
+        <tr><td>Implementation replacing leadership</td><td>The technical detail gives faster feedback than coaching, alignment or hard prioritization.</td><td>Have I defined the outcome clearly enough for someone else to choose the method?</td></tr>
+        <tr><td>Status replacing evidence</td><td>The team reports movement, but no signal would change the decision.</td><td>What signal would change our mind?</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Scaling Leadership</h2>
+    <p>Scaling a team is not a headcount story. The work is creating enough clarity, management capacity, hiring standards, career expectations and feedback loops that decisions improve as the organization grows.</p>
+    <p>The goal is not to be the person with all the answers. The goal is to build a system where the right people have enough context, trust and accountability to make good decisions close to the work.</p>
+    <div class="diagram"><pre class="mermaid">graph TD
+  Scoreboard["Clear scoreboard"] --> Ownership["Explicit ownership"]
+  Ownership --> Context["Context shared early"]
+  Context --> Decisions["Decisions made close to the work"]
+  Decisions --> Feedback["Evidence and feedback loops"]
+  Feedback --> Capability["Stronger managers, leads and teams"]
+  Capability --> LessDependency["Less dependency on one leader"]</pre></div>
+  </section>
+
+  <section>
+    <h2>What I Try To Avoid</h2>
+    <ul class="list-clean">
+      <li><strong>Heroics as a habit.</strong> Rescue can be necessary, but if the same rescue repeats, the system is teaching dependency.</li>
+      <li><strong>Agreement mistaken for alignment.</strong> Strong teams should be able to challenge weak assumptions without turning disagreement into politics.</li>
+      <li><strong>Metrics without a behavior check.</strong> A metric is useful only if the behavior it rewards is the behavior we actually want.</li>
+      <li><strong>Comfortable ambiguity.</strong> Softness can look empathetic while making the real problem harder to act on.</li>
+    </ul>
   </section>
 </main>
 <footer>
