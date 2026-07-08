@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Finance Automation - Agnieszka Besz</title>
+<meta name="description" content="Finance workflow automation where AI reads documents, humans confirm decisions and deterministic code owns the numbers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="site">
+  <div class="site-in">
+    <a class="brand" href="../index.html">Agnieszka Besz</a>
+    <nav class="nav">
+      <a href="../index.html">About</a><a href="../leadership.html">Leadership</a><a class="active" href="../projects/index.html" aria-current="page">Projects</a><a href="../writing.html">Writing</a><a href="../cv.html">CV</a>
+      <button class="toggle" id="theme" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Architecture case study</p>
+    <h1>AI Finance Automation</h1>
+    <p class="lead">Two sibling finance systems - accounting and project budgets - where an LLM reads documents and suggests, a human confirms intent and deterministic Python owns every number.</p>
+    <p class="stack">Python / model-agnostic LLM document extraction / bank-statement CSV parsing / deterministic rules engine / statement-derived FX / JSON caches / HTML dashboard / Proxmox LXC</p>
+    <div class="actions"><span class="meta">Internal/private system. Implementation details are based on local project code.</span><a class="btn" href="index.html">All projects</a></div>
+  </section>
+  <div class="case-layout">
+    <div>
+      <section class="case-section" id="overview">
+        <h2>Overview</h2>
+        <p>This project started from a small but persistent operational problem: statements, invoices and project budgets were easy to lose track of, but sending finance decisions through a broad AI agent would make the system less trustworthy. The useful boundary was clear: AI can read and suggest; the ledger, tax maths and filing rules must stay deterministic.</p>
+        <p>Two sibling systems share that boundary. The <strong>accounting agent</strong> parses period-scoped bank-statement CSVs, converts currencies to GBP, categorises transactions through a rules engine, reconciles them against filed invoice PDFs, computes P&amp;L and versioned finance/tax estimates, and renders an HTML dashboard plus a privacy-safe summary JSON. The <strong>project budget agent</strong> runs the same pattern for project spend: PDFs arrive in an inbox, an LLM extracts fields and suggests a project, a human confirms or overrides, and deterministic code aggregates budget burn and cost split.</p>
+        <p>Both deploy as unprivileged LXC containers on a Proxmox host, next to the personal assistant that consumes their summaries read-only.</p>
+      </section>
+      <section class="case-section" id="requirements">
+        <h2>Requirements</h2>
+        <div class="spec-grid">
+          <div class="spec"><strong>Trust</strong><span>Suggestions must never move money until confirmed.</span></div>
+          <div class="spec"><strong>Reproducibility</strong><span>Spend, remaining budget and category split must be recalculable from local state.</span></div>
+          <div class="spec"><strong>Privacy</strong><span>Statements, invoices, caches and dashboards are git-excluded; the repo itself is local-only Git with no remote.</span></div>
+          <div class="spec"><strong>Agent boundary</strong><span>The personal assistant reads only aggregate JSON, not source invoices.</span></div>
+        </div>
+      </section>
+      <section class="case-section" id="architecture">
+        <h2>Architecture</h2>
+        <div class="diagram"><pre class="mermaid">graph TD
+  Statements["Period-scoped bank statement CSVs"] --> Parse["parser.py"]
+  Parse --> FX["fx.py<br/>GBP rates derived from the statements' own conversion rows"]
+  FX --> Categorize["categorize.py + rules.py<br/>first-match rules, refund pairing"]
+  Inbox["invoices/_inbox/*.pdf"] --> Sort["sort_inbox.py"] --> Filed["Filed invoice tree<br/>invoices/YYYY-YYYY/"]
+  Filed --> Extract["pdf_extract.py<br/>LLM reads PDFs"]
+  Extract --> Match["match suggestions<br/>one batched LLM call per run, cached"]
+  Categorize --> Reconcile["reconcile.py<br/>transactions vs invoices"]
+  Match --> Reconcile
+  Reconcile --> Tax["tax.py<br/>P&amp;L + finance/tax estimates, versioned"]
+  Tax --> Report["report.py<br/>HTML dashboard, --serve mode"]
+  Tax --> Summary["summary_export.py<br/>privacy-safe JSON for the assistant"]
+  Corrections["corrections.py<br/>deterministic file + cache surgery"] -.-> Filed
+  Corrections -.-> Match</pre></div>
+        <p>The AI boundary is visible in the graph: the LLM appears only where unstructured text needs interpretation — reading PDFs and suggesting matches — and everything downstream of a suggestion is deterministic. The sibling budget agent follows the same shape with an explicit human confirmation step between suggestion and aggregation (<code>extract → assign → confirm → aggregate</code>), driven by a <code>projects.yaml</code> budget registry.</p>
+      </section>
+      <section class="case-section" id="components">
+        <h2>Key components</h2>
+        <table class="decision-table">
+          <thead><tr><th>Component</th><th>Responsibility</th><th>Design choice</th></tr></thead>
+          <tbody>
+            <tr><td><code>fx.py</code></td><td>Converts non-GBP transactions to GBP.</td><td>No external FX API: month-level rates are derived from the statements' own conversion rows, falling back to the latest prior rate, then an explicit configured approximation.</td></tr>
+            <tr><td><code>categorize.py</code> + <code>rules.py</code></td><td>Categorises every transaction.</td><td>First matching rule wins; refund pairing nets same-merchant debit/credit pairs so they drop off the P&amp;L but stay visible to the accountant, flagged with the paired transaction id.</td></tr>
+            <tr><td><code>match suggestions</code></td><td>Suggests transaction ↔ invoice matches.</td><td>One batched LLM call per run, cached per transaction — only still-unmatched transactions are ever re-asked.</td></tr>
+            <tr><td><code>tax.py</code></td><td>P&amp;L and finance/tax estimates.</td><td>Estimates are versioned per run; personal records are isolated from company calculations.</td></tr>
+            <tr><td><code>corrections.py</code></td><td>Sanctioned manual fixes for misfiled, mismatched or double-counted invoices.</td><td>Pure file and cache surgery — no AI calls and no accounting maths in the module.</td></tr>
+            <tr><td><code>aggregate.py</code> <span class="meta">(budget agent)</span></td><td>Computes spend, remaining budget, burn and cost split per project.</td><td>Only human-confirmed assignments count; non-budget currencies are flagged, not silently converted.</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="case-section" id="implementation">
+        <h2>Implementation detail</h2>
+        <p>The important part is not the PDF extraction. It is the guardrail that keeps suggested data from becoming financial truth. In the budget agent, the aggregator ignores unconfirmed assignments and reports warnings instead of guessing through ambiguous data:</p>
+        <pre class="code-block"><code>for key, assignment in assignments.items():
+    if not assignment.get("confirmed", False):
+        continue
+
+    project = assignment.get("project", "unknown")
+    amount = extractions.get(key, {}).get("amount")
+
+    if amount is None:
+        warnings.append(f"{key}: no amount extracted - excluded from spend")
+        continue</code></pre>
+        <p>The same discipline runs through the accounting agent: tax estimates are versioned so every run is comparable with the last, cache writes are atomic, and the corrections module's only powers are moving files and migrating cache keys.</p>
+      </section>
+      <section class="case-section" id="problems">
+        <h2>Interesting engineering problems</h2>
+        <ul class="list-clean">
+          <li><strong>Where should AI stop?</strong> AI extracts fields from PDFs and suggests matches or project assignments. It does not approve spend, compute totals, categorise the ledger or touch finance maths.</li>
+          <li><strong>How do you convert currency without an FX feed?</strong> Month-level rates are derived from the statements' own conversion rows; missing months fall back to the latest prior rate, then to an explicit configured approximation — never a silent guess.</li>
+          <li><strong>How do you keep AI cost and drift low?</strong> The matcher makes one batched call per run and caches per transaction, so a re-run asks nothing it already knows.</li>
+          <li><strong>How do you fix mistakes without corrupting state?</strong> Corrections are deterministic file moves and cache-key migrations, with duplicate and bundled charges detected by exact arithmetic — hand-editing the caches is never the fix.</li>
+          <li><strong>How do you avoid quiet finance errors?</strong> Only confirmed assignments count toward spend, extraction caches invalidate on file metadata, JSON writes are atomic and data-quality checks suggest instead of mutate.</li>
+          <li><strong>How do agents use the data safely?</strong> The personal assistant mounts a single aggregate summary read-only, so it can answer finance questions without access to statements or invoice PDFs.</li>
+        </ul>
+      </section>
+      <section class="case-section" id="tradeoffs">
+        <h2>Trade-offs</h2>
+        <table class="decision-table">
+          <thead><tr><th>Decision</th><th>Why</th><th>Cost</th></tr></thead>
+          <tbody>
+            <tr><td>Local files over SaaS accounting integrations</td><td>Lower privacy risk and easier iteration for a private workflow.</td><td>More local operations and less automatic bank reconciliation.</td></tr>
+            <tr><td>JSON caches over a database</td><td>Simple, inspectable and enough for the current volume.</td><td>Will need migration if workflow grows into multi-user operations.</td></tr>
+            <tr><td>Manual confirmation in the middle of the pipeline</td><td>Prevents AI suggestions from becoming financial truth.</td><td>Not fully hands-off, intentionally.</td></tr>
+            <tr><td>Local-only Git with no remote and a pre-push hook</td><td>Financial data cannot leave the machine, even by habit.</td><td>No off-site history; backups belong to the storage layer instead.</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="case-section" id="lessons">
+        <h2>Lessons learned</h2>
+        <ul>
+          <li>In finance workflows, the most important architecture decision is the boundary between interpretation and authority.</li>
+          <li>Small deterministic systems are easier to trust than broad agents with too much agency.</li>
+          <li>Private dashboards can be more useful than productized integrations when the workflow is repetitive and personally operated.</li>
+        </ul>
+      </section>
+    </div>
+    <aside class="toc">
+      <a href="#overview">Overview</a>
+      <a href="#requirements">Requirements</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#components">Components</a>
+      <a href="#implementation">Implementation</a>
+      <a href="#problems">Engineering problems</a>
+      <a href="#tradeoffs">Trade-offs</a>
+      <a href="#lessons">Lessons</a>
+    </aside>
+  </div>
+</main>
+<footer>
+  <div class="foot-in">
+    <span>© <span id="yr">2026</span> Agnieszka Besz</span>
+    <div class="social">
+      <a href="https://github.com/aixaCode">GitHub</a>
+      <a href="https://www.linkedin.com/in/agabesz">LinkedIn</a>
+      <a href="https://gbfactory.uk/">GB Factory</a>
+      <a href="mailto:aga@besz.me">Email</a>
+    </div>
+  </div>
+</footer>
+<script src="../site.js"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
+</script>
+</body>
+</html>

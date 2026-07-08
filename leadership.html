@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leadership - Agnieszka Besz</title>
+<meta name="description" content="Leadership principles and operating model by Agnieszka Besz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <div class="site-in">
+    <a class="brand" href="index.html">Agnieszka Besz</a>
+    <nav class="nav">
+      <a href="index.html">About</a><a class="active" href="leadership.html" aria-current="page">Leadership</a><a href="projects/index.html">Projects</a><a href="writing.html">Writing</a><a href="cv.html">CV</a>
+      <button class="toggle" id="theme" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Leadership as a system</p>
+    <h1>Engineering leadership is clarity, not ceremony.</h1>
+    <p class="lead">My leadership work is built around a simple operating question: what problem are we solving, how will we know it worked, who owns it and what tradeoff are we making?</p>
+  </section>
+  <section>
+    <h2>Principles</h2>
+    <div class="grid">
+      <div class="card"><h3>Outcome over output</h3><p>Do not reward busyness. Reward impact, judgment, ownership, reliability and measurable improvement.</p></div>
+      <div class="card"><h3>Clarity before process</h3><p>If a problem keeps recurring, first check ownership, alignment and decision rights. Add process only when it earns its place.</p></div>
+      <div class="card"><h3>Technical direction follows product direction</h3><p>The best technical choices start from where the company needs to go, not from the most interesting technology.</p></div>
+      <div class="card"><h3>Quality is systemic</h3><p>Crashes, regressions and slow releases are usually system problems. Fix the loop, not only the incident.</p></div>
+    </div>
+  </section>
+  <section>
+    <h2>Leadership case study</h2>
+    <div class="diagram"><pre class="mermaid">graph TD
+  Problem[Repeated ambiguity] --> Ownership[Clear ownership]
+  Ownership --> Managers[Manager capacity]
+  Managers --> Teams[Multiple teams]
+  Teams --> QA[QA ownership]
+  Teams --> Metrics[Outcome-linked metrics]
+  Metrics --> Decisions[Better decisions]</pre></div>
+    <p>Scaling a team from a small engineering group into multiple teams is not a headcount story. The work is creating ownership, management capacity, hiring standards, career expectations and enough operating rhythm that people can make good decisions without waiting for one person.</p>
+  </section>
+</main>
+<footer>
+  <div class="foot-in">
+    <span>© <span id="yr">2026</span> Agnieszka Besz</span>
+    <div class="social">
+      <a href="https://github.com/aixaCode">GitHub</a>
+      <a href="https://www.linkedin.com/in/agabesz">LinkedIn</a>
+      <a href="https://gbfactory.uk/">GB Factory</a>
+      <a href="mailto:aga@besz.me">Email</a>
+    </div>
+  </div>
+</footer>
+<script src="site.js"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
+</script>
+</body>
+</html>

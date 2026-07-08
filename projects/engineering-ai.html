@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI for Engineering Teams - Agnieszka Besz</title>
+<meta name="description" content="Introducing AI into engineering as a quality, knowledge and delivery system rather than a productivity slogan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="site">
+  <div class="site-in">
+    <a class="brand" href="../index.html">Agnieszka Besz</a>
+    <nav class="nav">
+      <a href="../index.html">About</a><a href="../leadership.html">Leadership</a><a class="active" href="../projects/index.html" aria-current="page">Projects</a><a href="../writing.html">Writing</a><a href="../cv.html">CV</a>
+      <button class="toggle" id="theme" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Case study</p>
+    <h1>AI for Engineering Teams</h1>
+    <p class="lead">Introducing AI into engineering as a quality, knowledge and delivery system rather than a productivity slogan.</p>
+    <p class="stack">AI PR review / QA automation / knowledge assistants / dashboards / workflow design</p>
+    <div class="actions"><span class="meta">Internal or private project material.</span><a class="btn" href="index.html">All projects</a></div>
+  </section>
+  <div class="case-layout">
+    <div>
+      <section class="case-section" id="problem">
+        <h2>Problem</h2>
+        <p>Most AI adoption fails because it optimizes for visible activity. The useful question is where AI reduces risk, improves quality or makes organizational knowledge easier to access.</p>
+      </section>
+      <section class="case-section" id="goals">
+        <h2>Goals</h2>
+        <ul><li>Add AI review into the PR process</li><li>Use AI to strengthen QA and regression detection</li><li>Create engineering dashboards and knowledge workflows</li><li>Reduce dependency on individual memory</li><li>Keep humans accountable for decisions</li></ul>
+      </section>
+      <section class="case-section" id="architecture">
+        <h2>Architecture</h2>
+        <div class="diagram"><pre class="mermaid">graph TD
+  Developer[Developer] --> PR[Pull request]
+  PR --> AIReview[AI review]
+  AIReview --> Human[Developer review]
+  Human --> QA[QA validation]
+  QA --> Release[Release]
+  Knowledge[Docs + metrics + decisions] --> Assistant[Knowledge assistant]
+  Assistant --> Team[Team answers]</pre></div>
+      </section>
+      <section class="case-section" id="hard-problems">
+        <h2>Interesting problems</h2>
+        <ul class="list-clean"><li><strong>Where should AI sit in the review process?</strong> It should catch issues and improve attention, not replace accountable reviewers.</li><li><strong>How do you avoid AI becoming noise?</strong> Trigger it where it changes decisions or catches regressions, and remove it where it only adds ceremony.</li><li><strong>How do you make knowledge access safer?</strong> Source-backed answers and clear uncertainty beat confident summaries.</li></ul>
+      </section>
+      <section class="case-section" id="lessons">
+        <h2>Lessons learned</h2>
+        <ul><li>AI adoption is an operating model change, not a tooling rollout.</li><li>Quality and knowledge access are better first-order goals than raw speed.</li><li>The best AI workflows are boring enough to run every week.</li></ul>
+      </section>
+    </div>
+    <aside class="toc">
+      <a href="#problem">Problem</a>
+      <a href="#goals">Goals</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#hard-problems">Interesting problems</a>
+      <a href="#lessons">Lessons learned</a>
+    </aside>
+  </div>
+</main>
+<footer>
+  <div class="foot-in">
+    <span>© <span id="yr">2026</span> Agnieszka Besz</span>
+    <div class="social">
+      <a href="https://github.com/aixaCode">GitHub</a>
+      <a href="https://www.linkedin.com/in/agabesz">LinkedIn</a>
+      <a href="https://gbfactory.uk/">GB Factory</a>
+      <a href="mailto:aga@besz.me">Email</a>
+    </div>
+  </div>
+</footer>
+<script src="../site.js"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
+</script>
+</body>
+</html>

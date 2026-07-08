@@ -37,7 +37,7 @@
   header.site{border-bottom:1px solid var(--line);}
   .site-in{max-width:var(--maxw);margin:0 auto;padding:20px 24px;
     display:flex;align-items:center;justify-content:space-between;gap:16px;}
-  .brand{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:18px;letter-spacing:-.2px;text-decoration:none;}
+  .brand{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:18px;letter-spacing:0;text-decoration:none;}
   .brand::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--accent);transform:rotate(12deg);}
   .brand:hover{color:var(--accent);}
   .nav{display:flex;align-items:center;gap:22px;}
@@ -57,7 +57,7 @@
     color:var(--muted);text-decoration:none;margin-bottom:26px;}
   .back:hover{color:var(--accent);}
   .back svg{width:15px;height:15px;}
-  .article h1{font-size:40px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;margin:0 0 14px;}
+  .article h1{font-size:40px;font-weight:700;letter-spacing:0;line-height:1.1;margin:0 0 14px;}
   @media(max-width:520px){.article h1{font-size:28px;}}
   .meta{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:11px;font-weight:600;
     letter-spacing:.08em;text-transform:uppercase;margin:0 0 32px;}
@@ -66,7 +66,7 @@
   .body p{font-size:18px;line-height:1.7;margin:0 0 20px;}
   .body .q{margin:24px 0;padding-left:18px;border-left:3px solid var(--accent);}
   .body .q span{display:block;font-weight:500;margin:5px 0;}
-  .body .pull{font-size:23px;font-weight:600;letter-spacing:-.4px;line-height:1.35;
+  .body .pull{font-size:23px;font-weight:600;letter-spacing:0;line-height:1.35;
     margin:30px 0;}
   hr.end{border:none;border-top:1px solid var(--line);margin:40px 0 0;}
 
@@ -84,9 +84,9 @@
 
 <header class="site">
   <div class="site-in">
-    <a class="brand" href="../index.html">Writing</a>
+    <a class="brand" href="../index.html">Agnieszka Besz</a>
     <nav class="nav">
-      <a href="../cv-aga-besz-typographic.html">About</a>
+      <a href="../index.html">About</a><a href="../leadership.html">Leadership</a><a href="../projects/index.html">Projects</a><a href="../writing.html">Writing</a><a href="../cv.html">CV</a>
       <button class="toggle" id="theme" aria-label="Toggle color theme" title="Toggle theme">
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
@@ -97,7 +97,7 @@
 
 <main class="wrap">
   <article class="article">
-    <a class="back" href="../index.html">
+    <a class="back" href="../writing.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
       All writing
     </a>

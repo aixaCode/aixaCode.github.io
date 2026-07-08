@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Assistant - Agnieszka Besz</title>
+<meta name="description" content="A local-first assistant that can remember context, use tools safely and work across personal and work profiles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="site">
+  <div class="site-in">
+    <a class="brand" href="../index.html">Agnieszka Besz</a>
+    <nav class="nav">
+      <a href="../index.html">About</a><a href="../leadership.html">Leadership</a><a class="active" href="../projects/index.html" aria-current="page">Projects</a><a href="../writing.html">Writing</a><a href="../cv.html">CV</a>
+      <button class="toggle" id="theme" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Architecture case study</p>
+    <h1>AI Assistant</h1>
+    <p class="lead">A local-first AI assistant with persistent context, profile isolation, tool orchestration and policy-based execution. It runs Claude today, behind a replaceable model interface.</p>
+    <p class="stack">TypeScript / Node.js / Claude Agent SDK / provider-agnostic model interface / MCP server / Telegram / email / Google Calendar / Markdown knowledge base</p>
+    <div class="actions"><a class="btn" href="https://github.com/aixaCode/personal-assistant">Source</a><a class="btn" href="index.html">All projects</a></div>
+  </section>
+
+  <div class="case-layout">
+    <div>
+      <section class="case-section" id="overview">
+        <h2>Overview</h2>
+        <p>The assistant is designed for engineering and operational workflows where the model needs useful context, but must not become an unrestricted shell. The runtime orchestrates the model, local tools and external services while keeping security-critical decisions in deterministic TypeScript code.</p>
+        <p>The model is a replaceable component, not the architecture. Today the assistant runs Claude through the Agent SDK; a provider-agnostic model interface sits beside it so a local model can drive the same tool registry and permission gate without changing the security model.</p>
+      </section>
+
+      <section class="case-section" id="requirements">
+        <h2>Requirements</h2>
+        <ul>
+          <li>Run locally on a developer-controlled machine, with private workspace data outside the Git repository.</li>
+          <li>Separate personal and work environments with different tools, directories and model settings.</li>
+          <li>Use Claude through the Agent SDK while preserving a future seam for local model runtimes.</li>
+          <li>Execute tools only through deterministic authorization, not through prompt instruction alone.</li>
+          <li>Support CLI, private Telegram and email ingress without losing conversation continuity.</li>
+          <li>Produce an auditable execution history for tool decisions and confirmations.</li>
+        </ul>
+      </section>
+
+      <section class="case-section" id="architecture">
+        <h2>Architecture</h2>
+        <div class="diagram"><pre class="mermaid">graph TD
+  CLI[CLI] --> Ingress[Request pipeline]
+  Telegram[Private Telegram] --> Ingress
+  Email[Email ingress] --> Ingress
+  Telegram --> Sessions[Durable session store]
+  Ingress --> Queue[Bounded run queue<br/>per-user serialization]
+  Queue --> Profile[Profile resolution<br/>workspace root, model, tool allowlist]
+  Profile --> Context[Context builder<br/>context.md + memory + knowledge index]
+  Context --> Runtime[Agent runtime<br/>Claude Agent SDK]
+  Seam[Model seam<br/>OpenAI-compatible / Ollama / vLLM] -.-> Runtime
+  Runtime --> MCP[Local MCP server]
+  MCP --> Permission[Permission gate<br/>scope + risk + confirmation]
+  Permission --> Tools[Tool dispatcher]
+  Tools --> Files[Safe file layer<br/>knowledge + notes]
+  Tools --> Calendar[Google Calendar]
+  Tools --> Mail[Email]
+  Tools --> Web[Fetch page]
+  Permission --> Audit[Append-only audit log]</pre></div>
+        <p>The model receives context and may request tools through the local MCP server. It does not directly execute privileged actions. Every tool request passes through metadata, profile policy, path validation and optional human confirmation before execution. The dotted line is the model boundary: the runtime is the only component that knows which model is running, so swapping Claude for a local runtime changes nothing on the tool or permission side.</p>
+      </section>
+
+      <section class="case-section" id="components">
+        <h2>Key components</h2>
+        <div class="spec-grid">
+          <div class="spec"><h3>Runtime adapter</h3><p><code>src/runtime.ts</code> wraps the Claude Agent SDK, injects the local MCP server, restricts allowed tools to the active profile and supports session resume.</p></div>
+          <div class="spec"><h3>Profile isolation</h3><p><code>src/profiles.ts</code> defines each profile's workspace directory, model and tool list. Work and personal contexts do not share tools by default.</p></div>
+          <div class="spec"><h3>Context builder</h3><p><code>src/context.ts</code> constructs system text from profile context, current time, memory files and the knowledge-file index before model invocation.</p></div>
+          <div class="spec"><h3>Permission engine</h3><p><code>src/permissions.ts</code> evaluates tool metadata, asks for human confirmation when required and logs allow/deny decisions.</p></div>
+          <div class="spec"><h3>Safe file layer</h3><p><code>src/files.ts</code> blocks traversal and symlink escapes, confines writes to <code>notes/</code> and <code>knowledge/</code>, and keeps private workspace data out of Git.</p></div>
+          <div class="spec"><h3>Telegram state</h3><p><code>src/telegram-state.ts</code> persists session IDs, serializes conversations per user and lets confirmation replies bypass the normal queue.</p></div>
+          <div class="spec"><h3>Model seam</h3><p><code>src/models/model.ts</code> defines a provider-agnostic chat interface — messages and tool definitions in, text or tool calls out — so a local runtime can replace Claude without touching tools or permissions.</p></div>
+          <div class="spec"><h3>Run queue</h3><p><code>src/queue.ts</code> is a bounded FIFO that caps concurrent agent runs to stay inside subscription limits; deliberately no priorities or retries until a real need shows up.</p></div>
+        </div>
+      </section>
+
+      <section class="case-section" id="implementation">
+        <h2>Implementation detail</h2>
+        <p>Tool authorization is a typed runtime decision. The language model can propose an action, but the runtime decides whether that action is allowed.</p>
+        <pre class="code-block"><code>export const toolMeta = {
+  read_file: { scope: "read_local", risk: "auto" },
+  write_note: { scope: "write_local", risk: "confirm" },
+  calendar_create_event: { scope: "write_external", risk: "confirm" },
+} as const;
+
+export async function enforce(profile, confirm, name, input) {
+  const meta = toolMeta[name];
+  if (!meta) {
+    audit({ profile: profile.name, tool: name, decision: "deny", reason: "unknown tool" });
+    return false;
+  }
+  if (meta.risk === "confirm") {
+    const ok = await confirm(formatConfirmation(profile, name, input));
+    audit({ profile: profile.name, tool: name, scope: meta.scope, decision: ok ? "allow" : "deny" });
+    return ok;
+  }
+  audit({ profile: profile.name, tool: name, scope: meta.scope, decision: "allow" });
+  return true;
+}</code></pre>
+        <p>Filesystem access uses the same principle. Path resolution is lexical first, then checked against real paths so symlink escapes are rejected. Writes are limited to explicit knowledge and notes directories.</p>
+        <p>Model portability is enforced by an interface, not an aspiration. Anything that can answer <code>chat()</code> with text or tool calls can drive the assistant through the same registry and permission gate:</p>
+        <pre class="code-block"><code>export interface Model {
+  chat(input: { messages: Message[]; tools: ToolDefinition[] }): Promise&lt;{
+    text?: string;
+    toolCalls?: ToolCall[];
+  }&gt;;
+}</code></pre>
+      </section>
+
+      <section class="case-section" id="problems">
+        <h2>Interesting engineering problems</h2>
+        <ul class="list-clean">
+          <li><strong>Policy-based tool execution.</strong> The model generates intent, never authority. Tool calls are translated into named commands evaluated against profile allowlists, scope/risk metadata, confirmation requirements and audit logging.</li>
+          <li><strong>Prompt injection boundary.</strong> The dangerous boundary is not the prompt; it is the moment text becomes action. Unknown tools are denied, risky tools ask the human and built-in SDK tools are excluded by the profile allowlist.</li>
+          <li><strong>Memory architecture without pretending everything is vector search.</strong> Durable context is split into profile context, Markdown knowledge, append-only memory notes and available-file indexes. Semantic search and SQLite are intentionally future tiers, not hidden dependencies.</li>
+          <li><strong>Profile isolation.</strong> Personal and work profiles have separate roots, model settings and tool sets. File validation enforces workspace boundaries in code, including traversal and symlink checks.</li>
+          <li><strong>Asynchronous UX.</strong> Telegram requests are serialized per user so runs do not trample each other, while confirmation responses bypass the queue to unblock active tool calls.</li>
+        </ul>
+      </section>
+
+      <section class="case-section" id="tradeoffs">
+        <h2>Trade-offs</h2>
+        <table class="decision-table">
+          <thead><tr><th>Decision</th><th>Trade-off</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td>Claude Agent SDK instead of owned model loop</td><td>Less control over the model loop, faster path to a useful assistant</td><td>The goal was a working local assistant on an existing subscription, with a model interface kept for later local runtimes.</td></tr>
+            <tr><td>Markdown knowledge before vector search</td><td>Less fuzzy retrieval, better debuggability</td><td>For early usage, grep-able source-of-truth files were more reliable than opaque embeddings.</td></tr>
+            <tr><td>Explicit profile tool lists</td><td>More configuration work, stronger isolation</td><td>Profiles become the authorization boundary instead of relying on model behavior.</td></tr>
+            <tr><td>Human confirmation for write/external actions</td><td>Slower automation, safer execution</td><td>The assistant should be useful before it is autonomous.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="case-section" id="results">
+        <h2>Results</h2>
+        <ul>
+          <li>CLI and private Telegram ingress working with durable session resume.</li>
+          <li>Personal and work profiles isolated by workspace root and tool allowlist.</li>
+          <li>Permission gate, safe file layer and append-only audit log implemented in code.</li>
+          <li>Google Calendar, email, local knowledge, reminders and skill-loading tools integrated behind the same authorization path.</li>
+          <li>Security-focused tests cover configuration, permissions, safe files, calendar, email and Telegram state.</li>
+          <li>Provider-agnostic model interface in place with local-runtime adapters stubbed (Ollama/vLLM); Claude via the Agent SDK is the wired runtime today.</li>
+        </ul>
+      </section>
+
+      <section class="case-section" id="lessons">
+        <h2>Lessons</h2>
+        <ul>
+          <li>Security boundaries belong in deterministic code, not in prompt wording.</li>
+          <li>The model should propose actions; the runtime should authorize them.</li>
+          <li>Useful memory starts with clear information architecture. Vector search is a tool, not the foundation.</li>
+          <li>Local-first assistants need operational features early: audit logs, session persistence, bounded concurrency and recovery paths.</li>
+        </ul>
+      </section>
+    </div>
+
+    <aside class="toc">
+      <a href="#overview">Overview</a>
+      <a href="#requirements">Requirements</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#components">Key components</a>
+      <a href="#implementation">Implementation</a>
+      <a href="#problems">Engineering problems</a>
+      <a href="#tradeoffs">Trade-offs</a>
+      <a href="#results">Results</a>
+      <a href="#lessons">Lessons</a>
+    </aside>
+  </div>
+</main>
+<footer>
+  <div class="foot-in">
+    <span>© <span id="yr">2026</span> Agnieszka Besz</span>
+    <div class="social">
+      <a href="https://github.com/aixaCode">GitHub</a>
+      <a href="https://www.linkedin.com/in/agabesz">LinkedIn</a>
+      <a href="https://gbfactory.uk/">GB Factory</a>
+      <a href="mailto:aga@besz.me">Email</a>
+    </div>
+  </div>
+</footer>
+<script src="../site.js"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
+</script>
+</body>
+</html>

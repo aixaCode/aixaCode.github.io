@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiplayer Mobile Game - Agnieszka Besz</title>
+<meta name="description" content="Animal Park, in development: a multiplayer mobile game for iOS and Android, built end to end from Unity client and content pipeline to backend services and release automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="site">
+  <div class="site-in">
+    <a class="brand" href="../index.html">Agnieszka Besz</a>
+    <nav class="nav">
+      <a href="../index.html">About</a><a href="../leadership.html">Leadership</a><a class="active" href="../projects/index.html" aria-current="page">Projects</a><a href="../writing.html">Writing</a><a href="../cv.html">CV</a>
+      <button class="toggle" id="theme" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Architecture case study</p>
+    <h1>Multiplayer Mobile Game</h1>
+    <p class="lead">Animal Park, in development: a multiplayer mobile game for iOS and Android, built end to end across Unity client, Firebase backend services, social systems, live configuration and release automation.</p>
+    <p class="stack">Unity/C# / IL2CPP (Android + iOS) / Addressables / Firebase Cloud Functions / Node.js 22 / Firestore / Crashlytics / TeamCity / fastlane / GitHub Actions</p>
+    <div class="actions"><span class="meta">In development. Backend details are based on local project code.</span><a class="btn" href="index.html">All projects</a></div>
+  </section>
+  <div class="case-layout">
+    <div>
+      <section class="case-section" id="overview">
+        <h2>Overview</h2>
+        <p>Animal Park is a full iOS and Android game build rather than a single feature demo. The backend supports player progress, inventory and map state, public profiles, clubs, club chat, tournaments, remote configuration and environment-specific deployment. The client is a Unity/C# game shipped as IL2CPP builds for Android and iOS.</p>
+        <p>The engineering challenge is the normal one in live games: keep iteration fast without letting social and progression systems become unsafe or inconsistent.</p>
+      </section>
+      <section class="case-section" id="requirements">
+        <h2>Requirements</h2>
+        <div class="spec-grid">
+          <div class="spec"><strong>Player state</strong><span>Save and load inventory, map, persistent map data and user profile safely.</span></div>
+          <div class="spec"><strong>Social systems</strong><span>Support clubs, membership flows, roles, chat and public profile lookups.</span></div>
+          <div class="spec"><strong>Live operations</strong><span>Remote config, server-version migrations and weekly tournament jobs.</span></div>
+          <div class="spec"><strong>Release safety</strong><span>Three isolated environments (dev/stage/prod), emulator support, Node test coverage and CI-built, store-ready client builds.</span></div>
+        </div>
+      </section>
+      <section class="case-section" id="architecture">
+        <h2>Architecture</h2>
+        <div class="diagram"><pre class="mermaid">graph TD
+  Client["Unity/C# mobile client"] --> Addressables["Addressables content pipeline"]
+  Client --> Callable["Firebase callable functions"]
+  Callable --> Auth["Auth guard / onAuthedCall"]
+  Auth --> Progress["user-progress.js<br/>save/load/migrations"]
+  Auth --> Clubs["clubs.js<br/>roles, joins, membership"]
+  Auth --> Chat["chat.js<br/>club-scoped messages"]
+  Auth --> Tournaments["tournaments.js<br/>weekly buckets + scoring"]
+  Auth --> Config["core.js<br/>remote config by version"]
+  Progress --> Firestore[(Firestore)]
+  Clubs --> Firestore
+  Chat --> Firestore
+  Tournaments --> Firestore
+  Config --> Firestore
+  Scheduler["Cloud Scheduler<br/>0 0 * * 6"] --> Tournaments
+  Tests["node --test"] --> Callable
+  CI["TeamCity<br/>Unity IL2CPP builds"] --> Fastlane["fastlane<br/>Firebase App Distribution / TestFlight / Play tracks"]
+  Fastlane --> Client
+  Actions["GitHub Actions<br/>Firebase function deploys"] --> Callable</pre></div>
+      </section>
+      <section class="case-section" id="components">
+        <h2>Key components</h2>
+        <table class="decision-table">
+          <thead><tr><th>Component</th><th>Responsibility</th><th>Notable decision</th></tr></thead>
+          <tbody>
+            <tr><td><code>utils.onAuthedCall</code></td><td>Wraps callable functions with a uniform authentication guard.</td><td>Every gameplay function returns a consistent <code>error</code> envelope and server time.</td></tr>
+            <tr><td><code>user-progress.js</code></td><td>Create, load and save player data across user, inventory and map documents.</td><td>Uses Firestore batches and a save index to reject old saves.</td></tr>
+            <tr><td><code>clubs.js</code></td><td>Club creation, joining, role changes, pending requests and member management.</td><td>Role checks distinguish leader/admin operations from normal membership flows.</td></tr>
+            <tr><td><code>chat.js</code></td><td>Club-scoped chat fetch and send.</td><td>Verifies the authenticated user's club before reading or writing messages.</td></tr>
+            <tr><td><code>tournaments.js</code></td><td>Weekly tournament creation and score reporting.</td><td>Score updates run in Firestore transactions; tournament creation buckets eligible clubs.</td></tr>
+            <tr><td><code>core.js</code></td><td>Remote configuration fetch.</td><td>Returns only newer config values by version to reduce unnecessary client updates.</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="case-section" id="client">
+        <h2>Unity client &amp; release automation</h2>
+        <p>The client is a Unity/C# game shipped as IL2CPP builds for Android and iOS. Gameplay code is organized by domain — core simulation, level generation, online services, rewards and collection, ads/analytics/IAP integrations, UI — with editor tests alongside. Content ships through Addressables with separate dev and production build layouts, so asset iteration does not require client releases.</p>
+        <p>The DevOps path is the part that makes a one-studio game operable. TeamCity drives the Unity builds through a custom editor build layer (build manifests, build tags and TeamCity service-message integration live in the project as code). fastlane owns everything store-facing:</p>
+        <ul>
+          <li><strong>Dev distribution</strong> — Firebase App Distribution with generated changelogs per build.</li>
+          <li><strong>iOS</strong> — Xcode build lanes and TestFlight upload via App Store Connect API keys.</li>
+          <li><strong>Android</strong> — Google Play upload and track promotion from testing to production.</li>
+          <li><strong>Operations</strong> — git tagging per build and Crashlytics dSYM symbol upload, so crash reports stay symbolicated.</li>
+        </ul>
+      </section>
+      <section class="case-section" id="implementation">
+        <h2>Implementation detail</h2>
+        <p>The highest-risk backend paths are the ones where a client claims identity or ordering: chat, saves and tournament scores. Those paths use server-side membership checks, server timestamps, save-index validation and transactions instead of trusting client state.</p>
+        <pre class="code-block"><code>// Score reporting is accepted only when the authenticated user
+// belongs to the claimed club and the club is in the active tournament.
+if (!caller || caller.userData.clubId !== request.data.clubId) {
+    return utils.err("permission-denied")
+}
+
+await db.runTransaction(async (transaction) =&gt; {
+    const [tournamentDoc, clubDoc, memberDoc] = await Promise.all([
+        transaction.get(tournamentRef),
+        transaction.get(clubRef),
+        transaction.get(memberRef),
+    ])
+    // update tournament participant score and member score together
+})</code></pre>
+      </section>
+      <section class="case-section" id="problems">
+        <h2>Interesting engineering problems</h2>
+        <ul class="list-clean">
+          <li><strong>How do you stop clients from writing social data outside their authority?</strong> Chat and tournament APIs verify the authenticated user's current club server-side before writing.</li>
+          <li><strong>How do you avoid old mobile saves overwriting newer state?</strong> Save requests carry a save index; older saves are rejected instead of merged.</li>
+          <li><strong>How do you start tournaments without loading the world into memory?</strong> Eligible clubs are fetched in buckets, tournament documents are created per bucket and participant club records are updated in parallel.</li>
+          <li><strong>How do you change game configuration without forcing client releases?</strong> Remote config documents include versions, and the client fetch returns only newer values.</li>
+        </ul>
+      </section>
+      <section class="case-section" id="tradeoffs">
+        <h2>Trade-offs</h2>
+        <table class="decision-table">
+          <thead><tr><th>Decision</th><th>Why</th><th>Cost</th></tr></thead>
+          <tbody>
+            <tr><td>Firebase Cloud Functions and Firestore</td><td>Fast to build, good fit for mobile backend iteration and authenticated callable APIs.</td><td>Requires care around query shape, transactions and document-level consistency.</td></tr>
+            <tr><td>Callable modules by feature</td><td>Keeps progress, clubs, chat, tournaments and config understandable as separate domains.</td><td>Shared invariants must be kept in utilities and tests to avoid drift.</td></tr>
+            <tr><td>Remote config by version</td><td>Lets the game tune behavior without client releases.</td><td>Configuration becomes part of production state and needs discipline.</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="case-section" id="results">
+        <h2>Results</h2>
+        <div class="metrics">
+          <div class="metric"><strong>5</strong><span>Main backend domains: progress, social, clubs, chat, tournaments</span></div>
+          <div class="metric"><strong>Node 22</strong><span>Firebase functions runtime with emulator and test scripts</span></div>
+          <div class="metric"><strong>Weekly</strong><span>Scheduled tournament creation via Cloud Scheduler</span></div>
+        </div>
+      </section>
+      <section class="case-section" id="lessons">
+        <h2>Lessons learned</h2>
+        <ul>
+          <li>Small game backends still need production habits early: environment separation, tests, explicit deploy paths and predictable error envelopes.</li>
+          <li>Social features are trust systems. Permission checks and server-owned timestamps matter before scale makes them painful to retrofit.</li>
+          <li>Firebase is productive when feature modules stay narrow and high-risk updates use batches or transactions deliberately.</li>
+        </ul>
+      </section>
+    </div>
+    <aside class="toc">
+      <a href="#overview">Overview</a>
+      <a href="#requirements">Requirements</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#components">Components</a>
+      <a href="#client">Client &amp; release</a>
+      <a href="#implementation">Implementation</a>
+      <a href="#problems">Engineering problems</a>
+      <a href="#tradeoffs">Trade-offs</a>
+      <a href="#results">Results</a>
+      <a href="#lessons">Lessons</a>
+    </aside>
+  </div>
+</main>
+<footer>
+  <div class="foot-in">
+    <span>© <span id="yr">2026</span> Agnieszka Besz</span>
+    <div class="social">
+      <a href="https://github.com/aixaCode">GitHub</a>
+      <a href="https://www.linkedin.com/in/agabesz">LinkedIn</a>
+      <a href="https://gbfactory.uk/">GB Factory</a>
+      <a href="mailto:aga@besz.me">Email</a>
+    </div>
+  </div>
+</footer>
+<script src="../site.js"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
+</script>
+</body>
+</html>
