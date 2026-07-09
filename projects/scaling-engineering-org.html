@@ -25,47 +25,112 @@
 </header>
 <main class="wrap">
   <section class="hero">
-    <p class="eyebrow">Case study</p>
+    <p class="eyebrow">Leadership case study</p>
     <h1>Scaling an Engineering Organization</h1>
-    <p class="lead">Growing from a small engineering group into multiple teams with managers, QA leads, career ladders and clearer ownership.</p>
-    <p class="stack">Org design / hiring / career ladder / OKRs / performance / engineering management</p>
-    <div class="actions"><span class="meta">Internal or private project material.</span><a class="btn" href="index.html">All projects</a></div>
+    <p class="lead">Growing an engineering group is not mainly a headcount problem. The hard part is moving decision-making, ownership and judgment out of one or two people and into the organization.</p>
+    <p class="stack">Org design / engineering management / QA leadership / career expectations / feedback loops / delivery quality</p>
+    <div class="actions"><span class="meta">Leadership case study based on live engineering organizations.</span><a class="btn" href="index.html">All projects</a></div>
   </section>
   <div class="case-layout">
     <div>
       <section class="case-section" id="problem">
         <h2>Problem</h2>
-        <p>Scaling an engineering organization is not about adding process. It is about adding clarity before ambiguity turns into coordination cost.</p>
+        <p>A small engineering team can run on proximity. People know who to ask, senior engineers fill the gaps and the leader can stay close enough to unblock most decisions. At that size, the lack of structure is often invisible.</p>
+        <p>At larger scale the same habits become expensive. Decisions return to the same people. QA becomes a late-stage gate instead of an ownership function. Managers inherit work without a clear operating model. Teams report movement, but it becomes harder to see whether capability is actually improving.</p>
+        <p>The problem is not that the team needs more process. The problem is that the old decision system no longer matches the size of the organization.</p>
       </section>
-      <section class="case-section" id="goals">
-        <h2>Goals</h2>
-        <ul><li>Create clear ownership areas</li><li>Grow engineering management capacity</li><li>Build hiring and performance systems</li><li>Introduce career expectations without bureaucracy</li><li>Connect engineering work to product outcomes</li></ul>
+
+      <section class="case-section" id="scope">
+        <h2>Scope</h2>
+        <div class="metrics">
+          <div class="metric"><strong>25</strong><span>Peak developer scope across Gaming Engineering, Creator Tools and SDK.</span></div>
+          <div class="metric"><strong>10</strong><span>Countries across a distributed engineering organization.</span></div>
+          <div class="metric"><strong>50</strong><span>Technology department scale in a previous live-games role.</span></div>
+        </div>
       </section>
+
+      <section class="case-section" id="principles">
+        <h2>Principles</h2>
+        <div class="spec-grid">
+          <div class="spec"><strong>Ownership before process</strong><span>If nobody owns the decision, adding a meeting only hides the gap.</span></div>
+          <div class="spec"><strong>Managers as leverage</strong><span>The goal is not more reporting. It is better judgment, clearer priorities and healthier teams.</span></div>
+          <div class="spec"><strong>QA as ownership</strong><span>Quality improves when QA has a voice in risk, release readiness and prevention, not only validation.</span></div>
+          <div class="spec"><strong>Evidence over status</strong><span>Status tells me what moved. Evidence tells me whether the work mattered.</span></div>
+        </div>
+      </section>
+
       <section class="case-section" id="architecture">
-        <h2>Architecture</h2>
-        <div class="diagram"><pre class="mermaid">graph TD
-  SmallTeam[Small team] --> Leads[Technical leads]
-  Leads --> Managers[Engineering managers]
-  Managers --> Teams[Multiple teams]
-  Teams --> QA[QA ownership]
-  Teams --> Career[Career ladder]
-  Teams --> OKRs[Outcome-linked OKRs]</pre></div>
+        <h2>Operating model</h2>
+        <div class="diagram"><pre class="mermaid">flowchart LR
+  A["Small-team habit<br/>Ask the same senior people"] --> B["Scaling risk<br/>Bottlenecks, unclear ownership, late QA"]
+  B --> C["Org design<br/>Managers, QA lead, staff engineers, ownership areas"]
+  C --> D["Decision system<br/>Context, decision rights, escalation path"]
+  D --> E["Feedback loops<br/>Releases, incidents, team load, quality signals"]
+  E --> F["Capability<br/>Teams make better decisions without waiting"]
+
+  classDef risk fill:#fee2e2,stroke:#dc2626,color:#222127;
+  classDef design fill:#fff7ed,stroke:#c2410c,color:#222127;
+  classDef result fill:#ecfdf5,stroke:#059669,color:#222127;
+  class A,B risk;
+  class C,D,E design;
+  class F result;</pre></div>
       </section>
+
+      <section class="case-section" id="decisions">
+        <h2>Key decisions</h2>
+        <table class="decision-table">
+          <thead><tr><th>Decision</th><th>Why it mattered</th><th>Tradeoff</th></tr></thead>
+          <tbody>
+            <tr><td>Create clearer ownership areas</td><td>Reduced ambiguity about who decides, who supports and who is accountable for follow-through.</td><td>Some boundaries had to be explicit before they felt natural.</td></tr>
+            <tr><td>Build management capacity</td><td>Moved coaching, prioritization and team health closer to the work instead of routing everything through one leader.</td><td>Managers need context and trust; otherwise they become status collectors.</td></tr>
+            <tr><td>Separate QA leadership from late validation</td><td>Made quality a system concern: release risk, prevention, regression loops and evidence.</td><td>QA needs enough authority to challenge release confidence, not only execute checks.</td></tr>
+            <tr><td>Use career expectations carefully</td><td>Gave engineers and managers a clearer language for growth, impact and seniority.</td><td>Career ladders can become bureaucracy if they are not tied to real behavior.</td></tr>
+            <tr><td>Review outcomes, not only movement</td><td>Kept attention on reliability, delivery quality and product impact rather than activity.</td><td>Outcome signals are slower and sometimes uncomfortable.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
       <section class="case-section" id="hard-problems">
         <h2>Interesting problems</h2>
-        <ul class="list-clean"><li><strong>When should you add process?</strong> Only when it solves a repeated coordination or accountability problem.</li><li><strong>How do you avoid shared ownership without accountability?</strong> Make decision makers explicit and keep ownership areas small.</li><li><strong>How do you measure leadership work?</strong> Look at outcomes, reliability, decision quality and whether the team can operate without one person as a bottleneck.</li></ul>
+        <ul class="list-clean">
+          <li><strong>When do you add process?</strong> When a failure repeats and the root cause is coordination, not when ownership or trust is unclear.</li>
+          <li><strong>How do you delegate without creating drift?</strong> Give people context, decision rights and feedback loops. Delegation without context creates drift.</li>
+          <li><strong>How do you keep strong ICs engaged as the org grows?</strong> Make seniority about judgment and leverage, not only being the person who knows the most code.</li>
+          <li><strong>How do you avoid managers becoming routers?</strong> Give them real ownership of priorities, people decisions and quality of execution.</li>
+          <li><strong>How do you know leadership work is working?</strong> Fewer repeated escalations, clearer decisions, healthier release confidence and teams that can operate without one person as the bottleneck.</li>
+        </ul>
       </section>
+
+      <section class="case-section" id="results">
+        <h2>Results</h2>
+        <ul>
+          <li>Clearer ownership across client engineering, Creator Tools, SDK, QA and release delivery.</li>
+          <li>More leadership capacity through managers, QA leadership and senior/staff IC ownership.</li>
+          <li>Better release discipline, with weekly production releases and quality signals tied to release confidence.</li>
+          <li>More explicit career and performance conversations, with less reliance on implicit expectations.</li>
+          <li>Reduced dependency on one person being present in every important technical or delivery decision.</li>
+        </ul>
+      </section>
+
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>
-        <ul><li>The job of leadership is to create clarity.</li><li>Process earns its place; it should not be the default answer.</li><li>The best managers increase the agency of the team around them.</li></ul>
+        <ul>
+          <li>Scaling exposes the decisions you were previously making by habit.</li>
+          <li>Process is useful only after the failure mode is named.</li>
+          <li>Managers are not a communication layer. They are how judgment, care and accountability scale.</li>
+          <li>The best sign of leadership progress is that the organization needs you less often for the same class of decision.</li>
+        </ul>
       </section>
     </div>
     <aside class="toc">
       <a href="#problem">Problem</a>
-      <a href="#goals">Goals</a>
-      <a href="#architecture">Architecture</a>
-      <a href="#hard-problems">Interesting problems</a>
-      <a href="#lessons">Lessons learned</a>
+      <a href="#scope">Scope</a>
+      <a href="#principles">Principles</a>
+      <a href="#architecture">Operating model</a>
+      <a href="#decisions">Decisions</a>
+      <a href="#hard-problems">Problems</a>
+      <a href="#results">Results</a>
+      <a href="#lessons">Lessons</a>
     </aside>
   </div>
 </main>

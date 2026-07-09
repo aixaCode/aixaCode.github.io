@@ -80,16 +80,23 @@
   </section>
 
   <section>
-    <h2>Scaling Leadership</h2>
-    <p>Scaling a team is not a headcount story. The work is creating enough clarity, management capacity, hiring standards, career expectations and feedback loops that decisions improve as the organization grows.</p>
-    <p>The goal is not to be the person with all the answers. The goal is to build a system where the right people have enough context, trust and accountability to make good decisions close to the work.</p>
-    <div class="diagram"><pre class="mermaid">graph TD
-  Scoreboard["Clear scoreboard"] --> Ownership["Explicit ownership"]
-  Ownership --> Context["Context shared early"]
-  Context --> Decisions["Decisions made close to the work"]
-  Decisions --> Feedback["Evidence and feedback loops"]
-  Feedback --> Capability["Stronger managers, leads and teams"]
-  Capability --> LessDependency["Less dependency on one leader"]</pre></div>
+    <h2>Leadership Case Study</h2>
+    <p>The most useful leadership work I have done was not adding more structure for its own sake. It was turning a group that depended too much on a few senior people into an organization with clearer ownership, manager capacity, QA leadership and better feedback loops.</p>
+    <p>The shift was from "who can help with this?" to "who owns this decision, what evidence do they need and how will we know if it worked?" That sounds small, but it changes where judgment is built.</p>
+    <div class="diagram"><pre class="mermaid">flowchart LR
+  A["Bottleneck<br/>Decisions return to the same people"] --> B["Operating gap<br/>Unclear ownership, weak feedback loops"]
+  B --> C["Leadership work<br/>Managers, QA ownership, career expectations"]
+  C --> D["Decision model<br/>Context shared early, decisions made close to work"]
+  D --> E["Evidence loop<br/>Release quality, team load, reliability, outcomes"]
+  E --> F["Result<br/>Less dependency, stronger leaders, better delivery"]
+
+  classDef problem fill:#fee2e2,stroke:#dc2626,color:#222127;
+  classDef work fill:#fff7ed,stroke:#c2410c,color:#222127;
+  classDef result fill:#ecfdf5,stroke:#059669,color:#222127;
+  class A,B problem;
+  class C,D,E work;
+  class F result;</pre></div>
+    <p class="callout">The point of scaling leadership is not to make the org chart look mature. It is to make the organization less dependent on one person being in every important conversation.</p>
   </section>
 
   <section>
