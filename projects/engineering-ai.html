@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI for Engineering Teams - Agnieszka Besz</title>
-<meta name="description" content="Introducing AI into engineering as a quality, knowledge and delivery system rather than a productivity slogan.">
+<meta name="description" content="Putting AI where it changes engineering decisions: review signal, QA evidence, knowledge access and leadership visibility.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
   <section class="hero">
     <p class="eyebrow">Case study</p>
     <h1>AI for Engineering Teams</h1>
-    <p class="lead">Introducing AI into engineering as a quality, knowledge and delivery system rather than a productivity slogan.</p>
+    <p class="lead">Putting AI where it changes engineering decisions: review signal, QA evidence, knowledge access and leadership visibility.</p>
     <p class="stack">AI PR review / visual regression suites / per-PR performance benchmarks / scheduled analysis agents / engineering dashboards</p>
     <div class="actions"><span class="meta">Runs in production on an open-source codebase.</span><a class="btn" href="index.html">All projects</a></div>
   </section>
@@ -35,7 +35,7 @@
     <div>
       <section class="case-section" id="problem">
         <h2>Problem</h2>
-        <p>Most AI adoption in engineering optimizes for visible activity — more code generated, more text summarized. The problem is not getting teams to use AI. The problem is putting it where it changes outcomes: fewer regressions escaping, less dependency on individual memory, decisions made from data instead of recollection.</p>
+        <p>Most AI adoption in engineering optimizes for visible activity: more code generated, more text summarized. That is not the hard part. The hard part is putting AI where it changes outcomes: fewer regressions escaping, less dependency on individual memory, and decisions made from evidence rather than recollection.</p>
         <p>The systems below run in production on an open-source codebase, so they are inspectable rather than aspirational.</p>
       </section>
       <section class="case-section" id="systems">
@@ -49,26 +49,28 @@
       </section>
       <section class="case-section" id="architecture">
         <h2>Where AI sits</h2>
-        <div class="diagram"><pre class="mermaid">graph TD
-  Developer[Developer] --> PR[Pull request]
-  PR --> AIReview[AI review status check]
-  PR --> Visual["Visual regression<br/>pixel diff vs committed baselines"]
-  Build[Cloud build] --> Perf["Benchmark fleet<br/>frame-time per PR"]
-  AIReview --> Human[Accountable developer review]
-  Visual --> Human
-  Perf --> Human
-  Human --> QA[QA approval]
-  QA --> Release[Weekly release]
-  Repo[Repository activity] --> Agents[Scheduled analysis agents]
-  Agents --> Dashboard[Daily leadership dashboard]</pre></div>
+        <div class="diagram"><pre class="mermaid">flowchart LR
+  Change["Code change"] --> CheapSignals["Cheap automated signals<br/>AI review, visual diff, frame-time delta"]
+  CheapSignals --> Decision["Human decision<br/>developer + QA approval"]
+  Decision --> Release["Weekly release"]
+  Release --> Evidence["Evidence after merge<br/>Sentry, regressions, escaped defects"]
+  Evidence --> Dashboard["Leadership dashboard<br/>priority review + follow-up"]
+  Dashboard --> Next["Next decision"]
+
+  classDef input fill:#f6f6f7,stroke:#b7bbc2,color:#222127;
+  classDef decision fill:#fff7ed,stroke:#c2410c,color:#222127;
+  classDef result fill:#ecfdf5,stroke:#059669,color:#222127;
+  class Change,CheapSignals,Evidence input;
+  class Decision,Dashboard decision;
+  class Release,Next result;</pre></div>
       </section>
       <section class="case-section" id="hard-problems">
         <h2>Interesting problems</h2>
-        <ul class="list-clean"><li><strong>Where should AI sit in the review process?</strong> Before human attention, never instead of it. The AI check runs first and cheaply; approval authority stays with named developers and QA. The moment "the AI passed it" becomes an excuse, the system is net negative.</li><li><strong>How do you avoid AI becoming noise?</strong> Make it decision-shaped. A pass/fail status, a pixel diff, a frame-time delta — each output either changes what happens to the PR, or it gets removed. Commentary without a decision attached is ceremony.</li><li><strong>How do you trust AI-computed metrics?</strong> Pin the definitions. Every dashboard metric has a fixed formula and window; when a definition changes, the change is called out so a delta is never mistaken for a trend.</li><li><strong>How do you make knowledge access safer?</strong> Source-backed answers with visible uncertainty beat confident summaries. The dashboard links to the PRs, issues and releases it counted, so any number can be re-derived by a human.</li></ul>
+        <ul class="list-clean"><li><strong>Where should AI sit in the review process?</strong> Before human attention, never instead of it. The AI check runs first and cheaply; approval authority stays with named developers and QA. The moment "the AI passed it" becomes an excuse, the system is net negative.</li><li><strong>How do you avoid AI becoming noise?</strong> Make it decision-shaped. A pass/fail status, a pixel diff, a frame-time delta — each output either changes what happens to the PR, or it gets removed. Commentary without a decision attached is overhead.</li><li><strong>How do you trust AI-computed metrics?</strong> Pin the definitions. Every dashboard metric has a fixed formula and window; when a definition changes, the change is called out so a delta is never mistaken for a trend.</li><li><strong>How do you make knowledge access safer?</strong> Source-backed answers with visible uncertainty beat confident summaries. The dashboard links to the PRs, issues and releases it counted, so any number can be re-derived by a human.</li></ul>
       </section>
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>
-        <ul><li>AI adoption is an operating model change, not a tooling rollout.</li><li>Quality and knowledge access are better first-order goals than raw speed.</li><li>The best AI workflows are boring enough to run every week.</li></ul>
+        <ul><li>AI adoption only matters when it changes how decisions are made.</li><li>Quality and knowledge access are better first-order goals than raw speed.</li><li>The useful workflows are the ones boring enough to run every week.</li></ul>
       </section>
     </div>
     <aside class="toc">

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Engineering Management Dashboard - Agnieszka Besz</title>
-<meta name="description" content="Engineering-management dashboard and scheduled agents for releases, CI health, Sentry signals, Unity Cloud costs, priority reviews and team-load summaries.">
+<meta name="description" content="Engineering-management dashboard for releases, CI health, Sentry signals, Unity Cloud costs, priority reviews and team-load evidence.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
   <section class="hero">
     <p class="eyebrow">Case study</p>
     <h1>Engineering Management Dashboard</h1>
-    <p class="lead">A practical dashboard for engineering management: releases, CI health, Sentry signals, Unity Cloud costs, priority reviews, team load and AI-assisted summaries.</p>
+    <p class="lead">A practical engineering-management dashboard for the questions that keep coming back: what changed, what is risky, what is stuck and what needs a decision.</p>
     <p class="stack">GitHub Actions / scheduled agents / Sentry MCP / Unity Cloud costs / priority reviews / AI-assisted notes</p>
     <div class="actions"><span class="meta">Internal or private project material.</span><a class="btn" href="index.html">All projects</a></div>
   </section>
@@ -35,7 +35,7 @@
     <div>
       <section class="case-section" id="problem">
         <h2>Problem</h2>
-        <p>A team shipping frequently needs a reliable way to see what changed, what is risky and where attention is needed. This is a practical engineering-management dashboard, not a broad platform: scheduled agents summarize repository activity, releases, CI health, Sentry signals, Unity Cloud cost data, priority reviews and team load.</p>
+        <p>A team shipping frequently needs a reliable way to see what changed, what is risky and where attention is needed. This is deliberately a dashboard, not a broad platform: scheduled agents summarize repository activity, releases, CI health, Sentry signals, Unity Cloud cost data, priority reviews and team load.</p>
       </section>
       <section class="case-section" id="goals">
         <h2>Goals</h2>
@@ -43,19 +43,19 @@
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <div class="diagram"><pre class="mermaid">graph TD
-  GitHub[GitHub repositories] --> Agent[Scheduled agents]
-  CI[CI status] --> Agent
-  Releases[Release activity] --> Agent
-  Sentry[Sentry MCP signals] --> Agent
-  Costs[Unity Cloud cost data] --> Agent
-  Priorities[Priority review inputs] --> Agent
-  Load[Team-load signals] --> Agent
-  Defs["Pinned metric definitions<br/>fixed formulas + windows"] --> Agent
-  Agent --> Cache["Fetch caches<br/>weekly metrics stay comparable"]
-  Cache --> Dashboard["Dated HTML dashboard<br/>one per run, with drill-downs"]
-  Agent --> Summary[AI-assisted management summary]
-  Dashboard --> Decisions[Prioritization and follow-up]</pre></div>
+        <div class="diagram"><pre class="mermaid">flowchart LR
+  Raw["Raw activity<br/>PRs, releases, CI, Sentry, costs"] --> Definitions["Pinned definitions<br/>fixed windows + exclusions"]
+  Definitions --> Evidence["Evidence with drill-downs<br/>every number re-derivable"]
+  Evidence --> Review["Priority review<br/>fix, delay, escalate, ignore"]
+  Review --> Lessons["Correction loop<br/>definitions updated when wrong"]
+  Lessons --> NextRun["Next run is comparable"]
+
+  classDef raw fill:#f6f6f7,stroke:#b7bbc2,color:#222127;
+  classDef decision fill:#fff7ed,stroke:#c2410c,color:#222127;
+  classDef result fill:#ecfdf5,stroke:#059669,color:#222127;
+  class Raw,Definitions,Evidence raw;
+  class Review decision;
+  class Lessons,NextRun result;</pre></div>
       </section>
       <section class="case-section" id="metrics">
         <h2>What it computes</h2>
@@ -74,7 +74,7 @@
       </section>
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>
-        <ul><li>A useful dashboard changes behavior: what gets reviewed, fixed, delayed or escalated.</li><li>AI summaries are most useful when tied to concrete engineering evidence.</li><li>Operational simplicity is a feature for the team.</li></ul>
+        <ul><li>A useful dashboard changes behavior: what gets reviewed, fixed, delayed or escalated.</li><li>AI summaries are most useful when tied to concrete engineering evidence.</li><li>If a metric never changes a decision, it should not be on the dashboard.</li></ul>
       </section>
     </div>
     <aside class="toc">
