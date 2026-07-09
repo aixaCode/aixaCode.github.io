@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Unity Explorer - Agnieszka Besz</title>
-<meta name="description" content="Rebuilding a real-time multiplayer desktop client for Decentraland.">
+<meta name="description" content="Rebuilding Decentraland's primary client around reliability, performance and real-time social presence.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -27,32 +27,41 @@
   <section class="hero">
     <p class="eyebrow">Case study</p>
     <h1>Unity Explorer</h1>
-    <p class="lead">Ground-up rebuild of Decentraland's client — now the primary client in production, shipping weekly, fully open source.</p>
+    <p class="lead">Ground-up rebuild of Decentraland's primary client, led while the product kept shipping: reliability first, performance second, feature work only when it supported a better social experience.</p>
     <p class="stack">Unity / C# / Arch ECS / per-scene V8 JavaScript runtimes / CRDT protocol / LiveKit / Addressables &amp; asset bundles / Sentry</p>
     <div class="actions"><a class="btn" href="https://github.com/decentraland/unity-explorer">Repository</a><a class="btn" href="index.html">All projects</a></div>
   </section>
   <div class="case-layout">
     <div>
       <section class="case-section" id="problem">
-        <h2>Problem</h2>
-        <p>Decentraland needed a more reliable primary client for a real-time social platform. The challenge was not only rebuilding the app, but improving stability, performance, multiplayer reliability and release quality while the product continued to operate.</p>
+        <h2>Context</h2>
+        <p>Decentraland needed the client to support a more reliable real-time social experience. The old direction could keep being patched, but every patch made the product harder to reason about: more special cases, harder ownership, less confidence in releases.</p>
+        <p>The decision was to rebuild around the product outcome, not around a technology preference. The goal was not "a Unity rewrite." The goal was a primary client that could support shared presence, creator content and weekly delivery without making stability worse.</p>
       </section>
       <section class="case-section" id="goals">
-        <h2>Goals</h2>
-        <ul><li>Replace the legacy client with a modular Unity desktop client</li><li>Improve stability, crash visibility and responsiveness</li><li>Support real-time social presence and multiplayer sync</li><li>Create a release process that can ship weekly or faster</li><li>Use telemetry to prioritize engineering work</li></ul>
+        <h2>What changed</h2>
+        <ul><li>Replaced the legacy client path with a modular Unity desktop client that is now the primary production client.</li><li>Moved the engineering scoreboard toward stability, crash reduction, performance, multiplayer reliability and release quality.</li><li>Connected telemetry to prioritization: crashes, hangs, frame time, loading and release regressions became inputs to technical direction.</li><li>Improved release discipline so the team could ship weekly without treating every release as a special event.</li><li>Created clearer ownership across client systems, runtime integration, content loading, QA and distribution.</li></ul>
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <div class="diagram"><pre class="mermaid">graph TD
-  World["Arch ECS world<br/>struct components, source-generated queries"] --> Render[Rendering, avatars, physics]
-  Scene1["Creator scene 1<br/>V8 JavaScript runtime"] --> CRDT["CRDT protocol<br/>LWW + grow-only sets, zero-allocation"]
-  Scene2["Creator scene N<br/>V8 JavaScript runtime"] --> CRDT
-  CRDT --> World
-  LiveKit["LiveKit rooms<br/>voice, avatar position + animation sync"] --> World
-  Content["Content layer<br/>asset bundles via Catalyst"] --> World
-  World --> Telemetry["Crash / hang / frame-time telemetry"]
-  Telemetry --> Priorities[Engineering priorities]</pre></div>
-        <p>Three decisions define the client. Game state lives in a data-oriented ECS — pure struct components, source-generated queries, pooling and zero-allocation patterns in hot paths, because a garbage-collection spike is a visible stutter. Every creator-built scene runs in its own sandboxed V8 JavaScript engine and talks to the C# world through a CRDT protocol, so scene state converges without locks. And real-time presence — voice, positions, animation — flows through LiveKit rooms rather than a bespoke networking stack.</p>
+        <div class="diagram"><pre class="mermaid">flowchart LR
+  Outcome["Product outcome<br/>reliable shared presence"] --> Constraints["Constraints<br/>UGC, open protocol, weekly releases"]
+  Constraints --> Client["Unity client<br/>modular, observable, releasable"]
+  Client --> Runtime["Scene runtime boundary<br/>sandboxed V8 + CRDT"]
+  Client --> Presence["Real-time presence<br/>LiveKit voice + avatar sync"]
+  Client --> Content["Content loading<br/>asset bundles + Catalyst"]
+  Runtime --> Signals["Signals<br/>crashes, hangs, frame time, loading"]
+  Presence --> Signals
+  Content --> Signals
+  Signals --> Priorities["Technical priorities<br/>stability before feature work"]
+
+  classDef goal fill:#ecfdf5,stroke:#059669,color:#222127;
+  classDef constraint fill:#f6f6f7,stroke:#b7bbc2,color:#222127;
+  classDef system fill:#fff7ed,stroke:#c2410c,color:#222127;
+  class Outcome,Priorities goal;
+  class Constraints,Signals constraint;
+  class Client,Runtime,Presence,Content system;</pre></div>
+        <p>Three decisions define the client. Game state lives in a data-oriented ECS because frame-time spikes are user-facing product problems. Creator scenes run in isolated V8 runtimes and communicate through CRDT so user-generated content does not become unbounded client risk. Real-time presence uses LiveKit because reliable voice and avatar sync matter more than owning a custom networking stack.</p>
       </section>
       <section class="case-section" id="hard-problems">
         <h2>Interesting problems</h2>
@@ -64,8 +73,8 @@
       </section>
     </div>
     <aside class="toc">
-      <a href="#problem">Problem</a>
-      <a href="#goals">Goals</a>
+      <a href="#problem">Context</a>
+      <a href="#goals">What changed</a>
       <a href="#architecture">Architecture</a>
       <a href="#hard-problems">Interesting problems</a>
       <a href="#lessons">Lessons learned</a>
