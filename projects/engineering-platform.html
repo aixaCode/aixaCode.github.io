@@ -51,13 +51,26 @@
   Costs[Unity Cloud cost data] --> Agent
   Priorities[Priority review inputs] --> Agent
   Load[Team-load signals] --> Agent
-  Agent --> Dashboard[Engineering dashboard]
+  Defs["Pinned metric definitions<br/>fixed formulas + windows"] --> Agent
+  Agent --> Cache["Fetch caches<br/>weekly metrics stay comparable"]
+  Cache --> Dashboard["Dated HTML dashboard<br/>one per run, with drill-downs"]
   Agent --> Summary[AI-assisted management summary]
   Dashboard --> Decisions[Prioritization and follow-up]</pre></div>
       </section>
+      <section class="case-section" id="metrics">
+        <h2>What it computes</h2>
+        <p>The dashboard is the set of questions leadership refuses to stop asking, encoded: what shipped, what is stuck, what is risky, what changed, and what decision is needed. Concretely, each run computes:</p>
+        <ul>
+          <li><strong>Flow</strong> — lead time to production (median and p75, with sample sizes), PR aging bucketed by <em>reason</em> it waits: on the author, on developer review, on QA, or ready to merge.</li>
+          <li><strong>Quality</strong> — escaped defects per release (pre-release vs 14-day escape window), regression rate per release, rework rate with confidence tags, hotfix pressure.</li>
+          <li><strong>Team</strong> — review distribution and concentration, QA queue size, bus factor per critical system over a 90-day window, with former-employee attribution flagged as a knowledge gap.</li>
+          <li><strong>Operations</strong> — CI health, release deltas, Sentry signals, Unity Cloud build costs.</li>
+        </ul>
+        <p>Every metric has a pinned definition — formula, window, exclusions — recorded next to the code. When a definition has to change, the change itself is called out in the next report, so a delta is never silently a redefinition. Ratios come with drill-downs listing the exact issues and PRs counted, so any number can be re-derived by a human.</p>
+      </section>
       <section class="case-section" id="hard-problems">
         <h2>Interesting problems</h2>
-        <ul class="list-clean"><li><strong>How do you keep metrics from becoming vanity dashboards?</strong> Put them where priority reviews and engineering-management decisions happen.</li><li><strong>How do you make AI useful for management work?</strong> Use it to summarize evidence and flag changes, while humans keep ownership of decisions.</li><li><strong>How do you reduce operational load?</strong> Automate repeated status-gathering paths, but keep ownership explicit.</li></ul>
+        <ul class="list-clean"><li><strong>How do you keep metrics from becoming vanity dashboards?</strong> Put them where priority reviews and engineering-management decisions happen, and delete the ones that never change a decision.</li><li><strong>How do you make week-over-week deltas trustworthy?</strong> Pin the definitions and cache the fetches. Ad-hoc redefinitions across runs make trends meaningless — the fix is boring discipline, not smarter models.</li><li><strong>How do you make AI useful for management work?</strong> Use it to summarize evidence and flag changes, while humans keep ownership of decisions. Every AI-computed number links back to the artifacts it counted.</li><li><strong>How does the system get better?</strong> A lessons file: every correction becomes a written rule the next run applies — cumulative totals are not trends, duplicates are excluded and named, partial windows are flagged instead of silently substituted.</li></ul>
       </section>
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>
@@ -68,6 +81,7 @@
       <a href="#problem">Problem</a>
       <a href="#goals">Goals</a>
       <a href="#architecture">Architecture</a>
+      <a href="#metrics">What it computes</a>
       <a href="#hard-problems">Interesting problems</a>
       <a href="#lessons">Lessons learned</a>
     </aside>

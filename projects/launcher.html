@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Launcher & Distribution Platform - Agnieszka Besz</title>
-<meta name="description" content="Rust rework of the desktop Launcher: installer, updater, authentication and release path for getting a desktop client into users' hands reliably.">
+<meta name="description" content="Rust/Tauri rework of the Decentraland desktop Launcher: installer, updater, deep links and release path, replacing the original Electron launcher.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -27,33 +27,39 @@
   <section class="hero">
     <p class="eyebrow">Case study</p>
     <h1>Launcher & Distribution Platform</h1>
-    <p class="lead">Rust rework of the desktop Launcher: installer, updater, authentication and release path for getting a desktop client into users' hands reliably.</p>
-    <p class="stack">Rust / Windows / installer / updater / authentication / telemetry / Epic distribution</p>
-    <div class="actions"><span class="meta">Internal or private project material.</span><a class="btn" href="index.html">All projects</a></div>
+    <p class="lead">Rust rework of the Decentraland desktop Launcher — the installer, updater and launch path that gets the client into users' hands, rebuilt with Tauri after the original Electron launcher was retired.</p>
+    <p class="stack">Rust / Tauri / TypeScript UI on native WebViews / S3 artifact distribution / deep links / Sentry / Windows + macOS</p>
+    <div class="actions"><a class="btn" href="https://github.com/decentraland/launcher-rust">Repository</a><a class="btn" href="index.html">All projects</a></div>
   </section>
   <div class="case-layout">
     <div>
       <section class="case-section" id="problem">
         <h2>Problem</h2>
-        <p>A desktop app is not shipped when the build compiles. The Launcher rework moved the install/update path into a more reliable Rust-based foundation so users can install, authenticate, update, recover from failures and trust the distribution path.</p>
+        <p>A desktop app is not shipped when the build compiles. The launcher is the first thing a new user runs, and every failure in it — a stalled download, a broken update, a launch that silently dies — is churn before the product gets a chance. The original launcher was an Electron app; it worked, but it carried a bundled browser runtime to do a system job.</p>
+        <p>The rework rebuilt it as a Rust core with a thin TypeScript UI on Tauri, using the operating system's native WebView instead of shipping Chromium. Same job, smaller footprint: the system-level work — update checks, downloads, verification, process launch — lives in Rust, and the UI stays web tech without the weight.</p>
+        <!-- TODO(Aga): add measured numbers — installer/binary size and memory vs the Electron launcher, cold-start time -->
       </section>
       <section class="case-section" id="goals">
         <h2>Goals</h2>
-        <ul><li>Improve install and update reliability</li><li>Support signed builds and distribution channels</li><li>Connect launcher behavior to telemetry</li><li>Reduce user drop-off before the first experience</li><li>Keep hotfixes small and release paths predictable</li></ul>
+        <ul><li>Improve install and update reliability — users should always end up on the latest client</li><li>Cut the launcher's own footprint: binary size, memory, startup time</li><li>Support signed builds, release channels and store distribution</li><li>Handle <code>decentraland://</code> deep links into an app that may not be installed or running yet</li><li>Make failures diagnosable: typed errors, user-readable messages, full detail to Sentry</li></ul>
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
         <div class="diagram"><pre class="mermaid">graph TD
-  Build[Client build] --> Sign[Code signing]
-  Sign --> Package[Installer / updater]
-  Package --> Channels[Website / Epic / desktop channels]
-  Channels --> Launch[User launch]
-  Launch --> Telemetry[Install + launch telemetry]
-  Telemetry --> Fixes[Release fixes]</pre></div>
+  UI["TypeScript UI<br/>native system WebView"] --> IPC["Tauri bridge<br/>single union-type command enum"]
+  IPC --> Core["Rust core"]
+  Core --> Flow["flow<br/>update check → download → verify → install → launch"]
+  Flow --> S3["S3 artifact storage<br/>release channels"]
+  Flow --> Installs["installs + instances<br/>local versions, running processes"]
+  Deeplink["decentraland:// protocol"] --> Bridge["deep-link bridge"] --> Core
+  Auth["auto-auth"] --> Core
+  Core --> Errors["StepError taxonomy<br/>user message + Sentry capture"]
+  Core --> Analytics["install / update / launch analytics"]</pre></div>
+        <p>The Rust core owns everything that can fail in a way that matters: download and verification, install state, version channels, process launch and deep-link routing. Frontend and backend communicate through one union-typed command enum, so the IPC surface is explicit and exhaustively matched rather than a bag of ad-hoc events.</p>
       </section>
       <section class="case-section" id="hard-problems">
         <h2>Interesting problems</h2>
-        <ul class="list-clean"><li><strong>How do you debug a user who never reaches the app?</strong> Launcher telemetry has to cover install, update, launch and authentication paths.</li><li><strong>How do you keep releases fast without making distribution risky?</strong> Separate release gates from big process and keep hotfix scope minimal.</li><li><strong>How do you treat distribution as product work?</strong> First-run success is part of onboarding, not only DevOps.</li></ul>
+        <ul class="list-clean"><li><strong>How do you debug a user who never reaches the app?</strong> Install, update, launch and auth paths are instrumented separately — a funnel, not a single "it failed" event. Errors are typed (<code>StepError</code>), mapped to concise user messages, and captured with full stack traces in Sentry.</li><li><strong>How does a deep link open an app that isn't running?</strong> The <code>decentraland://</code> protocol lands in the launcher's deep-link bridge, which resolves install state first — install, update or launch — and then forwards the intent to the client.</li><li><strong>How do you replace an updater with itself?</strong> The rework had to ship through the old launcher's own update path and then take over — the one release you cannot get wrong.</li><li><strong>Why Rust and not another Electron?</strong> A launcher does system work: filesystem, processes, checksums and protocols. A native core with the OS WebView for UI means a smaller, faster binary with a smaller attack surface — the bundled browser runtime was cost without benefit.</li></ul>
       </section>
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>

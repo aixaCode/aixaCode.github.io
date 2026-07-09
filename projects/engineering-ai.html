@@ -28,33 +28,43 @@
     <p class="eyebrow">Case study</p>
     <h1>AI for Engineering Teams</h1>
     <p class="lead">Introducing AI into engineering as a quality, knowledge and delivery system rather than a productivity slogan.</p>
-    <p class="stack">AI PR review / QA automation / knowledge assistants / dashboards / workflow design</p>
-    <div class="actions"><span class="meta">Internal or private project material.</span><a class="btn" href="index.html">All projects</a></div>
+    <p class="stack">AI PR review / visual regression suites / per-PR performance benchmarks / scheduled analysis agents / engineering dashboards</p>
+    <div class="actions"><span class="meta">Runs in production on an open-source codebase.</span><a class="btn" href="index.html">All projects</a></div>
   </section>
   <div class="case-layout">
     <div>
       <section class="case-section" id="problem">
         <h2>Problem</h2>
-        <p>Most AI adoption fails because it optimizes for visible activity. The useful question is where AI reduces risk, improves quality or makes organizational knowledge easier to access.</p>
+        <p>Most AI adoption in engineering optimizes for visible activity — more code generated, more text summarized. The problem is not getting teams to use AI. The problem is putting it where it changes outcomes: fewer regressions escaping, less dependency on individual memory, decisions made from data instead of recollection.</p>
+        <p>The systems below run in production on an open-source codebase, so they are inspectable rather than aspirational.</p>
       </section>
-      <section class="case-section" id="goals">
-        <h2>Goals</h2>
-        <ul><li>Add AI review into the PR process</li><li>Use AI to strengthen QA and regression detection</li><li>Create engineering dashboards and knowledge workflows</li><li>Reduce dependency on individual memory</li><li>Keep humans accountable for decisions</li></ul>
+      <section class="case-section" id="systems">
+        <h2>The systems</h2>
+        <div class="spec-grid">
+          <div class="spec"><h3>AI review on every PR</h3><p>Each pull request carries an AI review status check that analyzes correctness, performance and error handling and sets pass/fail. It does not replace the accountable reviewers — every PR still needs developer and QA approval — it raises the floor before humans spend attention.</p></div>
+          <div class="spec"><h3>Visual regression as a comment</h3><p>A PR comment triggers a pixel-diff suite against committed image baselines and posts the verdict back to the PR; a second command regenerates baselines when a change is intentional. Rendering regressions became a reviewable artifact instead of a QA lottery.</p></div>
+          <div class="spec"><h3>Performance signal per PR</h3><p>Successful builds dispatch frame-time benchmarks on a dedicated machine fleet, and the results land back on the PR as a comment — CPU, GPU, exceptions. A performance regression is visible before merge, not after release.</p></div>
+          <div class="spec"><h3>Leadership intelligence agents</h3><p>Scheduled agents turn repository activity into a daily engineering dashboard: releases and deltas, CI health, escaped-defect and regression rates, review distribution and bus factor per system — with pinned metric definitions so week-over-week deltas mean something.</p></div>
+        </div>
       </section>
       <section class="case-section" id="architecture">
-        <h2>Architecture</h2>
+        <h2>Where AI sits</h2>
         <div class="diagram"><pre class="mermaid">graph TD
   Developer[Developer] --> PR[Pull request]
-  PR --> AIReview[AI review]
-  AIReview --> Human[Developer review]
-  Human --> QA[QA validation]
-  QA --> Release[Release]
-  Knowledge[Docs + metrics + decisions] --> Assistant[Knowledge assistant]
-  Assistant --> Team[Team answers]</pre></div>
+  PR --> AIReview[AI review status check]
+  PR --> Visual["Visual regression<br/>pixel diff vs committed baselines"]
+  Build[Cloud build] --> Perf["Benchmark fleet<br/>frame-time per PR"]
+  AIReview --> Human[Accountable developer review]
+  Visual --> Human
+  Perf --> Human
+  Human --> QA[QA approval]
+  QA --> Release[Weekly release]
+  Repo[Repository activity] --> Agents[Scheduled analysis agents]
+  Agents --> Dashboard[Daily leadership dashboard]</pre></div>
       </section>
       <section class="case-section" id="hard-problems">
         <h2>Interesting problems</h2>
-        <ul class="list-clean"><li><strong>Where should AI sit in the review process?</strong> It should catch issues and improve attention, not replace accountable reviewers.</li><li><strong>How do you avoid AI becoming noise?</strong> Trigger it where it changes decisions or catches regressions, and remove it where it only adds overhead.</li><li><strong>How do you make knowledge access safer?</strong> Source-backed answers and clear uncertainty beat confident summaries.</li></ul>
+        <ul class="list-clean"><li><strong>Where should AI sit in the review process?</strong> Before human attention, never instead of it. The AI check runs first and cheaply; approval authority stays with named developers and QA. The moment "the AI passed it" becomes an excuse, the system is net negative.</li><li><strong>How do you avoid AI becoming noise?</strong> Make it decision-shaped. A pass/fail status, a pixel diff, a frame-time delta — each output either changes what happens to the PR, or it gets removed. Commentary without a decision attached is ceremony.</li><li><strong>How do you trust AI-computed metrics?</strong> Pin the definitions. Every dashboard metric has a fixed formula and window; when a definition changes, the change is called out so a delta is never mistaken for a trend.</li><li><strong>How do you make knowledge access safer?</strong> Source-backed answers with visible uncertainty beat confident summaries. The dashboard links to the PRs, issues and releases it counted, so any number can be re-derived by a human.</li></ul>
       </section>
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>
@@ -63,8 +73,8 @@
     </div>
     <aside class="toc">
       <a href="#problem">Problem</a>
-      <a href="#goals">Goals</a>
-      <a href="#architecture">Architecture</a>
+      <a href="#systems">The systems</a>
+      <a href="#architecture">Where AI sits</a>
       <a href="#hard-problems">Interesting problems</a>
       <a href="#lessons">Lessons learned</a>
     </aside>
