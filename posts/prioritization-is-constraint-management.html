@@ -40,8 +40,8 @@
   .brand{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:18px;letter-spacing:0;text-decoration:none;}
   .brand::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--accent);transform:rotate(12deg);}
   .brand:hover{color:var(--accent);}
-  .nav{display:flex;align-items:center;gap:22px;}
-  .nav a{font-size:15px;font-weight:500;color:var(--muted);text-decoration:none;}
+  .nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:flex-end;}
+  .nav a{font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;}
   .nav a:hover{color:var(--accent);}
   .toggle{background:none;border:none;cursor:pointer;color:var(--muted);
     padding:4px;display:inline-flex;align-items:center;border-radius:6px;}
@@ -49,7 +49,7 @@
   .toggle svg{width:20px;height:20px;}
   html[data-theme="dark"] .sun{display:none;}
   html[data-theme="light"] .moon{display:none;}
-  @media(max-width:520px){.nav{gap:16px;}.nav a{font-size:14px;}}
+  @media(max-width:520px){.site-in{align-items:flex-start;}.nav{gap:10px 14px;}.nav a{font-size:13px;}}
 
   /* Article */
   .article{padding:44px 0 16px;}

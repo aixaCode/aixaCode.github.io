@@ -40,8 +40,8 @@
   .brand{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:18px;letter-spacing:0;text-decoration:none;}
   .brand::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--accent);transform:rotate(12deg);}
   .brand:hover{color:var(--accent);}
-  .nav{display:flex;align-items:center;gap:22px;}
-  .nav a{font-size:15px;font-weight:500;color:var(--muted);text-decoration:none;}
+  .nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:flex-end;}
+  .nav a{font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;}
   .nav a:hover{color:var(--accent);}
   .toggle{background:none;border:none;cursor:pointer;color:var(--muted);
     padding:4px;display:inline-flex;align-items:center;border-radius:6px;}
@@ -49,7 +49,7 @@
   .toggle svg{width:20px;height:20px;}
   html[data-theme="dark"] .sun{display:none;}
   html[data-theme="light"] .moon{display:none;}
-  @media(max-width:520px){.nav{gap:16px;}.nav a{font-size:14px;}}
+  @media(max-width:520px){.site-in{align-items:flex-start;}.nav{gap:10px 14px;}.nav a{font-size:13px;}}
 
   /* Article */
   .article{padding:44px 0 16px;}
@@ -126,9 +126,9 @@
 
       <p>I learned this most clearly during the rebuild of Decentraland's client.</p>
       <p>From the outside, it looked like a large technology project. We rebuilt the client from the ground up.</p>
-      <p>What is interesting is that we didn't change the engine.</p>
-      <p>The old client was built in Unity. The new client was built in Unity as well.</p>
-      <p>If the goal had been choosing better technology, that would be a strange outcome.</p>
+      <p>What is interesting is that this was not a search for a fashionable new stack.</p>
+      <p>The legacy path was already Unity-based, but years of technical debt and the web delivery model could no longer support the product direction: an open world with more people, more avatars and longer sightlines.</p>
+      <p>If the goal had been choosing shinier technology, that would be a strange outcome. The point was choosing the architecture that made the product direction realistic.</p>
 
       <p>The real goal was improving the experience for users.</p>
       <div class="q">
