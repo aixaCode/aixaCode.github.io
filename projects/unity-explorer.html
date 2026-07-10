@@ -50,10 +50,12 @@
   Client --> Streaming["World streaming<br/>content loads to the horizon"]
   Client --> Runtime["Scene runtime boundary<br/>sandboxed V8 + CRDT"]
   Client --> Presence["Real-time presence<br/>LiveKit voice + avatar sync"]
+  Client --> Authority["Authority boundary<br/>server coordination over peer mesh"]
   Client --> Content["Content loading<br/>asset bundles + Catalyst"]
   Streaming --> Signals["Signals<br/>crashes, hangs, frame time, loading"]
   Runtime --> Signals
   Presence --> Signals
+  Authority --> Signals
   Content --> Signals
   Signals --> Priorities["Technical priorities<br/>stability before feature work"]
 
@@ -62,16 +64,16 @@
   classDef system fill:#fff7ed,stroke:#c2410c,color:#222127;
   class Outcome,Priorities goal;
   class Constraints,Signals constraint;
-  class Client,Streaming,Runtime,Presence,Content system;</pre></div>
-        <p>Three decisions define the client. Game state lives in a data-oriented ECS because frame-time spikes are user-facing product problems. Creator scenes run in isolated V8 runtimes and communicate through CRDT so user-generated content does not become unbounded client risk. Real-time presence uses LiveKit because reliable voice and avatar sync matter more than owning a custom networking stack.</p>
+  class Client,Streaming,Runtime,Presence,Authority,Content system;</pre></div>
+        <p>Three decisions define the client. Game state lives in a data-oriented ECS because frame-time spikes are user-facing product problems. Creator scenes run in isolated V8 runtimes and communicate through CRDT, which helps reconcile scene and engine state but does not solve multiplayer authority by itself. Real-time multiplayer still needs an explicit authority boundary; peer-to-peer did not scale as more players shared the same space, so reliable voice, avatar sync and coordination moved toward server-backed infrastructure.</p>
       </section>
       <section class="case-section" id="hard-problems">
         <h2>Interesting problems</h2>
-        <ul class="list-clean"><li><strong>How does one bad scene not take down the client?</strong> Scenes are isolated per V8 engine with explicit error budgets — a scene that throws too many errors per minute is suspended, not the client. User-generated content means the client must assume hostile input as the normal case.</li><li><strong>How do you keep a frame budget with unbounded content?</strong> No allocation in hot paths, aggressive pooling, LOD and prioritization of avatars by relevance — the work is bounded even when the world is not.</li><li><strong>How do you rebuild without stopping delivery?</strong> Split the work into shippable verticals and keep release quality visible. The legacy client kept serving users while the new one earned its place.</li><li><strong>How do you make performance work measurable?</strong> Tie technical debt to product KPIs — loading time, frame rate, crash rate — and let telemetry, not opinion, order the backlog.</li><li><strong>How do you handle decentralized product constraints?</strong> Keep the protocol open, but choose centralized infrastructure where reliability requires it.</li></ul>
+        <ul class="list-clean"><li><strong>How does one bad scene not take down the client?</strong> Scenes are isolated per V8 engine with explicit error budgets — a scene that throws too many errors per minute is suspended, not the client. User-generated content means the client must assume hostile input as the normal case.</li><li><strong>How do you keep a frame budget with unbounded content?</strong> No allocation in hot paths, aggressive pooling, LOD and prioritization of avatars by relevance — the work is bounded even when the world is not.</li><li><strong>How do you rebuild without stopping delivery?</strong> Split the work into shippable verticals and keep release quality visible. The legacy client kept serving users while the new one earned its place.</li><li><strong>How do you make performance work measurable?</strong> Tie technical debt to product KPIs — loading time, frame rate, crash rate — and let telemetry, not opinion, order the backlog.</li><li><strong>Where does authority live in real-time multiplayer?</strong> CRDTs are useful for state reconciliation, but they do not remove the need to decide who owns the truth. Peer-to-peer looked attractive, but it became error-prone as more players joined the same space; connections failed and state resolution became too fragile. The practical answer was to keep the protocol open while using server-backed multiplayer where reliability required it.</li></ul>
       </section>
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>
-        <ul><li>A rebuild succeeds only if it changes operational behavior, not just code structure.</li><li>Telemetry is a prioritization tool, not a dashboard decoration.</li><li>For a social product, stability and presence are product features.</li></ul>
+        <ul><li>A rebuild succeeds only if it changes operational behavior, not just code structure.</li><li>CRDTs help with state reconciliation, but they are not a complete multiplayer authority model.</li><li>Peer-to-peer multiplayer stops being elegant when player density turns connection and state resolution into product risk.</li><li>Telemetry is a prioritization tool, not a dashboard decoration.</li><li>For a social product, stability and presence are product features.</li></ul>
       </section>
     </div>
     <aside class="toc">
