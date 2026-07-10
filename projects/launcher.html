@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Launcher & Distribution Platform - Agnieszka Besz</title>
-<meta name="description" content="Rust/Tauri rework of the Decentraland desktop Launcher: installer, updater, deep links and release path, replacing the original Electron launcher.">
+<meta name="description" content="Rust/Tauri rework of the Decentraland desktop Launcher: reducing a heavy Electron entry point to a lightweight download path for installer, updater, deep links and release channels.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
   <section class="hero">
     <p class="eyebrow">Case study</p>
     <h1>Launcher & Distribution Platform</h1>
-    <p class="lead">Cross-platform launcher work for Decentraland: updates, authentication, deep links, release channels and the launch path that gets users into the product.</p>
+    <p class="lead">Rust/Tauri rewrite of Decentraland's desktop launcher, reducing a heavy Electron entry point from over 100 MB to about 1 MB so the download and launch path would not hurt the new-user funnel.</p>
     <p class="stack">Rust / Tauri / TypeScript UI on native WebViews / S3 artifact distribution / deep links / Sentry / Windows + macOS</p>
     <div class="actions"><a class="btn" href="https://github.com/decentraland/launcher-rust">Repository</a><a class="btn" href="index.html">All projects</a></div>
   </section>
@@ -35,12 +35,12 @@
     <div>
       <section class="case-section" id="problem">
         <h2>Problem</h2>
-        <p>A desktop app is not shipped when the build compiles. The launcher is the first thing a new user runs, and every failure in it - a stalled download, a broken update, a launch that silently dies - is churn before the product gets a chance.</p>
-        <p>The rework moved the system-level work into Rust: update checks, downloads, verification, process launch, deep links and typed errors. The UI stayed web technology through Tauri, but the bundled-browser cost of the original Electron path was removed.</p>
+        <p>A desktop app is not shipped when the build compiles. The launcher is the first thing a new user runs, and every failure in it - a large download, a stalled update, a launch that silently dies - is churn before the product gets a chance.</p>
+        <p>The original Electron launcher was heavy for what it needed to do, with an entry-point download over 100 MB. The rework moved the system-level work into Rust: update checks, downloads, verification, process launch, deep links and typed errors. The UI stayed web technology through Tauri, but the bundled-browser cost was removed and the launcher came down to about 1 MB.</p>
       </section>
       <section class="case-section" id="goals">
         <h2>Goals</h2>
-        <ul><li>Improve install and update reliability — users should always end up on the latest client</li><li>Cut the launcher's own footprint: binary size, memory, startup time</li><li>Support signed builds, release channels and store distribution</li><li>Handle <code>decentraland://</code> deep links into an app that may not be installed or running yet</li><li>Make failures diagnosable: typed errors, user-readable messages, full detail to Sentry</li></ul>
+        <ul><li>Keep the download and launch funnel small enough that users do not drop before reaching the product</li><li>Improve install and update reliability - users should always end up on the latest client</li><li>Cut the launcher's own footprint: binary size, memory and startup time</li><li>Support signed builds, release channels and store distribution</li><li>Handle <code>decentraland://</code> deep links into an app that may not be installed or running yet</li><li>Make failures diagnosable: typed errors, user-readable messages, full detail to Sentry</li></ul>
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
@@ -58,11 +58,11 @@
       </section>
       <section class="case-section" id="hard-problems">
         <h2>Interesting problems</h2>
-        <ul class="list-clean"><li><strong>How do you debug a user who never reaches the app?</strong> Install, update, launch and auth paths are instrumented separately — a funnel, not a single "it failed" event. Errors are typed (<code>StepError</code>), mapped to concise user messages, and captured with full stack traces in Sentry.</li><li><strong>How does a deep link open an app that isn't running?</strong> The <code>decentraland://</code> protocol lands in the launcher's deep-link bridge, which resolves install state first — install, update or launch — and then forwards the intent to the client.</li><li><strong>How do you replace an updater with itself?</strong> The rework had to ship through the old launcher's own update path and then take over — the one release you cannot get wrong.</li><li><strong>Why Rust and not another Electron?</strong> A launcher does system work: filesystem, processes, checksums and protocols. A native core with the OS WebView for UI means the launcher pays for the system work it actually needs, not for a bundled browser runtime.</li></ul>
+        <ul class="list-clean"><li><strong>How do you debug a user who never reaches the app?</strong> Install, update, launch and auth paths are instrumented separately — a funnel, not a single "it failed" event. Errors are typed (<code>StepError</code>), mapped to concise user messages, and captured with full stack traces in Sentry.</li><li><strong>How does a deep link open an app that isn't running?</strong> The <code>decentraland://</code> protocol lands in the launcher's deep-link bridge, which resolves install state first — install, update or launch — and then forwards the intent to the client.</li><li><strong>How do you replace an updater with itself?</strong> The rework had to ship through the old launcher's own update path and then take over — the one release you cannot get wrong.</li><li><strong>Why Rust and not another Electron?</strong> A launcher does system work: filesystem, processes, checksums and protocols. A native core with the OS WebView for UI means the launcher pays for the system work it actually needs, not for a bundled browser runtime. The point was not Rust for its own sake; it was keeping the entry point small enough that download size did not become a funnel problem.</li></ul>
       </section>
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>
-        <ul><li>Launcher reliability is funnel work. If it fails, the product never gets a chance.</li><li>Distribution bugs should be classified with the same seriousness as client crashes.</li><li>The smallest release process that catches real risk is usually the best one.</li></ul>
+        <ul><li>Launcher size and reliability are funnel work. If download or launch fails, the product never gets a chance.</li><li>Distribution bugs should be classified with the same seriousness as client crashes.</li><li>The smallest release process that catches real risk is usually the best one.</li></ul>
       </section>
     </div>
     <aside class="toc">

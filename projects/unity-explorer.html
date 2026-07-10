@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Unity Explorer - Agnieszka Besz</title>
-<meta name="description" content="Rebuilding Decentraland's primary Unity client after the previous architecture could no longer support the open-world product direction without adding unsustainable complexity.">
+<meta name="description" content="Rebuilding Decentraland's primary Unity client after the web architecture could no longer support an open world with more users, more avatars and long sightlines.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
   <section class="hero">
     <p class="eyebrow">Case study</p>
     <h1>Unity Explorer</h1>
-    <p class="lead">Ground-up rebuild of Decentraland's primary Unity client, led while the product kept shipping. The previous architecture could not support the open-world direction without creating more special cases, slower development and lower release confidence. The rebuild created a cleaner foundation for world streaming, creator content, real-time presence and weekly delivery.</p>
+    <p class="lead">Ground-up rebuild of Decentraland's primary Unity client, led while the product kept shipping. The web client had reached its limit: open-world requirements, more users and avatars in the same place, long sightlines and multi-threaded performance could not be solved by another patch. The rebuild created a cleaner foundation for world streaming, creator content, real-time presence and weekly delivery.</p>
     <p class="stack">Unity / C# / Arch ECS / per-scene V8 JavaScript runtimes / CRDT protocol / LiveKit / Addressables &amp; asset bundles / Sentry</p>
     <div class="actions"><a class="btn" href="https://github.com/decentraland/unity-explorer">Repository</a><a class="btn" href="index.html">All projects</a></div>
   </section>
@@ -35,19 +35,19 @@
     <div>
       <section class="case-section" id="problem">
         <h2>Context</h2>
-        <p>Decentraland needed the client to support a more seamless open-world experience with real-time social presence, creator content and weekly delivery. The previous architecture had reached its limit. It could still be patched, but each patch added more special cases, weaker ownership, slower development and less confidence in releases.</p>
-        <p>The decision was to rebuild around the product direction, not around a technology preference. This was not "a Unity rewrite" for its own sake. It was a client architecture reset so the product could move toward an open world without making every future change harder.</p>
+        <p>Decentraland needed the client to support a more seamless open-world experience: more people and avatars in the same place, long sightlines, real-time social presence, creator content and weekly delivery. The old web client had carried years of technical debt. It could still be patched, but every patch made something else more fragile: more special cases, weaker ownership, slower development and less confidence in releases.</p>
+        <p>The decision was to rebuild because upkeep had stopped being a realistic option. This was not "a Unity rewrite" for its own sake. It was a client architecture reset so the product could move toward an open world without making every future change harder.</p>
       </section>
       <section class="case-section" id="goals">
         <h2>What changed</h2>
-        <ul><li>Replaced an architecture that could not sustainably support the open-world direction with a modular Unity client designed around streaming, observability, creator content and release confidence.</li><li>Moved the engineering scoreboard toward stability, crash reduction, performance, multiplayer reliability and release quality.</li><li>Connected telemetry to prioritization: crashes, hangs, frame time, loading and release regressions became inputs to technical direction.</li><li>Improved release discipline so the team could ship weekly without treating every release as a special event.</li><li>Created clearer ownership across client systems, runtime integration, content loading, QA and distribution.</li></ul>
+        <ul><li>Replaced an architecture that could not sustainably support the open-world direction with a modular Unity client designed around streaming, observability, creator content and release confidence.</li><li>Moved performance work toward the product requirement: more users and avatars in the same place, longer sightlines and smoother frame times.</li><li>Moved the engineering scoreboard toward stability, crash reduction, performance, multiplayer reliability and release quality.</li><li>Connected telemetry to prioritization: crashes, hangs, frame time, loading and release regressions became inputs to technical direction.</li><li>Improved release discipline so the team could ship weekly without treating every release as a special event.</li><li>Created clearer ownership across client systems, runtime integration, content loading, QA and distribution.</li></ul>
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
         <div class="diagram"><pre class="mermaid">flowchart LR
-  Outcome["Product outcome<br/>seamless open world + shared presence"] --> Constraints["Constraints<br/>UGC, streaming, open protocol, weekly releases"]
+  Outcome["Product outcome<br/>open world + more avatars in one place"] --> Constraints["Constraints<br/>UGC, streaming, long sightlines, weekly releases"]
   Constraints --> Client["Unity client<br/>modular, observable, releasable"]
-  Client --> Streaming["World streaming<br/>content loads without special cases"]
+  Client --> Streaming["World streaming<br/>content loads to the horizon"]
   Client --> Runtime["Scene runtime boundary<br/>sandboxed V8 + CRDT"]
   Client --> Presence["Real-time presence<br/>LiveKit voice + avatar sync"]
   Client --> Content["Content loading<br/>asset bundles + Catalyst"]
