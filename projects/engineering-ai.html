@@ -27,7 +27,7 @@
   <section class="hero">
     <p class="eyebrow">Case study</p>
     <h1>AI for Engineering Teams</h1>
-    <p class="lead">Putting AI where it changes engineering decisions: review signal, QA evidence, knowledge access and leadership visibility.</p>
+    <p class="lead">AI-assisted checks and reports that my teams use in code review, QA and day-to-day engineering work.</p>
     <p class="stack">AI PR review / visual regression suites / per-PR performance benchmarks / scheduled analysis agents / engineering dashboards</p>
     <div class="actions"><span class="meta">Runs in production on an open-source codebase.</span><a class="btn" href="index.html">All projects</a></div>
   </section>
@@ -35,8 +35,8 @@
     <div>
       <section class="case-section" id="problem">
         <h2>Problem</h2>
-        <p>Most AI adoption in engineering optimizes for visible activity: more code generated, more text summarized. That is not the hard part. The hard part is putting AI where it changes outcomes: fewer regressions escaping, less dependency on individual memory, and decisions made from evidence rather than recollection.</p>
-        <p>The systems below run in production on an open-source codebase, so they are inspectable rather than aspirational.</p>
+        <p>I was less interested in measuring how much code AI generated than in finding places where it could remove a real source of friction. We started with review checks, visual regressions, performance results and summaries linked back to their sources.</p>
+        <p>These workflows run on an open-source codebase and are part of the normal development process.</p>
       </section>
       <section class="case-section" id="systems">
         <h2>The systems</h2>
@@ -66,11 +66,11 @@
       </section>
       <section class="case-section" id="hard-problems">
         <h2>Interesting problems</h2>
-        <ul class="list-clean"><li><strong>Where should AI sit in the review process?</strong> Before human attention, never instead of it. The AI check runs first and cheaply; approval authority stays with named developers and QA. The moment "the AI passed it" becomes an excuse, the system is net negative.</li><li><strong>How do you avoid AI becoming noise?</strong> Make it decision-shaped. A pass/fail status, a pixel diff, a frame-time delta — each output either changes what happens to the PR, or it gets removed. Commentary without a decision attached is overhead.</li><li><strong>How do you trust AI-computed metrics?</strong> Pin the definitions. Every dashboard metric has a fixed formula and window; when a definition changes, the change is called out so a delta is never mistaken for a trend.</li><li><strong>How do you make knowledge access safer?</strong> Source-backed answers with visible uncertainty beat confident summaries. The dashboard links to the PRs, issues and releases it counted, so any number can be re-derived by a human.</li></ul>
+        <ul class="list-clean"><li><strong>Where should AI sit in the review process?</strong> We run the AI check before developer and QA review. Named people still approve the change and remain responsible for it.</li><li><strong>How do you keep the output useful?</strong> We ask for something concrete: a pass/fail check, pixel diff or frame-time change. If the output repeatedly has no effect on the review, it is removed.</li><li><strong>How do you trust AI-computed metrics?</strong> Each metric has a fixed formula and time window. When the definition changes, the report says so.</li><li><strong>How do you check a summary?</strong> The dashboard links to the pull requests, issues and releases it counted, so a person can reproduce the number.</li></ul>
       </section>
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>
-        <ul><li>AI adoption only matters when it changes how decisions are made.</li><li>Quality and knowledge access are better first-order goals than raw speed.</li><li>The useful workflows are the ones boring enough to run every week.</li></ul>
+        <ul><li>The most useful workflows were attached to an existing review or release step.</li><li>Quality checks gave us more value than measuring generated-code volume.</li><li>If a report repeatedly produced no action, we removed or changed it.</li></ul>
       </section>
     </div>
     <aside class="toc">

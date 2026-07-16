@@ -27,7 +27,7 @@
   <section class="hero">
     <p class="eyebrow">Case study</p>
     <h1>Unity Explorer</h1>
-    <p class="lead">Ground-up rebuild of Decentraland's primary Unity client, led while the product kept shipping. The web client had reached its limit: open-world requirements, more users and avatars in the same place, long sightlines and multi-threaded performance could not be solved by another patch. The rebuild created a cleaner foundation for world streaming, creator content, real-time presence and weekly delivery.</p>
+    <p class="lead">I led the rebuild of Decentraland's main client while the existing product continued to ship. The old web architecture could no longer support the open-world experience we were trying to build.</p>
     <p class="stack">Unity / C# / Arch ECS / per-scene V8 JavaScript runtimes / CRDT protocol / LiveKit / Addressables &amp; asset bundles / Sentry</p>
     <div class="actions"><a class="btn" href="https://github.com/decentraland/unity-explorer">Repository</a><a class="btn" href="index.html">All projects</a></div>
   </section>
@@ -36,7 +36,7 @@
       <section class="case-section" id="problem">
         <h2>Context</h2>
         <p>Decentraland needed the client to support a more seamless open-world experience: more people and avatars in the same place, long sightlines, real-time social presence, creator content and weekly delivery. The old web client had carried years of technical debt. It could still be patched, but every patch made something else more fragile: more special cases, weaker ownership, slower development and less confidence in releases.</p>
-        <p>The decision was to rebuild because upkeep had stopped being a realistic option. This was not "a Unity rewrite" for its own sake. It was a client architecture reset so the product could move toward an open world without making every future change harder.</p>
+        <p>We decided to rebuild after upkeep stopped being a realistic option. Unity was already part of the legacy path; the important change was the client architecture and what it allowed the product to do.</p>
       </section>
       <section class="case-section" id="goals">
         <h2>What changed</h2>
@@ -73,7 +73,7 @@
       </section>
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>
-        <ul><li>A rebuild succeeds only if it changes operational behavior, not just code structure.</li><li>CRDTs help with state reconciliation, but they are not a complete multiplayer authority model.</li><li>Peer-to-peer multiplayer stops being elegant when player density turns connection and state resolution into product risk.</li><li>Telemetry is a prioritization tool, not a dashboard decoration.</li><li>For a social product, stability and presence are product features.</li></ul>
+        <ul><li>The rebuild became real when the new client could ship every week, not when the architecture looked complete.</li><li>CRDTs helped reconcile state but did not answer who held authority in multiplayer.</li><li>Peer-to-peer became too fragile as more players shared the same space.</li><li>Crash, loading and frame-time data gave us a better backlog than opinion alone.</li><li>For a social product, unreliable presence is a product failure.</li></ul>
       </section>
     </div>
     <aside class="toc">

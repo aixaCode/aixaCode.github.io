@@ -25,28 +25,28 @@
 </header>
 <main class="wrap">
   <section class="hero">
-    <p class="eyebrow">Leadership philosophy</p>
-    <h1>The organization learns what leadership rewards.</h1>
-    <p class="lead">I think a lot about the scoreboards we create as leaders. If we reward activity, people create activity. If we reward escalation, people escalate. If we reward clarity, ownership and outcomes, the organization gets better at thinking.</p>
-    <p class="lead secondary">My leadership style is direct, practical and usually starts with the same questions: what problem are we solving, what would change if we succeed, who owns the decision and what tradeoff are we accepting?</p>
+    <p class="eyebrow">How I lead engineering teams</p>
+    <h1>I want teams to make good decisions without waiting for me.</h1>
+    <p class="lead">Earlier in my career, I sometimes mistook being involved in every important decision for being useful. That works for a small team. As the team grows, it becomes a bottleneck.</p>
+    <p class="lead secondary">A large part of my job now is making sure people understand the problem, have enough context and know which decisions are theirs to make. I am direct about expectations and I would rather discuss a difficult tradeoff early than discover it at the end of a project.</p>
   </section>
 
   <section>
-    <h2>How I Work</h2>
+    <h2>How I work</h2>
     <div class="grid">
-      <div class="card"><h3>Outcome over movement</h3><p>I am suspicious of work that looks productive immediately. Shipping matters, but the question is what became better for users, creators or the business.</p></div>
-      <div class="card"><h3>Clarity before comfort</h3><p>Ambiguity often feels kinder in the moment. Usually it only delays the cost. I would rather make expectations, ownership and tradeoffs explicit early.</p></div>
-      <div class="card"><h3>Trust as behavior</h3><p>Trust is not a message. It is who gets context, who gets to decide, who is allowed to be wrong and who owns the consequences.</p></div>
-      <div class="card"><h3>Process earns its place</h3><p>Process and frameworks are useful when they solve a real failure mode. I try not to solve ownership, trust or clarity problems by adding more coordination cost.</p></div>
-      <div class="card"><h3>Lead the what</h3><p>My job is to make the outcome and constraints clear enough that other people can choose the method. Every decision I absorb teaches the team who gets to think.</p></div>
-      <div class="card"><h3>Build capability</h3><p>Being needed can feel like impact, but repeated dependency is fragility. I want managers, leads and teams to make better decisions without waiting for me.</p></div>
+      <div class="card"><h3>Start with the result</h3><p>Shipping is important, but finishing a roadmap is not enough. I want to know what improved for users, creators or the business.</p></div>
+      <div class="card"><h3>Say the difficult thing early</h3><p>Unclear expectations rarely become clearer on their own. I try to name the problem and discuss the tradeoff while there is still time to act.</p></div>
+      <div class="card"><h3>Give people real decisions</h3><p>Delegation needs context and authority. If every important choice still comes back to me, I have only delegated the work.</p></div>
+      <div class="card"><h3>Add process for a reason</h3><p>I add a process when a recurring failure shows that we need one. A new meeting does not fix unclear ownership.</p></div>
+      <div class="card"><h3>Stay close without taking over</h3><p>I remain involved in technical direction, but the people closest to the system should usually choose how to build it.</p></div>
+      <div class="card"><h3>Make myself less necessary</h3><p>I consider it progress when managers, leads and teams can handle a familiar class of decision without my help.</p></div>
     </div>
   </section>
 
   <section>
-    <h2>The Wrong Scoreboard</h2>
-    <p>Many leadership mistakes start with a reasonable substitution. Impact is hard to measure, so we measure output. Trust feels risky, so we add approvals. Ownership is unclear, so we add process. Alignment is missing, so we add meetings.</p>
-    <p>The substitute is easier to observe, but further away from what we actually wanted. This is the pattern I try to catch in myself and in the systems around me.</p>
+    <h2>When the proxy becomes the goal</h2>
+    <p>It is tempting to use the thing that is easiest to see. When impact takes time, we count output. When a decision feels risky, we add an approval. When nobody is sure who owns something, we schedule another meeting.</p>
+    <p>I have done all of these. Sometimes they help. The problem starts when the temporary proxy becomes what the team is expected to optimize.</p>
     <div class="diagram"><pre class="mermaid">flowchart LR
   A["Real goal<br/>Better product, stronger team, clearer ownership"] --> B["Hard to measure<br/>Impact takes time and evidence"]
   B --> C["Easy proxy<br/>Output, approvals, meetings, status"]
@@ -62,11 +62,11 @@
   class B,C,D risk;
   class E cost;
   class F question;</pre></div>
-    <p class="callout">This is the trap I watch for: the proxy starts as a reasonable way to see progress, then becomes the thing people optimize for.</p>
+    <p class="callout">I try to check regularly whether a metric or process is still helping us, or whether we are now maintaining it out of habit.</p>
   </section>
 
   <section>
-    <h2>Operating Questions</h2>
+    <h2>Questions I come back to</h2>
     <table class="decision-table">
       <thead><tr><th>Pattern</th><th>What I watch for</th><th>Question I ask</th></tr></thead>
       <tbody>
@@ -81,9 +81,9 @@
   </section>
 
   <section>
-    <h2>Leadership Case Study</h2>
-    <p>The most useful leadership work I have done was not adding more structure for its own sake. It was turning a group that depended too much on a few senior people into an organization with clearer ownership, manager capacity, QA leadership and better feedback loops.</p>
-    <p>The shift was from "who can help with this?" to "who owns this decision, what evidence do they need and how will we know if it worked?" That sounds small, but it changes where judgment is built.</p>
+    <h2>Growing the engineering organization</h2>
+    <p>One team I led had grown faster than its way of working. Too many decisions returned to the same senior people, managers lacked a clear remit and QA was often involved late. I had contributed to that dependency by staying too close to too many decisions.</p>
+    <p>We clarified ownership, gave managers and QA leads more authority and made release quality easier to see. The change took time. It involved coaching, clearer expectations and occasionally letting someone make a decision differently from how I would have made it.</p>
     <div class="diagram"><pre class="mermaid">flowchart LR
   A["Bottleneck<br/>Decisions return to the same people"] --> B["Operating gap<br/>Unclear ownership, weak feedback loops"]
   B --> C["Leadership work<br/>Managers, QA ownership, career expectations"]
@@ -97,12 +97,12 @@
   class A,B problem;
   class C,D,E work;
   class F result;</pre></div>
-    <p class="callout">The point of scaling leadership is not to make the org chart look mature. It is to make the organization less dependent on one person being in every important conversation.</p>
-    <p>Frameworks can help with that, but they do not create trust by themselves. A leader who does not trust engineers will micromanage through Scrum, Kanban, Shape Up or any other method. The framework changes; the behavior often does not.</p>
+    <p class="callout">The result I wanted was simple: fewer decisions waiting for the same person and more people able to carry responsibility from beginning to end.</p>
+    <p>We used frameworks where they helped, including Shape Up. None of them removed the need to set priorities, share context and trust people with consequential decisions.</p>
   </section>
 
   <section>
-    <h2>Things I Changed</h2>
+    <h2>Changes I have led</h2>
     <ul class="list-clean">
       <li><strong>Release discipline.</strong> Moved client delivery toward predictable weekly releases with clearer QA gates, crash and hang visibility, and release confidence based on evidence.</li>
       <li><strong>Engineering health metrics.</strong> Built dashboards and scheduled agents around flow, quality, review distribution, Sentry signals, Unity Cloud costs and team load, with definitions pinned so trends mean something.</li>
@@ -113,7 +113,7 @@
   </section>
 
   <section>
-    <h2>What I Try To Avoid</h2>
+    <h2>Things I try to avoid</h2>
     <ul class="list-clean">
       <li><strong>Heroics as a habit.</strong> Rescue can be necessary, but if the same rescue repeats, the system is teaching dependency.</li>
       <li><strong>Agreement mistaken for alignment.</strong> Strong teams should be able to challenge weak assumptions without turning disagreement into politics.</li>

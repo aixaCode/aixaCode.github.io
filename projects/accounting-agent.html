@@ -27,7 +27,7 @@
   <section class="hero">
     <p class="eyebrow">Architecture case study</p>
     <h1>AI Finance Automation</h1>
-    <p class="lead">Two sibling finance systems - accounting and project budgets - where an LLM reads documents and suggests, a human confirms intent and deterministic Python owns every number.</p>
+    <p class="lead">I built two small finance systems for my own accounting and project budgets. An LLM reads documents and suggests matches; I confirm them, and ordinary Python calculates every number.</p>
     <p class="stack">Python / model-agnostic LLM document extraction / bank-statement CSV parsing / deterministic rules engine / statement-derived FX / JSON caches / HTML dashboard / Proxmox LXC</p>
     <div class="actions"><span class="meta">Internal/private system. Implementation details are based on local project code.</span><a class="btn" href="index.html">All projects</a></div>
   </section>
@@ -35,7 +35,7 @@
     <div>
       <section class="case-section" id="overview">
         <h2>Overview</h2>
-        <p>This project started from a small but persistent operational problem: statements, invoices and project budgets were easy to lose track of, but sending finance decisions through a broad AI agent would make the system less trustworthy. The useful boundary was clear: AI can read and suggest; the ledger, tax maths and filing rules must stay deterministic.</p>
+        <p>This started with a recurring annoyance: statements, invoices and project budgets were easy to lose track of. I wanted help with the repetitive document work, but I did not want an AI agent deciding what went into the accounts. It reads and suggests. The ledger, tax maths and filing rules remain deterministic.</p>
         <p>Two sibling systems share that boundary. The <strong>accounting agent</strong> parses period-scoped bank-statement CSVs, converts currencies to GBP, categorises transactions through a rules engine, reconciles them against filed invoice PDFs, computes P&amp;L and versioned finance/tax estimates, and renders an HTML dashboard plus a privacy-safe summary JSON. The <strong>project budget agent</strong> runs the same pattern for project spend: PDFs arrive in an inbox, an LLM extracts fields and suggests a project, a human confirms or overrides, and deterministic code aggregates budget burn and cost split.</p>
         <p>Both deploy as unprivileged LXC containers on a Proxmox host, next to the personal assistant that consumes their summaries read-only.</p>
       </section>
@@ -82,7 +82,7 @@
       </section>
       <section class="case-section" id="implementation">
         <h2>Implementation detail</h2>
-        <p>The important part is not the PDF extraction. It is the guardrail that keeps suggested data from becoming financial truth. In the budget agent, the aggregator ignores unconfirmed assignments and reports warnings instead of guessing through ambiguous data:</p>
+        <p>The part I care about most is the confirmation step. In the budget agent, the aggregator ignores assignments I have not confirmed and reports a warning when the data is ambiguous:</p>
         <pre class="code-block"><code>for key, assignment in assignments.items():
     if not assignment.get("confirmed", False):
         continue
@@ -121,9 +121,9 @@
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>
         <ul>
-          <li>In finance workflows, the most important architecture decision is the boundary between interpretation and authority.</li>
-          <li>Small deterministic systems are easier to trust than broad agents with too much agency.</li>
-          <li>Private dashboards can be more useful than productized integrations when the workflow is repetitive and personally operated.</li>
+          <li>AI is useful for reading untidy documents. It should not quietly turn a suggestion into an accounting decision.</li>
+          <li>I trust small, inspectable scripts more than a general agent with broad permissions.</li>
+          <li>For a workflow I run myself, a private dashboard is often enough. It does not need to become a product.</li>
         </ul>
       </section>
     </div>

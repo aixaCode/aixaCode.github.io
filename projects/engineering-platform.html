@@ -27,7 +27,7 @@
   <section class="hero">
     <p class="eyebrow">Case study</p>
     <h1>Engineering Management Dashboard</h1>
-    <p class="lead">A practical engineering-management dashboard for the questions that keep coming back: what changed, what is risky, what is stuck and what needs a decision.</p>
+    <p class="lead">A dashboard I built to collect the engineering information I was otherwise assembling by hand each week.</p>
     <p class="stack">GitHub Actions / scheduled agents / Sentry MCP / Unity Cloud costs / priority reviews / AI-assisted notes</p>
     <div class="actions"><span class="meta">Internal or private project material.</span><a class="btn" href="index.html">All projects</a></div>
   </section>
@@ -35,7 +35,7 @@
     <div>
       <section class="case-section" id="problem">
         <h2>Problem</h2>
-        <p>A team shipping frequently needs a reliable way to see what changed, what is risky and where attention is needed. This is deliberately a dashboard, not a broad platform: scheduled agents summarize repository activity, releases, CI health, Sentry signals, Unity Cloud cost data, priority reviews and team load.</p>
+        <p>With frequent releases, information was spread across GitHub, Sentry, Unity Cloud and several reports. I built one view for the questions I kept asking in priority and release reviews. Scheduled agents collect the data and prepare summaries, with links back to the underlying issues and pull requests.</p>
       </section>
       <section class="case-section" id="goals">
         <h2>Goals</h2>
@@ -59,7 +59,7 @@
       </section>
       <section class="case-section" id="metrics">
         <h2>What it computes</h2>
-        <p>The dashboard is the set of questions leadership refuses to stop asking, encoded: what shipped, what is stuck, what is risky, what changed, and what decision is needed. Concretely, each run computes:</p>
+        <p>Each run collects four groups of information:</p>
         <ul>
           <li><strong>Flow</strong> — lead time to production (median and p75, with sample sizes), PR aging bucketed by <em>reason</em> it waits: on the author, on developer review, on QA, or ready to merge.</li>
           <li><strong>Quality</strong> — escaped defects per release (pre-release vs 14-day escape window), regression rate per release, rework rate with confidence tags, hotfix pressure.</li>
@@ -74,7 +74,7 @@
       </section>
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>
-        <ul><li>A useful dashboard changes behavior: what gets reviewed, fixed, delayed or escalated.</li><li>AI summaries are most useful when tied to concrete engineering evidence.</li><li>If a metric never changes a decision, it should not be on the dashboard.</li></ul>
+        <ul><li>The dashboard became useful when it was part of an existing review, not another destination people had to remember.</li><li>AI summaries need links to the issues, releases and pull requests they describe.</li><li>We removed metrics that nobody used.</li></ul>
       </section>
     </div>
     <aside class="toc">

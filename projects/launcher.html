@@ -27,7 +27,7 @@
   <section class="hero">
     <p class="eyebrow">Case study</p>
     <h1>Launcher & Distribution Platform</h1>
-    <p class="lead">Rust/Tauri rewrite of Decentraland's desktop launcher, reducing a heavy Electron entry point from over 100 MB to about 1 MB so the download and launch path would not hurt the new-user funnel.</p>
+    <p class="lead">We replaced Decentraland's Electron launcher with Rust and Tauri, bringing the initial download from more than 100 MB to about 1 MB.</p>
     <p class="stack">Rust / Tauri / TypeScript UI on native WebViews / S3 artifact distribution / deep links / Sentry / Windows + macOS</p>
     <div class="actions"><a class="btn" href="https://github.com/decentraland/launcher-rust">Repository</a><a class="btn" href="index.html">All projects</a></div>
   </section>
@@ -35,7 +35,7 @@
     <div>
       <section class="case-section" id="problem">
         <h2>Problem</h2>
-        <p>A desktop app is not shipped when the build compiles. The launcher is the first thing a new user runs, and every failure in it - a large download, a stalled update, a launch that silently dies - is churn before the product gets a chance.</p>
+        <p>The launcher is the first part of the product a new user sees. A large download, a stalled update or a process that silently fails can lose that user before the client opens.</p>
         <p>The original Electron launcher was heavy for what it needed to do, with an entry-point download over 100 MB. The rework moved the system-level work into Rust: update checks, downloads, verification, process launch, deep links and typed errors. The UI stayed web technology through Tauri, but the bundled-browser cost was removed and the launcher came down to about 1 MB.</p>
       </section>
       <section class="case-section" id="goals">
@@ -62,7 +62,7 @@
       </section>
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>
-        <ul><li>Launcher size and reliability are funnel work. If download or launch fails, the product never gets a chance.</li><li>Distribution bugs should be classified with the same seriousness as client crashes.</li><li>The smallest release process that catches real risk is usually the best one.</li></ul>
+        <ul><li>Reducing launcher size mattered because it removed friction before the user reached the product.</li><li>We started treating distribution failures with the same seriousness as client crashes.</li><li>The migration itself was the riskiest release because the old launcher had to replace itself.</li></ul>
       </section>
     </div>
     <aside class="toc">

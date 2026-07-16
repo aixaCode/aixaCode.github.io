@@ -27,7 +27,7 @@
   <section class="hero">
     <p class="eyebrow">Architecture case study</p>
     <h1>AI Assistant</h1>
-    <p class="lead">A personal AI assistant with separate work and personal profiles, persistent context, calendar/email ingress and policy-based tool execution.</p>
+    <p class="lead">A self-hosted assistant that remembers my projects, understands my calendar and keeps work and personal tools separate.</p>
     <p class="stack">TypeScript / Node.js / Claude Agent SDK / provider-agnostic model interface / MCP server / Telegram / email / Google Calendar / Markdown knowledge base</p>
     <div class="actions"><a class="btn" href="https://github.com/aixaCode/personal-assistant">Source</a><a class="btn" href="index.html">All projects</a></div>
   </section>
@@ -36,8 +36,8 @@
     <div>
       <section class="case-section" id="overview">
         <h2>Overview</h2>
-        <p>I built this because generic chat loses the context that makes an assistant useful: project notes, calendar commitments, work vs personal boundaries, local files, and the repeated operational tasks that do not belong in my head. The assistant is designed for planning, knowledge lookup, reminders, calendar-aware work and controlled local automation.</p>
-        <p>The model is a replaceable component, not the architecture. Today it runs Claude through the Agent SDK; a provider-agnostic model interface sits beside it so a local model can drive the same tool registry and permission gate without changing the security model.</p>
+        <p>I built this because I kept repeating the same context in generic chat: current projects, calendar commitments, where files lived and whether I was asking about work or home. I wanted an assistant that could retain that context and help with planning, reminders and a few repetitive local tasks.</p>
+        <p>It currently runs Claude through the Agent SDK. The model sits behind a small interface, so I can replace it with a local model later without rebuilding the tools or their permission checks.</p>
       </section>
 
       <section class="case-section" id="requirements">
@@ -161,10 +161,10 @@ export async function enforce(profile, confirm, name, input) {
       <section class="case-section" id="lessons">
         <h2>Lessons</h2>
         <ul>
-          <li>Security boundaries belong in deterministic code, not in prompt wording.</li>
-          <li>The model should propose actions; the runtime should authorize them.</li>
-          <li>Useful memory starts with clear information architecture. Vector search is a tool, not the foundation.</li>
-          <li>Local-first assistants need operational features early: audit logs, session persistence, bounded concurrency and recovery paths.</li>
+          <li>A prompt is not a security boundary. Permission checks have to live in code.</li>
+          <li>The model can suggest an action, but the runtime decides whether it is allowed.</li>
+          <li>Good folder structure and clear profile notes solved more of the memory problem than vector search would have.</li>
+          <li>Audit logs and session recovery became necessary much earlier than I expected.</li>
         </ul>
       </section>
     </div>
