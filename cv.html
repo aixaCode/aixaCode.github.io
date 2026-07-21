@@ -51,24 +51,27 @@
   .cv-dl:first-child:hover { color: #fff; background: var(--accent); border-color: var(--accent); }
   @page { size: A4; margin: 0; }
   @media print {
-    body { margin: 0; background: #fff; color: #111; font-size: 8.55px; line-height: 1.21; }
+    body { margin: 0; background: #fff; color: #111; font-size: 10px; line-height: 1.35; }
     html[data-theme="dark"] { --ink: #111; --gray: #777; --bg: #fff; --hair: #e6e6e8; }
     header.site, footer, .actions { display: none; }
-    .cv-wrap { max-width: none; margin: 0; padding: 12.5mm 10.5mm 3mm; }
-    .name { font-size: 23px; margin-bottom: 2.5px; }
-    .subtitle { font-size: 9.5px; margin-bottom: 4.5px; }
-    .contact { font-size: 8.3px; line-height: 1.2; margin-bottom: 4.5px; }
-    .cols { gap: 5%; }
-    .left { flex-basis: 62%; } .right { flex-basis: 32.5%; }
-    h2 { font-size: 10.1px; margin-bottom: 4px; padding-bottom: 2px; page-break-after: avoid; }
-    section, .right section { margin-bottom: 4.2px; }
-    .about { font-size: 8.5px; line-height: 1.21; }
-    .role, .project { margin-bottom: 3px; page-break-inside: auto; }
-    .role-title, .project-title { font-size: 9.25px; }
-    .role-dates, .meta { font-size: 7.85px; margin: .75px 0 .75px; }
-    .role li, .project li, .right p, .right li { font-size: 8.18px; line-height: 1.2; margin-bottom: .75px; }
-    .right li { margin-bottom: .75px; }
-    .blk { margin-bottom: 1.75px; }
+    .cv-wrap { max-width: none; margin: 0; padding: 12mm 16mm 0; }
+    .name { font-size: 25px; margin-bottom: 3px; }
+    .subtitle { font-size: 11px; margin-bottom: 9px; }
+    .contact { font-size: 9px; line-height: 1.35; margin-bottom: 8px; }
+    .cols { display: block; }
+    .left, .right { width: 100%; }
+    .right { padding-top: 0; }
+    h2 { font-size: 10px; margin-bottom: 6px; padding-bottom: 3px; page-break-after: avoid; }
+    section { margin-bottom: 11px; }
+    .right section { margin-bottom: 7px; }
+    .about { font-size: 10px; line-height: 1.35; }
+    .role { margin-bottom: 7px; page-break-inside: avoid; }
+    .project { margin-bottom: 9px; page-break-inside: avoid; }
+    .role-title, .project-title { font-size: 10.5px; }
+    .role-dates, .meta { font-size: 8.5px; margin: 2px 0 3px; }
+    .role li, .project li, .right p, .right li { font-size: 9.5px; line-height: 1.35; margin-bottom: 2px; }
+    .right li { margin-bottom: 2px; }
+    .blk { margin-bottom: 4px; }
     a { color: var(--ink); }
   }
   @media (max-width: 680px) { .cv-wrap { padding-top: 40px; } .cols { display: block; } .left, .right { width: 100%; } .right { padding-top: 4px; } }
@@ -120,7 +123,6 @@
 
   <main class="cv-wrap">
     <div class="name">Agnieszka Besz</div>
-    <div class="subtitle">VP of Engineering · games, real-time products and engineering leadership</div>
     <div class="contact">
       <span>London, United Kingdom</span>
       <a href="mailto:aga@besz.me">aga@besz.me</a>
@@ -129,6 +131,7 @@
       <a href="https://gbfactory.uk/">https://gbfactory.uk</a>
       <a href="https://aixacode.github.io/">https://aixacode.github.io</a>
     </div>
+    <div class="subtitle">VP of Engineering · games, real-time products and engineering leadership</div>
 
     <div class="actions">
       <a class="cv-dl" href="mailto:aga@besz.me">Contact me</a>
@@ -138,7 +141,7 @@
     <div class="cols">
       <div class="left">
         <section>
-          <h2>about</h2>
+          <h2>professional summary</h2>
           <p class="about">I am an engineering leader with 15+ years in games and real-time products. I started as a programmer and moved into technical and organizational leadership as the products and teams grew. Today I lead engineering at Decentraland. I also build products through GB Factory, which keeps me close to architecture and implementation.</p>
         </section>
 
@@ -168,7 +171,7 @@
           <h2>work experience</h2>
           <div class="role">
             <div class="role-title">VP of Engineering <span class="org">- Decentraland Foundation, London</span></div>
-            <div class="role-dates">2025 - Present</div>
+            <div class="role-dates">January 2025 - Present</div>
             <ul>
               <li>Lead the engineering organization and QA; also led Creator Tools and SDK for a period, with peak scope of 25 developers across 10 countries.</li>
               <li>Own technical strategy for 14 Explorer repositories, the Unity/C# desktop client, Launcher/distribution path and desktop, web and Epic Games Store channels.</li>
@@ -180,8 +183,8 @@
           </div>
 
           <div class="role">
-            <div class="role-title">Founder &amp; Technical Director <span class="org">- GB Factory</span></div>
-            <div class="role-dates">2022 - Present</div>
+            <div class="role-title">Founder &amp; Technical Director <span class="org">- GB Factory Ltd</span></div>
+            <div class="role-dates">January 2022 - Present</div>
             <ul>
               <li>Run a small product studio and technical consultancy, building software and helping teams with architecture, performance and release engineering.</li>
               <li>Current work includes Animal Park, a multiplayer mobile game for iOS and Android, plus AI engineering assistants, finance automation and release engineering systems.</li>
@@ -190,7 +193,7 @@
 
           <div class="role">
             <div class="role-title">Engineering Manager <span class="org">- Decentraland Foundation, London</span></div>
-            <div class="role-dates">2022 - 2025</div>
+            <div class="role-dates">June 2022 - January 2025</div>
             <ul>
               <li>Grew the client team from ~5 to 10+ engineers and led execution of the new Explorer client that replaced the legacy web client.</li>
               <li>Owned client KPIs including loading time, stability, responsiveness and frame rate, and built the tech-debt program behind them.</li>
@@ -199,8 +202,8 @@
           </div>
 
           <div class="role">
-            <div class="role-title">Head of Frontend Development <span class="org">- Ten Square Games</span></div>
-            <div class="role-dates">2021 - 2022</div>
+            <div class="role-title">Head of Frontend Development <span class="org">- Ten Square Games S.A.</span></div>
+            <div class="role-dates">July 2021 - June 2022</div>
             <ul>
               <li>Led a 50-person technology department supporting seven live game teams during a period of rapid growth.</li>
               <li>Modernized lifecycle tooling and drove shared-library adoption so product teams could iterate faster with less duplicated engineering effort.</li>
@@ -208,26 +211,34 @@
           </div>
 
           <div class="role">
-            <div class="role-title">Technical Manager <span class="org">- Rovio (now Sega), Helsinki</span></div>
-            <div class="role-dates">2019 - 2021</div>
+            <div class="role-title">Technical Manager <span class="org">- Rovio Entertainment Corporation, Helsinki</span></div>
+            <div class="role-dates">August 2019 - July 2021</div>
             <ul>
               <li>Led Angry Birds Journey from concept to soft launch and managed, mentored and grew the programming team behind it.</li>
             </ul>
           </div>
 
           <div class="role">
-            <div class="role-title">Senior Software Engineer <span class="org">- Next Games (now Netflix), Helsinki</span></div>
-            <div class="role-dates">2017 - 2019</div>
+            <div class="role-title">Senior Game Programmer <span class="org">- Next Games Oyj (acquired by Netflix), Helsinki</span></div>
+            <div class="role-dates">November 2017 - August 2019</div>
             <ul>
               <li>Built core systems, new mechanics and live-ops features for Stranger Things: Puzzle Tales and The Walking Dead: No Man's Land.</li>
             </ul>
           </div>
 
           <div class="role">
-            <div class="role-title">Associate Lead Programmer -> Programmer <span class="org">- Ubisoft RedLynx, Helsinki</span></div>
-            <div class="role-dates">2015 - 2017</div>
+            <div class="role-title">Associate Lead Programmer <span class="org">- RedLynx Oy (Ubisoft), Helsinki</span></div>
+            <div class="role-dates">September 2016 - November 2017</div>
             <ul>
-              <li>Built core systems, real-time synchronous PvP, AI and UI for South Park: Phone Destroyer; led performance optimization and a small programmer group.</li>
+              <li>Built core systems, real-time synchronous PvP, AI and UI for South Park: Phone Destroyer, and led performance optimization and a small programmer group.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-title">Programmer <span class="org">- RedLynx Oy (Ubisoft), Helsinki</span></div>
+            <div class="role-dates">November 2015 - September 2016</div>
+            <ul>
+              <li>Developed gameplay and systems for South Park: Phone Destroyer from early production using Unity and C#.</li>
             </ul>
           </div>
         </section>
