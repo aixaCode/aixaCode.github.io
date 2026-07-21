@@ -44,23 +44,26 @@
   .right li { margin-bottom: 7px; }
   .blk { margin-bottom: 12px; }
   .blk .yr { color: var(--gray); }
+  .skills-grid { display: block; }
   .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 34px; }
   .cv-dl { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: var(--ink); border: 1px solid var(--hair); border-radius: 999px; padding: 7px 15px; font-size: 14px; font-weight: 600; transition: border-color .15s, color .15s, background .15s; }
   .cv-dl:hover { color: var(--accent); border-color: var(--accent); }
   .cv-dl:first-child { color: var(--bg); background: var(--ink); border-color: var(--ink); }
   .cv-dl:first-child:hover { color: #fff; background: var(--accent); border-color: var(--accent); }
-  @page { size: A4; margin: 0; }
+  @page { size: A4; margin: 10mm 0 0; }
   @media print {
     body { margin: 0; background: #fff; color: #111; font-size: 10px; line-height: 1.35; }
     html[data-theme="dark"] { --ink: #111; --gray: #777; --bg: #fff; --hair: #e6e6e8; }
     header.site, footer, .actions { display: none; }
-    .cv-wrap { max-width: none; margin: 0; padding: 12mm 16mm 0; }
+    .cv-wrap { max-width: none; margin: 0; padding: 2mm 16mm 0; }
     .name { font-size: 25px; margin-bottom: 3px; }
     .subtitle { font-size: 11px; margin-bottom: 9px; }
     .contact { font-size: 9px; line-height: 1.35; margin-bottom: 8px; }
     .cols { display: block; }
     .left, .right { width: 100%; }
     .right { padding-top: 0; }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14mm; align-items: start; }
+    .skills-grid section { break-inside: avoid; page-break-inside: avoid; }
     h2 { font-size: 10px; margin-bottom: 6px; padding-bottom: 3px; page-break-after: avoid; }
     section { margin-bottom: 11px; }
     .right section { margin-bottom: 7px; }
@@ -265,6 +268,30 @@
 
       <div class="right">
         <section>
+          <h2>education</h2>
+          <div class="blk">Doctoral studies, Computer Science - Turku &amp; Opole Univ. of Technology <span class="yr">(2013 - 2015, not completed)</span></div>
+          <div class="blk">MSc, Computer Science - Opole University of Technology <span class="yr">(2012 - 2013)</span></div>
+          <div class="blk">BSc, Computer Science - Opole University of Technology <span class="yr">(2008 - 2012)</span>; exchange year at Vaasa UAS, Finland</div>
+        </section>
+
+        <section>
+          <h2>recognition</h2>
+          <div class="blk">DirectX 11 Competition</div>
+          <div class="blk">Best Pitch - Startup Journey Demo Day</div>
+          <div class="blk">3 publications: mobile AR, inspection tooling, shooting-sports apps</div>
+        </section>
+
+        <section>
+          <h2>spoken languages</h2>
+          <ul>
+            <li>Polish (native)</li>
+            <li>English (professional)</li>
+            <li>Finnish (elementary)</li>
+          </ul>
+        </section>
+
+        <div class="skills-grid">
+        <section>
           <h2>executive expertise</h2>
           <ul>
             <li>Engineering strategy &amp; technical vision</li>
@@ -331,29 +358,7 @@
             <li>Technical consulting</li>
           </ul>
         </section>
-
-        <section>
-          <h2>education</h2>
-          <div class="blk">Doctoral studies, Computer Science - Turku &amp; Opole Univ. of Technology <span class="yr">(2013 - 2015, not completed)</span></div>
-          <div class="blk">MSc, Computer Science - Opole University of Technology <span class="yr">(2012 - 2013)</span></div>
-          <div class="blk">BSc, Computer Science - Opole University of Technology <span class="yr">(2008 - 2012)</span>; exchange year at Vaasa UAS, Finland</div>
-        </section>
-
-        <section>
-          <h2>recognition</h2>
-          <div class="blk">DirectX 11 Competition</div>
-          <div class="blk">Best Pitch - Startup Journey Demo Day</div>
-          <div class="blk">3 publications: mobile AR, inspection tooling, shooting-sports apps</div>
-        </section>
-
-        <section>
-          <h2>spoken languages</h2>
-          <ul>
-            <li>Polish (native)</li>
-            <li>English (professional)</li>
-            <li>Finnish (elementary)</li>
-          </ul>
-        </section>
+        </div>
       </div>
     </div>
   </main>
