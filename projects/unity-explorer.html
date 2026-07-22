@@ -28,7 +28,7 @@
     <p class="eyebrow">Case study</p>
     <h1>Unity Explorer</h1>
     <p class="lead">I led the rebuild of Decentraland's main client while the existing product continued to ship. The old web architecture could no longer support the open-world experience we were trying to build.</p>
-    <p class="stack">Unity / C# / Arch ECS / per-scene V8 JavaScript runtimes / CRDT protocol / LiveKit / Addressables &amp; asset bundles / Sentry</p>
+    <p class="stack">Unity / C# / Arch ECS / V8 / CRDT / LiveKit / SQS / headless Unity workers / asset bundles / Catalyst / Sentry</p>
     <div class="actions"><a class="btn" href="https://github.com/decentraland/unity-explorer">Repository</a><a class="btn" href="index.html">All projects</a></div>
   </section>
   <div class="case-layout">
@@ -40,7 +40,7 @@
       </section>
       <section class="case-section" id="goals">
         <h2>What changed</h2>
-        <ul><li>Replaced an architecture that could not sustainably support the open-world direction with a modular Unity client designed around streaming, observability, creator content and release confidence.</li><li>Moved performance work toward the product requirement: more users and avatars in the same place, longer sightlines and smoother frame times.</li><li>Moved the engineering scoreboard toward stability, crash reduction, performance, multiplayer reliability and release quality.</li><li>Connected telemetry to prioritization: crashes, hangs, frame time, loading and release regressions became inputs to technical direction.</li><li>Improved release discipline so the team could ship weekly without treating every release as a special event.</li><li>Created clearer ownership across client systems, runtime integration, content loading, QA and distribution.</li></ul>
+        <ul><li>Replaced an architecture that could not sustainably support the open-world direction with a modular Unity client designed around streaming, observability, creator content and release confidence.</li><li>Moved high-density social experiences toward Pulse's server-authoritative multiplayer model, targeting reliable shared state at approximately 100-user density.</li><li>Worked directly on the distributed asset-bundle converter: SQS-queued processing and headless Unity workers turn creator GLTF/GLB assets into optimized client content.</li><li>Moved performance work toward a stable 60 FPS with approximately 100 concurrent users while reducing CPU, memory and GPU memory pressure.</li><li>Connected telemetry to prioritization: crashes, hangs, frame time, loading and release regressions became inputs to technical direction.</li><li>Improved release discipline to support approximately 75 public builds per year, including a recent 52-day period without a hotfix.</li></ul>
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
@@ -51,7 +51,7 @@
   Client --> Runtime["Scene runtime boundary<br/>sandboxed V8 + CRDT"]
   Client --> Presence["Real-time presence<br/>LiveKit voice + avatar sync"]
   Client --> Authority["Authority boundary<br/>server coordination over peer mesh"]
-  Client --> Content["Content loading<br/>asset bundles + Catalyst"]
+  Client --> Content["Content pipeline<br/>SQS + headless Unity + Catalyst"]
   Streaming --> Signals["Signals<br/>crashes, hangs, frame time, loading"]
   Runtime --> Signals
   Presence --> Signals
@@ -67,9 +67,34 @@
   class Client,Streaming,Runtime,Presence,Authority,Content system;</pre></div>
         <p>Three decisions define the client. Game state lives in a data-oriented ECS because frame-time spikes are user-facing product problems. Creator scenes run in isolated V8 runtimes and communicate through CRDT, which helps reconcile scene and engine state but does not solve multiplayer authority by itself. Real-time multiplayer still needs an explicit authority boundary; peer-to-peer did not scale as more players shared the same space, so reliable voice, avatar sync and coordination moved toward server-backed infrastructure.</p>
       </section>
+      <section class="case-section" id="creator-pipeline">
+        <h2>Creator content pipeline</h2>
+        <p>I worked directly on the asset-bundle converter that connects Decentraland's creator tools to the production client. Creators build scenes with the TypeScript SDK and publish their original GLTF/GLB assets to Catalyst. Catalyst remains the content-addressed source of truth; optimization is a derived, replaceable distribution step rather than a mutation of the creator's source content.</p>
+        <div class="diagram"><pre class="mermaid">flowchart LR
+  Creator["Creator Hub + SDK<br/>scene code and dependencies"] --> Build["Scene build<br/>GLTF / GLB + manifest"]
+  Build --> Catalyst["Catalyst<br/>content-addressed source of truth"]
+  Catalyst --> Queue["SQS<br/>conversion jobs"]
+  Queue --> Orchestrator["TypeScript orchestrator<br/>job lifecycle + retries"]
+  Orchestrator --> Workers["Headless Unity workers<br/>GLTF to AssetBundle"]
+  Workers --> Delivery["S3 + CDN<br/>optimized derived assets"]
+  Delivery --> Explorer["Unity Explorer<br/>fast runtime loading"]
+  Catalyst --> Explorer
+
+  SDK["SDK + schemas<br/>shared contracts"] --> Creator
+  SDK --> Explorer
+
+  classDef source fill:#ecfdf5,stroke:#059669,color:#222127;
+  classDef processing fill:#fff7ed,stroke:#c2410c,color:#222127;
+  classDef contract fill:#f6f6f7,stroke:#b7bbc2,color:#222127;
+  class Catalyst source;
+  class Queue,Orchestrator,Workers,Delivery processing;
+  class SDK contract;</pre></div>
+        <p>The dependency graph matters because changes cross several ownership boundaries: SDK contracts shape creator output, Catalyst owns canonical content and manifests, the converter produces platform-specific derivatives, and Explorer consumes both the source metadata and optimized bundles. SQS decouples deployment from conversion, absorbs changes in demand and lets conversion capacity scale horizontally without blocking creators.</p>
+        <p>The outcome is faster runtime loading and distribution of optimized content while preserving portable GLTF/GLB assets as the canonical source. If the optimization strategy changes, bundles can be regenerated from Catalyst instead of asking creators to republish their scenes.</p>
+      </section>
       <section class="case-section" id="hard-problems">
         <h2>Interesting problems</h2>
-        <ul class="list-clean"><li><strong>How does one bad scene not take down the client?</strong> Scenes are isolated per V8 engine with explicit error budgets — a scene that throws too many errors per minute is suspended, not the client. User-generated content means the client must assume hostile input as the normal case.</li><li><strong>How do you keep a frame budget with unbounded content?</strong> No allocation in hot paths, aggressive pooling, LOD and prioritization of avatars by relevance — the work is bounded even when the world is not.</li><li><strong>How do you rebuild without stopping delivery?</strong> Split the work into shippable verticals and keep release quality visible. The legacy client kept serving users while the new one earned its place.</li><li><strong>How do you make performance work measurable?</strong> Tie technical debt to product KPIs — loading time, frame rate, crash rate — and let telemetry, not opinion, order the backlog.</li><li><strong>Where does authority live in real-time multiplayer?</strong> CRDTs are useful for state reconciliation, but they do not remove the need to decide who owns the truth. Peer-to-peer looked attractive, but it became error-prone as more players joined the same space; connections failed and state resolution became too fragile. The practical answer was to keep the protocol open while using server-backed multiplayer where reliability required it.</li></ul>
+        <ul class="list-clean"><li><strong>How does one bad scene not take down the client?</strong> Scenes are isolated per V8 engine with explicit error budgets — a scene that throws too many errors per minute is suspended, not the client. User-generated content means the client must assume hostile input as the normal case.</li><li><strong>How do you convert an open-ended stream of creator content?</strong> The asset-bundle converter separates orchestration from conversion: SQS buffers asynchronous jobs while headless Unity workers transform GLTF/GLB assets into client-ready bundles. That boundary allows worker capacity to scale independently from content ingestion.</li><li><strong>How do you keep a frame budget with unbounded content?</strong> No allocation in hot paths, aggressive pooling, LOD and prioritization of avatars by relevance — the work is bounded even when the world is not.</li><li><strong>How do you rebuild without stopping delivery?</strong> Split the work into shippable verticals and keep release quality visible. The legacy client kept serving users while the new one earned its place.</li><li><strong>How do you make performance work measurable?</strong> Tie technical debt to product KPIs — loading time, frame rate, crash rate — and let telemetry, not opinion, order the backlog.</li><li><strong>Where does authority live in real-time multiplayer?</strong> CRDTs are useful for state reconciliation, but they do not remove the need to decide who owns the truth. Peer-to-peer looked attractive, but it became error-prone as more players joined the same space; connections failed and state resolution became too fragile. The practical answer was to keep the protocol open while using server-backed multiplayer where reliability required it.</li></ul>
       </section>
       <section class="case-section" id="lessons">
         <h2>Lessons learned</h2>
@@ -80,6 +105,7 @@
       <a href="#problem">Context</a>
       <a href="#goals">What changed</a>
       <a href="#architecture">Architecture</a>
+      <a href="#creator-pipeline">Creator pipeline</a>
       <a href="#hard-problems">Interesting problems</a>
       <a href="#lessons">Lessons learned</a>
     </aside>
