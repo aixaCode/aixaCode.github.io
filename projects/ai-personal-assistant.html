@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Assistant - Agnieszka Besz</title>
-<meta name="description" content="A local-first assistant that can remember context, use tools safely and work across personal and work profiles.">
+<meta name="description" content="A self-hosted, event-driven personal operations assistant with durable intake, structured commitments, provenance and safe tool execution.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -27,8 +27,8 @@
   <section class="hero">
     <p class="eyebrow">Architecture case study</p>
     <h1>AI Assistant</h1>
-    <p class="lead">A self-hosted assistant that remembers my projects, understands my calendar and keeps work and personal tools separate.</p>
-    <p class="stack">TypeScript / Node.js / Claude Agent SDK / provider-agnostic model interface / MCP server / Telegram / email / Google Calendar / Markdown knowledge base</p>
+    <p class="lead">A self-hosted personal operations assistant that turns messages, email and documents into durable knowledge, commitments, reminders and human-approved actions.</p>
+    <p class="stack">TypeScript / Node.js / Claude Agent SDK / SQLite / MCP server / Telegram / email / Google Calendar / Markdown knowledge / NAS-backed recovery</p>
     <div class="actions"><a class="btn" href="https://github.com/aixaCode/personal-assistant">Source</a><a class="btn" href="index.html">All projects</a></div>
   </section>
 
@@ -37,7 +37,8 @@
       <section class="case-section" id="overview">
         <h2>Overview</h2>
         <p>I built this because I kept repeating the same context in generic chat: current projects, calendar commitments, where files lived and whether I was asking about work or home. I wanted an assistant that could retain that context and help with planning, reminders and a few repetitive local tasks.</p>
-        <p>It currently runs Claude through the Agent SDK. The model sits behind a small interface, so I can replace it with a local model later without rebuilding the tools or their permission checks.</p>
+        <p>The project has evolved from a conversational tool runner into a durable, event-driven assistant. Telegram and email are intake channels; accepted work is queued before acknowledgment, retried after transient failures and converted into structured operational state as well as human-readable knowledge.</p>
+        <p>It currently runs Claude through the Agent SDK, routing routine work to Sonnet and complex reasoning or documents to Opus. The model boundary remains separate from tools and permissions, so a local runtime can be added later without rebuilding the action layer.</p>
       </section>
 
       <section class="case-section" id="requirements">
@@ -49,30 +50,42 @@
           <li>Execute tools only through deterministic authorization, not through prompt instruction alone.</li>
           <li>Support CLI, private Telegram, email ingress and calendar-aware workflows without losing conversation continuity.</li>
           <li>Produce an auditable execution history for tool decisions and confirmations.</li>
+          <li>Accept concurrent messages durably and recover unfinished work after model limits, process restarts or infrastructure failure.</li>
+          <li>Separate curated knowledge from operational state such as tasks, commitments, people, decisions and unresolved questions.</li>
+          <li>Retain provenance, confidence and verification dates for learned facts instead of treating every model inference as equally trustworthy.</li>
         </ul>
       </section>
 
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <div class="diagram"><pre class="mermaid">graph TD
-  CLI[CLI] --> Ingress[Request pipeline]
-  Telegram[Private Telegram] --> Ingress
-  Email[Email ingress] --> Ingress
-  Telegram --> Sessions[Durable session store]
-  Ingress --> Queue[Bounded run queue<br/>per-user serialization]
-  Queue --> Profile[Profile resolution<br/>workspace root, model, tool allowlist]
-  Profile --> Context[Context builder<br/>context.md + memory + knowledge index]
-  Context --> Runtime[Agent runtime<br/>Claude Agent SDK]
-  Seam[Model seam<br/>OpenAI-compatible / Ollama / vLLM] -.-> Runtime
-  Runtime --> MCP[Local MCP server]
-  MCP --> Permission[Permission gate<br/>scope + risk + confirmation]
-  Permission --> Tools[Tool dispatcher]
-  Tools --> Files[Safe file layer<br/>knowledge + notes]
-  Tools --> Calendar[Google Calendar]
-  Tools --> Mail[Email]
-  Tools --> Web[Fetch page]
-  Permission --> Audit[Append-only audit log]</pre></div>
-        <p>The model receives context and may request tools through the local MCP server. It does not directly execute privileged actions. Every tool request passes through metadata, profile policy, path validation and optional human confirmation before execution. The dotted line is the model boundary: the runtime is the only component that knows which model is running, so swapping Claude for a local runtime changes nothing on the tool or permission side.</p>
+        <div class="diagram"><pre class="mermaid">flowchart TD
+  Telegram[Private Telegram] --> Durable[Durable inbound queue]
+  Email[Email / IMAP] --> Durable
+  CLI[CLI] --> Pipeline[Request pipeline]
+  Scheduled[Scheduled routines] --> Pipeline
+  Durable --> Pipeline
+  Durable --> Retry[Retry policy<br/>session reset + backoff]
+  Retry --> Durable
+  Pipeline --> Identity[Identity + profile resolution]
+  Identity --> Serial[Per-conversation serialization]
+  Serial --> Router[Model router<br/>Sonnet / Opus]
+  Router --> Runtime[Claude Agent runtime]
+  Runtime --> Permission[Permission gate<br/>scope + risk + confirmation]
+  Permission --> Tools[Calendar · web · files<br/>reminders · accounting]
+  Runtime --> Knowledge[Markdown knowledge<br/>human-readable context]
+  Runtime --> State[Operational SQLite<br/>tasks · people · commitments<br/>projects · decisions]
+  Runtime --> Documents[Organised documents<br/>PDF reading + taxonomy]
+  Knowledge --> Provenance[Provenance<br/>source · confidence · scope<br/>observed + verified dates]
+  State --> Provenance
+  Pipeline --> Delivery[Delivery router]
+  Delivery --> Telegram
+  Delivery -. receipt / optional reply .-> Email
+  Durable --> Local[Local authoritative state]
+  State --> Local
+  Local --> NAS[NAS snapshots + LXC recovery]
+  Permission --> Audit[Audit + model telemetry]</pre></div>
+        <p>Incoming messages are acknowledged only after durable acceptance. Telegram is the default control and delivery surface; email sends a receipt, while analysis and suggested reply drafts return privately to the mapped user in Telegram. Temporary failures remain queued and retry automatically, including at the reset time reported by a model subscription limit.</p>
+        <p>The model may request tools through the local MCP server, but it does not directly execute privileged actions. Every request still passes through profile policy, tool metadata, path validation and optional human confirmation. Storage is intentionally split: Markdown remains inspectable knowledge, SQLite holds queryable operational objects, and source documents preserve the evidence behind both.</p>
       </section>
 
       <section class="case-section" id="components">
@@ -83,9 +96,14 @@
           <div class="spec"><h3>Context builder</h3><p><code>src/context.ts</code> constructs system text from profile context, current time, memory files and the knowledge-file index before model invocation.</p></div>
           <div class="spec"><h3>Permission engine</h3><p><code>src/permissions.ts</code> evaluates tool metadata, asks for human confirmation when required and logs allow/deny decisions.</p></div>
           <div class="spec"><h3>Safe file layer</h3><p><code>src/files.ts</code> blocks traversal and symlink escapes, confines writes to <code>notes/</code> and <code>knowledge/</code>, and keeps private workspace data out of Git.</p></div>
-          <div class="spec"><h3>Telegram state</h3><p><code>src/telegram-state.ts</code> persists session IDs, serializes conversations per user and lets confirmation replies bypass the normal queue.</p></div>
+          <div class="spec"><h3>Durable intake</h3><p><code>src/durable-jobs.ts</code> persists Telegram messages, PDFs and email before processing. It deduplicates message IDs, recovers interrupted jobs and applies bounded retry with subscription-reset awareness.</p></div>
+          <div class="spec"><h3>Operational state</h3><p><code>src/operational-state.ts</code> stores queryable tasks, people, projects, decisions, commitments, reminders and unresolved questions separately from narrative knowledge.</p></div>
+          <div class="spec"><h3>Knowledge provenance</h3><p>Learned facts retain their source, timestamp, confidence, scope, verification date and whether they were explicitly stated or inferred, reducing the risk of stale guesses becoming truth.</p></div>
+          <div class="spec"><h3>Document pipeline</h3><p>Email and Telegram PDFs are read by the model, meaningfully renamed and organised under a taxonomy that mirrors knowledge. Accounting documents are handed to a separate accounting workflow.</p></div>
+          <div class="spec"><h3>Telegram state</h3><p><code>src/telegram-state.ts</code> persists sessions and reminders, serializes each conversation and lets confirmation replies unblock an active tool call. Shared scheduled work executes once before delivery to multiple recipients.</p></div>
           <div class="spec"><h3>Model seam</h3><p><code>src/models/model.ts</code> defines a provider-agnostic chat interface — messages and tool definitions in, text or tool calls out — so a local runtime can replace Claude without touching tools or permissions.</p></div>
-          <div class="spec"><h3>Run queue</h3><p><code>src/queue.ts</code> is a bounded FIFO that caps concurrent agent runs to stay inside subscription limits; deliberately no priorities or retries until a real need shows up.</p></div>
+          <div class="spec"><h3>Model routing</h3><p>Routine requests and scheduled work use Sonnet; complex reasoning and document analysis use Opus. A bounded execution queue limits concurrent model runs independently of the durable intake queue.</p></div>
+          <div class="spec"><h3>Recovery</h3><p>Local SQLite is authoritative during execution. Serialized snapshots are stored on the NAS, while an LXC-local workspace fallback lets Luke continue during a NAS outage and sync changes back after recovery.</p></div>
         </div>
       </section>
 
@@ -127,9 +145,10 @@ export async function enforce(profile, confirm, name, input) {
         <ul class="list-clean">
           <li><strong>Policy-based tool execution.</strong> The model generates intent, never authority. Tool calls are translated into named commands evaluated against profile allowlists, scope/risk metadata, confirmation requirements and audit logging.</li>
           <li><strong>Prompt injection boundary.</strong> The dangerous boundary is not the prompt; it is the moment text becomes action. Unknown tools are denied, risky tools ask the human and built-in SDK tools are excluded by the profile allowlist.</li>
-          <li><strong>Memory architecture without pretending everything is vector search.</strong> Durable context is split into profile context, Markdown knowledge, append-only memory notes and available-file indexes. Semantic search and SQLite are intentionally future tiers, not hidden dependencies.</li>
+          <li><strong>Knowledge is not workflow state.</strong> Human-readable Markdown remains the source for narrative context, while SQLite stores lifecycle-bearing objects that need filtering, status transitions and due dates. Facts in either layer carry explicit provenance.</li>
           <li><strong>Profile isolation.</strong> Personal and work profiles have separate roots, model settings and tool sets. File validation enforces workspace boundaries in code, including traversal and symlink checks.</li>
-          <li><strong>Asynchronous UX.</strong> Telegram requests are serialized per user so runs do not trample each other, while confirmation responses bypass the queue to unblock active tool calls.</li>
+          <li><strong>Durable asynchronous UX.</strong> Ingress and execution are separate. Luke acknowledges accepted work immediately, serializes conversations, retries recoverable failures and avoids asking the user to resend a request.</li>
+          <li><strong>One computation, many recipients.</strong> Shared scheduled routines execute once and fan out the same result, avoiding duplicate model runs and inconsistent summaries.</li>
         </ul>
       </section>
 
@@ -142,6 +161,9 @@ export async function enforce(profile, confirm, name, input) {
             <tr><td>Markdown knowledge before vector search</td><td>Less fuzzy retrieval, better debuggability</td><td>For early usage, grep-able source-of-truth files were more reliable than opaque embeddings.</td></tr>
             <tr><td>Explicit profile tool lists</td><td>More configuration work, stronger isolation</td><td>Profiles become the authorization boundary instead of relying on model behavior.</td></tr>
             <tr><td>Human confirmation for write/external actions</td><td>Slower automation, safer execution</td><td>The assistant should be useful before it is autonomous.</td></tr>
+            <tr><td>Markdown plus SQLite</td><td>Two storage models to maintain, clearer semantics and queries</td><td>Knowledge, evidence and operational lifecycle have different access patterns and should not be forced into one format.</td></tr>
+            <tr><td>Telegram-first delivery</td><td>Email is not fully autonomous, stronger human control</td><td>Luke can monitor and draft without accidentally contacting an external sender.</td></tr>
+            <tr><td>Local state with NAS snapshots</td><td>More recovery machinery, fewer network-filesystem locking failures</td><td>SQLite runs on local storage while private data remains recoverable from the NAS.</td></tr>
           </tbody>
         </table>
       </section>
@@ -149,11 +171,14 @@ export async function enforce(profile, confirm, name, input) {
       <section class="case-section" id="results">
         <h2>Results</h2>
         <ul>
-          <li>CLI and private Telegram ingress working with durable session resume.</li>
+          <li>CLI, private Telegram and allow-listed email intake working with durable session resume and persistent request queuing.</li>
           <li>Personal and work profiles isolated by workspace root and tool allowlist.</li>
           <li>Permission gate, safe file layer and append-only audit log implemented in code.</li>
-          <li>Google Calendar, email, local knowledge, reminders, work notes and skill-loading tools integrated behind the same authorization path.</li>
-          <li>Security-focused tests cover configuration, permissions, safe files, calendar, email and Telegram state.</li>
+          <li>Google Calendar, Telegram-first email drafts, structured reminders, accounting intake, document organisation and skill-loading tools integrated behind the same authorization path.</li>
+          <li>Queryable operational objects and provenance-aware facts separate active commitments from narrative knowledge.</li>
+          <li>Concurrent requests, subscription limits and restarts no longer require users to resend accepted work.</li>
+          <li>Shared scheduled routines execute once and fan out to all intended recipients.</li>
+          <li>Security and reliability tests cover configuration, permissions, safe files, calendar, email, durable jobs, operational state and Telegram state.</li>
           <li>Provider-agnostic model interface in place with local-runtime adapters stubbed (Ollama/vLLM); Claude via the Agent SDK is the wired runtime today.</li>
         </ul>
       </section>
@@ -165,7 +190,16 @@ export async function enforce(profile, confirm, name, input) {
           <li>The model can suggest an action, but the runtime decides whether it is allowed.</li>
           <li>Good folder structure and clear profile notes solved more of the memory problem than vector search would have.</li>
           <li>Audit logs and session recovery became necessary much earlier than I expected.</li>
+          <li>Acknowledgment must mean durable acceptance, not merely that a webhook or poller saw a message.</li>
+          <li>Personal-assistant memory needs provenance and lifecycle, not just better retrieval.</li>
         </ul>
+      </section>
+
+      <section class="case-section" id="next">
+        <h2>Next expansion</h2>
+        <p>The next step is a proactive follow-up engine. Luke already has intake, structured commitments, reminders, source documents and reply drafting; the missing layer is lifecycle management across them.</p>
+        <p>The engine will connect incoming requests to people and projects, track what I promised and what I am waiting for, detect later evidence that an item was resolved, and surface only genuinely open follow-ups. Telegram actions such as <code>Mark done</code>, <code>Remind tomorrow</code>, <code>Create draft</code>, <code>Change due date</code> and <code>Show source</code> keep the human in control.</p>
+        <p>After that, a small private operations dashboard can expose queue health, failed work, open commitments, reminders, stale or low-confidence facts and recent assistant activity. Telegram remains the conversational interface; the dashboard becomes the inspection and correction surface.</p>
       </section>
     </div>
 
@@ -179,6 +213,7 @@ export async function enforce(profile, confirm, name, input) {
       <a href="#tradeoffs">Trade-offs</a>
       <a href="#results">Results</a>
       <a href="#lessons">Lessons</a>
+      <a href="#next">Next expansion</a>
     </aside>
   </div>
 </main>
