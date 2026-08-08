@@ -48,4 +48,33 @@
 
   var year = document.getElementById("yr");
   if (year) year.textContent = new Date().getFullYear();
+
+  var filterButtons = document.querySelectorAll("[data-filter]");
+  var filterCards = document.querySelectorAll("[data-tags]");
+  if (filterButtons.length && filterCards.length) {
+    var requested = new URLSearchParams(window.location.search).get("filter") || "all";
+    var valid = Array.prototype.some.call(filterButtons, function (button) {
+      return button.getAttribute("data-filter") === requested;
+    });
+    applyFilter(valid ? requested : "all");
+
+    Array.prototype.forEach.call(filterButtons, function (button) {
+      button.addEventListener("click", function () {
+        var value = button.getAttribute("data-filter");
+        applyFilter(value);
+        var url = value === "all" ? window.location.pathname : window.location.pathname + "?filter=" + encodeURIComponent(value);
+        window.history.replaceState({}, "", url);
+      });
+    });
+
+    function applyFilter(value) {
+      Array.prototype.forEach.call(filterButtons, function (button) {
+        button.setAttribute("aria-pressed", String(button.getAttribute("data-filter") === value));
+      });
+      Array.prototype.forEach.call(filterCards, function (card) {
+        var tags = (card.getAttribute("data-tags") || "").split(" ");
+        card.classList.toggle("is-hidden", value !== "all" && tags.indexOf(value) === -1);
+      });
+    }
+  }
 })();

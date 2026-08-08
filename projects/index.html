@@ -42,70 +42,89 @@
   </section>
   <section>
     <h2>Case studies</h2>
-    <div class="grid">
-      <div class="card">
+    <div class="filters" role="group" aria-label="Filter projects by area">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">All <span class="n">9</span></button>
+      <button class="chip" type="button" data-filter="leadership" aria-pressed="false">Leadership <span class="n">2</span></button>
+      <button class="chip" type="button" data-filter="games" aria-pressed="false">Games <span class="n">2</span></button>
+      <button class="chip" type="button" data-filter="ai" aria-pressed="false">AI <span class="n">3</span></button>
+      <button class="chip" type="button" data-filter="platform" aria-pressed="false">Platform <span class="n">5</span></button>
+    </div>
+    <div class="grid" id="project-grid" aria-live="polite">
+      <div class="card filter-card" data-tags="games platform">
   <a href="unity-explorer.html">
     <p class="meta">Real-time social client</p>
     <h3>Unity Explorer</h3>
     <p>Leading the ground-up rebuild and production release of Decentraland's Unity/C# PC client after working on the original web client.</p>
   </a>
 </div>
-<div class="card">
+<div class="card filter-card" data-tags="leadership">
   <a href="scaling-engineering-org.html">
     <p class="meta">Engineering organization design</p>
     <h3>Scaling an Engineering Organization</h3>
     <p>How I changed the team structure when several engineering groups still depended on the same few people.</p>
   </a>
 </div>
-<div class="card">
+<div class="card filter-card" data-tags="platform">
   <a href="launcher.html">
     <p class="meta">Desktop distribution</p>
     <h3>Launcher &amp; Distribution Platform</h3>
     <p>Rewriting a heavy Electron launcher into a lightweight Rust/Tauri entry point so download size and launch friction would not hurt the new-user funnel.</p>
   </a>
 </div>
-<div class="card">
+<div class="card filter-card" data-tags="platform leadership">
   <a href="engineering-platform.html">
     <p class="meta">Engineering management dashboard</p>
     <h3>Engineering Management Dashboard</h3>
     <p>Designed to support daily engineering work through releases, CI health, Sentry signals, Unity Cloud costs, priority reviews and AI-assisted summaries.</p>
   </a>
 </div>
-<div class="card">
+<div class="card filter-card" data-tags="ai platform">
   <a href="engineering-ai.html">
     <p class="meta">AI in engineering operations</p>
     <h3>AI for Engineering Teams</h3>
     <p>AI-assisted PR checks, visual regression tests, performance reports and engineering summaries used by the team.</p>
   </a>
 </div>
-<div class="card">
+<div class="card filter-card" data-tags="games">
   <a href="animal-park-management.html">
     <p class="meta">Mobile game - Android + iOS</p>
     <h3>Multiplayer Mobile Game</h3>
     <p>Animal Park, in development: a multiplayer mobile game for iOS and Android with Unity client, Firebase backend, content pipeline, live config and TeamCity + fastlane release automation.</p>
   </a>
 </div>
-<div class="card">
+<div class="card filter-card" data-tags="ai">
   <a href="ai-personal-assistant.html">
     <p class="meta">Local-first AI assistant</p>
     <h3>AI Assistant</h3>
     <p>Personal assistant with separate work and personal profiles, memory, calendar context and policy-gated tool execution.</p>
   </a>
 </div>
-<div class="card">
+<div class="card filter-card" data-tags="ai">
   <a href="accounting-agent.html">
     <p class="meta">Finance workflow automation</p>
     <h3>AI Finance Automation</h3>
     <p>Two private finance tools where AI reads documents, I confirm the result and Python calculates the accounts.</p>
   </a>
 </div>
-<div class="card">
+<div class="card filter-card" data-tags="platform">
   <a href="home-automation-platform.html">
     <p class="meta">Local infrastructure</p>
     <h3>Home Infrastructure Platform</h3>
     <p>Private infrastructure for local services, automations, observability and secure remote access.</p>
   </a>
 </div>
+    </div>
+  </section>
+<section class="contact-section">
+    <div class="contact-cta">
+      <div class="contact-copy">
+        <h2>Looking for someone to lead engineering — or build the thing itself?</h2>
+        <p>I am open to conversations about engineering leadership roles, advisory work and product builds through GB Factory.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="btn" href="mailto:aga@besz.me">Get in touch →</a>
+        <a class="btn" href="https://www.linkedin.com/in/agabesz">LinkedIn</a>
+      </div>
     </div>
   </section>
 </main>
