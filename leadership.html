@@ -7,39 +7,50 @@
 <meta name="description" content="Agnieszka Besz on engineering leadership, ownership, trust, process, feedback loops and the wrong scoreboard.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="site">
-  <div class="site-in">
-    <a class="brand" href="index.html">Agnieszka Besz</a>
-    <nav class="nav">
-      <a href="index.html">About</a><a class="active" href="leadership.html" aria-current="page">Leadership</a><a href="projects/index.html">Projects</a><a href="writing.html">Writing</a><a href="cv.html">CV</a>
-      <button class="toggle" id="theme" aria-label="Toggle color theme" title="Toggle theme">
-        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
-        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
-      </button>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html" aria-label="Agnieszka Besz — home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Agnieszka Besz
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Primary">
+      <a href="index.html">About</a>
+      <a href="leadership.html" aria-current="page">Leadership</a>
+      <a href="projects/index.html">Projects</a>
+      <a href="writing.html">Writing</a>
+      <a href="cv.html">CV</a>
     </nav>
+    <div class="nav-tools">
+      <button class="toggle" id="theme" type="button" role="switch" aria-checked="false" aria-label="Toggle dark mode">
+        <span class="toggle-knob" aria-hidden="true"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2M12 20.5v2M3.5 12h-2M22.5 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg></span>
+      </button>
+      <button class="menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="navlinks" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 <main class="wrap">
   <section class="hero">
-    <p class="eyebrow">How I lead engineering teams</p>
-    <h1>I want teams to make good decisions without waiting for me.</h1>
+<p class="eyebrow mono"><span class="dot" aria-hidden="true"></span> How I lead engineering teams</p>
+    <h1>I want teams to make good decisions <em>without waiting for me.</em></h1>
     <p class="lead">Earlier in my career, I sometimes mistook being involved in every important decision for being useful. That works for a small team. As the team grows, it becomes a bottleneck.</p>
     <p class="lead secondary">A large part of my job now is making sure people understand the problem, have enough context and know which decisions are theirs to make. I am direct about expectations and I would rather discuss a difficult tradeoff early than discover it at the end of a project.</p>
   </section>
 
   <section>
     <h2>How I work</h2>
-    <div class="grid">
-      <div class="card"><h3>Start with the result</h3><p>Shipping is important, but finishing a roadmap is not enough. I want to know what improved for users, creators or the business.</p></div>
-      <div class="card"><h3>Say the difficult thing early</h3><p>Unclear expectations rarely become clearer on their own. I try to name the problem and discuss the tradeoff while there is still time to act.</p></div>
-      <div class="card"><h3>Give people real decisions</h3><p>Delegation needs context and authority. If every important choice still comes back to me, I have only delegated the work.</p></div>
-      <div class="card"><h3>Add process for a reason</h3><p>I add a process when a recurring failure shows that we need one. A new meeting does not fix unclear ownership.</p></div>
-      <div class="card"><h3>Stay close without taking over</h3><p>I remain involved in technical direction, but the people closest to the system should usually choose how to build it.</p></div>
-      <div class="card"><h3>Make myself less necessary</h3><p>I consider it progress when managers, leads and teams can handle a familiar class of decision without my help.</p></div>
+    <div class="pillars leadership-pillars">
+      <article class="pillar"><span class="pillar-n">01</span><h3>Start with the result</h3><p>Shipping is important, but finishing a roadmap is not enough. I want to know what improved for users, creators or the business.</p></article>
+      <article class="pillar"><span class="pillar-n">02</span><h3>Say the difficult thing early</h3><p>Unclear expectations rarely become clearer on their own. I try to name the problem and discuss the tradeoff while there is still time to act.</p></article>
+      <article class="pillar"><span class="pillar-n">03</span><h3>Give people real decisions</h3><p>Delegation needs context and authority. If every important choice still comes back to me, I have only delegated the work.</p></article>
+      <article class="pillar"><span class="pillar-n">04</span><h3>Add process for a reason</h3><p>I add a process when a recurring failure shows that we need one. A new meeting does not fix unclear ownership.</p></article>
+      <article class="pillar"><span class="pillar-n">05</span><h3>Stay close without taking over</h3><p>I remain involved in technical direction, but the people closest to the system should usually choose how to build it.</p></article>
+      <article class="pillar"><span class="pillar-n">06</span><h3>Make myself less necessary</h3><p>I consider it progress when managers, leads and teams can handle a familiar class of decision without my help.</p></article>
     </div>
   </section>
 
@@ -54,7 +65,7 @@
   D --> E["Hidden cost<br/>Less judgment, weaker ownership, more dependency"]
   E --> F["Better question<br/>What actually changed?"]
 
-  classDef goal fill:#fff7ed,stroke:#c2410c,color:#222127;
+  classDef goal fill:#eef0ff,stroke:#2e4bff,color:#222127;
   classDef risk fill:#f6f6f7,stroke:#b7bbc2,color:#222127;
   classDef cost fill:#fee2e2,stroke:#dc2626,color:#222127;
   classDef question fill:#ecfdf5,stroke:#059669,color:#222127;
@@ -92,7 +103,7 @@
   E --> F["Result<br/>Less dependency, stronger leaders, better delivery"]
 
   classDef problem fill:#fee2e2,stroke:#dc2626,color:#222127;
-  classDef work fill:#fff7ed,stroke:#c2410c,color:#222127;
+  classDef work fill:#eef0ff,stroke:#2e4bff,color:#222127;
   classDef result fill:#ecfdf5,stroke:#059669,color:#222127;
   class A,B problem;
   class C,D,E work;
