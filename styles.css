@@ -176,8 +176,8 @@ li { margin-bottom: 8px; }
 .toc { position: sticky; top: 90px; margin-top: 54px; padding: 20px 0 20px 18px; border-left: 1px solid var(--line-strong); color: var(--subtle); font-size: .82rem; }
 .toc a { display: block; margin-bottom: 10px; text-decoration: none; transition: color .2s ease, transform .2s ease; }
 .toc a:hover { color: var(--accent); transform: translateX(3px); }
-.diagram-title { margin: 32px 0 8px; font-size: 1.08rem; font-weight: 600; letter-spacing: -.01em; }
-.diagram { max-width: 100%; margin: 12px 0; padding: 24px; overflow-x: auto; border: 1px solid var(--line); border-radius: 2px; background: var(--card); }
+.diagram-title { margin: 32px 0 8px; font-family: "Segoe Print", "Bradley Hand", ui-rounded, sans-serif; font-size: 1.08rem; font-weight: 600; letter-spacing: -.01em; }
+.diagram { max-width: 100%; margin: 12px 0; padding: 24px; overflow-x: auto; border: 1px solid var(--line); border-radius: 3px 1px 4px 2px / 2px 4px 1px 3px; background: var(--card); }
 .mermaid { max-width: 100%; font-family: "Segoe Print", "Bradley Hand", ui-rounded, sans-serif; }
 .diagram > .mermaid { width: 100% !important; min-width: 0 !important; }
 .diagram svg { width: 100% !important; max-width: 100%; height: auto; }
@@ -222,7 +222,7 @@ body:has(.article) .body .q span::before { content: ""; position: absolute; left
 body:has(.article) .body .pull { margin: 46px 0; padding-left: 25px; border-left: 1px solid var(--line-strong); color: var(--fg); font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); font-weight: 500; letter-spacing: -.025em; line-height: 1.35; }
 body:has(.article) hr.end { margin: 54px 0 0; border: 0; border-top: 1px solid var(--line); }
 body:has(.article) .body h2 { margin: 56px 0 22px; color: var(--fg); font-size: clamp(1.45rem, 1.2rem + .8vw, 1.9rem); font-weight: 500; letter-spacing: -.025em; line-height: 1.2; }
-.article-figure { margin: 44px 0 48px; padding: clamp(20px, 3vw, 30px); border: 1px solid var(--line); background: var(--card); }
+.article-figure { margin: 44px 0 48px; padding: clamp(20px, 3vw, 30px); border: 1px solid var(--line); border-radius: 3px 1px 4px 2px / 2px 4px 1px 3px; background: var(--card); }
 .article-figure > h3 { margin-bottom: 22px; color: var(--fg); font-family: "Segoe Print", "Bradley Hand", ui-rounded, sans-serif; font-size: clamp(1.05rem, .96rem + .35vw, 1.25rem); }
 .article-figure .diagram { margin: 0; padding: 10px 0; border: 0; background: transparent; }
 .article-figure figcaption { margin-top: 18px; color: var(--subtle); font-size: .82rem; line-height: 1.55; }
@@ -279,8 +279,9 @@ html[data-theme="dark"] .workflow-track .review { background: #291b0d; color: #f
   .card { min-height: auto; }
   .foot-in { align-items: flex-start; flex-direction: column; }
   .workflow-row { grid-template-columns: 1fr; }
-  .workflow-track { min-width: 610px; }
-  .workflow-chart { overflow-x: auto; padding-bottom: 8px; }
+  .workflow-track { min-width: 0; gap: 2px; }
+  .workflow-track span { padding-inline: 1px; font-size: clamp(.44rem, 2.15vw, .58rem); }
+  .workflow-track .generation.ai { min-width: 0; }
   .boundary-examples { grid-template-columns: 1fr; }
 }
 

@@ -150,6 +150,23 @@
 
       <p>The job is to identify that constraint and stay focused on it long enough to make a difference. I have seen teams spend months improving parts of a system that were already working reasonably well while ignoring what held the business back. I have made that mistake myself.</p>
 
+      <figure class="article-figure" aria-labelledby="constraint-title constraint-caption">
+        <h3 id="constraint-title">The constraint moves</h3>
+        <div class="diagram"><pre class="mermaid">flowchart LR
+  subgraph Now["Today"]
+    A1["Acquisition"] --> O1["Onboarding"] --> R1["Retention"] --> S1["Stability"] --> D1["Delivery"]
+  end
+  subgraph Later["After the first constraint improves"]
+    A2["Acquisition"] --> O2["Onboarding"] --> R2["Retention"] --> S2["Stability"] --> D2["Delivery"]
+  end
+
+  classDef normal fill:#f6f6f7,stroke:#b7bbc2,color:#222127;
+  classDef constraint fill:#fff7ed,stroke:#d97706,color:#222127,stroke-width:3px;
+  class A1,O1,S1,D1,A2,O2,R2,D2 normal;
+  class R1,S2 constraint;</pre></div>
+        <figcaption id="constraint-caption">In this illustrative example, retention limits progress first. Once it improves, stability becomes the next constraint. Priorities should move with the system.</figcaption>
+      </figure>
+
       <p>At Decentraland we constantly had more opportunities than capacity.</p>
 
       <div class="q">
@@ -239,7 +256,11 @@
   </div>
 </footer>
 
-<script src="../site.js"></script>
+<script src="../site.js?v=diagram-responsive-1"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
+</script>
 
 </body>
 </html>
