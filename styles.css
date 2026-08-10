@@ -237,11 +237,6 @@ body:has(.article) .body h2 { margin: 56px 0 22px; color: var(--fg); font-size: 
 .workflow-track .review { border-color: #d97706; background: #fff7ed; color: #7c2d12; }
 html[data-theme="dark"] .workflow-track .review { background: #291b0d; color: #fdba74; }
 .workflow-track i { margin-left: 3px; font-style: normal; }
-.boundary-labels { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 0 0 8px; color: var(--subtle); font-family: "Segoe Print", "Bradley Hand", ui-rounded, sans-serif; font-size: .8rem; text-align: center; }
-.boundary-labels span + span { padding-left: 18px; border-left: 3px solid #d97706; }
-.boundary-examples { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 14px; border: 1px solid var(--line); background: var(--line); }
-.boundary-examples span { padding: 13px 14px; color: var(--muted); background: var(--bg); font-size: .75rem; line-height: 1.45; }
-.boundary-examples strong { display: block; color: var(--fg); }
 
 /* Shared contact panel */
 .contact-section { padding-block: 0 clamp(4rem, 3rem + 4vw, 7rem) !important; border: 0 !important; }
@@ -282,7 +277,6 @@ html[data-theme="dark"] .workflow-track .review { background: #291b0d; color: #f
   .workflow-track { min-width: 0; gap: 2px; }
   .workflow-track span { padding-inline: 1px; font-size: clamp(.44rem, 2.15vw, .58rem); }
   .workflow-track .generation.ai { min-width: 0; }
-  .boundary-examples { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -130,38 +130,35 @@
 
       <p class="pull">Good AI assistance makes uncertainty more visible. Bad AI theatre covers uncertainty with polished output.</p>
 
-      <h2>The boundary matters more than the model</h2>
+      <h2>Someone still has to own the system</h2>
 
-      <p>I have seen the same pattern in AI-assisted internal tools. The useful architecture is rarely “give the model access and let it work.” It is a deliberate boundary between what the model may propose and what the system is allowed to do.</p>
+      <p>An AI agent can execute tasks. It cannot own the system it changes.</p>
 
-      <p>In one developer tool, AI could help build and operate a workflow for launching builds and tests. But authentication, shared secrets, scarce test licences and the priority between CI and local requests remained in a controlled gateway. The model could assist with the work. It did not become the authority for access or resource allocation.</p>
+      <p>It does not decide what failure rate is acceptable, respond when a dependency changes, explain a wrong number to finance or choose whether a workflow should be disabled after an incident. Giving an agent access to tools without assigning a human owner does not create autonomy. It creates an unowned production system.</p>
 
-      <p>The same principle appears in finance automation I have built. The model extracts information and suggests matches. A human resolves uncertainty. Deterministic code owns reconciliation, calculations and reports. The most important design decision is the point at which a suggestion becomes an authoritative number.</p>
+      <p>In one developer tool, AI could help launch builds and tests. A controlled gateway still held the credentials, limited access and decided whether CI or a local request had priority. Those controls mattered because two runs could compete for the same test licence, a failed run could leave a resource unavailable, and unrestricted access could expose shared secrets. Someone still had to define those rules, monitor failures and change the system when the operating conditions changed.</p>
+
+      <p>The same principle appears in finance automation I have built. The model extracts information and suggests matches. A human resolves uncertainty, and deterministic code performs reconciliation, calculations and reporting. A wrong suggestion cannot quietly become a tax or reporting error. Someone must be able to find it, correct it and explain what happened.</p>
 
       <figure class="article-figure" aria-labelledby="boundary-title boundary-caption">
-        <h3 id="boundary-title">Suggestions become decisions at an explicit boundary</h3>
-        <div class="boundary-labels" aria-hidden="true"><span>Cheap to generate</span><span>Someone owns the consequence</span></div>
+        <h3 id="boundary-title">The model can act. A person still owns the outcome.</h3>
         <div class="diagram"><pre class="mermaid">flowchart LR
-  Source["Source material"] --> AI["AI proposal"] --> Evidence["Evidence + uncertainty"]
-  Evidence --> Approval{"Human approval"}
-  Approval -->|approved| Action["Deterministic action"] --> Record["Audit trail"]
-  Approval -->|not ready| AI
+  Goal["Goal"] --> AI["AI action"] --> Checks["Permissions + checks"] --> Change["Production change"] --> Result["Observable result"]
+  Owner["Named owner"] --> Goal
+  Owner --> Checks
+  Result -->|failure or context change| Owner
+  Owner --> Response["Correct · stop · change rules"] --> Checks
 
-  classDef proposal fill:#eef0ff,stroke:#2e4bff,color:#222127;
-  classDef boundary fill:#fff7ed,stroke:#d97706,color:#222127,stroke-width:3px;
-  classDef authority fill:#ecfdf5,stroke:#059669,color:#222127;
-  class Source,AI,Evidence proposal;
-  class Approval boundary;
-  class Action,Record authority;</pre></div>
-        <div class="boundary-examples"><span><strong>Code review</strong> ends in a human merge decision</span><span><strong>Finance extraction</strong> ends in deterministic reconciliation</span></div>
-        <figcaption id="boundary-caption">AI prepares a proposal and exposes uncertainty. A person and controlled system decide when it becomes authoritative.</figcaption>
+  classDef action fill:#eef0ff,stroke:#2e4bff,color:#222127;
+  classDef control fill:#fff7ed,stroke:#d97706,color:#222127,stroke-width:3px;
+  classDef outcome fill:#ecfdf5,stroke:#059669,color:#222127;
+  class Goal,AI,Change action;
+  class Owner,Checks,Response control;
+  class Result outcome;</pre></div>
+        <figcaption id="boundary-caption">Ownership means defining the goal and rules, monitoring the result and responding when the system fails or its context changes. An audit trail helps the owner do that work; it does not replace them.</figcaption>
       </figure>
 
-      <p>These controls can make an AI demo look less magical. They are also what make it possible to depend on the system.</p>
-
-      <p>There is a related lesson from automation without AI. In an asset pipeline, every converted bundle is compared visually with the original. If the images differ beyond the accepted boundary, the bundle is deleted and never uploaded. Generating the asset is not the quality claim. The enforced comparison is.</p>
-
-      <p>Production confidence comes from boundaries and evidence: who may act, what must be verified, what happens on failure and which output is authoritative. The model is only one component inside that system.</p>
+      <p>AI can remove manual work. It cannot remove responsibility for the result.</p>
 
       <h2>Engineering judgment is not gatekeeping</h2>
 
@@ -171,13 +168,13 @@
 
       <p>Engineering judgment should help the team identify when that boundary has been crossed. Its job is not to protect engineering territory. It is to make the tradeoffs visible before the organisation inherits them accidentally.</p>
 
-      <h2>Accountability must remain human</h2>
+      <h2>The ownership test</h2>
 
-      <p>AI can write code, review a change, draft a test plan and propose an architecture. It can make each of those activities faster and sometimes better.</p>
+      <p>Before an organisation depends on an AI system, I would want four questions answered:</p>
 
-      <p>The person merging the code still owns the change. The person approving the architecture still owns the operational cost. The leader funding the product still owns whether it solves a worthwhile problem.</p>
+      <div class="q"><span>Who monitors whether it is doing the right thing?</span><span>Who can stop it?</span><span>Who investigates and corrects a bad outcome?</span><span>Who maintains it when the model, data or surrounding systems change?</span></div>
 
-      <p>That boundary matters because generated confidence is cheap. Production consequences are not.</p>
+      <p>If those answers are unclear, the system is not autonomous. It is unowned.</p>
 
       <p>Use AI to explore more options, expose gaps earlier and turn vague concerns into evidence. Then make the decision explicit: what are we choosing, which tradeoff are we accepting, how will we know whether it worked, and who will own the result when the demo becomes a system?</p>
       <hr class="end">
