@@ -97,8 +97,8 @@
   Happy -.-> Ops["Observability + support"]
   Happy -.-> Cost["Cost + ownership"]
 
-  classDef visible fill:#eef0ff,stroke:#2e4bff,color:#222127;
-  classDef hidden fill:#fff7ed,stroke:#d97706,color:#222127;
+  classDef visible fill:transparent,stroke:#2e4bff,color:#222127;
+  classDef hidden fill:transparent,stroke:#d97706,color:#222127;
   class Prompt,Spec,Happy visible;
   class Auth,Failure,Ops,Cost hidden;</pre></div>
         <figcaption id="demo-caption">The generated path is visible. Most production obligations remain unanswered until someone designs and owns them.</figcaption>
@@ -149,9 +149,9 @@
   Result -->|failure or context change| Owner
   Owner --> Response["Correct · stop · change rules"] --> Checks
 
-  classDef action fill:#eef0ff,stroke:#2e4bff,color:#222127;
-  classDef control fill:#fff7ed,stroke:#d97706,color:#222127,stroke-width:3px;
-  classDef outcome fill:#ecfdf5,stroke:#059669,color:#222127;
+  classDef action fill:transparent,stroke:#2e4bff,color:#222127;
+  classDef control fill:transparent,stroke:#d97706,color:#222127,stroke-width:3px;
+  classDef outcome fill:transparent,stroke:#059669,color:#222127;
   class Goal,AI,Change action;
   class Owner,Checks,Response control;
   class Result outcome;</pre></div>

@@ -74,25 +74,35 @@
 
       <section class="case-section" id="architecture">
         <h2>Operating model</h2>
-        <h3 class="diagram-title">Clear ownership removes senior people as the default decision queue.</h3>
-        <div class="diagram"><pre class="mermaid">flowchart LR
-  Before["Before<br/>most questions queue at<br/>the same senior people"] --> Change["Add context, ownership<br/>and escalation boundaries"]
-  Change --> TeamA["Team A<br/>decides locally"]
-  Change --> TeamB["Team B<br/>decides locally"]
-  Change --> TeamC["Team C<br/>decides locally"]
-  TeamA -.->|exception| Leaders["Senior leaders<br/>handle real escalations"]
-  TeamB -.->|exception| Leaders
-  TeamC -.->|exception| Leaders
-  Leaders -.-> Feedback["Release, incident<br/>and quality feedback"]
-  Feedback -.-> Change
+        <h3 class="diagram-title">Before and after: who owns the decision?</h3>
+        <div class="diagram"><pre class="mermaid">flowchart TB
+  subgraph Before["Before · senior leader is the queue"]
+    direction LR
+    Requests["Team questions"] --> Queue["Senior leader<br/>reviews everything"] --> Wait["Teams wait<br/>for a decision"]
+  end
 
-  classDef risk fill:#fee2e2,stroke:#dc2626,color:#222127;
-  classDef design fill:#fff7ed,stroke:#2e4bff,color:#222127;
-  classDef result fill:#ecfdf5,stroke:#059669,color:#222127;
-  class Before risk;
-  class Change,Leaders design;
-  class TeamA,TeamB,TeamC,Feedback result;</pre></div>
-        <p class="diagram-caption">Delegation works when teams receive context and decision rights, while unusual or high-risk cases still have a clear escalation path.</p>
+  subgraph After["After · teams own normal decisions"]
+    direction TB
+    Context["Objectives · context · boundaries"] --> TeamA["Team A<br/>decides"]
+    Context --> TeamB["Team B<br/>decides"]
+    Context --> TeamC["Team C<br/>decides"]
+    TeamA -.->|exception| Escalation["Senior leader<br/>handles exceptions"]
+    TeamB -.->|exception| Escalation
+    TeamC -.->|exception| Escalation
+    TeamA --> Delivery["Teams deliver"]
+    TeamB --> Delivery
+    TeamC --> Delivery
+  end
+
+  Wait -->|change the operating model| Context
+
+  classDef risk fill:transparent,stroke:#dc2626,color:#222127;
+  classDef design fill:transparent,stroke:#2e4bff,color:#222127;
+  classDef result fill:transparent,stroke:#059669,color:#222127;
+  class Queue,Wait risk;
+  class Context,Escalation design;
+  class TeamA,TeamB,TeamC,Delivery result;</pre></div>
+        <p class="diagram-caption">Before, normal team decisions queue behind a senior leader. After, teams use shared objectives and boundaries to decide locally; only unusual or high-risk cases escalate.</p>
       </section>
 
       <section class="case-section" id="decisions">
