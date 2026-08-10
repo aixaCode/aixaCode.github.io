@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Makes Building Easy. Production Is Hard. — Agnieszka Besz</title>
+<meta name="description" content="AI makes code, specifications and demos cheaper to produce. Production still depends on review, testing, controlled authority and human ownership.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="../index.html" aria-label="Agnieszka Besz — home"><span class="brand-mark" aria-hidden="true"></span>Agnieszka Besz</a>
+    <nav class="nav-links" id="navlinks" aria-label="Primary">
+      <a href="../index.html">About</a><a href="../leadership.html">Leadership</a><a href="../projects/index.html">Projects</a><a href="../writing.html" aria-current="page">Writing</a><a href="../cv.html">CV</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="toggle" id="theme" type="button" role="switch" aria-checked="false" aria-label="Toggle dark mode"><span class="toggle-knob" aria-hidden="true"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2M12 20.5v2M3.5 12h-2M22.5 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg></span></button>
+      <button class="menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="navlinks" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="article">
+    <a class="back" href="../writing.html">← All writing</a>
+    <h1>AI Makes Building Easy. Production Is Hard.</h1>
+    <div class="meta">Aug 10, 2026</div>
+    <div class="topic-tags" aria-label="Article topics"><span>AI</span><span>Engineering</span><span>Production</span></div>
+
+    <div class="body">
+      <p>AI has made it much easier to produce something that looks technically complete.</p>
+
+      <p>A working demo can appear in a day. A detailed specification can arrive in minutes. The architecture diagram has all the expected boxes, the implementation plan covers every phase, and the generated explanation sounds more certain than many engineers do in a design review.</p>
+
+      <p>That is useful. It is also dangerous when confidence is mistaken for understanding.</p>
+
+      <p>The problem is not that non-engineers can now participate more directly in technical work. That is a good outcome. Product managers, designers and founders can test ideas without waiting for a full team. Engineers can explore alternatives faster. More people can turn vague requirements into something concrete enough to discuss.</p>
+
+      <p>The problem starts when a convincing artefact is treated as evidence that the difficult decisions have already been made.</p>
+
+      <h2>Faster output is not the same as faster delivery</h2>
+
+      <p>The argument about AI productivity is often framed around how much faster someone can write code. But writing code is only one part of shipping a production system.</p>
+
+      <p>Senior engineers also spend time deciding what should be built, understanding an existing system, reviewing changes, debugging failures, coordinating dependencies and deciding which risks are acceptable. AI does not accelerate all of those activities equally. In some cases, it creates more of them.</p>
+
+      <p>A generated pull request can be cheap for the author and expensive for the reviewer. A detailed specification can take minutes to produce and hours to verify. More code means more behaviour to understand, test, operate and eventually remove. The cost has not disappeared. It has moved downstream.</p>
+
+      <figure class="article-figure workflow-figure" aria-labelledby="workflow-title workflow-caption">
+        <h3 id="workflow-title">Faster code does not make every step faster</h3>
+        <div class="workflow-chart" role="img" aria-label="An illustrative comparison showing AI shortening generation while deciding, understanding, reviewing, testing, integrating and operating remain. Review grows slightly because more generated output must be checked.">
+          <div class="workflow-key"><span>Illustrative effort</span><span>Not measured time</span></div>
+          <div class="workflow-row">
+            <strong>Without AI</strong>
+            <div class="workflow-track">
+              <span style="--w:14">Decide</span><span style="--w:17">Understand</span><span class="generation" style="--w:21">Generate</span><span style="--w:14">Review</span><span style="--w:13">Test</span><span style="--w:10">Integrate</span><span style="--w:11">Operate</span>
+            </div>
+          </div>
+          <div class="workflow-row">
+            <strong>With AI</strong>
+            <div class="workflow-track">
+              <span style="--w:14">Decide</span><span style="--w:17">Understand</span><span class="generation ai" style="--w:8">Generate</span><span class="review" style="--w:20">Review <i aria-hidden="true">↗</i></span><span style="--w:13">Test</span><span style="--w:10">Integrate</span><span style="--w:11">Operate</span>
+            </div>
+          </div>
+        </div>
+        <figcaption id="workflow-caption">AI can make generation much cheaper while leaving most of the delivery system unchanged. Cheap output may also move work into review.</figcaption>
+      </figure>
+
+      <p>Even a large improvement in coding speed produces a smaller improvement across the whole engineering day. The gain is limited by how much of the delivery system has actually become faster.</p>
+
+      <p>This is why lines of code, tickets completed and documents generated are weak measures of AI impact. I care more about whether a change becomes easier to understand, safer to release and cheaper to operate without shifting hidden work onto the next person.</p>
+
+      <h2>A demo proves a path, not a product</h2>
+
+      <p>A demo can prove that one path works under the conditions chosen for it. Production engineering begins with all the conditions the demo did not include.</p>
+
+      <div class="q"><span>Who can access the system?</span><span>What happens when a dependency is unavailable?</span><span>Can a failed operation be retried safely?</span><span>Who can diagnose a problem at 2am?</span><span>How do we reverse the change?</span></div>
+
+      <p>AI can suggest answers to all of these questions. It cannot know which tradeoff an organisation is prepared to own unless that context has been made explicit. It also cannot be accountable when the answer is wrong.</p>
+
+      <p>I see a similar gap in real-time products. A feature that works with one user, one machine and controlled content may say very little about how it behaves with many avatars, unpredictable assets, network handoffs and a fixed frame budget. The code can be correct while the product is unusable.</p>
+
+      <figure class="article-figure" aria-labelledby="demo-title demo-caption">
+        <h3 id="demo-title">A demo proves the visible path</h3>
+        <div class="diagram"><pre class="mermaid">flowchart TB
+  subgraph Visible["What the demo shows"]
+    Prompt["Prompt"] --> Spec["Generated specification"] --> Happy["Working happy path"]
+  end
+  Happy -.-> Auth["Authentication + permissions"]
+  Happy -.-> Failure["Failure recovery + migration"]
+  Happy -.-> Ops["Observability + support"]
+  Happy -.-> Cost["Cost + ownership"]
+
+  classDef visible fill:#eef0ff,stroke:#2e4bff,color:#222127;
+  classDef hidden fill:#fff7ed,stroke:#d97706,color:#222127;
+  class Prompt,Spec,Happy visible;
+  class Auth,Failure,Ops,Cost hidden;</pre></div>
+        <figcaption id="demo-caption">The generated path is visible. Most production obligations remain unanswered until someone designs and owns them.</figcaption>
+      </figure>
+
+      <p>The demo is still valuable. It has reduced the cost of learning whether an idea is possible. It has not removed the work required to decide whether that idea is safe, operable and worth maintaining.</p>
+
+      <h2>Thorough-looking specifications can hide missing decisions</h2>
+
+      <p>Before AI, an incomplete technical proposal often looked incomplete. Missing sections, rough notes and unresolved questions were visible.</p>
+
+      <p>AI is very good at filling empty space. It can produce requirements, milestones, risks, test plans and rollout stages in one consistent voice. The document looks finished even when the underlying decisions have not happened.</p>
+
+      <p>This changes the review problem. We can no longer use completeness of presentation as a proxy for completeness of reasoning. I would look for the decision trail instead:</p>
+
+      <div class="q"><span>What problem are we solving, and what evidence shows it is the current constraint?</span><span>Which alternatives were considered?</span><span>What did we choose not to build?</span><span>Who owns the production outcome?</span><span>What evidence would make us stop or reverse the decision?</span></div>
+
+      <p>A generated plan can help answer these questions. It should not be allowed to make their absence harder to notice.</p>
+
+      <h2>AI is strongest when it makes uncertainty inspectable</h2>
+
+      <p>The most useful AI work I have seen does not pretend to finish the decision. It makes the problem easier for a human to inspect.</p>
+
+      <p>In one AI-assisted architecture review, the useful result was not a general judgement that the code was over-engineered. The review turned that discomfort into an inventory: more than 45 interfaces had one implementation and no test coverage, alongside specific coupling and redundant-enum issues.</p>
+
+      <p>That did not prove every interface should be removed. It gave engineers a countable list they could verify, prioritise and challenge. AI reduced the cost of discovery while leaving the technical decision with the people who understood the system.</p>
+
+      <p>The same boundary applies to code review. AI can spot repeated patterns, suspicious complexity, forgotten tests and documentation drift. It can compress a large change so a reviewer gets to the important questions faster. It should not become the merge authority or replace the people who understand the architecture and user impact.</p>
+
+      <p class="pull">Good AI assistance makes uncertainty more visible. Bad AI theatre covers uncertainty with polished output.</p>
+
+      <h2>The boundary matters more than the model</h2>
+
+      <p>I have seen the same pattern in AI-assisted internal tools. The useful architecture is rarely “give the model access and let it work.” It is a deliberate boundary between what the model may propose and what the system is allowed to do.</p>
+
+      <p>In one developer tool, AI could help build and operate a workflow for launching builds and tests. But authentication, shared secrets, scarce test licences and the priority between CI and local requests remained in a controlled gateway. The model could assist with the work. It did not become the authority for access or resource allocation.</p>
+
+      <p>The same principle appears in finance automation I have built. The model extracts information and suggests matches. A human resolves uncertainty. Deterministic code owns reconciliation, calculations and reports. The most important design decision is the point at which a suggestion becomes an authoritative number.</p>
+
+      <figure class="article-figure" aria-labelledby="boundary-title boundary-caption">
+        <h3 id="boundary-title">Suggestions become decisions at an explicit boundary</h3>
+        <div class="boundary-labels" aria-hidden="true"><span>Cheap to generate</span><span>Someone owns the consequence</span></div>
+        <div class="diagram"><pre class="mermaid">flowchart LR
+  Source["Source material"] --> AI["AI proposal"] --> Evidence["Evidence + uncertainty"]
+  Evidence --> Approval{"Human approval"}
+  Approval -->|approved| Action["Deterministic action"] --> Record["Audit trail"]
+  Approval -->|not ready| AI
+
+  classDef proposal fill:#eef0ff,stroke:#2e4bff,color:#222127;
+  classDef boundary fill:#fff7ed,stroke:#d97706,color:#222127,stroke-width:3px;
+  classDef authority fill:#ecfdf5,stroke:#059669,color:#222127;
+  class Source,AI,Evidence proposal;
+  class Approval boundary;
+  class Action,Record authority;</pre></div>
+        <div class="boundary-examples"><span><strong>Code review</strong> ends in a human merge decision</span><span><strong>Finance extraction</strong> ends in deterministic reconciliation</span></div>
+        <figcaption id="boundary-caption">AI prepares a proposal and exposes uncertainty. A person and controlled system decide when it becomes authoritative.</figcaption>
+      </figure>
+
+      <p>These controls can make an AI demo look less magical. They are also what make it possible to depend on the system.</p>
+
+      <p>There is a related lesson from automation without AI. In an asset pipeline, every converted bundle is compared visually with the original. If the images differ beyond the accepted boundary, the bundle is deleted and never uploaded. Generating the asset is not the quality claim. The enforced comparison is.</p>
+
+      <p>Production confidence comes from boundaries and evidence: who may act, what must be verified, what happens on failure and which output is authoritative. The model is only one component inside that system.</p>
+
+      <h2>Engineering judgment is not gatekeeping</h2>
+
+      <p>There is a real risk that engineers use production complexity to dismiss useful experimentation. Every prototype does not need a security review, a capacity model and a migration strategy. Applying production standards before an idea has proved any value is another way to waste time.</p>
+
+      <p>The standard should match the decision being made. If the question is whether users understand a workflow, a lightweight prototype may be enough. If the question is whether the organisation should depend on the system, the evidence bar changes. Authentication, privacy, failure modes, observability, cost, ownership and support are no longer optional details.</p>
+
+      <p>Engineering judgment should help the team identify when that boundary has been crossed. Its job is not to protect engineering territory. It is to make the tradeoffs visible before the organisation inherits them accidentally.</p>
+
+      <h2>Accountability must remain human</h2>
+
+      <p>AI can write code, review a change, draft a test plan and propose an architecture. It can make each of those activities faster and sometimes better.</p>
+
+      <p>The person merging the code still owns the change. The person approving the architecture still owns the operational cost. The leader funding the product still owns whether it solves a worthwhile problem.</p>
+
+      <p>That boundary matters because generated confidence is cheap. Production consequences are not.</p>
+
+      <p>Use AI to explore more options, expose gaps earlier and turn vague concerns into evidence. Then make the decision explicit: what are we choosing, which tradeoff are we accepting, how will we know whether it worked, and who will own the result when the demo becomes a system?</p>
+      <hr class="end">
+    </div>
+  </article>
+
+  <section class="contact-section compact">
+    <div class="contact-cta"><div class="contact-copy"><h2>Want to discuss engineering leadership or a product build?</h2><p>I am open to conversations about leadership, advisory work and product builds.</p></div><div class="contact-actions"><a class="btn" href="mailto:aga@besz.me">Get in touch →</a><a class="btn" href="https://www.linkedin.com/in/agabesz">LinkedIn</a></div></div>
+  </section>
+</main>
+
+<footer><div class="foot-in"><span>© <span id="yr">2026</span> Agnieszka Besz</span><div class="social"><a href="https://github.com/aixaCode">GitHub</a><a href="https://www.linkedin.com/in/agabesz">LinkedIn</a><a href="mailto:aga@besz.me">Email</a></div></div></footer>
+<script src="../site.js?v=diagram-responsive-1"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
+</script>
+</body>
+</html>
