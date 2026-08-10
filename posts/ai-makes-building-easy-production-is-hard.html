@@ -50,6 +50,8 @@
 
       <p>A generated pull request can be cheap for the author and expensive for the reviewer. A detailed specification can take minutes to produce and hours to verify. More code means more behaviour to understand, test, operate and eventually remove. The cost has not disappeared. It has moved downstream.</p>
 
+      <p>AI has also removed effort as a useful signal. Producing a twenty-page proposal once required enough work to filter out many weak ideas. Now the proposal is cheap, but rejecting it still requires someone to understand the system, trace the dependencies and explain why the confident answer does not fit reality.</p>
+
       <figure class="article-figure workflow-figure" aria-labelledby="workflow-title workflow-caption">
         <h3 id="workflow-title">Faster code does not make every step faster</h3>
         <div class="workflow-chart" role="img" aria-label="An illustrative comparison showing AI shortening generation while deciding, understanding, reviewing, testing, integrating and operating remain. Review grows slightly because more generated output must be checked.">
@@ -112,7 +114,7 @@
 
       <p>This changes the review problem. We can no longer use completeness of presentation as a proxy for completeness of reasoning. I would look for the decision trail instead:</p>
 
-      <div class="q"><span>What problem are we solving, and what evidence shows it is the current constraint?</span><span>Which alternatives were considered?</span><span>What did we choose not to build?</span><span>Who owns the production outcome?</span><span>What evidence would make us stop or reverse the decision?</span></div>
+      <div class="q"><span>What problem are we solving, and what evidence shows it is the current constraint?</span><span>Which alternatives were considered?</span><span>What did we choose not to build?</span><span>Which production metrics, real dependencies or previous outcomes support the proposal?</span><span>Which assumptions were checked with the people who would build and operate it?</span><span>Who owns the production outcome?</span><span>What evidence would make us stop or reverse the decision?</span></div>
 
       <p>A generated plan can help answer these questions. It should not be allowed to make their absence harder to notice.</p>
 
