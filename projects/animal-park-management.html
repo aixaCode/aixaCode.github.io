@@ -62,19 +62,11 @@
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
         <h3 class="diagram-title">The client can request a change. Only the server can approve it.</h3>
-        <div class="diagram"><pre class="mermaid">flowchart LR
-  Player["Player action"] --> Client["Mobile client<br/>requests a change"]
-  Client --> API["Authenticated API<br/>checks app version"]
-  API --> Authority{"Server validates<br/>the game rules"}
-  Authority -->|valid| State["Game state changes safely<br/>progress · clubs · chat · tournaments"]
-  Authority -->|invalid or outdated| Reject["Request rejected<br/>state unchanged"]
-
-  classDef client fill:transparent,stroke:#b7bbc2,color:#222127;
-  classDef boundary fill:transparent,stroke:#2e4bff,color:#222127;
-  classDef state fill:transparent,stroke:#059669,color:#222127;
-  class Player,Client,API client;
-  class Authority boundary;
-  class State state;</pre></div>
+        <div class="sketch-diagram" aria-label="Server-authoritative game-state flow">
+          <div class="sketch-chain"><div class="sketch-node">Player action</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Mobile client requests change</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Authenticated API checks version</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Server validates game rules</div></div>
+          <span class="sketch-arrow" aria-hidden="true"></span>
+          <div class="sketch-path"><div><span class="sketch-branch-label">Valid</span><div class="sketch-node is-positive">Game state changes safely</div></div><div><span class="sketch-branch-label">Invalid or outdated</span><div class="sketch-node is-warning">Request rejected · state unchanged</div></div></div>
+        </div>
         <p class="diagram-caption">The phone presents the experience, but it cannot award progress or alter shared state on its own. Invalid requests leave the authoritative state untouched.</p>
       </section>
       <section class="case-section" id="components">
@@ -196,9 +188,5 @@ await db.runTransaction(async (transaction) =&gt; {
   </div>
 </footer>
 <script src="../site.js?v=diagram-responsive-1"></script>
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
-</script>
 </body>
 </html>

@@ -62,21 +62,12 @@
       <section class="case-section" id="architecture">
         <h2>Where AI sits</h2>
         <h3 class="diagram-title">Automation produces early evidence. People still decide what ships.</h3>
-        <div class="diagram"><pre class="mermaid">flowchart LR
-  Change["Code change"] --> Signals["Early automated evidence<br/>AI review · tests · visual diff · frame-time delta"]
-  Signals --> Decision{"Developer + QA<br/>release decision"}
-  Decision -->|ready| Release["Release"]
-  Decision -->|not ready| Change
-  Release --> Evidence["Evidence after merge<br/>Sentry, regressions, escaped defects"]
-  Evidence --> Next["Next engineering decision"]
-  Next --> Change
-
-  classDef input fill:transparent,stroke:#b7bbc2,color:#222127;
-  classDef decision fill:transparent,stroke:#2e4bff,color:#222127;
-  classDef result fill:transparent,stroke:#059669,color:#222127;
-  class Change,Signals,Evidence input;
-  class Decision decision;
-  class Release,Next result;</pre></div>
+        <div class="sketch-diagram" aria-label="AI evidence and human release decision loop">
+          <div class="sketch-chain"><div class="sketch-node">Code change</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">AI review · tests · visual diff · frame-time delta</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Developer + QA release decision</div></div>
+          <span class="sketch-arrow" aria-hidden="true"></span>
+          <div class="sketch-path"><div><span class="sketch-branch-label">Ready</span><div class="sketch-node is-positive">Release</div></div><div><span class="sketch-branch-label">Not ready</span><div class="sketch-node is-warning">Return to the change</div></div></div>
+          <div class="sketch-loop">Production evidence informs the next engineering decision</div>
+        </div>
         <p class="diagram-caption">AI and automated tests shorten the path to useful evidence. Developers and QA remain accountable for interpreting it and approving the release.</p>
       </section>
       <section class="case-section" id="hard-problems">
@@ -121,9 +112,5 @@
   </div>
 </footer>
 <script src="../site.js?v=diagram-responsive-1"></script>
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
-</script>
 </body>
 </html>

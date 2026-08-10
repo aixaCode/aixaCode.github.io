@@ -148,20 +148,10 @@
 
       <figure class="article-figure" aria-labelledby="direction-title direction-caption">
         <h3 id="direction-title">Technology comes last</h3>
-        <div class="diagram"><pre class="mermaid">flowchart LR
-  Direction["Product direction<br/>Open world"] --> Outcomes["User outcomes<br/>More people · longer sightlines · stable performance"]
-  Outcomes --> Constraints["Technical constraints<br/>Streaming · frame budget · content scale"]
-  Constraints --> Boundaries["Architecture boundaries<br/>What must change · what can stay"]
-  Boundaries --> Choices["Technology choices"]
-  Evidence["Production evidence"] -.-> Outcomes
-  Evidence -.-> Constraints
-
-  classDef direction fill:transparent,stroke:#2e4bff,color:#222127;
-  classDef reasoning fill:transparent,stroke:#b7bbc2,color:#222127;
-  classDef choice fill:transparent,stroke:#059669,color:#222127;
-  class Direction direction;
-  class Outcomes,Constraints,Boundaries,Evidence reasoning;
-  class Choices choice;</pre></div>
+        <div class="sketch-diagram" aria-label="Product direction leads to technology choices">
+          <div class="sketch-chain"><div class="sketch-node is-accent">Product direction<br>Open world</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">User outcomes<br>More people · longer sightlines · stable performance</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Technical constraints<br>Streaming · frame budget · content scale</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Architecture boundaries<br>What changes · what stays</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-positive">Technology choices</div></div>
+          <div class="sketch-loop">Production evidence checks the outcomes and constraints</div>
+        </div>
         <figcaption id="direction-caption">Product direction defines the experience. The experience reveals the constraints. Architecture and technology follow from those constraints, then production evidence checks the decision.</figcaption>
       </figure>
 
@@ -200,10 +190,6 @@
 </footer>
 
 <script src="../site.js?v=diagram-responsive-1"></script>
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
-</script>
 
 </body>
 </html>

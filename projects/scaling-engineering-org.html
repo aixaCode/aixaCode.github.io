@@ -75,33 +75,38 @@
       <section class="case-section" id="architecture">
         <h2>Operating model</h2>
         <h3 class="diagram-title">Before and after: who owns the decision?</h3>
-        <div class="diagram"><pre class="mermaid">flowchart TB
-  subgraph Before["Before · senior leader is the queue"]
-    direction LR
-    Requests["Team questions"] --> Queue["Senior leader<br/>reviews everything"] --> Wait["Teams wait<br/>for a decision"]
-  end
+        <div class="sketch-diagram" aria-label="Before and after comparison of decision ownership">
+          <section class="sketch-state" aria-labelledby="before-state">
+            <p class="sketch-state-label" id="before-state">Before · senior leader is the queue</p>
+            <div class="sketch-flow">
+              <div class="sketch-node">Team questions</div>
+              <span class="sketch-arrow" aria-hidden="true"></span>
+              <div class="sketch-node is-warning">Senior leader reviews everything</div>
+              <span class="sketch-arrow" aria-hidden="true"></span>
+              <div class="sketch-node is-warning">Teams wait for a decision</div>
+            </div>
+          </section>
 
-  subgraph After["After · teams own normal decisions"]
-    direction TB
-    Context["Objectives · context · boundaries"] --> TeamA["Team A<br/>decides"]
-    Context --> TeamB["Team B<br/>decides"]
-    Context --> TeamC["Team C<br/>decides"]
-    TeamA -.->|exception| Escalation["Senior leader<br/>handles exceptions"]
-    TeamB -.->|exception| Escalation
-    TeamC -.->|exception| Escalation
-    TeamA --> Delivery["Teams deliver"]
-    TeamB --> Delivery
-    TeamC --> Delivery
-  end
+          <div class="sketch-transition" aria-hidden="true"><span>Change the operating model</span><b>↓</b></div>
 
-  Wait -->|change the operating model| Context
-
-  classDef risk fill:transparent,stroke:#dc2626,color:#222127;
-  classDef design fill:transparent,stroke:#2e4bff,color:#222127;
-  classDef result fill:transparent,stroke:#059669,color:#222127;
-  class Queue,Wait risk;
-  class Context,Escalation design;
-  class TeamA,TeamB,TeamC,Delivery result;</pre></div>
+          <section class="sketch-state" aria-labelledby="after-state">
+            <p class="sketch-state-label" id="after-state">After · teams own normal decisions</p>
+            <div class="sketch-flow">
+              <div class="sketch-node is-accent">Objectives · context · boundaries</div>
+              <span class="sketch-arrow" aria-hidden="true"></span>
+              <div class="sketch-teams" aria-label="Teams decide locally">
+                <div class="sketch-node">Team A decides</div>
+                <div class="sketch-node">Team B decides</div>
+                <div class="sketch-node">Team C decides</div>
+              </div>
+              <span class="sketch-arrow" aria-hidden="true"></span>
+              <div class="sketch-branches">
+                <div><span class="sketch-branch-label">Normal decisions</span><div class="sketch-node is-positive">Teams deliver</div></div>
+                <div><span class="sketch-branch-label">Exceptions only</span><div class="sketch-node is-warning">Senior leader helps</div></div>
+              </div>
+            </div>
+          </section>
+        </div>
         <p class="diagram-caption">Before, normal team decisions queue behind a senior leader. After, teams use shared objectives and boundaries to decide locally; only unusual or high-risk cases escalate.</p>
       </section>
 
@@ -190,10 +195,6 @@
     </div>
   </div>
 </footer>
-<script src="../site.js?v=diagram-responsive-1"></script>
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
-</script>
+<script src="../site.js"></script>
 </body>
 </html>

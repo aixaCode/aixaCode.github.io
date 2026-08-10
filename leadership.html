@@ -59,22 +59,16 @@
     <p>It is tempting to use the thing that is easiest to see. When impact takes time, we count output. When a decision feels risky, we add an approval. When nobody is sure who owns something, we schedule another meeting.</p>
     <p>I have done all of these. Sometimes they help. The problem starts when the temporary proxy becomes what the team is expected to optimize.</p>
     <h3 class="diagram-title">An easy proxy can quietly replace the result we wanted.</h3>
-    <div class="diagram"><pre class="mermaid">flowchart LR
-  Goal["Real result<br/>better product · stronger team · clear ownership"] --> Delay["Impact takes time<br/>and needs evidence"]
-  Delay --> Proxy{"What is easier<br/>to count?"}
-  Proxy --> Activity["Output · approvals<br/>meetings · status"]
-  Activity --> Reward["People optimize<br/>the visible activity"]
-  Reward --> Cost["Hidden cost<br/>less judgment · more dependency"]
-  Cost --> Reset["Return to the result<br/>What actually changed?"]
-
-  classDef goal fill:transparent,stroke:#2e4bff,color:#222127;
-  classDef risk fill:transparent,stroke:#b7bbc2,color:#222127;
-  classDef cost fill:transparent,stroke:#dc2626,color:#222127;
-  classDef question fill:transparent,stroke:#059669,color:#222127;
-  class Goal goal;
-  class Delay,Proxy,Activity,Reward risk;
-  class Cost cost;
-  class Reset question;</pre></div>
+    <div class="sketch-diagram" aria-label="How a proxy can replace the real result">
+      <div class="sketch-chain">
+        <div class="sketch-node is-accent">Real result<br>Better product · stronger team · clear ownership</div><span class="sketch-step-arrow" aria-hidden="true">→</span>
+        <div class="sketch-node">Impact takes time and needs evidence</div><span class="sketch-step-arrow" aria-hidden="true">→</span>
+        <div class="sketch-node">Choose what is easier to count</div><span class="sketch-step-arrow" aria-hidden="true">→</span>
+        <div class="sketch-node is-warning">People optimise output · approvals · meetings · status</div><span class="sketch-step-arrow" aria-hidden="true">→</span>
+        <div class="sketch-node is-warning">Hidden cost<br>Less judgment · more dependency</div>
+      </div>
+      <div class="sketch-loop">Return to the real result: what actually changed?</div>
+    </div>
     <p class="diagram-caption">Metrics and process are useful while they remain evidence about the goal. They become harmful when people are rewarded for the proxy itself.</p>
     <p class="callout">I try to check regularly whether a metric or process is still helping us, or whether we are now maintaining it out of habit.</p>
   </section>
@@ -99,20 +93,16 @@
     <p>One team I led had grown faster than its way of working. Too many decisions returned to the same senior people, managers lacked a clear remit and QA was often involved late. I had contributed to that dependency by staying too close to too many decisions.</p>
     <p>We clarified ownership, gave managers and QA leads more authority and made release quality easier to see. The change took time. It involved coaching, clearer expectations and occasionally letting someone make a decision differently from how I would have made it.</p>
     <h3 class="diagram-title">The change was moving decisions closer to the work.</h3>
-    <div class="diagram"><pre class="mermaid">flowchart LR
-  Queue["Before<br/>decisions return to<br/>the same senior people"] --> Diagnose["Why?<br/>unclear ownership · late QA · weak feedback"]
-  Diagnose --> Boundaries["Clarify context,<br/>decision rights and escalation"]
-  Boundaries --> Teams["Managers, leads and teams<br/>decide close to the work"]
-  Teams --> Evidence["Release quality · reliability<br/>team load · outcomes"]
-  Evidence --> Learn["Adjust boundaries<br/>and coaching"]
-  Learn --> Teams
-
-  classDef problem fill:transparent,stroke:#dc2626,color:#222127;
-  classDef work fill:transparent,stroke:#2e4bff,color:#222127;
-  classDef result fill:transparent,stroke:#059669,color:#222127;
-  class Queue,Diagnose problem;
-  class Boundaries,Learn work;
-  class Teams,Evidence result;</pre></div>
+    <div class="sketch-diagram" aria-label="Moving decisions closer to the work">
+      <div class="sketch-chain">
+        <div class="sketch-node is-warning">Before<br>Decisions return to the same senior people</div><span class="sketch-step-arrow" aria-hidden="true">→</span>
+        <div class="sketch-node">Diagnose<br>Unclear ownership · late QA · weak feedback</div><span class="sketch-step-arrow" aria-hidden="true">→</span>
+        <div class="sketch-node is-accent">Clarify context · decision rights · escalation</div><span class="sketch-step-arrow" aria-hidden="true">→</span>
+        <div class="sketch-node is-positive">Managers, leads and teams decide close to the work</div><span class="sketch-step-arrow" aria-hidden="true">→</span>
+        <div class="sketch-node">Check release quality · reliability · team load · outcomes</div>
+      </div>
+      <div class="sketch-loop">Adjust boundaries and coaching, then check again</div>
+    </div>
     <p class="diagram-caption">Delegation was not a one-way handoff. Evidence from delivery and team load showed where ownership or support still needed adjustment.</p>
     <p class="callout">The result I wanted was simple: fewer decisions waiting for the same person and more people able to carry responsibility from beginning to end.</p>
     <p>We used frameworks where they helped, including Shape Up. None of them removed the need to set priorities, share context and trust people with consequential decisions.</p>
@@ -164,9 +154,5 @@
   </div>
 </footer>
 <script src="site.js?v=diagram-responsive-1"></script>
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
-</script>
 </body>
 </html>

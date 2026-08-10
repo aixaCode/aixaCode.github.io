@@ -71,24 +71,12 @@
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
         <h3 class="diagram-title">Every request gets context, passes a permission boundary and leaves a record.</h3>
-        <div class="diagram"><pre class="mermaid">flowchart LR
-  Requests["Requests<br/>Telegram · email · CLI · schedules"] --> Context["Relevant context<br/>identity · conversation · knowledge"]
-  Context --> Agent["AI reasons and<br/>proposes an action"]
-  Agent --> Gate{"Permission gate<br/>allow · ask · deny"}
-  Gate -->|allowed| Tools["Approved tools<br/>calendar · web · files · accounting"]
-  Gate -->|confirmation needed| Person["Human confirms"]
-  Person --> Tools
-  Gate -->|denied| Stop["Action stops safely"]
-  Tools --> Delivery["Response delivered"]
-  Gate -.-> Audit["Audit trail"]
-  Tools -.-> Audit
-
-  classDef input fill:transparent,stroke:#6b6f76,color:#222127;
-  classDef decision fill:transparent,stroke:#2e4bff,color:#222127;
-  classDef result fill:transparent,stroke:#059669,color:#222127;
-  class Requests,Context,Agent input;
-  class Gate,Person decision;
-  class Tools,Delivery,Audit result;</pre></div>
+        <div class="sketch-diagram" aria-label="Assistant request and permission flow">
+          <div class="sketch-chain"><div class="sketch-node">Telegram · email · CLI · schedules</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Identity · conversation · knowledge</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">AI proposes an action</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Permission gate</div></div>
+          <span class="sketch-arrow" aria-hidden="true"></span>
+          <div class="sketch-grid" style="--columns:3"><div class="sketch-node is-positive">Allow<br>Use approved tool</div><div class="sketch-node is-accent">Ask<br>Human confirms</div><div class="sketch-node is-warning">Deny<br>Stop safely</div></div>
+          <div class="sketch-note">Every permission decision and tool action leaves an audit record.</div>
+        </div>
         <p class="diagram-caption">The assistant may propose an action, but permissions determine whether it proceeds, pauses for confirmation or stops. Tool use remains auditable.</p>
         <p>Incoming messages are acknowledged only after durable acceptance. Telegram is the default control and delivery surface; email sends a receipt, while analysis and suggested reply drafts return privately to the mapped user in Telegram. Temporary failures remain queued and retry automatically, including at the reset time reported by a model subscription limit.</p>
         <p>The model may request tools through the local MCP server, but it does not directly execute privileged actions. Every request still passes through profile policy, tool metadata, path validation and optional human confirmation. Storage is intentionally split: Markdown remains inspectable knowledge, SQLite holds queryable operational objects, and source documents preserve the evidence behind both.</p>
@@ -247,9 +235,5 @@ export async function enforce(profile, confirm, name, input) {
   </div>
 </footer>
 <script src="../site.js?v=diagram-responsive-1"></script>
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
-</script>
 </body>
 </html>

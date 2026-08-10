@@ -177,22 +177,6 @@ li { margin-bottom: 8px; }
 .toc a { display: block; margin-bottom: 10px; text-decoration: none; transition: color .2s ease, transform .2s ease; }
 .toc a:hover { color: var(--accent); transform: translateX(3px); }
 .diagram-title { margin: 32px 0 8px; font-family: "Segoe Print", "Bradley Hand", ui-rounded, sans-serif; font-size: 1.08rem; font-weight: 600; letter-spacing: -.01em; }
-.diagram { max-width: 100%; margin: 12px 0; padding: 24px; overflow-x: auto; border: 1px solid var(--line); border-radius: 3px 1px 4px 2px / 2px 4px 1px 3px; background: var(--card); }
-.mermaid { max-width: 100%; font-family: "Segoe Print", "Bradley Hand", ui-rounded, sans-serif; }
-.diagram > .mermaid { width: 100% !important; min-width: 0 !important; }
-.diagram svg { width: 100% !important; max-width: 100%; height: auto; }
-.diagram .node rect,
-.diagram .node circle,
-.diagram .node ellipse,
-.diagram .node polygon,
-.diagram .node path { fill: var(--card) !important; }
-.diagram .cluster rect { fill: transparent !important; stroke: var(--line-strong) !important; }
-.diagram .nodeLabel,
-.diagram .nodeLabel p,
-.diagram .cluster-label,
-.diagram .cluster-label span { color: var(--fg) !important; }
-.diagram .edgeLabel,
-.diagram .edgeLabel rect { background: var(--card) !important; fill: var(--card) !important; color: var(--muted) !important; }
 .diagram-caption { max-width: 760px; margin: 10px 0 30px; color: var(--muted); font-size: .84rem; line-height: 1.55; }
 .sketch-diagram { max-width: 100%; margin: 12px 0; padding: clamp(20px, 3vw, 30px); border: 1px solid var(--line); border-radius: 3px 1px 4px 2px / 2px 4px 1px 3px; background: var(--card); color: var(--fg); }
 .sketch-state { padding: clamp(18px, 2.5vw, 26px); border: 1px solid var(--line-strong); border-radius: 3px 1px 4px 2px / 2px 4px 1px 3px; }
@@ -213,6 +197,18 @@ li { margin-bottom: 8px; }
 .sketch-branches > div { min-width: 0; display: grid; gap: 8px; }
 .sketch-branch-label { color: var(--subtle); font-family: var(--mono); font-size: .6rem; letter-spacing: .06em; text-align: center; text-transform: uppercase; }
 .sketch-branches .sketch-node { width: 100%; font-size: .78rem; }
+.sketch-chain { width: 100%; display: flex; align-items: stretch; justify-content: center; gap: 8px; }
+.sketch-chain .sketch-node { width: auto; min-width: 0; flex: 1 1 0; padding-inline: 8px; font-size: .76rem; }
+.sketch-step-arrow { flex: 0 0 16px; display: grid; place-items: center; color: var(--subtle); font-family: var(--font); font-size: 1rem; }
+.sketch-grid { width: 100%; display: grid; grid-template-columns: repeat(var(--columns, 2), minmax(0, 1fr)); gap: 10px; }
+.sketch-grid .sketch-node { width: 100%; }
+.sketch-path { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.sketch-path > div { min-width: 0; display: grid; align-content: start; gap: 8px; }
+.sketch-path .sketch-node { width: 100%; }
+.sketch-note { margin-top: 14px; padding: 10px 12px; border-left: 1.5px solid var(--accent); color: var(--muted); font-family: "Segoe Print", "Bradley Hand", ui-rounded, sans-serif; font-size: .78rem; line-height: 1.45; }
+.sketch-loop { margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--subtle); font-family: var(--mono); font-size: .6rem; letter-spacing: .05em; text-align: center; text-transform: uppercase; }
+.sketch-loop::before { content: "↺"; color: var(--accent); font-family: var(--font); font-size: 1.1rem; }
+.sketch-separator { height: 1px; margin: 22px 0; background: var(--line); }
 .callout { margin: 28px 0; padding: 20px 24px; border-left: 2px solid var(--accent); background: var(--accent-soft); }
 .spec-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 28px; border: 1px solid var(--line); background: var(--line); }
 .spec { min-height: 145px; padding: 22px; background: var(--card); }
@@ -295,6 +291,9 @@ html[data-theme="dark"] .workflow-track .review { background: #291b0d; color: #f
   .decision-table tr { margin-bottom: 14px; padding: 10px 14px; border: 1px solid var(--line); background: var(--card); }
   .decision-table td { padding: 10px 0; }
   .contact-cta { grid-template-columns: 1fr; align-items: start; }
+  .sketch-chain { flex-direction: column; align-items: center; gap: 0; }
+  .sketch-chain .sketch-node { width: 100%; min-height: 54px; flex: none; font-size: .8rem; }
+  .sketch-step-arrow { min-height: 24px; transform: rotate(90deg); }
 }
 
 @media (max-width: 560px) {
@@ -315,6 +314,8 @@ html[data-theme="dark"] .workflow-track .review { background: #291b0d; color: #f
   .sketch-teams .sketch-node { min-height: 62px; padding-inline: 5px; font-size: .72rem; }
   .sketch-branches { gap: 8px; }
   .sketch-branches .sketch-node { min-height: 62px; padding-inline: 7px; font-size: .72rem; }
+  .sketch-grid { grid-template-columns: 1fr; }
+  .sketch-path { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -88,19 +88,13 @@
 
       <figure class="article-figure" aria-labelledby="demo-title demo-caption">
         <h3 id="demo-title">A demo proves the visible path</h3>
-        <div class="diagram"><pre class="mermaid">flowchart TB
-  subgraph Visible["What the demo shows"]
-    Prompt["Prompt"] --> Spec["Generated specification"] --> Happy["Working happy path"]
-  end
-  Happy -.-> Auth["Authentication + permissions"]
-  Happy -.-> Failure["Failure recovery + migration"]
-  Happy -.-> Ops["Observability + support"]
-  Happy -.-> Cost["Cost + ownership"]
-
-  classDef visible fill:transparent,stroke:#2e4bff,color:#222127;
-  classDef hidden fill:transparent,stroke:#d97706,color:#222127;
-  class Prompt,Spec,Happy visible;
-  class Auth,Failure,Ops,Cost hidden;</pre></div>
+        <div class="sketch-diagram" aria-label="Visible demo and hidden production obligations">
+          <p class="sketch-state-label">What the demo shows</p>
+          <div class="sketch-chain"><div class="sketch-node is-accent">Prompt</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Generated specification</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Working happy path</div></div>
+          <div class="sketch-separator"></div>
+          <p class="sketch-state-label">What production still needs</p>
+          <div class="sketch-grid" style="--columns:2"><div class="sketch-node is-warning">Authentication + permissions</div><div class="sketch-node is-warning">Failure recovery + migration</div><div class="sketch-node is-warning">Observability + support</div><div class="sketch-node is-warning">Cost + ownership</div></div>
+        </div>
         <figcaption id="demo-caption">The generated path is visible. Most production obligations remain unanswered until someone designs and owns them.</figcaption>
       </figure>
 
@@ -142,19 +136,11 @@
 
       <figure class="article-figure" aria-labelledby="boundary-title boundary-caption">
         <h3 id="boundary-title">The model can act. A person still owns the outcome.</h3>
-        <div class="diagram"><pre class="mermaid">flowchart LR
-  Goal["Goal"] --> AI["AI action"] --> Checks["Permissions + checks"] --> Change["Production change"] --> Result["Observable result"]
-  Owner["Named owner"] --> Goal
-  Owner --> Checks
-  Result -->|failure or context change| Owner
-  Owner --> Response["Correct · stop · change rules"] --> Checks
-
-  classDef action fill:transparent,stroke:#2e4bff,color:#222127;
-  classDef control fill:transparent,stroke:#d97706,color:#222127,stroke-width:3px;
-  classDef outcome fill:transparent,stroke:#059669,color:#222127;
-  class Goal,AI,Change action;
-  class Owner,Checks,Response control;
-  class Result outcome;</pre></div>
+        <div class="sketch-diagram" aria-label="AI action with a named human owner">
+          <div class="sketch-node is-warning" style="margin:0 auto 18px">Named owner<br>Sets goal · defines rules · monitors result</div>
+          <div class="sketch-chain"><div class="sketch-node">Goal</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">AI action</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-warning">Permissions + checks</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Production change</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-positive">Observable result</div></div>
+          <div class="sketch-loop">Failure or context change returns to the owner: correct · stop · change rules</div>
+        </div>
         <figcaption id="boundary-caption">Ownership means defining the goal and rules, monitoring the result and responding when the system fails or its context changes. An audit trail helps the owner do that work; it does not replace them.</figcaption>
       </figure>
 
@@ -188,9 +174,5 @@
 
 <footer><div class="foot-in"><span>© <span id="yr">2026</span> Agnieszka Besz</span><div class="social"><a href="https://github.com/aixaCode">GitHub</a><a href="https://www.linkedin.com/in/agabesz">LinkedIn</a><a href="mailto:aga@besz.me">Email</a></div></div></footer>
 <script src="../site.js?v=diagram-responsive-1"></script>
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
-</script>
 </body>
 </html>

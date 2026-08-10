@@ -152,18 +152,13 @@
 
       <figure class="article-figure" aria-labelledby="constraint-title constraint-caption">
         <h3 id="constraint-title">The constraint moves</h3>
-        <div class="diagram"><pre class="mermaid">flowchart LR
-  subgraph Now["Today"]
-    A1["Acquisition"] --> O1["Onboarding"] --> R1["Retention"] --> S1["Stability"] --> D1["Delivery"]
-  end
-  subgraph Later["After the first constraint improves"]
-    A2["Acquisition"] --> O2["Onboarding"] --> R2["Retention"] --> S2["Stability"] --> D2["Delivery"]
-  end
-
-  classDef normal fill:transparent,stroke:#b7bbc2,color:#222127;
-  classDef constraint fill:transparent,stroke:#d97706,color:#222127,stroke-width:3px;
-  class A1,O1,S1,D1,A2,O2,R2,D2 normal;
-  class R1,S2 constraint;</pre></div>
+        <div class="sketch-diagram" aria-label="The active constraint changes over time">
+          <p class="sketch-state-label">Today · retention is the constraint</p>
+          <div class="sketch-chain"><div class="sketch-node">Acquisition</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Onboarding</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-warning">Retention</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Stability</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Delivery</div></div>
+          <div class="sketch-separator"></div>
+          <p class="sketch-state-label">Later · stability becomes the constraint</p>
+          <div class="sketch-chain"><div class="sketch-node">Acquisition</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Onboarding</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Retention</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-warning">Stability</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Delivery</div></div>
+        </div>
         <figcaption id="constraint-caption">In this illustrative example, retention limits progress first. Once it improves, stability becomes the next constraint. Priorities should move with the system.</figcaption>
       </figure>
 
@@ -257,10 +252,6 @@
 </footer>
 
 <script src="../site.js?v=diagram-responsive-1"></script>
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
-</script>
 
 </body>
 </html>

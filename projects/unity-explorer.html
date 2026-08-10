@@ -57,30 +57,21 @@
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
         <h3 class="diagram-title">The product direction determines which technical boundaries matter.</h3>
-        <div class="diagram"><pre class="mermaid">flowchart LR
-  Outcome["Product outcome<br/>more people sharing one stable world"] --> Constraints["Real constraints<br/>creator content · density · streaming · weekly releases"]
-  Constraints --> Client["Unity client coordinates<br/>the shared experience"]
-  Client --> Streaming["Load a changing world"]
-  Client --> Runtime["Isolate creator code"]
-  Client --> Presence["Keep people visible,<br/>moving and talking"]
-  Streaming --> Experience["Stable shared experience"]
-  Runtime --> Experience
-  Presence --> Experience
-
-  classDef goal fill:transparent,stroke:#059669,color:#222127;
-  classDef constraint fill:transparent,stroke:#b7bbc2,color:#222127;
-  classDef system fill:transparent,stroke:#2e4bff,color:#222127;
-  class Outcome,Experience goal;
-  class Constraints constraint;
-  class Client,Streaming,Runtime,Presence system;</pre></div>
+        <div class="sketch-diagram" aria-label="Product direction to Explorer architecture">
+          <div class="sketch-node is-positive" style="margin-inline:auto">Outcome<br>More people sharing one stable world</div><span class="sketch-arrow" aria-hidden="true"></span>
+          <div class="sketch-node" style="margin-inline:auto">Constraints<br>Creator content · density · streaming · weekly releases</div><span class="sketch-arrow" aria-hidden="true"></span>
+          <div class="sketch-node is-accent" style="margin-inline:auto">Unity client coordinates the shared experience</div><span class="sketch-arrow" aria-hidden="true"></span>
+          <div class="sketch-grid" style="--columns:3"><div class="sketch-node">Load a changing world</div><div class="sketch-node">Isolate creator code</div><div class="sketch-node">Keep people visible, moving and talking</div></div>
+          <div class="sketch-note">These three boundaries protect one stable shared experience.</div>
+        </div>
         <p class="diagram-caption">The architecture starts from the experience Decentraland wants to support. Streaming, runtime isolation and real-time presence are responses to those product constraints.</p>
 
         <h3 class="diagram-title">Production evidence decides what engineering fixes first.</h3>
-        <div class="diagram"><pre class="mermaid">flowchart LR
-  Signals["Production evidence<br/>crashes · hangs · frame time · loading"] --> Priority{"What currently limits<br/>the user experience?"}
-  Priority --> Stability["1. Stability"]
-  Stability --> Performance["2. Performance"]
-  Performance --> Features["3. Feature work"]</pre></div>
+        <div class="sketch-diagram" aria-label="Production evidence determines engineering priority">
+          <div class="sketch-node" style="margin-inline:auto">Production evidence<br>Crashes · hangs · frame time · loading</div><span class="sketch-arrow" aria-hidden="true"></span>
+          <div class="sketch-node is-accent" style="margin-inline:auto">What currently limits the user experience?</div><span class="sketch-arrow" aria-hidden="true"></span>
+          <div class="sketch-chain"><div class="sketch-node is-warning">1 · Stability</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">2 · Performance</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">3 · Feature work</div></div>
+        </div>
         <p class="diagram-caption">Feature work follows the reliability and performance required for the product promise to hold.</p>
         <p>Three decisions define the client. Game state lives in a data-oriented ECS because frame-time spikes are user-facing product problems. Creator scenes run in isolated V8 runtimes and communicate through CRDT, which helps reconcile scene and engine state but does not solve multiplayer authority by itself. Real-time multiplayer still needs an explicit authority boundary; peer-to-peer did not scale as more players shared the same space, so reliable voice, avatar sync and coordination moved toward server-backed infrastructure.</p>
       </section>
@@ -88,22 +79,10 @@
         <h2>Creator content pipeline</h2>
         <p>I worked directly on the asset-bundle converter that connects Decentraland's creator tools to the production client. Creators build scenes with the TypeScript SDK and publish their original GLTF/GLB assets to Catalyst. Catalyst remains the content-addressed source of truth; optimization is a derived, replaceable distribution step rather than a mutation of the creator's source content.</p>
         <h3 class="diagram-title">Creator source stays intact while a replaceable pipeline optimizes delivery.</h3>
-        <div class="diagram"><pre class="mermaid">flowchart LR
-  Creator["Creator publishes<br/>source content"] --> Source["Source of truth<br/>Catalyst · original GLTF/GLB"]
-  Source --> Queue["Conversion queue<br/>SQS"]
-  Queue --> Workers["Isolated processing<br/>headless Unity workers"]
-  Workers --> Delivery["Optimized derived assets<br/>AssetBundles · CDN"]
-  Delivery --> Explorer["Explorer loads<br/>optimized content"]
-  Source -->|fallback remains available| Explorer
-  Contracts["Shared SDK contracts"] -.-> Creator
-  Contracts -.-> Explorer
-
-  classDef source fill:transparent,stroke:#059669,color:#222127;
-  classDef processing fill:transparent,stroke:#c2410c,color:#222127;
-  classDef contract fill:transparent,stroke:#b7bbc2,color:#222127;
-  class Source source;
-  class Queue,Workers,Delivery processing;
-  class Contracts contract;</pre></div>
+        <div class="sketch-diagram" aria-label="Replaceable content optimisation pipeline">
+          <div class="sketch-chain"><div class="sketch-node">Creator publishes source</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-positive">Source of truth<br>Catalyst · original GLTF/GLB</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-warning">Conversion queue</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-warning">Isolated Unity workers</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Optimised assets · CDN</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Explorer</div></div>
+          <div class="sketch-note">The original source remains available as a fallback. Shared SDK contracts connect creators and Explorer.</div>
+        </div>
         <p class="diagram-caption">Optimization creates replaceable delivery assets; it does not mutate the creator's published source. Explorer can still fall back to the original content.</p>
         <p>The dependency graph matters because changes cross several ownership boundaries: SDK contracts shape creator output, Catalyst owns canonical content and manifests, the converter produces platform-specific derivatives, and Explorer consumes both the source metadata and optimized bundles. SQS decouples deployment from conversion, absorbs changes in demand and lets conversion capacity scale horizontally without blocking creators.</p>
         <p>The outcome is faster runtime loading and distribution of optimized content while preserving portable GLTF/GLB assets as the canonical source. If the optimization strategy changes, bundles can be regenerated from Catalyst instead of asking creators to republish their scenes.</p>
@@ -151,9 +130,5 @@
   </div>
 </footer>
 <script src="../site.js?v=diagram-responsive-1"></script>
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
-</script>
 </body>
 </html>
