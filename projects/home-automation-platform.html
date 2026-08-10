@@ -56,16 +56,29 @@
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <h3 class="diagram-title">The home keeps working locally, even when remote access is unavailable.</h3>
-        <div class="sketch-diagram" aria-label="Local-first home automation architecture">
-          <div class="sketch-grid" style="--columns:2"><div class="sketch-node">Sensors + devices</div><div class="sketch-node">Remote access</div></div>
-          <span class="sketch-arrow" aria-hidden="true"></span>
-          <div class="sketch-node is-accent" style="margin-inline:auto">Protected boundary → local control</div>
-          <span class="sketch-arrow" aria-hidden="true"></span>
-          <div class="sketch-grid" style="--columns:2"><div class="sketch-node is-positive">Automations continue inside the home</div><div class="sketch-node is-positive">Local dashboards + alerts</div></div>
-          <div class="sketch-note">If the internet is unavailable, local operation continues. Monitoring and logs remain available.</div>
+        <h3 class="diagram-title">Local control is the main path. Remote access is optional.</h3>
+        <div class="sketch-diagram" aria-label="Local automation continues without the optional remote-access path">
+          <div class="sketch-path">
+            <div>
+              <span class="sketch-branch-label">Core path · works without internet</span>
+              <div class="sketch-node">Sensors + devices</div>
+              <span class="sketch-arrow" style="margin-inline:auto" aria-hidden="true"></span>
+              <div class="sketch-node is-accent">Local controller</div>
+              <span class="sketch-arrow" style="margin-inline:auto" aria-hidden="true"></span>
+              <div class="sketch-node is-positive">Automations · dashboards · alerts</div>
+            </div>
+            <div>
+              <span class="sketch-branch-label">Optional path · internet required</span>
+              <div class="sketch-node">Away from home</div>
+              <span class="sketch-arrow" style="margin-inline:auto" aria-hidden="true"></span>
+              <div class="sketch-node is-warning">Protected remote tunnel</div>
+              <span class="sketch-arrow" style="margin-inline:auto" aria-hidden="true"></span>
+              <div class="sketch-node">Connects to local controller</div>
+            </div>
+          </div>
+          <div class="sketch-note">If the internet fails, only remote access stops. Devices, automations and local monitoring continue.</div>
         </div>
-        <p class="diagram-caption">Remote access is an additional path, not a dependency for basic automation. Local control remains the authoritative layer.</p>
+        <p class="diagram-caption">The local controller owns normal operation. Remote access reaches that controller through a narrow protected path, but the house does not depend on that path to function.</p>
       </section>
       <section class="case-section" id="hard-problems">
         <h2>Interesting problems</h2>

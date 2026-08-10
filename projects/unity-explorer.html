@@ -66,13 +66,13 @@
         </div>
         <p class="diagram-caption">The architecture starts from the experience Decentraland wants to support. Streaming, runtime isolation and real-time presence are responses to those product constraints.</p>
 
-        <h3 class="diagram-title">Production evidence decides what engineering fixes first.</h3>
-        <div class="sketch-diagram" aria-label="Production evidence determines engineering priority">
+        <h3 class="diagram-title">Production evidence shows which problem comes first.</h3>
+        <div class="sketch-diagram" aria-label="Production evidence selects the current engineering priority">
           <div class="sketch-node" style="margin-inline:auto">Production evidence<br>Crashes · hangs · frame time · loading</div><span class="sketch-arrow" aria-hidden="true"></span>
           <div class="sketch-node is-accent" style="margin-inline:auto">What currently limits the user experience?</div><span class="sketch-arrow" aria-hidden="true"></span>
-          <div class="sketch-chain"><div class="sketch-node is-warning">1 · Stability</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">2 · Performance</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">3 · Feature work</div></div>
+          <div class="sketch-grid" style="--columns:3"><div class="sketch-node is-warning">Crashes or hangs dominate<br><strong>Stability first</strong></div><div class="sketch-node is-accent">Frame time or loading dominates<br><strong>Performance first</strong></div><div class="sketch-node">Quality bar holds<br><strong>Feature work</strong></div></div>
         </div>
-        <p class="diagram-caption">Feature work follows the reliability and performance required for the product promise to hold.</p>
+        <p class="diagram-caption">These are decision conditions, not three stages of delivery. Feature work moves first only when stability and performance are good enough for the product promise to hold.</p>
         <p>Three decisions define the client. Game state lives in a data-oriented ECS because frame-time spikes are user-facing product problems. Creator scenes run in isolated V8 runtimes and communicate through CRDT, which helps reconcile scene and engine state but does not solve multiplayer authority by itself. Real-time multiplayer still needs an explicit authority boundary; peer-to-peer did not scale as more players shared the same space, so reliable voice, avatar sync and coordination moved toward server-backed infrastructure.</p>
       </section>
       <section class="case-section" id="creator-pipeline">

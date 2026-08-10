@@ -75,39 +75,35 @@
       <section class="case-section" id="architecture">
         <h2>Operating model</h2>
         <h3 class="diagram-title">Before and after: who owns the decision?</h3>
-        <div class="sketch-diagram" aria-label="Before and after comparison of decision ownership">
-          <section class="sketch-state" aria-labelledby="before-state">
-            <p class="sketch-state-label" id="before-state">Before · senior leader is the queue</p>
-            <div class="sketch-flow">
-              <div class="sketch-node">Team questions</div>
-              <span class="sketch-arrow" aria-hidden="true"></span>
-              <div class="sketch-node is-warning">Senior leader reviews everything</div>
-              <span class="sketch-arrow" aria-hidden="true"></span>
-              <div class="sketch-node is-warning">Teams wait for a decision</div>
-            </div>
+        <div class="sketch-diagram sketch-comparison" aria-label="Before and after comparison of decision ownership">
+          <section class="sketch-comparison-panel is-before" aria-labelledby="scaling-before">
+            <h4 id="scaling-before">Before</h4>
+            <p class="sketch-comparison-summary">Normal decisions returned to the same senior people.</p>
+            <dl>
+              <div><dt>Who decides?</dt><dd>The same senior people</dd></div>
+              <div><dt>Where does work wait?</dt><dd>In an approval queue</dd></div>
+              <div><dt>When is QA involved?</dt><dd>Late, when changes cost more</dd></div>
+              <div><dt>What do managers do?</dt><dd>Collect status and escalate</dd></div>
+            </dl>
           </section>
-
-          <div class="sketch-transition" aria-hidden="true"><span>Change the operating model</span><b>↓</b></div>
-
-          <section class="sketch-state" aria-labelledby="after-state">
-            <p class="sketch-state-label" id="after-state">After · teams own normal decisions</p>
-            <div class="sketch-flow">
-              <div class="sketch-node is-accent">Objectives · context · boundaries</div>
-              <span class="sketch-arrow" aria-hidden="true"></span>
-              <div class="sketch-teams" aria-label="Teams decide locally">
-                <div class="sketch-node">Team A decides</div>
-                <div class="sketch-node">Team B decides</div>
-                <div class="sketch-node">Team C decides</div>
-              </div>
-              <span class="sketch-arrow" aria-hidden="true"></span>
-              <div class="sketch-branches">
-                <div><span class="sketch-branch-label">Normal decisions</span><div class="sketch-node is-positive">Teams deliver</div></div>
-                <div><span class="sketch-branch-label">Exceptions only</span><div class="sketch-node is-warning">Senior leader helps</div></div>
-              </div>
-            </div>
+          <div class="sketch-comparison-change" aria-label="What changed">
+            <span>Shared objectives</span>
+            <span>Decision boundaries</span>
+            <span>Visible release evidence</span>
+            <b aria-hidden="true">→</b>
+          </div>
+          <section class="sketch-comparison-panel is-after" aria-labelledby="scaling-after">
+            <h4 id="scaling-after">After</h4>
+            <p class="sketch-comparison-summary">Teams owned normal decisions and escalated exceptions.</p>
+            <dl>
+              <div><dt>Who decides?</dt><dd>The people closest to the work</dd></div>
+              <div><dt>Where does work wait?</dt><dd>Only high-risk cases escalate</dd></div>
+              <div><dt>When is QA involved?</dt><dd>While release risk can still be reduced</dd></div>
+              <div><dt>What do managers do?</dt><dd>Set priorities, coach and follow through</dd></div>
+            </dl>
           </section>
         </div>
-        <p class="diagram-caption">Before, normal team decisions queue behind a senior leader. After, teams use shared objectives and boundaries to decide locally; only unusual or high-risk cases escalate.</p>
+        <p class="diagram-caption">Delegation changed both authority and behavior. Teams received enough context to decide; managers became accountable for priorities and coaching; senior leaders remained available for unusual or high-risk decisions.</p>
       </section>
 
       <section class="case-section" id="decisions">
