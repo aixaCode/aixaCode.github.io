@@ -56,13 +56,23 @@
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <div class="diagram"><pre class="mermaid">graph TD
-  Sensors[Zigbee devices] --> HA[Home Assistant]
-  HA --> Automations[Automations]
-  HA --> Dashboards[Dashboards]
-  Services[Docker services] --> Proxmox[Proxmox host]
-  Proxmox --> Monitoring[Grafana / logs]
-  Cloudflare[Cloudflare tunnel] --> Services</pre></div>
+        <h3 class="diagram-title">The home keeps working locally, even when remote access is unavailable.</h3>
+        <div class="diagram"><pre class="mermaid">flowchart LR
+  Devices["Sensors + devices"] --> Local["Local control<br/>Home Assistant"]
+  Local --> Actions["Automations<br/>continue inside the home"]
+  Local --> Views["Local dashboards<br/>and alerts"]
+  Remote["Remote access"] --> Boundary["Protected external boundary"]
+  Boundary --> Local
+  Offline["Internet unavailable"] -.->|local operation continues| Local
+  Local -.-> Evidence["Monitoring + logs"]
+
+  classDef local fill:#ecfdf5,stroke:#059669,color:#222127;
+  classDef boundary fill:#fff7ed,stroke:#2e4bff,color:#222127;
+  classDef external fill:#f6f6f7,stroke:#6b6f76,color:#222127;
+  class Local,Actions,Views local;
+  class Boundary boundary;
+  class Devices,Remote,Offline,Evidence external;</pre></div>
+        <p class="diagram-caption">Remote access is an additional path, not a dependency for basic automation. Local control remains the authoritative layer.</p>
       </section>
       <section class="case-section" id="hard-problems">
         <h2>Interesting problems</h2>
@@ -105,10 +115,10 @@
     </div>
   </div>
 </footer>
-<script src="../site.js"></script>
+<script src="../site.js?v=diagram-responsive-1"></script>
 <script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
 </script>
 </body>
 </html>

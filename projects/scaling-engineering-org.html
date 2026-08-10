@@ -74,19 +74,25 @@
 
       <section class="case-section" id="architecture">
         <h2>Operating model</h2>
+        <h3 class="diagram-title">Clear ownership removes senior people as the default decision queue.</h3>
         <div class="diagram"><pre class="mermaid">flowchart LR
-  A["Small-team habit<br/>Ask the same senior people"] --> B["Scaling risk<br/>Bottlenecks, unclear ownership, late QA"]
-  B --> C["Org design<br/>Managers, QA lead, staff engineers, ownership areas"]
-  C --> D["Decision system<br/>Context, decision rights, escalation path"]
-  D --> E["Feedback loops<br/>Releases, incidents, team load, quality signals"]
-  E --> F["Capability<br/>Teams make better decisions without waiting"]
+  Before["Before<br/>most questions queue at<br/>the same senior people"] --> Change["Add context, ownership<br/>and escalation boundaries"]
+  Change --> TeamA["Team A<br/>decides locally"]
+  Change --> TeamB["Team B<br/>decides locally"]
+  Change --> TeamC["Team C<br/>decides locally"]
+  TeamA -.->|exception| Leaders["Senior leaders<br/>handle real escalations"]
+  TeamB -.->|exception| Leaders
+  TeamC -.->|exception| Leaders
+  Leaders -.-> Feedback["Release, incident<br/>and quality feedback"]
+  Feedback -.-> Change
 
   classDef risk fill:#fee2e2,stroke:#dc2626,color:#222127;
   classDef design fill:#fff7ed,stroke:#2e4bff,color:#222127;
   classDef result fill:#ecfdf5,stroke:#059669,color:#222127;
-  class A,B risk;
-  class C,D,E design;
-  class F result;</pre></div>
+  class Before risk;
+  class Change,Leaders design;
+  class TeamA,TeamB,TeamC,Feedback result;</pre></div>
+        <p class="diagram-caption">Delegation works when teams receive context and decision rights, while unusual or high-risk cases still have a clear escalation path.</p>
       </section>
 
       <section class="case-section" id="decisions">
@@ -174,10 +180,10 @@
     </div>
   </div>
 </footer>
-<script src="../site.js"></script>
+<script src="../site.js?v=diagram-responsive-1"></script>
 <script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
 </script>
 </body>
 </html>

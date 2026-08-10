@@ -62,20 +62,22 @@
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <div class="diagram"><pre class="mermaid">graph TD
-  Statements["Period-scoped bank statement CSVs"] --> Parse["parser.py"]
-  Parse --> FX["fx.py<br/>GBP rates derived from the statements' own conversion rows"]
-  FX --> Categorize["categorize.py + rules.py<br/>first-match rules, refund pairing"]
-  Inbox["invoices/_inbox/*.pdf"] --> Sort["sort_inbox.py"] --> Filed["Filed invoice tree<br/>invoices/YYYY-YYYY/"]
-  Filed --> Extract["pdf_extract.py<br/>LLM reads PDFs"]
-  Extract --> Match["match suggestions<br/>one batched LLM call per run, cached"]
-  Categorize --> Reconcile["reconcile.py<br/>transactions vs invoices"]
-  Match --> Reconcile
-  Reconcile --> Tax["tax.py<br/>P&amp;L + finance/tax estimates, versioned"]
-  Tax --> Report["report.py<br/>HTML dashboard, --serve mode"]
-  Tax --> Summary["summary_export.py<br/>privacy-safe JSON for the assistant"]
-  Corrections["corrections.py<br/>deterministic file + cache surgery"] -.-> Filed
-  Corrections -.-> Match</pre></div>
+        <h3 class="diagram-title">AI suggests. Deterministic code owns the numbers.</h3>
+        <div class="diagram"><pre class="mermaid">flowchart LR
+  Sources["Statements + invoices"] --> Prepare["Parse, convert currency<br/>and categorise"]
+  Prepare --> Suggest["AI extracts evidence<br/>and suggests matches"]
+  Suggest --> Review{"Human confirms<br/>uncertainty"}
+  Review --> Calculate["Deterministic reconciliation<br/>and tax calculations"]
+  Calculate --> Outputs["Dashboard +<br/>privacy-safe summary"]
+  Corrections["Confirmed corrections<br/>become reusable rules"] -.-> Prepare
+
+  classDef source fill:#f6f6f7,stroke:#6b6f76,color:#222127;
+  classDef decision fill:#fff7ed,stroke:#2e4bff,color:#222127;
+  classDef result fill:#ecfdf5,stroke:#059669,color:#222127;
+  class Sources,Prepare,Suggest source;
+  class Review decision;
+  class Calculate,Outputs,Corrections result;</pre></div>
+        <p class="diagram-caption">The model reads documents and proposes matches. A person resolves uncertainty; deterministic code performs the calculations and reporting.</p>
         <p>The AI boundary is visible in the graph: the LLM appears only where unstructured text needs interpretation — reading PDFs and suggesting matches — and everything downstream of a suggestion is deterministic. The sibling budget agent follows the same shape with an explicit human confirmation step between suggestion and aggregation (<code>extract → assign → confirm → aggregate</code>), driven by a <code>projects.yaml</code> budget registry.</p>
       </section>
       <section class="case-section" id="components">
@@ -174,10 +176,10 @@
     </div>
   </div>
 </footer>
-<script src="../site.js"></script>
+<script src="../site.js?v=diagram-responsive-1"></script>
 <script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
 </script>
 </body>
 </html>

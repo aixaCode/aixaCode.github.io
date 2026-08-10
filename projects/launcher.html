@@ -56,16 +56,24 @@
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <div class="diagram"><pre class="mermaid">graph TD
-  UI["TypeScript UI<br/>native system WebView"] --> IPC["Tauri bridge<br/>single union-type command enum"]
-  IPC --> Core["Rust core"]
-  Core --> Flow["flow<br/>update check → download → verify → install → launch"]
-  Flow --> S3["S3 artifact storage<br/>release channels"]
-  Flow --> Installs["installs + instances<br/>local versions, running processes"]
-  Deeplink["decentraland:// protocol"] --> Bridge["deep-link bridge"] --> Core
-  Auth["auto-auth"] --> Core
-  Core --> Errors["StepError taxonomy<br/>user message + Sentry capture"]
-  Core --> Analytics["install / update / launch analytics"]</pre></div>
+        <h3 class="diagram-title">One click becomes a verified, recoverable launch.</h3>
+        <div class="diagram"><pre class="mermaid">flowchart LR
+  User["User presses Play"] --> Check["Check installed version"]
+  Check --> Download["Download required files"]
+  Download --> Verify{"Verify before install"}
+  Verify -->|valid| Install["Install safely"]
+  Install --> Launch["Launch Explorer"]
+  Verify -->|failed| Preserve["Keep the existing install<br/>and report a useful error"]
+  Launch -.-> Evidence["Install · update · launch evidence"]
+  Preserve -.-> Evidence
+
+  classDef input fill:#f6f6f7,stroke:#6b6f76,color:#222127;
+  classDef decision fill:#fff7ed,stroke:#2e4bff,color:#222127;
+  classDef result fill:#ecfdf5,stroke:#059669,color:#222127;
+  class User,Check,Download input;
+  class Verify decision;
+  class Install,Launch,Evidence result;</pre></div>
+        <p class="diagram-caption">The Rust core and Tauri bridge implement the steps behind the simple user journey. Verification fails before a bad package can replace the working installation.</p>
         <p>The Rust core owns everything that can fail in a way that matters: download and verification, install state, version channels, process launch and deep-link routing. Frontend and backend communicate through one union-typed command enum, so the IPC surface is explicit and exhaustively matched rather than a bag of ad-hoc events.</p>
       </section>
       <section class="case-section" id="hard-problems">
@@ -109,10 +117,10 @@
     </div>
   </div>
 </footer>
-<script src="../site.js"></script>
+<script src="../site.js?v=diagram-responsive-1"></script>
 <script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, look: 'handDrawn', handDrawnSeed: 7, fontFamily: '"Segoe Print", "Bradley Hand", ui-rounded, sans-serif', theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default' });
 </script>
 </body>
 </html>

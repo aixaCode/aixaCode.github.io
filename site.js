@@ -49,6 +49,13 @@
   var year = document.getElementById("yr");
   if (year) year.textContent = new Date().getFullYear();
 
+  /* Mermaid flows read left-to-right on wider screens and top-to-bottom on mobile. */
+  if (window.matchMedia && window.matchMedia("(max-width: 700px)").matches) {
+    Array.prototype.forEach.call(document.querySelectorAll(".mermaid"), function (diagram) {
+      diagram.textContent = diagram.textContent.replace(/^flowchart LR/m, "flowchart TB");
+    });
+  }
+
   var filterButtons = document.querySelectorAll("[data-filter]");
   var filterCards = document.querySelectorAll("[data-tags]");
   if (filterButtons.length && filterCards.length) {
