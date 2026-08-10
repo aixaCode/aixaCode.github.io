@@ -208,6 +208,21 @@ li { margin-bottom: 8px; }
 .sketch-note { margin-top: 14px; padding: 10px 12px; border-left: 1.5px solid var(--accent); color: var(--muted); font-family: "Segoe Print", "Bradley Hand", ui-rounded, sans-serif; font-size: .78rem; line-height: 1.45; }
 .sketch-loop { margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--subtle); font-family: var(--mono); font-size: .6rem; letter-spacing: .05em; text-align: center; text-transform: uppercase; }
 .sketch-loop::before { content: "↺"; color: var(--accent); font-family: var(--font); font-size: 1.1rem; }
+.sketch-comparison { display: grid; grid-template-columns: minmax(0, 1fr) minmax(116px, .32fr) minmax(0, 1fr); gap: clamp(14px, 2.5vw, 28px); align-items: center; }
+.sketch-comparison-panel { min-width: 0; padding: clamp(16px, 2vw, 22px); border: 1.5px solid var(--line-strong); border-radius: 8px 3px 7px 4px / 4px 8px 3px 7px; }
+.sketch-comparison-panel.is-before { border-color: #c66a12; }
+.sketch-comparison-panel.is-after { border-color: #14805e; }
+.sketch-comparison-panel h4 { margin: 0; font-family: "Segoe Print", "Bradley Hand", ui-rounded, sans-serif; font-size: 1.15rem; font-weight: 600; }
+.sketch-comparison-panel.is-before h4 { color: #c66a12; }
+.sketch-comparison-panel.is-after h4 { color: #14805e; }
+.sketch-comparison-summary { min-height: 3.3em; margin: 6px 0 18px; color: var(--fg); font-size: .86rem; line-height: 1.5; }
+.sketch-comparison-panel dl { display: grid; gap: 0; margin: 0; }
+.sketch-comparison-panel dl div { padding: 11px 0; border-top: 1px solid var(--line); }
+.sketch-comparison-panel dt { margin-bottom: 3px; color: var(--subtle); font-family: var(--mono); font-size: .58rem; font-weight: 500; letter-spacing: .05em; line-height: 1.35; text-transform: uppercase; }
+.sketch-comparison-panel dd { margin: 0; color: var(--fg); font-size: .78rem; line-height: 1.4; }
+.sketch-comparison-change { display: grid; justify-items: center; gap: 5px; color: var(--subtle); font-family: var(--mono); font-size: .56rem; letter-spacing: .04em; line-height: 1.35; text-align: center; text-transform: uppercase; }
+.sketch-comparison-change::before { content: "What changed"; margin-bottom: 3px; color: var(--fg); font-weight: 500; }
+.sketch-comparison-change b { color: var(--accent); font-family: var(--font); font-size: 1.4rem; font-weight: 400; }
 .sketch-separator { height: 1px; margin: 22px 0; background: var(--line); }
 .callout { margin: 28px 0; padding: 20px 24px; border-left: 2px solid var(--accent); background: var(--accent-soft); }
 .spec-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 28px; border: 1px solid var(--line); background: var(--line); }
@@ -294,6 +309,10 @@ html[data-theme="dark"] .workflow-track .review { background: #291b0d; color: #f
   .sketch-chain { flex-direction: column; align-items: center; gap: 0; }
   .sketch-chain .sketch-node { width: 100%; min-height: 54px; flex: none; font-size: .8rem; }
   .sketch-step-arrow { min-height: 24px; transform: rotate(90deg); }
+  .sketch-comparison { grid-template-columns: 1fr; }
+  .sketch-comparison-summary { min-height: 0; }
+  .sketch-comparison-change { padding: 4px 0; }
+  .sketch-comparison-change b { transform: rotate(90deg); }
 }
 
 @media (max-width: 560px) {
