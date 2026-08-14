@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Assistant - Agnieszka Besz</title>
-<meta name="description" content="A self-hosted, event-driven personal operations assistant with durable intake, structured commitments, provenance and safe tool execution.">
+<meta name="description" content="A self-hosted family assistant built around user-owned data, replaceable models and channels, and permission-gated capabilities.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -38,8 +38,8 @@
   <section class="hero">
 <p class="eyebrow mono"><span class="dot" aria-hidden="true"></span> Architecture case study</p>
     <h1>AI Assistant</h1>
-    <p class="lead">A self-hosted personal operations assistant that turns messages, email and documents into durable knowledge, commitments, reminders and human-approved actions.</p>
-    <p class="stack">TypeScript / Node.js / Claude Agent SDK / SQLite / MCP server / Telegram / email / Google Calendar / Markdown knowledge / NAS-backed recovery</p>
+    <p class="lead">I am building a self-hosted family assistant whose knowledge, documents and skills remain useful when I change the model, channel or application around them.</p>
+    <p class="stack">TypeScript / Node.js / provider-neutral model runtime / SQLite working state / channel adapters / Markdown and versioned JSON / permission-gated capabilities</p>
     <div class="topic-tags" aria-label="Project topics"><a href="index.html?filter=ai">AI</a></div>
     <div class="actions"><a class="btn" href="https://github.com/aixaCode/personal-assistant">Source</a><a class="btn" href="index.html">All projects</a></div>
   </section>
@@ -48,101 +48,100 @@
     <div>
       <section class="case-section" id="overview">
         <h2>Overview</h2>
-        <p>I built this because I kept repeating the same context in generic chat: current projects, calendar commitments, where files lived and whether I was asking about work or home. I wanted an assistant that could retain that context and help with planning, reminders and a few repetitive local tasks.</p>
-        <p>The project has evolved from a conversational tool runner into a durable, event-driven assistant. Telegram and email are intake channels; accepted work is queued before acknowledgment, retried after transient failures and converted into structured operational state as well as human-readable knowledge.</p>
-        <p>It currently runs Claude through the Agent SDK, routing routine work to Sonnet and complex reasoning or documents to Opus. The model boundary remains separate from tools and permissions, so a local runtime can be added later without rebuilding the action layer.</p>
+        <p>I built this because useful family context was scattered across chats, calendars, email and files. Repeating it to a generic assistant did not create durable knowledge or a system the household could inspect and own.</p>
+        <p>The project started as a conversational tool runner and gradually became a local-first family assistant. One installation serves the household, but each person keeps a stable identity and attributed actions. I wanted approved knowledge, documents and skills to be shareable without pretending that a messaging account is the person or the source of truth.</p>
+        <p>I treat channels and model providers as adapters around the same runtime. The current implementation supports the Claude Agent SDK and an OpenAI-compatible tool loop behind the same permission and session boundaries. I do not silently fall back between providers. If an adapter cannot read a PDF, it refuses the request before sending anything to the model.</p>
       </section>
 
       <section class="case-section" id="requirements">
         <h2>Requirements</h2>
         <ul>
           <li>Run locally on a developer-controlled machine, with private workspace data outside the Git repository.</li>
-          <li>Separate personal and work environments with different tools, directories and model settings.</li>
-          <li>Use Claude through the Agent SDK while preserving a future seam for local model runtimes.</li>
+          <li>Serve one household with stable, attributed members and shared approved information.</li>
+          <li>Support hosted and local models through explicit provider adapters without silent fallback.</li>
           <li>Execute tools only through deterministic authorization, not through prompt instruction alone.</li>
           <li>Support CLI, private Telegram, email ingress and calendar-aware workflows without losing conversation continuity.</li>
           <li>Produce an auditable execution history for tool decisions and confirmations.</li>
           <li>Accept concurrent messages durably and recover unfinished work after model limits, process restarts or infrastructure failure.</li>
-          <li>Separate curated knowledge from operational state such as tasks, commitments, people, decisions and unresolved questions.</li>
-          <li>Retain provenance, confidence and verification dates for learned facts instead of treating every model inference as equally trustworthy.</li>
+          <li>Keep permanent knowledge, original documents and approved interpretations human-readable and recoverable.</li>
+          <li>Make databases, embeddings, indexes and dashboards rebuildable rather than authoritative.</li>
+          <li>Let a family propose and improve readable skills through conversation, with versioning, checks, approval and rollback.</li>
         </ul>
       </section>
 
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <h3 class="diagram-title">Every request gets context, passes a permission boundary and leaves a record.</h3>
+        <h3 class="diagram-title">Every request gets context, crosses a permission boundary and leaves a record.</h3>
         <div class="sketch-diagram" aria-label="Assistant request and permission flow">
-          <div class="sketch-chain"><div class="sketch-node">Telegram · email · CLI · schedules</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Identity · conversation · knowledge</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">AI proposes an action</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Permission gate</div></div>
+          <div class="sketch-chain"><div class="sketch-node">Channel adapters</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Member · source · conversation</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Model proposes a capability</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Permission gate</div></div>
           <span class="sketch-arrow" aria-hidden="true"></span>
           <div class="sketch-grid" style="--columns:3"><div class="sketch-node is-positive">Allow<br>Use approved tool</div><div class="sketch-node is-accent">Ask<br>Human confirms</div><div class="sketch-node is-warning">Deny<br>Stop safely</div></div>
           <div class="sketch-note">Every permission decision and tool action leaves an audit record.</div>
         </div>
-        <p class="diagram-caption">The assistant may propose an action, but permissions determine whether it proceeds, pauses for confirmation or stops. Tool use remains auditable.</p>
-        <p>Incoming messages are acknowledged only after durable acceptance. Telegram is the default control and delivery surface; email sends a receipt, while analysis and suggested reply drafts return privately to the mapped user in Telegram. Temporary failures remain queued and retry automatically, including at the reset time reported by a model subscription limit.</p>
-        <p>The model may request tools through the local MCP server, but it does not directly execute privileged actions. Every request still passes through profile policy, tool metadata, path validation and optional human confirmation. Storage is intentionally split: Markdown remains inspectable knowledge, SQLite holds queryable operational objects, and source documents preserve the evidence behind both.</p>
+        <p class="diagram-caption">The model can propose an action. It cannot give itself permission to perform it.</p>
+        <p>I only acknowledge work after it has been persisted. From there it can be retried, resumed after a restart and traced back to the member, conversation and source that created it. The interaction contract keeps those facts stable without pushing channel-specific behavior into the agent runtime.</p>
+        <p>The model sees only enabled capabilities. Every tool passes through scope and risk checks plus optional human confirmation; unknown tools fail closed. File operations also enforce lexical and real-path confinement. I keep permanent information in Markdown, versioned JSON and original files, while databases hold working state that I can rebuild.</p>
       </section>
 
       <section class="case-section" id="components">
         <h2>Key components</h2>
         <div class="spec-grid">
-          <div class="spec"><h3>Runtime adapter</h3><p><code>src/runtime.ts</code> wraps the Claude Agent SDK, injects the local MCP server, restricts allowed tools to the active profile and supports session resume.</p></div>
-          <div class="spec"><h3>Profile isolation</h3><p><code>src/profiles.ts</code> defines each profile's workspace directory, model and tool list. Work and personal contexts do not share tools by default.</p></div>
-          <div class="spec"><h3>Context builder</h3><p><code>src/context.ts</code> constructs system text from profile context, current time, memory files and the knowledge-file index before model invocation.</p></div>
+          <div class="spec"><h3>Interaction contract</h3><p>Every channel supplies the same member, source, conversation, attachment and capability context to the runtime.</p></div>
+          <div class="spec"><h3>Family identity</h3><p>External channel identities map to stable household members. Conversations stay separate and actions remain attributable.</p></div>
+          <div class="spec"><h3>Model providers</h3><p>Provider adapters own the complete tool-using turn. Provider failure never triggers an implicit fallback to a different trust boundary.</p></div>
           <div class="spec"><h3>Permission engine</h3><p><code>src/permissions.ts</code> evaluates tool metadata, asks for human confirmation when required and logs allow/deny decisions.</p></div>
-          <div class="spec"><h3>Safe file layer</h3><p><code>src/files.ts</code> blocks traversal and symlink escapes, confines writes to <code>notes/</code> and <code>knowledge/</code>, and keeps private workspace data out of Git.</p></div>
+          <div class="spec"><h3>Safe file layer</h3><p><code>src/files.ts</code> blocks traversal and symlink escapes. Dedicated handlers then narrow writes to their own notes, knowledge, document, memory or skill locations.</p></div>
           <div class="spec"><h3>Durable intake</h3><p><code>src/durable-jobs.ts</code> persists Telegram messages, PDFs and email before processing. It deduplicates message IDs, recovers interrupted jobs and applies bounded retry with subscription-reset awareness.</p></div>
-          <div class="spec"><h3>Operational state</h3><p><code>src/operational-state.ts</code> stores queryable tasks, people, projects, decisions, commitments, reminders and unresolved questions separately from narrative knowledge.</p></div>
-          <div class="spec"><h3>Knowledge provenance</h3><p>Learned facts retain their source, timestamp, confidence, scope, verification date and whether they were explicitly stated or inferred, reducing the risk of stale guesses becoming truth.</p></div>
-          <div class="spec"><h3>Document pipeline</h3><p>Email and Telegram PDFs are read by the model, meaningfully renamed and organised under a taxonomy that mirrors knowledge. Accounting documents are handed to a separate accounting workflow.</p></div>
+          <div class="spec"><h3>Capability catalogue</h3><p>Capabilities group tools with the settings, storage, workers and health checks they require. Configuration can disable them; only the permission gate can authorize them.</p></div>
+          <div class="spec"><h3>Versioned skills</h3><p>Conversational changes create inspectable proposals. Checks and human approval activate an exact immutable version; rollback preserves history.</p></div>
+          <div class="spec"><h3>Document pipeline</h3><p>Original evidence is retained alongside a validated, versioned JSON record with provenance, ambiguities and correction history. Integrations consume that portable boundary.</p></div>
           <div class="spec"><h3>Telegram state</h3><p><code>src/telegram-state.ts</code> persists sessions and reminders, serializes each conversation and lets confirmation replies unblock an active tool call. Shared scheduled work executes once before delivery to multiple recipients.</p></div>
-          <div class="spec"><h3>Model seam</h3><p><code>src/models/model.ts</code> defines a provider-agnostic chat interface — messages and tool definitions in, text or tool calls out — so a local runtime can replace Claude without touching tools or permissions.</p></div>
-          <div class="spec"><h3>Model routing</h3><p>Routine requests and scheduled work use Sonnet; complex reasoning and document analysis use Opus. A bounded execution queue limits concurrent model runs independently of the durable intake queue.</p></div>
-          <div class="spec"><h3>Recovery</h3><p>Local SQLite is authoritative during execution. Serialized snapshots are stored on the NAS, while an LXC-local workspace fallback lets Luke continue during a NAS outage and sync changes back after recovery.</p></div>
+          <div class="spec"><h3>Portable storage</h3><p>Markdown, original files and versioned JSON hold permanent information. Runtime databases and future dashboard views remain rebuildable.</p></div>
+          <div class="spec"><h3>Configuration boundary</h3><p>A validated, secret-free configuration describes household identity, providers, storage and enabled capabilities. Migration and activation are explicit.</p></div>
+          <div class="spec"><h3>Recovery</h3><p>SQLite is a runtime projection. Versioned, checksummed JSON exports preserve operational records in a portable format and restores target a new empty database.</p></div>
         </div>
       </section>
 
       <section class="case-section" id="implementation">
         <h2>Implementation detail</h2>
-        <p>Tool authorization is a typed runtime decision. The language model can propose an action, but the runtime decides whether that action is allowed.</p>
-        <pre class="code-block"><code>export const toolMeta = {
-  read_file: { scope: "read_local", risk: "auto" },
-  write_note: { scope: "write_local", risk: "confirm" },
-  calendar_create_event: { scope: "write_external", risk: "confirm" },
-} as const;
+        <p>I did not want “provider-neutral” to mean a thin text-completion interface that stopped being useful as soon as the model called a tool. The abstraction covers the complete agent turn, including tool continuation and declared capabilities:</p>
+        <pre class="code-block"><code>export interface AgentRuntime {
+  readonly providerId: string;
+  execute(request: AgentRequest): Promise&lt;AgentResult&gt;;
+  capabilities(): ModelCapabilities;
+}
 
-export async function enforce(profile, confirm, name, input) {
-  const meta = toolMeta[name];
-  if (!meta) {
-    audit({ profile: profile.name, tool: name, decision: "deny", reason: "unknown tool" });
-    return false;
-  }
-  if (meta.risk === "confirm") {
-    const ok = await confirm(formatConfirmation(profile, name, input));
-    audit({ profile: profile.name, tool: name, scope: meta.scope, decision: ok ? "allow" : "deny" });
-    return ok;
-  }
-  audit({ profile: profile.name, tool: name, scope: meta.scope, decision: "allow" });
-  return true;
+if (attachments.some(isPdf)) {
+  throw new Error(`${providerId} cannot read PDF documents.`);
 }</code></pre>
-        <p>Filesystem access uses the same principle. Path resolution is lexical first, then checked against real paths so symlink escapes are rejected. Writes are limited to explicit knowledge and notes directories.</p>
-        <p>Model portability is enforced by an interface, not an aspiration. Anything that can answer <code>chat()</code> with text or tool calls can drive the assistant through the same registry and permission gate:</p>
-        <pre class="code-block"><code>export interface Model {
-  chat(input: { messages: Message[]; tools: ToolDefinition[] }): Promise&lt;{
-    text?: string;
-    toolCalls?: ToolCall[];
-  }&gt;;
-}</code></pre>
+        <p>The OpenAI-compatible runtime converts each tool's Zod schema to JSON Schema, validates returned arguments before calling the handler, limits the number of turns, aborts on timeout and refuses unavailable tools. I keep provider sessions behind application-owned IDs, so channel records do not inherit a provider's identity model.</p>
+        <p>For documents, I use content-addressed extraction revisions. A revision ID hashes the original bytes, extractor identity, extractor version and normalized payload. Approval re-hashes the source, rejects unresolved ambiguity and supersedes the previous approved revision:</p>
+        <pre class="code-block"><code>revisionId = sha256({
+  sourceSha256,
+  extractor,
+  extractorVersion,
+  facts,
+  references,
+  amounts,
+  dates,
+  ambiguities
+});
+
+approve only if currentSourceHash === sourceSha256
+             &amp;&amp; ambiguities.length === 0;</code></pre>
+        <p>I use the same pattern for skills. Proposed Markdown becomes an immutable semantic version with its content hash, requested capabilities, diff and deterministic include/exclude assertions. Activation revalidates the exact bytes and records who approved them. A skill can request an existing capability, but it cannot grant itself one.</p>
       </section>
 
       <section class="case-section" id="problems">
         <h2>Interesting engineering problems</h2>
         <ul class="list-clean">
-          <li><strong>Policy-based tool execution.</strong> The model generates intent, never authority. Tool calls are translated into named commands evaluated against profile allowlists, scope/risk metadata, confirmation requirements and audit logging.</li>
-          <li><strong>Prompt injection boundary.</strong> The dangerous boundary is not the prompt; it is the moment text becomes action. Unknown tools are denied, risky tools ask the human and built-in SDK tools are excluded by the profile allowlist.</li>
+          <li><strong>Policy-based tool execution.</strong> The model generates intent, never authority. Capability switches narrow the available tools, channel policy narrows them again, and scope/risk metadata plus confirmation and audit remain the final authorization layer.</li>
+          <li><strong>Prompt injection boundary.</strong> The dangerous boundary is the moment text becomes action. Unknown or unavailable tools are denied, returned arguments are schema-validated and monitored external content receives a deliberately restricted capability set.</li>
           <li><strong>Knowledge is not workflow state.</strong> Human-readable Markdown remains the source for narrative context, while SQLite stores lifecycle-bearing objects that need filtering, status transitions and due dates. Facts in either layer carry explicit provenance.</li>
-          <li><strong>Profile isolation.</strong> Personal and work profiles have separate roots, model settings and tool sets. File validation enforces workspace boundaries in code, including traversal and symlink checks.</li>
-          <li><strong>Durable asynchronous UX.</strong> Ingress and execution are separate. Luke acknowledges accepted work immediately, serializes conversations, retries recoverable failures and avoids asking the user to resend a request.</li>
+          <li><strong>Identity without data silos.</strong> Members have separate authenticated conversations and attributed actions, while approved household knowledge remains shared according to visibility rules.</li>
+          <li><strong>Durable asynchronous UX.</strong> Ingress and execution are separate. The assistant acknowledges accepted work only after persistence, serializes each conversation, retries recoverable failures and avoids asking the user to resend a request.</li>
           <li><strong>One computation, many recipients.</strong> Shared scheduled routines execute once and fan out the same result, avoiding duplicate model runs and inconsistent summaries.</li>
+          <li><strong>Portable state without dual authority.</strong> SQLite supports queries and transitions during execution, while versioned JSON exports carry provenance, ownership, event history and a checksum. Restore verifies the export and rebuilds a fresh projection.</li>
         </ul>
       </section>
 
@@ -151,29 +150,31 @@ export async function enforce(profile, confirm, name, input) {
         <table class="decision-table">
           <thead><tr><th>Decision</th><th>Trade-off</th><th>Why</th></tr></thead>
           <tbody>
-            <tr><td>Claude Agent SDK instead of owned model loop</td><td>Less control over the model loop, faster path to a useful assistant</td><td>The goal was a working local assistant on an existing subscription, with a model interface kept for later local runtimes.</td></tr>
+            <tr><td>Provider adapters behind one complete-turn contract</td><td>More adapter code, consistent tools and permissions across hosted and local models</td><td>I keep provider-specific sessions and response formats outside channels and durable household records.</td></tr>
             <tr><td>Markdown knowledge before vector search</td><td>Less fuzzy retrieval, better debuggability</td><td>For early usage, grep-able source-of-truth files were more reliable than opaque embeddings.</td></tr>
-            <tr><td>Explicit profile tool lists</td><td>More configuration work, stronger isolation</td><td>Profiles become the authorization boundary instead of relying on model behavior.</td></tr>
-            <tr><td>Human confirmation for write/external actions</td><td>Slower automation, safer execution</td><td>The assistant should be useful before it is autonomous.</td></tr>
+            <tr><td>One household, attributed members</td><td>More identity and visibility rules, less duplicate context</td><td>Approved information can be shared without losing who requested or changed something.</td></tr>
+            <tr><td>Risk-based confirmation rather than confirmation for every write</td><td>Routine automation stays usable, sensitive actions still pause</td><td>Scope describes where a tool acts; independently assigned risk determines whether a human must approve it.</td></tr>
             <tr><td>Markdown plus SQLite</td><td>Two storage models to maintain, clearer semantics and queries</td><td>Knowledge, evidence and operational lifecycle have different access patterns and should not be forced into one format.</td></tr>
-            <tr><td>Telegram-first delivery</td><td>Email is not fully autonomous, stronger human control</td><td>Luke can monitor and draft without accidentally contacting an external sender.</td></tr>
-            <tr><td>Local state with NAS snapshots</td><td>More recovery machinery, fewer network-filesystem locking failures</td><td>SQLite runs on local storage while private data remains recoverable from the NAS.</td></tr>
+            <tr><td>Authenticated chat for action approval</td><td>Monitored email is observational rather than autonomous</td><td>Untrusted message content can propose an action but cannot directly modify state or contact an external recipient.</td></tr>
+            <tr><td>Runtime database with portable snapshots</td><td>More export and restore machinery, no database becomes the only copy</td><td>Operational queries stay fast while checksummed JSON preserves a provider-neutral recovery path.</td></tr>
           </tbody>
         </table>
       </section>
 
       <section class="case-section" id="results">
-        <h2>Results</h2>
+        <h2>Where it is now</h2>
         <ul>
           <li>CLI, private Telegram and allow-listed email intake working with durable session resume and persistent request queuing.</li>
-          <li>Personal and work profiles isolated by workspace root and tool allowlist.</li>
+          <li>Stable member identities implemented across channels, attachments and scheduled work.</li>
           <li>Permission gate, safe file layer and append-only audit log implemented in code.</li>
           <li>Google Calendar, Telegram-first email drafts, structured reminders, accounting intake, document organisation and skill-loading tools integrated behind the same authorization path.</li>
           <li>Queryable operational objects and provenance-aware facts separate active commitments from narrative knowledge.</li>
           <li>Concurrent requests, subscription limits and restarts no longer require users to resend accepted work.</li>
           <li>Shared scheduled routines execute once and fan out to all intended recipients.</li>
           <li>Security and reliability tests cover configuration, permissions, safe files, calendar, email, durable jobs, operational state and Telegram state.</li>
-          <li>Provider-agnostic model interface in place with local-runtime adapters stubbed (Ollama/vLLM); Claude via the Agent SDK is the wired runtime today.</li>
+          <li>Claude Agent SDK and OpenAI-compatible provider loops implemented behind the same permission-gated capability registry.</li>
+          <li>Universal document records preserve original evidence, extraction revisions, approval and correction history.</li>
+          <li>Conversational skills can be proposed, checked, approved, versioned and rolled back without changing code-level permissions.</li>
         </ul>
       </section>
 
@@ -182,7 +183,7 @@ export async function enforce(profile, confirm, name, input) {
         <ul>
           <li>A prompt is not a security boundary. Permission checks have to live in code.</li>
           <li>The model can suggest an action, but the runtime decides whether it is allowed.</li>
-          <li>Good folder structure and clear profile notes solved more of the memory problem than vector search would have.</li>
+          <li>Good folder structure and readable household context solved more of the memory problem than vector search would have.</li>
           <li>Audit logs and session recovery became necessary much earlier than I expected.</li>
           <li>Acknowledgment must mean durable acceptance, not merely that a webhook or poller saw a message.</li>
           <li>Personal-assistant memory needs provenance and lifecycle, not just better retrieval.</li>
@@ -190,10 +191,9 @@ export async function enforce(profile, confirm, name, input) {
       </section>
 
       <section class="case-section" id="next">
-        <h2>Next expansion</h2>
-        <p>The next step is a proactive follow-up engine. Luke already has intake, structured commitments, reminders, source documents and reply drafting; the missing layer is lifecycle management across them.</p>
-        <p>The engine will connect incoming requests to people and projects, track what I promised and what I am waiting for, detect later evidence that an item was resolved, and surface only genuinely open follow-ups. Telegram actions such as <code>Mark done</code>, <code>Remind tomorrow</code>, <code>Create draft</code>, <code>Change due date</code> and <code>Show source</code> keep the human in control.</p>
-        <p>After that, a small private operations dashboard can expose queue health, failed work, open commitments, reminders, stale or low-confidence facts and recent assistant activity. Telegram remains the conversational interface; the dashboard becomes the inspection and correction surface.</p>
+        <h2>What I would build next</h2>
+        <p>The current installation is still the proving environment. The interaction contract, stable member identity, provider adapters, explicit migrations, portable restore path and versioned skill lifecycle are now in place. I still want capability compatibility to fail during configuration rather than relying on adapter-level rejection at execution time.</p>
+        <p>After that, I would focus on packaging and access: run the same application and durable data through Docker, add a dashboard over the existing repositories and permissions, then validate local models and ARM64 hardware. I do not want any of those delivery formats to create a second data model or weaken the household boundary.</p>
       </section>
     </div>
 
@@ -205,9 +205,9 @@ export async function enforce(profile, confirm, name, input) {
       <a href="#implementation">Implementation</a>
       <a href="#problems">Engineering problems</a>
       <a href="#tradeoffs">Trade-offs</a>
-      <a href="#results">Results</a>
+      <a href="#results">Where it is now</a>
       <a href="#lessons">Lessons</a>
-      <a href="#next">Next expansion</a>
+      <a href="#next">What I would build next</a>
     </aside>
   </div>
 <section class="contact-section compact">

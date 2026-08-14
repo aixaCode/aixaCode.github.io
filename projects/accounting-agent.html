@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Finance Automation - Agnieszka Besz</title>
-<meta name="description" content="Finance workflow automation where AI reads documents, humans confirm decisions and deterministic code owns the numbers.">
+<title>AI Accounting &amp; Company Records - Agnieszka Besz</title>
+<meta name="description" content="A private, folder-first company records and accounting system with deterministic finance processing and narrow AI-assisted document understanding.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -37,9 +37,9 @@
 <main class="wrap">
   <section class="hero">
 <p class="eyebrow mono"><span class="dot" aria-hidden="true"></span> Architecture case study</p>
-    <h1>AI Finance Automation</h1>
-    <p class="lead">I built two small finance systems for my own accounting and project budgets. An LLM reads documents and suggests matches; I confirm them, and ordinary Python calculates every number.</p>
-    <p class="stack">Python / model-agnostic LLM document extraction / bank-statement CSV parsing / deterministic rules engine / statement-derived FX / JSON caches / HTML dashboard / Proxmox LXC</p>
+    <h1>AI Accounting &amp; Company Records</h1>
+    <p class="lead">I built a private, folder-first system for company and personal financial records. The important part is that the records remain understandable and useful without this application, a database or a particular AI provider.</p>
+    <p class="stack">Python / original PDF, CSV and XLSX evidence / portable JSON and Markdown / deterministic accounting rules / AI-assisted document reading / reproducible reports / Proxmox LXC</p>
     <div class="topic-tags" aria-label="Project topics"><a href="index.html?filter=ai">AI</a></div>
     <div class="actions"><span class="meta">Internal/private system. Implementation details are based on local project code.</span><a class="btn" href="index.html">All projects</a></div>
   </section>
@@ -47,28 +47,28 @@
     <div>
       <section class="case-section" id="overview">
         <h2>Overview</h2>
-        <p>This started with a recurring annoyance: statements, invoices and project budgets were easy to lose track of. I wanted help with the repetitive document work, but I did not want an AI agent deciding what went into the accounts. It reads and suggests. The ledger, tax maths and filing rules remain deterministic.</p>
-        <p>Two sibling systems share that boundary. The <strong>accounting agent</strong> parses period-scoped bank-statement CSVs, converts currencies to GBP, categorises transactions through a rules engine, reconciles them against filed invoice PDFs, computes P&amp;L and versioned finance/tax estimates, and renders an HTML dashboard plus a privacy-safe summary JSON. The <strong>project budget agent</strong> runs the same pattern for project spend: PDFs arrive in an inbox, an LLM extracts fields and suggests a project, a human confirms or overrides, and deterministic code aggregates budget burn and cost split.</p>
-        <p>Both deploy as unprivileged LXC containers on a Proxmox host, next to the personal assistant that consumes their summaries read-only.</p>
+        <p>This started as a way to reconcile statements and invoices without handing accounting decisions to a model. It has grown into an internal company-management workspace covering multiple legal entities and their owners.</p>
+        <p>I eventually realised the organised folder was the product. Original documents remain the evidence; Markdown and versioned JSON preserve context and extracted records; deterministic Python handles statement parsing, FX conversion, categorisation, reconciliation, P&amp;L and supported tax estimates. Dashboards and reporting packages are useful views, but I should be able to throw them away and rebuild them.</p>
+        <p>The boundary around AI is deliberate. I use it to read untidy documents, extract metadata, suggest matches and help review exceptions. I do not let it own accounting state or quietly turn a suggestion into a financial fact. The personal assistant receives only a privacy-safe, read-only summary.</p>
       </section>
       <section class="case-section" id="requirements">
         <h2>Requirements</h2>
         <div class="spec-grid">
-          <div class="spec"><strong>Trust</strong><span>Suggestions must never move money until confirmed.</span></div>
-          <div class="spec"><strong>Reproducibility</strong><span>Spend, remaining budget and category split must be recalculable from local state.</span></div>
-          <div class="spec"><strong>Privacy</strong><span>Statements, invoices, caches and dashboards are git-excluded; the repo itself is local-only Git with no remote.</span></div>
-          <div class="spec"><strong>Agent boundary</strong><span>The personal assistant reads only aggregate JSON, not source invoices.</span></div>
+          <div class="spec"><strong>Durability</strong><span>Records remain readable without the application, a database, chat history or a particular model provider.</span></div>
+          <div class="spec"><strong>Traceability</strong><span>Every reported figure leads back to source files, deterministic rules and approved corrections.</span></div>
+          <div class="spec"><strong>Isolation</strong><span>Each company, accounting period and person's tax records stay separate by default.</span></div>
+          <div class="spec"><strong>Privacy</strong><span>Private evidence and generated outputs stay outside Git; the assistant receives only aggregate JSON.</span></div>
         </div>
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <h3 class="diagram-title">AI suggests. Deterministic code owns the numbers.</h3>
+        <h3 class="diagram-title">I keep the evidence authoritative and make everything else rebuildable.</h3>
         <div class="sketch-diagram" aria-label="AI-assisted accounting pipeline">
-          <div class="sketch-chain"><div class="sketch-node">Statements + invoices</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Parse · convert · categorise</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">AI extracts evidence and suggests matches</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Human confirms uncertainty</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-positive">Deterministic reconciliation · tax · reporting</div></div>
-          <div class="sketch-loop">Confirmed corrections become reusable rules</div>
+          <div class="sketch-chain"><div class="sketch-node">Original evidence</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">AI reads and suggests</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Portable metadata and approved corrections</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-positive">Deterministic accounts and reports</div></div>
+          <div class="sketch-loop">Files, schemas and documented commands remain usable by different authorised agents</div>
         </div>
-        <p class="diagram-caption">The model reads documents and proposes matches. A person resolves uncertainty; deterministic code performs the calculations and reporting.</p>
-        <p>The AI boundary is visible in the graph: the LLM appears only where unstructured text needs interpretation — reading PDFs and suggesting matches — and everything downstream of a suggestion is deterministic. The sibling budget agent follows the same shape with an explicit human confirmation step between suggestion and aggregation (<code>extract → assign → confirm → aggregate</code>), driven by a <code>projects.yaml</code> budget registry.</p>
+        <p class="diagram-caption">The model helps me interpret evidence. Files, schemas and deterministic commands preserve the record independently of a model session.</p>
+        <p>I start with the legal entity, not the document type. Each company owns its records, each period has separate evidence and generated output, and personal tax never enters company calculations. If I add a combined management view, it must read separate summaries without blurring entity, currency, period or source.</p>
       </section>
       <section class="case-section" id="components">
         <h2>Key components</h2>
@@ -77,37 +77,43 @@
           <tbody>
             <tr><td><code>fx.py</code></td><td>Converts non-GBP transactions to GBP.</td><td>No external FX API: month-level rates are derived from the statements' own conversion rows, falling back to the latest prior rate, then an explicit configured approximation.</td></tr>
             <tr><td><code>categorize.py</code> + <code>rules.py</code></td><td>Categorises every transaction.</td><td>First matching rule wins; refund pairing nets same-merchant debit/credit pairs so they drop off the P&amp;L but stay visible to the accountant, flagged with the paired transaction id.</td></tr>
-            <tr><td><code>match suggestions</code></td><td>Suggests transaction ↔ invoice matches.</td><td>One batched LLM call per run, cached per transaction — only still-unmatched transactions are ever re-asked.</td></tr>
-            <tr><td><code>tax.py</code></td><td>P&amp;L and finance/tax estimates.</td><td>Estimates are versioned per run; personal records are isolated from company calculations.</td></tr>
+            <tr><td><code>match suggestions</code></td><td>Suggests transaction ↔ invoice matches.</td><td>Unmatched transactions are processed in chunks of up to 25 and cached per transaction. A failed chunk is retried later without discarding successful results.</td></tr>
+            <tr><td><code>tax.py</code></td><td>P&amp;L and finance/tax estimates.</td><td>Applicable tax rules come from period-specific profiles; outputs remain explicitly labelled as estimates and personal records stay outside company calculations.</td></tr>
             <tr><td><code>corrections.py</code></td><td>Sanctioned manual fixes for misfiled, mismatched or double-counted invoices.</td><td>Pure file and cache surgery — no AI calls and no accounting maths in the module.</td></tr>
-            <tr><td><code>aggregate.py</code> <span class="meta">(budget agent)</span></td><td>Computes spend, remaining budget, burn and cost split per project.</td><td>Only human-confirmed assignments count; non-budget currencies are flagged, not silently converted.</td></tr>
+            <tr><td>Document index</td><td>Records content identity, source path, file metadata, entity or person ownership and accounting period.</td><td>The JSON index is rebuilt from canonical originals and supports deterministic path-based discovery; richer extracted metadata remains a separate evolving layer.</td></tr>
+            <tr><td>Lossless intake</td><td>Inspects every dropped file, hashes its bytes and routes it to canonical storage, review or failure.</td><td>Duplicate, unsupported and ambiguous files are preserved in explicit states with manifests and move journals.</td></tr>
+            <tr><td>Entity profiles</td><td>Define period boundaries, reporting currency, statement formats and enabled calculations.</td><td>Unsupported jurisdictional calculations fail closed until the policy is validated.</td></tr>
           </tbody>
         </table>
       </section>
       <section class="case-section" id="implementation">
         <h2>Implementation detail</h2>
-        <p>The part I care about most is the confirmation step. In the budget agent, the aggregator ignores assignments I have not confirmed and reports a warning when the data is ambiguous:</p>
-        <pre class="code-block"><code>for key, assignment in assignments.items():
-    if not assignment.get("confirmed", False):
-        continue
+        <p>The implementation choice I care about most is lossless intake. Every file gets a SHA-256 identity and inspection record before it moves. I check canonical originals for byte-identical duplicates, validate archives against path traversal, and send uncertainty to a named review state rather than guessing a destination.</p>
+        <pre class="code-block"><code>manifest = {
+  document_id: `sha256:${digest}`,
+  original_name,
+  inspection,
+  extraction,
+  status,
+  history
+}
 
-    project = assignment.get("project", "unknown")
-    amount = extractions.get(key, {}).get("amount")
-
-    if amount is None:
-        warnings.append(f"{key}: no amount extracted - excluded from spend")
-        continue</code></pre>
-        <p>The same discipline runs through the accounting agent: tax estimates are versioned so every run is comparable with the last, cache writes are atomic, and the corrections module's only powers are moving files and migrating cache keys.</p>
+journal("planned", source, destination, digest)
+atomic_move(source, destination)
+journal("complete", source, destination, digest)</code></pre>
+        <p>Portable JSON writes go through a same-directory temporary file, <code>fsync</code> and atomic replacement. Rollback re-hashes the filed document before moving it. I would rather stop with a visible inconsistency than restore different bytes under an old identity.</p>
       </section>
       <section class="case-section" id="problems">
         <h2>Interesting engineering problems</h2>
         <ul class="list-clean">
-          <li><strong>Where should AI stop?</strong> AI extracts fields from PDFs and suggests matches or project assignments. It does not approve spend, compute totals, categorise the ledger or touch finance maths.</li>
+          <li><strong>Where should AI stop?</strong> AI extracts fields, suggests matches and reviews exceptions. It does not compute totals, categorise the ledger or quietly approve an interpretation.</li>
           <li><strong>How do you convert currency without an FX feed?</strong> Month-level rates are derived from the statements' own conversion rows; missing months fall back to the latest prior rate, then to an explicit configured approximation — never a silent guess.</li>
-          <li><strong>How do you keep AI cost and drift low?</strong> The matcher makes one batched call per run and caches per transaction, so a re-run asks nothing it already knows.</li>
+          <li><strong>How do you keep AI cost and drift low?</strong> The matcher asks only about uncached transactions, caps each prompt at 25 charges and merges successful chunks. A timeout leaves only that chunk for a later retry.</li>
           <li><strong>How do you fix mistakes without corrupting state?</strong> Corrections are deterministic file moves and cache-key migrations, with duplicate and bundled charges detected by exact arithmetic — hand-editing the caches is never the fix.</li>
-          <li><strong>How do you avoid quiet finance errors?</strong> Only confirmed assignments count toward spend, extraction caches invalidate on file metadata, JSON writes are atomic and data-quality checks suggest instead of mutate.</li>
+          <li><strong>How do you avoid quiet finance errors?</strong> Extracted metadata retains provenance, JSON writes are atomic, estimates are versioned and data-quality checks suggest instead of mutate.</li>
           <li><strong>How do agents use the data safely?</strong> The personal assistant mounts a single aggregate summary read-only, so it can answer finance questions without access to statements or invoice PDFs.</li>
+          <li><strong>How do you add another company without applying the wrong rules?</strong> Entity profiles gate period assignment, statement formats and calculation capabilities. Filing can remain enabled while unsupported bookkeeping or tax logic fails closed.</li>
+          <li><strong>How do you keep shared records complete without losing identity?</strong> Intercompany evidence is copied only where each entity needs a complete record; SHA-256 comparison verifies byte equality and conflicts are never overwritten.</li>
         </ul>
       </section>
       <section class="case-section" id="tradeoffs">
@@ -116,9 +122,9 @@
           <thead><tr><th>Decision</th><th>Why</th><th>Cost</th></tr></thead>
           <tbody>
             <tr><td>Local files over SaaS accounting integrations</td><td>Lower privacy risk and easier iteration for a private workflow.</td><td>More local operations and less automatic bank reconciliation.</td></tr>
-            <tr><td>JSON caches over a database</td><td>Simple, inspectable and enough for the current volume.</td><td>Will need migration if workflow grows into multi-user operations.</td></tr>
-            <tr><td>Manual confirmation in the middle of the pipeline</td><td>Prevents AI suggestions from becoming financial truth.</td><td>Not fully hands-off, intentionally.</td></tr>
-            <tr><td>Local-only Git with no remote and a pre-push hook</td><td>Financial data cannot leave the machine, even by habit.</td><td>No off-site history; backups belong to the storage layer instead.</td></tr>
+            <tr><td>Files and JSON over a canonical database</td><td>I can inspect the records with ordinary tools and replace the application around them.</td><td>Concurrent writes and large-scale querying would need a rebuildable database projection later.</td></tr>
+            <tr><td>Explicit review states for uncertainty</td><td>Prevents AI suggestions from becoming financial truth.</td><td>Ambiguous evidence remains visible and requires resolution.</td></tr>
+            <tr><td>Private source repository, separate private data</td><td>Code can be maintained without mixing financial evidence into Git.</td><td>Storage backup and restoration need their own verified process.</td></tr>
           </tbody>
         </table>
       </section>
@@ -127,7 +133,7 @@
         <ul>
           <li>AI is useful for reading untidy documents. It should not quietly turn a suggestion into an accounting decision.</li>
           <li>I trust small, inspectable scripts more than a general agent with broad permissions.</li>
-          <li>For a workflow I run myself, a private dashboard is often enough. It does not need to become a product.</li>
+          <li>The durable product is the organised evidence and its contracts. The dashboard is useful, but it is still only a view.</li>
         </ul>
       </section>
     </div>
