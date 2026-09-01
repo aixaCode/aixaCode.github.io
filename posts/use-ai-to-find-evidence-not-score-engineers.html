@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use AI to Find Evidence, Not Score Engineers — Agnieszka Besz</title>
+<meta name="description" content="AI can help managers recover evidence and challenge their reasoning, but it should never score engineers or make employment decisions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="../index.html" aria-label="Agnieszka Besz — home"><span class="brand-mark" aria-hidden="true"></span>Agnieszka Besz</a>
+    <nav class="nav-links" id="navlinks" aria-label="Primary">
+      <a href="../index.html">About</a><a href="../leadership.html">Leadership</a><a href="../projects/index.html">Projects</a><a href="../writing.html" aria-current="page">Writing</a><a href="../cv.html">CV</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="toggle" id="theme" type="button" role="switch" aria-checked="false" aria-label="Toggle dark mode"><span class="toggle-knob" aria-hidden="true"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2M12 20.5v2M3.5 12h-2M22.5 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg></span></button>
+      <button class="menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="navlinks" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="article">
+    <a class="back" href="../writing.html">← All writing</a>
+    <h1>Use AI to Find Evidence, Not Score Engineers</h1>
+    <div class="meta">Sep 1, 2026</div>
+    <div class="topic-tags" aria-label="Article topics"><span>AI</span><span>Leadership</span><span>Performance</span></div>
+
+    <div class="body">
+      <p>I have managed enough annual reviews to know how unreliable memory becomes over a full year.</p>
+
+      <p>The evidence is scattered across project documents, GitHub, Slack, incident records, feedback notes and conversations. Recent problems are easier to remember than quiet contributions. Highly visible work is easier to defend than prevention. A confident self-assessment may surface work that a quieter employee never thinks to mention.</p>
+
+      <p>My first reaction was that AI could help. Give it the career ladder, controlled access to the relevant systems and ask it to assemble the evidence I may have forgotten.</p>
+
+      <p>The idea became less comfortable once I started thinking about what those systems actually record.</p>
+
+      <p>GitHub records activity, not impact. Slack records communication, not collaboration. Neither knows which opportunities someone received, which constraints shaped the work or what happened in conversations it cannot see.</p>
+
+      <p>I still think AI can help. I want help finding what I have forgotten. I do not want a system that makes my judgement feel objective enough that I stop questioning it.</p>
+
+      <p>I would use AI to find material worth reviewing, never to evaluate the engineer.</p>
+
+      <h2>Career ladders could become better context</h2>
+
+      <p>Most career ladders are written as long documents for humans. They describe scope, technical skill, execution, impact, communication and leadership. The language is often broad because it needs to apply across teams.</p>
+
+      <p>“Owns features end to end” may be a reasonable expectation for a senior engineer. An AI assistant still needs to know what could support that conclusion, what would be insufficient and which questions require human context.</p>
+
+      <p>A machine-readable version of the expectation could contain:</p>
+
+      <pre class="code-block" data-language="yaml"><code>level: senior-engineer
+dimension: ownership
+expectation: Owns features through rollout, including risks and follow-up.
+possible_evidence:
+  - design decisions and alternatives considered
+  - delivery milestones and scope changes
+  - risks raised before they became blockers
+  - rollout, monitoring and post-release fixes
+insufficient_evidence:
+  - number of commits
+  - number of Slack messages
+  - meeting attendance without context
+manager_questions:
+  - Was the engineer given end-to-end ownership?
+  - How complex and ambiguous was the work?
+  - Which dependencies were outside their control?</code></pre>
+
+      <p>The YAML is not the important part. What matters is defining possible evidence, contradictory evidence and limits before looking at an individual. The assistant can find material that may support or weaken an interpretation. It cannot decide what that material proves.</p>
+
+      <p>Without that step, the system will treat whatever it can count as performance. Commits become delivery. Messages become communication. Pull-request reviews become mentorship. Availability becomes reliability.</p>
+
+      <p>The result will look consistent because every employee went through the same pipeline. Consistently measuring the wrong thing does not make the process fair.</p>
+
+      <h2>Use AI to find material worth reviewing</h2>
+
+      <p>In an evidence-based performance process, I already need to collect examples over time, distinguish one incident from a repeated pattern and connect feedback to observable work. AI could reduce the mechanical work of finding that material.</p>
+
+      <p>For a review period, an assistant could find:</p>
+
+      <div class="q"><span>Design documents, assigned ownership, decisions and rollout records.</span><span>Risks raised early and what happened afterward.</span><span>Production incidents and follow-up work.</span><span>Substantial review threads and the resulting changes.</span><span>Previous feedback and later work relevant to the same behaviour.</span></div>
+
+      <p>I would require the same query to look for material that contradicts the initial interpretation, shows a change over time or indicates that the required opportunity was never provided. Otherwise the tool becomes a faster way to build whichever case I already had in mind.</p>
+
+      <p>Every claim should link back to its source. The manager and employee should be able to open the pull request, design document or project record and decide whether the interpretation holds.</p>
+
+      <p>This is different from asking AI to write a persuasive promotion case. The goal is not to make the employee sound stronger or weaker. It is to recover relevant work with less dependence on memory.</p>
+
+      <figure class="article-figure" aria-labelledby="boundary-title boundary-caption">
+        <h3 id="boundary-title">AI assembles the record. People make the decision.</h3>
+        <div class="sketch-diagram" role="img" aria-label="Approved work sources and the career ladder flow into an AI evidence assistant. It returns linked source material, contradictions and missing context without a rating. The manager and employee verify the result together before a human-owned assessment and calibration.">
+          <div class="sketch-chain"><div class="sketch-node">Approved sources<br><small>Ladder, GitHub, project and incident records</small></div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">AI evidence assistant<br><small>Retrieves and organises</small></div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Linked evidence<br><small>Contradictions and missing context</small></div></div>
+          <div class="sketch-transition"><b aria-hidden="true">↓</b>No rating or recommendation</div>
+          <div class="sketch-chain"><div class="sketch-node is-positive">Manager and employee verify the record</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-warning">Human-owned assessment and calibration</div></div>
+          <div class="sketch-note">The assistant can find evidence and challenge assumptions. It cannot own the employment decision or its consequences.</div>
+        </div>
+        <figcaption id="boundary-caption">Source links and employee review keep the evidence inspectable. Human ownership is a system boundary, not a final approval click.</figcaption>
+      </figure>
+
+      <h2>Missing evidence should remain missing</h2>
+
+      <p>The safest sentence an AI assistant can produce may be:</p>
+
+      <blockquote class="feedback-example"><p>I found insufficient evidence to assess this expectation.</p></blockquote>
+
+      <p>That does not mean the employee failed to meet it.</p>
+
+      <p>An engineer cannot demonstrate cross-team influence if their manager never gives them cross-team scope. A manager cannot show difficult people leadership if their director steps into every difficult conversation. Someone working on prevention may leave fewer visible artefacts than someone repeatedly responding to incidents.</p>
+
+      <p>Some important work is deliberately private. Conflict resolution, hiring discussions and support through personal difficulties do not belong in a searchable performance system. Mentoring should appear only when participants deliberately document something appropriate for a career discussion. The absence of private records protects people. It should not quietly reduce someone's assessment.</p>
+
+      <p>I would want the tool to distinguish between evidence it found, evidence that points in different directions, evidence it could not find and evidence it was deliberately not allowed to access. None of the last three means the employee failed to meet the expectation.</p>
+
+      <p>Collapsing those differences into a score creates false precision. “Not demonstrated” and “not visible to this tool” are not the same conclusion.</p>
+
+      <h2>Available data is not neutral evidence</h2>
+
+      <h3>GitHub activity is not engineering impact</h3>
+
+      <p>GitHub provides structured, linkable data, which makes it attractive for automated evaluation. It is also easy to misuse.</p>
+
+      <p>Commit counts reward splitting work. Pull-request counts favour smaller changes and can punish engineers working on long investigations. Lines changed reward expansion over simplification. Review counts say nothing about whether the review caught a production risk or added a minor style comment.</p>
+
+      <p>Some of the highest-impact engineering work produces little code. An engineer may stop an unnecessary system from being built, find the root cause behind several apparently unrelated failures, simplify a design before implementation or help another team avoid months of work. A count-based model will struggle with all of these.</p>
+
+      <p>AI may do better than raw counts because it can inspect the content and surrounding discussion. It still lacks the full system context. It may not know that a small change removed a recurring operational burden, that a large change mostly followed an existing pattern or that the strongest technical decision was choosing not to merge anything.</p>
+
+      <p>GitHub is a source of artefacts. It is not a career ladder.</p>
+
+      <h3>Slack activity is not collaboration</h3>
+
+      <p>Slack introduces a different bias. It rewards work that is discussed publicly and frequently.</p>
+
+      <p>People who think aloud create more searchable evidence. People working in a second language may write less. Time-zone differences affect who participates in live discussions. Some engineers communicate through careful documents, code reviews or scheduled conversations. Others post constantly while creating follow-up work for everyone around them.</p>
+
+      <p>A system that treats message volume, response time or reactions as evidence of collaboration will teach people to become more visible. It will not necessarily teach them to collaborate better.</p>
+
+      <p>Slack can still contain useful material: a risk raised early, a decision clarified, a dependency unblocked or a written explanation that helped several teams. Those examples matter because they may connect to an outcome, not because the employee produced a message.</p>
+
+      <p>Private messages should not be used for performance-evidence retrieval. Performance surveillance should not become the hidden price of asking a colleague for help.</p>
+
+      <p>Public does not automatically mean appropriate. People wrote years of ordinary coordination messages without knowing those messages might later become employment evidence. I would exclude private messages completely and avoid searching historical Slack by default. The safer option is to use a Slack thread only when the manager or employee deliberately adds it to the review.</p>
+
+      <h2>The assistant should challenge the manager too</h2>
+
+      <p>The most valuable output may be the questions the system asks me before I finalise the review:</p>
+
+      <div class="q"><span>Are you assessing impact or visibility?</span><span>Did the employee receive work that allowed them to demonstrate this expectation?</span><span>Are you comparing work with similar complexity and constraints?</span><span>Does one recent failure dominate a longer record?</span><span>Are emergency interventions being rewarded while prevention is ignored?</span><span>Which claims come from the record, and which are your judgement?</span></div>
+
+      <p>An assistant could also compare the manager's draft with the evidence record and flag unsupported statements. If the review says someone “consistently misses deadlines” but the linked record contains one delayed project and several completed commitments, the wording needs examination.</p>
+
+      <p>This does not make AI a neutral referee. Its questions come from rules written by people. But it can make the manager's reasoning more inspectable and expose where evidence ends and interpretation begins.</p>
+
+      <h2>The employee needs a seat in the process</h2>
+
+      <p>I would not let an employee first encounter the AI-generated record after their rating had been decided.</p>
+
+      <p>They should be able to see which sources were used, correct factual errors, add relevant work the system missed and explain constraints that are not visible in the artefacts. If a project changed direction, a dependency failed or the manager reassigned the person's scope, that context belongs next to the evidence.</p>
+
+      <p>Employee review is not a veto over difficult feedback. It is a basic accuracy check when a system is assembling claims about someone's career. Corrections should stay attached to the record so the same error does not quietly reappear in the next summary. Where the disagreement is about interpretation rather than fact, both positions should remain visible during human review and calibration.</p>
+
+      <p>Before using the system, the organisation should explain which sources can be searched, who can read the result, how long it is retained, how employees correct errors and whether it can be used in formal decisions. If those answers are hidden, the tool will feel like surveillance even when the intention is administrative support.</p>
+
+      <h2>Stop before the score</h2>
+
+      <p>It will be tempting to ask the assistant for a level, score or promotion recommendation. The evidence has already been mapped to the ladder, so adding a number feels like the final useful step.</p>
+
+      <p>It is the point where the tool crosses from organising evidence into making a consequential judgement it cannot own.</p>
+
+      <p>A performance decision includes context that does not reduce cleanly to artefacts: the opportunities available, the difficulty of the work, the employee's response to feedback, changes in scope, team needs and how comparable cases have been treated. Even a strong model cannot be accountable when those inputs are incomplete or the conclusion causes harm.</p>
+
+      <p>A numerical output also creates anchoring. Managers may adjust it, but the generated score becomes the starting point. Calibration may turn into a discussion about whether the machine was slightly high or low rather than whether the evidence supports the conclusion at all.</p>
+
+      <p>I would prohibit five uses:</p>
+
+      <div class="q"><span>Producing ratings, rankings or promotion decisions.</span><span>Predicting who is likely to leave or underperform.</span><span>Recommending a PIP, compensation change or termination.</span><span>Using private messages or undisclosed sources.</span><span>Serving as the sole or primary evidence for a PIP, demotion, compensation reduction or termination.</span></div>
+
+      <p>Those boundaries may make the tool less impressive. I think they make it safer and more useful.</p>
+
+      <p>For any adverse decision, someone should review the underlying sources independently and give the employee a meaningful opportunity to respond. A manager cannot turn generated material into safe evidence merely by making the final decision themselves.</p>
+
+      <h2>Start smaller than the annual review</h2>
+
+      <p>The annual performance cycle is the highest-risk place to test a new system. A wrong summary can affect compensation, promotion or someone's continued employment.</p>
+
+      <p>A safer first use is preparation for a regular career conversation around one development goal, with every source linked and no evaluative conclusion. I would start with employee-controlled preparation: the engineer asks the tool to find relevant work, reviews the result and decides what to bring into the conversation. This tests retrieval quality before adding the power imbalance of manager-only use.</p>
+
+      <p>A later manager preparation flow should carry the same rule: its output must be verified and shared with the employee before it enters any formal assessment.</p>
+
+      <p>For example:</p>
+
+      <blockquote class="feedback-example"><p>Find work from the last three months relevant to end-to-end ownership. Include material that may support progress, material that may contradict it, changes over time and areas where the record is incomplete. Link every source. Do not decide what the material proves, rate the employee or infer motivation.</p></blockquote>
+
+      <p>The employee and manager verify the result together. Both can see what the system missed. The organisation can learn whether the retrieval is accurate, whether some roles leave weaker digital trails and whether the tool changes how career conversations work.</p>
+
+      <p>Only after that should the organisation consider broader review support. Privacy, People and legal review belong before deployment, not after the first employee objects. AI will not remove human bias; it will inherit bias from the records, the ladder and the opportunities the organisation created.</p>
+
+      <p>I would be comfortable using this to prepare questions for a career conversation. I would not be comfortable receiving a generated performance score, even if the manager promised to review it. AI can help me inspect the evidence and challenge my reasoning. The decision is still mine to make, explain and remain accountable for.</p>
+      <hr class="end">
+    </div>
+  </article>
+
+  <section class="contact-section compact">
+    <div class="contact-cta"><div class="contact-copy"><h2>Want to discuss engineering leadership or a product build?</h2><p>I am open to conversations about leadership, advisory work and product builds.</p></div><div class="contact-actions"><a class="btn" href="mailto:aga@besz.me">Get in touch →</a><a class="btn" href="https://www.linkedin.com/in/agabesz">LinkedIn</a></div></div>
+  </section>
+</main>
+
+<footer><div class="foot-in"><span>© <span id="yr">2026</span> Agnieszka Besz</span><div class="social"><a href="https://github.com/aixaCode">GitHub</a><a href="https://www.linkedin.com/in/agabesz">LinkedIn</a><a href="https://gbfactory.uk/">GB Factory</a><a href="mailto:aga@besz.me">Email</a></div></div></footer>
+<script src="../site.js?v=diagram-responsive-1"></script>
+</body>
+</html>
