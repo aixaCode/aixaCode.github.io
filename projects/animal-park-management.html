@@ -61,13 +61,14 @@
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <h3 class="diagram-title">The client can request a change. Only the server can approve it.</h3>
-        <div class="sketch-diagram" aria-label="Server-authoritative game-state flow">
-          <div class="sketch-chain"><div class="sketch-node">Player action</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Mobile client requests change</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Authenticated API checks version</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Server validates game rules</div></div>
-          <span class="sketch-arrow" aria-hidden="true"></span>
-          <div class="sketch-path"><div><span class="sketch-branch-label">Valid</span><div class="sketch-node is-positive">Game state changes safely</div></div><div><span class="sketch-branch-label">Invalid or outdated</span><div class="sketch-node is-warning">Request rejected · state unchanged</div></div></div>
-        </div>
-        <p class="diagram-caption">The phone presents the experience, but it cannot award progress or alter shared state on its own. Invalid requests leave the authoritative state untouched.</p>
+        <figure class="article-figure sketch-flow-figure project-flow-figure">
+          <h3 class="diagram-title">The client can request a change. Only the server can approve it.</h3>
+          <picture>
+            <source media="(max-width: 640px)" srcset="../assets/project-diagrams/server-authoritative-game-state-mobile.svg">
+            <img src="../assets/project-diagrams/server-authoritative-game-state.svg" alt="A player action becomes an authenticated client request. The server validates game rules before changing shared state or rejecting an invalid request." loading="lazy" decoding="async">
+          </picture>
+          <figcaption>The phone presents the experience, but it cannot award progress or alter shared state on its own. Invalid requests leave the authoritative state untouched.</figcaption>
+        </figure>
       </section>
       <section class="case-section" id="components">
         <h2>Key components</h2>

@@ -71,14 +71,14 @@
 
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <h3 class="diagram-title">Every request gets context, crosses a permission boundary and leaves a record.</h3>
-        <div class="sketch-diagram" aria-label="Assistant request and permission flow">
-          <div class="sketch-chain"><div class="sketch-node">Channel adapters</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Member · source · conversation</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Model proposes a capability</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Permission gate</div></div>
-          <span class="sketch-arrow" aria-hidden="true"></span>
-          <div class="sketch-grid" style="--columns:3"><div class="sketch-node is-positive">Allow<br>Use approved tool</div><div class="sketch-node is-accent">Ask<br>Human confirms</div><div class="sketch-node is-warning">Deny<br>Stop safely</div></div>
-          <div class="sketch-note">Every permission decision and tool action leaves an audit record.</div>
-        </div>
-        <p class="diagram-caption">The model can propose an action. It cannot give itself permission to perform it.</p>
+        <figure class="article-figure sketch-flow-figure project-flow-figure">
+          <h3 class="diagram-title">Every request gets context, crosses a permission boundary and leaves a record.</h3>
+          <picture>
+            <source media="(max-width: 640px)" srcset="../assets/project-diagrams/assistant-permission-boundary-mobile.svg">
+            <img src="../assets/project-diagrams/assistant-permission-boundary.svg" alt="A request receives member and conversation context before the model proposes a capability. A permission gate allows, asks or denies the action." loading="lazy" decoding="async">
+          </picture>
+          <figcaption>The model can propose an action. It cannot give itself permission to perform it.</figcaption>
+        </figure>
         <p>I only acknowledge work after it has been persisted. From there it can be retried, resumed after a restart and traced back to the member, conversation and source that created it. The interaction contract keeps those facts stable without pushing channel-specific behavior into the agent runtime.</p>
         <p>The model sees only enabled capabilities. Every tool passes through scope and risk checks plus optional human confirmation; unknown tools fail closed. File operations also enforce lexical and real-path confinement. I keep permanent information in Markdown, versioned JSON and original files, while databases hold working state that I can rebuild.</p>
       </section>

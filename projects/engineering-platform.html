@@ -55,12 +55,14 @@
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <h3 class="diagram-title">Raw activity becomes a decision only after its meaning is defined.</h3>
-        <div class="sketch-diagram" aria-label="Engineering activity to decision flow">
-          <div class="sketch-chain"><div class="sketch-node">Raw activity<br>PRs · releases · failures</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Define the signal and threshold</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Traceable evidence<br>owner · age · checks · review state</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Priority decision</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-positive">Fix · delay · escalate · ignore</div></div>
-          <div class="sketch-loop">If the definition produced the wrong decision, change the definition</div>
-        </div>
-        <p class="diagram-caption">The platform does not treat activity as impact. It fixes definitions, preserves the underlying evidence and closes the loop when a metric produces the wrong decision.</p>
+        <figure class="article-figure sketch-flow-figure project-flow-figure">
+          <h3 class="diagram-title">Raw activity becomes a decision only after its meaning is defined.</h3>
+          <picture>
+            <source media="(max-width: 640px)" srcset="../assets/project-diagrams/engineering-signal-to-decision-mobile.svg">
+            <img src="../assets/project-diagrams/engineering-signal-to-decision.svg" alt="Raw engineering activity becomes traceable evidence after the signal and threshold are defined, then supports a priority decision and an explicit action." loading="lazy" decoding="async">
+          </picture>
+          <figcaption>The platform does not treat activity as impact. It fixes definitions, preserves the underlying evidence and closes the loop when a metric produces the wrong decision.</figcaption>
+        </figure>
       </section>
       <section class="case-section" id="metrics">
         <h2>What it computes</h2>

@@ -62,12 +62,14 @@
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <h3 class="diagram-title">I keep the evidence authoritative and make everything else rebuildable.</h3>
-        <div class="sketch-diagram" aria-label="AI-assisted accounting pipeline">
-          <div class="sketch-chain"><div class="sketch-node">Original evidence</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">AI reads and suggests</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Portable metadata and approved corrections</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-positive">Deterministic accounts and reports</div></div>
-          <div class="sketch-loop">Files, schemas and documented commands remain usable by different authorised agents</div>
-        </div>
-        <p class="diagram-caption">The model helps me interpret evidence. Files, schemas and deterministic commands preserve the record independently of a model session.</p>
+        <figure class="article-figure sketch-flow-figure project-flow-figure">
+          <h3 class="diagram-title">I keep the evidence authoritative and make everything else rebuildable.</h3>
+          <picture>
+            <source media="(max-width: 640px)" srcset="../assets/project-diagrams/accounting-evidence-pipeline-mobile.svg">
+            <img src="../assets/project-diagrams/accounting-evidence-pipeline.svg" alt="Original evidence passes through AI interpretation and approved portable metadata before deterministic accounting and reporting." loading="lazy" decoding="async">
+          </picture>
+          <figcaption>The model helps me interpret evidence. Files, schemas and deterministic commands preserve the record independently of a model session.</figcaption>
+        </figure>
         <p>I start with the legal entity, not the document type. Each company owns its records, each period has separate evidence and generated output, and personal tax never enters company calculations. If I add a combined management view, it must read separate summaries without blurring entity, currency, period or source.</p>
       </section>
       <section class="case-section" id="components">

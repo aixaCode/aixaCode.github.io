@@ -56,34 +56,36 @@
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <h3 class="diagram-title">The product direction determines which technical boundaries matter.</h3>
-        <div class="sketch-diagram" aria-label="Product direction to Explorer architecture">
-          <div class="sketch-node is-positive" style="margin-inline:auto">Outcome<br>More people sharing one stable world</div><span class="sketch-arrow" aria-hidden="true"></span>
-          <div class="sketch-node" style="margin-inline:auto">Constraints<br>Creator content · density · streaming · weekly releases</div><span class="sketch-arrow" aria-hidden="true"></span>
-          <div class="sketch-node is-accent" style="margin-inline:auto">Unity client coordinates the shared experience</div><span class="sketch-arrow" aria-hidden="true"></span>
-          <div class="sketch-grid" style="--columns:3"><div class="sketch-node">Load a changing world</div><div class="sketch-node">Isolate creator code</div><div class="sketch-node">Keep people visible, moving and talking</div></div>
-          <div class="sketch-note">These three boundaries protect one stable shared experience.</div>
-        </div>
-        <p class="diagram-caption">The architecture starts from the experience Decentraland wants to support. Streaming, runtime isolation and real-time presence are responses to those product constraints.</p>
+        <figure class="article-figure sketch-flow-figure project-flow-figure">
+          <h3 class="diagram-title">The product direction determines which technical boundaries matter.</h3>
+          <picture>
+            <source media="(max-width: 640px)" srcset="../assets/project-diagrams/explorer-product-boundaries-mobile.svg">
+            <img src="../assets/project-diagrams/explorer-product-boundaries.svg" alt="The product outcome and operating constraints lead to a Unity client that loads a changing world, isolates creator code and supports reliable shared presence." loading="lazy" decoding="async">
+          </picture>
+          <figcaption>The architecture starts from the experience Decentraland wants to support. Streaming, runtime isolation and real-time presence are responses to those product constraints.</figcaption>
+        </figure>
 
-        <h3 class="diagram-title">Production evidence shows which problem comes first.</h3>
-        <div class="sketch-diagram" aria-label="Production evidence selects the current engineering priority">
-          <div class="sketch-node" style="margin-inline:auto">Production evidence<br>Crashes · hangs · frame time · loading</div><span class="sketch-arrow" aria-hidden="true"></span>
-          <div class="sketch-node is-accent" style="margin-inline:auto">What currently limits the user experience?</div><span class="sketch-arrow" aria-hidden="true"></span>
-          <div class="sketch-grid" style="--columns:3"><div class="sketch-node is-warning">Crashes or hangs dominate<br><strong>Stability first</strong></div><div class="sketch-node is-accent">Frame time or loading dominates<br><strong>Performance first</strong></div><div class="sketch-node">Quality bar holds<br><strong>Feature work</strong></div></div>
-        </div>
-        <p class="diagram-caption">These are decision conditions, not three stages of delivery. Feature work moves first only when stability and performance are good enough for the product promise to hold.</p>
+        <figure class="article-figure sketch-flow-figure project-flow-figure">
+          <h3 class="diagram-title">Production evidence shows which problem comes first.</h3>
+          <picture>
+            <source media="(max-width: 640px)" srcset="../assets/project-diagrams/explorer-priority-decision-mobile.svg">
+            <img src="../assets/project-diagrams/explorer-priority-decision.svg" alt="Production evidence identifies whether crashes, performance or the quality bar currently limits users, routing work to stability, performance or features." loading="lazy" decoding="async">
+          </picture>
+          <figcaption>These are decision conditions, not three stages of delivery. Feature work moves first only when stability and performance are good enough for the product promise to hold.</figcaption>
+        </figure>
         <p>Three decisions define the client. Game state lives in a data-oriented ECS because frame-time spikes are user-facing product problems. Creator scenes run in isolated V8 runtimes and communicate through CRDT, which helps reconcile scene and engine state but does not solve multiplayer authority by itself. Real-time multiplayer still needs an explicit authority boundary; peer-to-peer did not scale as more players shared the same space, so reliable voice, avatar sync and coordination moved toward server-backed infrastructure.</p>
       </section>
       <section class="case-section" id="creator-pipeline">
         <h2>Creator content pipeline</h2>
         <p>I worked directly on the asset-bundle converter that connects Decentraland's creator tools to the production client. Creators build scenes with the TypeScript SDK and publish their original GLTF/GLB assets to Catalyst. Catalyst remains the content-addressed source of truth; optimization is a derived, replaceable distribution step rather than a mutation of the creator's source content.</p>
-        <h3 class="diagram-title">Creator source stays intact while a replaceable pipeline optimizes delivery.</h3>
-        <div class="sketch-diagram" aria-label="Replaceable content optimisation pipeline">
-          <div class="sketch-chain"><div class="sketch-node">Creator publishes source</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-positive">Source of truth<br>Catalyst · original GLTF/GLB</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-warning">Conversion queue</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-warning">Isolated Unity workers</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Optimised assets · CDN</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Explorer</div></div>
-          <div class="sketch-note">The original source remains available as a fallback. Shared SDK contracts connect creators and Explorer.</div>
-        </div>
-        <p class="diagram-caption">Optimization creates replaceable delivery assets; it does not mutate the creator's published source. Explorer can still fall back to the original content.</p>
+        <figure class="article-figure sketch-flow-figure project-flow-figure">
+          <h3 class="diagram-title">Creator source stays intact while a replaceable pipeline optimizes delivery.</h3>
+          <picture>
+            <source media="(max-width: 640px)" srcset="../assets/project-diagrams/creator-content-pipeline-mobile.svg">
+            <img src="../assets/project-diagrams/creator-content-pipeline.svg" alt="Creator source remains canonical in Catalyst while a queue and isolated Unity workers build replaceable optimized assets for Explorer." loading="lazy" decoding="async">
+          </picture>
+          <figcaption>Optimization creates replaceable delivery assets; it does not mutate the creator's published source. Explorer can still fall back to the original content.</figcaption>
+        </figure>
         <p>The dependency graph matters because changes cross several ownership boundaries: SDK contracts shape creator output, Catalyst owns canonical content and manifests, the converter produces platform-specific derivatives, and Explorer consumes both the source metadata and optimized bundles. SQS decouples deployment from conversion, absorbs changes in demand and lets conversion capacity scale horizontally without blocking creators.</p>
         <p>The outcome is faster runtime loading and distribution of optimized content while preserving portable GLTF/GLB assets as the canonical source. If the optimization strategy changes, bundles can be regenerated from Catalyst instead of asking creators to republish their scenes.</p>
       </section>

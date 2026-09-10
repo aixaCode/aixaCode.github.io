@@ -277,6 +277,8 @@ body:has(.article) .body h2 { margin: 56px 0 22px; color: var(--fg); font-size: 
 .sketch-flow-figure img { display: block; width: 100%; }
 .sketch-flow-figure img { height: auto; background: #fff; }
 .sketch-flow-figure figcaption { max-width: 760px; margin: 14px 0 0; }
+.project-flow-figure { margin: 12px 0 34px; }
+.project-flow-figure > .diagram-title { margin: 32px 0 14px; }
 .workflow-key { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 14px; color: var(--subtle); font-family: var(--mono); font-size: .62rem; letter-spacing: .06em; text-transform: uppercase; }
 .workflow-row { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 12px; align-items: center; margin: 12px 0; }
 .workflow-row > strong { color: var(--fg); font-family: "Segoe Print", "Bradley Hand", ui-rounded, sans-serif; font-size: .82rem; font-weight: 600; }

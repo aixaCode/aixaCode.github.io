@@ -61,14 +61,14 @@
       </section>
       <section class="case-section" id="architecture">
         <h2>Where AI sits</h2>
-        <h3 class="diagram-title">Automation produces early evidence. People still decide what ships.</h3>
-        <div class="sketch-diagram" aria-label="AI evidence and human release decision loop">
-          <div class="sketch-chain"><div class="sketch-node">Code change</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">AI review · tests · visual diff · frame-time delta</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Developer + QA release decision</div></div>
-          <span class="sketch-arrow" aria-hidden="true"></span>
-          <div class="sketch-path"><div><span class="sketch-branch-label">Ready</span><div class="sketch-node is-positive">Release</div></div><div><span class="sketch-branch-label">Not ready</span><div class="sketch-node is-warning">Return to the change</div></div></div>
-          <div class="sketch-loop">Production evidence informs the next engineering decision</div>
-        </div>
-        <p class="diagram-caption">AI and automated tests shorten the path to useful evidence. Developers and QA remain accountable for interpreting it and approving the release.</p>
+        <figure class="article-figure sketch-flow-figure project-flow-figure">
+          <h3 class="diagram-title">Automation produces early evidence. People still decide what ships.</h3>
+          <picture>
+            <source media="(max-width: 640px)" srcset="../assets/project-diagrams/engineering-ai-release-loop-mobile.svg">
+            <img src="../assets/project-diagrams/engineering-ai-release-loop.svg" alt="A code change produces AI review, test, visual and performance evidence before developers and QA decide whether to release or return to the change." loading="lazy" decoding="async">
+          </picture>
+          <figcaption>AI and automated tests shorten the path to useful evidence. Developers and QA remain accountable for interpreting it and approving the release.</figcaption>
+        </figure>
       </section>
       <section class="case-section" id="hard-problems">
         <h2>Interesting problems</h2>

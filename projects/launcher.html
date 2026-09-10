@@ -56,19 +56,14 @@
       </section>
       <section class="case-section" id="architecture">
         <h2>Architecture</h2>
-        <h3 class="diagram-title">One click becomes a verified, recoverable launch.</h3>
-        <div class="sketch-diagram" aria-label="Verified and recoverable launcher flow">
-          <div class="sketch-chain">
-            <div class="sketch-node">User presses Play</div><span class="sketch-step-arrow" aria-hidden="true">→</span>
-            <div class="sketch-node">Check version</div><span class="sketch-step-arrow" aria-hidden="true">→</span>
-            <div class="sketch-node">Download files</div><span class="sketch-step-arrow" aria-hidden="true">→</span>
-            <div class="sketch-node is-accent">Verify before install</div>
-          </div>
-          <span class="sketch-arrow" aria-hidden="true"></span>
-          <div class="sketch-path"><div><span class="sketch-branch-label">Valid</span><div class="sketch-node is-positive">Install safely · launch Explorer</div></div><div><span class="sketch-branch-label">Failed</span><div class="sketch-node is-warning">Keep working install · report useful error</div></div></div>
-          <div class="sketch-note">Both paths leave install, update and launch evidence.</div>
-        </div>
-        <p class="diagram-caption">The Rust core and Tauri bridge implement the steps behind the simple user journey. Verification fails before a bad package can replace the working installation.</p>
+        <figure class="article-figure sketch-flow-figure project-flow-figure">
+          <h3 class="diagram-title">One click becomes a verified, recoverable launch.</h3>
+          <picture>
+            <source media="(max-width: 640px)" srcset="../assets/project-diagrams/launcher-verification-flow-mobile.svg">
+            <img src="../assets/project-diagrams/launcher-verification-flow.svg" alt="The launcher checks and downloads files, verifies them before installation, then either launches Explorer or preserves the working installation." loading="lazy" decoding="async">
+          </picture>
+          <figcaption>The Rust core and Tauri bridge implement the steps behind the simple user journey. Verification fails before a bad package can replace the working installation.</figcaption>
+        </figure>
         <p>The Rust core owns everything that can fail in a way that matters: download and verification, install state, version channels, process launch and deep-link routing. Frontend and backend communicate through one union-typed command enum, so the IPC surface is explicit and exhaustively matched rather than a bag of ad-hoc events.</p>
       </section>
       <section class="case-section" id="hard-problems">
