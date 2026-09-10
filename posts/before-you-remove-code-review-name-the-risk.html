@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Before You Remove Code Review, Name the Risk It Controls — Agnieszka Besz</title>
+<meta name="description" content="Code review is often asked to control several different risks. A safer process routes changes to the evidence and human attention they need.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="../index.html" aria-label="Agnieszka Besz — home"><span class="brand-mark" aria-hidden="true"></span>Agnieszka Besz</a>
+    <nav class="nav-links" id="navlinks" aria-label="Primary">
+      <a href="../index.html">About</a><a href="../leadership.html">Leadership</a><a href="../projects/index.html">Projects</a><a href="../writing.html" aria-current="page">Writing</a><a href="../cv.html">CV</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="toggle" id="theme" type="button" role="switch" aria-checked="false" aria-label="Toggle dark mode"><span class="toggle-knob" aria-hidden="true"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2M12 20.5v2M3.5 12h-2M22.5 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg></span></button>
+      <button class="menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="navlinks" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="article">
+    <a class="back" href="../writing.html">← All writing</a>
+    <h1>Before You Remove Code Review, Name the Risk It Controls</h1>
+    <div class="meta">Sep 10, 2026</div>
+    <div class="topic-tags" aria-label="Article topics"><span>AI</span><span>Engineering</span><span>Code review</span><span>Risk</span></div>
+
+    <div class="body">
+<p>AI can produce pull requests faster than engineers can review them. That does not necessarily mean code review is obsolete. It may mean we have spent years asking one process to control too many different risks.</p>
+
+<p>Some review comments are mechanical and should have been automated already. Others depend on product intent, architecture, operational context or knowledge that has never been written down. Treating those as the same activity made review inefficient before AI. The current volume of generated code has made that inefficiency impossible to ignore.</p>
+
+<figure class="article-figure sketch-flow-figure">
+        <picture>
+          <source media="(max-width: 640px)" srcset="../assets/article-diagrams/review-gate-mobile.svg">
+          <img src="../assets/article-diagrams/review-gate.svg" alt="One pull request feeding four different forms of assurance: mechanical checks, system judgment, runtime confidence and shared knowledge." loading="lazy" decoding="async">
+        </picture>
+        <figcaption>One review gate has been doing several different jobs.</figcaption>
+      </figure>
+
+<p>In <a href="https://newsletter.pragmaticengineer.com/p/what-is-happening-with-code-reviews">What is happening with code reviews?</a>, Gergely Orosz describes several ways teams are adapting. Some use AI to review every change and ask humans to review the AI's findings. Others require human review only for changes with a large blast radius. Some review the plan, tests or database schema instead of reading the implementation line by line. A few are trying to remove human review almost completely.</p>
+
+<p>I recognise the problem. At Decentraland, we tried several versions of the review process for the Unity Explorer. The useful lesson was not that one of them was the answer. Each version made a different tradeoff between speed, confidence, knowledge and ownership.</p>
+
+<figure class="article-figure sketch-flow-figure">
+        <picture>
+          <source media="(max-width: 640px)" srcset="../assets/article-diagrams/review-evolution-mobile.svg">
+          <img src="../assets/article-diagrams/review-evolution.svg" alt="An illustrative before-and-after comparison of the Decentraland Unity Explorer review process: AI takes the first pass for every change, while human review and QA focus on higher-risk work." loading="lazy" decoding="async">
+        </picture>
+        <figcaption>The process evolved by changing where human attention was required, not by removing quality controls altogether. Block width is illustrative relative review attention, not measured elapsed time.</figcaption>
+      </figure>
+
+<h2>One gate was doing several jobs</h2>
+
+<p>Our more traditional process required a developer review, QA approval and green automated checks before a pull request could merge. The developer looked at architecture, correctness and how the change fitted the wider system. QA followed test instructions from the pull request and verified the change in a build.</p>
+
+<p>That process provided several kinds of assurance, but it also treated very different changes in roughly the same way. A small maintenance fix could wait for the same categories of approval as a change to scene execution, multiplayer or memory management. The cost was not only the time spent reviewing. Work also stopped while the right people became available.</p>
+
+<p>It is tempting to describe that delay as waste. Sometimes it was. But the reviews were also compensating for weaknesses elsewhere in the system.</p>
+
+<p>In one team snapshot, every respondent said expert code review gave them confidence when shipping. Almost everyone also relied on testing in the Unity editor and in a built client. Far fewer trusted the automated unit-test coverage.</p>
+
+<p>Removing human review in that environment would not simply remove a redundant gate. It would remove one of the controls engineers actually trusted before the alternatives were ready to replace it.</p>
+
+<p>This is the first question I would ask before changing a review process: what is the review compensating for today?</p>
+
+<p>It may be weak automated coverage. It may be concentrated knowledge, unclear architecture or poor observability. It may be that the written requirement does not describe the behaviour precisely enough for a test to prove it. Removing the wait does not remove any of those conditions.</p>
+
+<h2>We added AI without immediately handing it authority</h2>
+
+<p>We also introduced Claude as a first-pass reviewer. It reviewed a pull request against the diff and repository-specific architecture guidance. It could flag suspicious complexity, missed tests, consistency problems and patterns that were easy for a tired reviewer to overlook.</p>
+
+<p>That was useful because it made some review work cheaper and more consistent. It did not make every comment useful. AI review can create its own queue of plausible-looking suggestions, each of which costs a human reviewer time and attention. A reviewer who has to verify ten low-value comments may have been better off reading the important part of the change directly.</p>
+
+<p>Context made a large difference. A generic model can comment on C# style. It will not automatically understand why an allocation in a Unity hot path matters, which ECS boundaries the project relies on, or which part of the product is particularly difficult to roll back. The review became more valuable when those constraints were written down and included in the review instructions.</p>
+
+<p>That creates a maintenance obligation. The guidance needs owners. It needs to change with the architecture. The workflow needs monitoring when the model fails, times out or produces an incomplete result.</p>
+
+<p>It also creates a new security boundary. We had to harden the Claude review workflow against prompt injection. This is an easy cost to miss when AI review is presented as adding another pair of eyes. The reviewer is now software with access to repository content and tools. Its permissions, inputs and allowed actions are part of the production system.</p>
+
+<p>AI made part of review cheaper. It did not make the review system free.</p>
+
+<h2>Then we started routing changes by risk</h2>
+
+<p>A later version treated simple and complex changes differently.</p>
+
+<p>Fixes and maintenance pull requests received an automatic AI review. The reviewer classified the change as simple or complex, identified blocking issues and decided whether QA was required. A simple change that passed could receive an automated approval and no longer needed a separate developer approval. Complex changes still required a human developer. Features and performance work did not automatically enter the same path; an engineer could request an AI review, but the process did not assume those changes were safe because a model had read them.</p>
+
+<p>There were narrower exceptions as well. Trivial maintenance could explicitly skip review, while bot-generated dependency updates used their own path.</p>
+
+<p>This was closer to the right model because it stopped pretending that every pull request deserved the same amount of human attention. But the classification itself mattered. Pull-request size is a poor proxy for risk. So is the amount of code generated by AI.</p>
+
+<p>A one-line permission change can have a larger blast radius than a new internal tool. A small database migration can be harder to reverse than a large stateless implementation. A change in a public protocol can constrain several clients for years. A large refactor behind a feature flag may be comparatively safe if it is observable and easy to disable.</p>
+
+<figure class="article-figure sketch-flow-figure">
+        <picture>
+          <source media="(max-width: 640px)" srcset="../assets/article-diagrams/risk-based-assurance-mobile.svg">
+          <img src="../assets/article-diagrams/risk-based-assurance.svg" alt="A decision tree routing low-risk changes to checks, AI and observability; medium-risk changes to focused human review; and high-risk one-way doors to human judgment before implementation." loading="lazy" decoding="async">
+        </picture>
+        <figcaption>Risk determines the evidence and attention a change needs.</figcaption>
+      </figure>
+
+<p>I would assess at least four things:</p>
+
+<div class="q"><span>How many users and systems can the change affect?</span><span>How quickly will we detect a wrong result?</span><span>Can we reverse it without damaging data or breaking a public contract?</span><span>Does the team have enough shared knowledge to operate it after merge?</span></div>
+
+<p>The last question is easy to lose when code review is discussed only as defect detection.</p>
+
+<h2>Code review was also how the team learned the system</h2>
+
+<p>Human review distributes context. It shows another engineer why a decision was made, where the surprising dependency lives and which part of the code deserves caution next time. It gives less experienced engineers examples of judgment that a style guide cannot capture.</p>
+
+<p>This was particularly important in a large real-time client. Some areas had knowledge concentrated in one or two people. Engineers identified scene loading, multiplayer, avatars, SDK bindings and media as recurring risk areas. In that environment, asking whether an AI reviewer can find bugs is only part of the question.</p>
+
+<p>If nobody else needs to understand the change before it merges, who will understand it when the author is unavailable and the system fails in production?</p>
+
+<p>This does not mean every change needs a second engineer reading every line. It means that removing review also removes a knowledge-sharing mechanism. A team may replace it with pairing on high-risk work, design reviews, post-merge walkthroughs, stronger ownership documentation or rotations through important systems. But it should be a conscious replacement.</p>
+
+<p>Otherwise, AI increases the amount of code while quietly reducing the number of people who understand it.</p>
+
+<h2>Some risks do not belong in code review</h2>
+
+<p>Our experience also showed the opposite problem: asking code review to catch failures it was not suited to catch.</p>
+
+<p>The Explorer runs code, assets and user-created content inside a real-time performance budget. A pull request can be well structured and still produce an unusable result once the client loads a heavy scene, renders many avatars or handles unpredictable content. A reviewer cannot reliably infer all of that from a diff.</p>
+
+<p>Those risks need different controls. QA tested runtime behaviour in a built client. Performance work required before-and-after evidence. Asset-bundle conversion used automated visual comparison so a broken conversion could be rejected before upload. Production telemetry and feature flags helped detect and limit failures that escaped earlier stages.</p>
+
+<p>The point was not to accumulate as many gates as possible. Each control needed a failure it was capable of detecting.</p>
+
+<p>Static checks are better than humans at enforcing deterministic rules. AI is useful for pattern discovery, context compression and finding suspicious omissions. A domain expert is still better placed to judge whether a change fits the architecture and intended product behaviour. QA can assess flows and experience that are difficult to encode in unit tests. Observability and rollback reduce the impact of what none of them catches.</p>
+
+<p>Once those responsibilities are explicit, review can become smaller without becoming careless.</p>
+
+<h2>Replace the review checklist with an assurance model</h2>
+
+<p>I would not set one code-review policy for an entire engineering organisation. I would define a small number of risk paths.</p>
+
+<p>Low-risk, reversible changes can rely on deterministic checks, AI review and good post-merge detection. Medium-risk changes may need a human to review behaviour, tests and system fit without reading every generated line. One-way doors such as authentication boundaries, destructive migrations, public APIs and protocols deserve human judgment before implementation as well as focused review afterward.</p>
+
+<p>The exact categories will differ by product. A database schema may be the main one-way door in a SaaS startup. In a real-time client, memory use, frame time, content compatibility and rollout behaviour may deserve equal attention.</p>
+
+<p>The process should also be measured by the decisions it improves, not by how much review activity it produces. Which defects are caught before release? Where do rollbacks and incidents originate? Which reviews repeatedly find nothing? How long does it take someone other than the author to understand and operate the changed system? Where is review blocked on one expert?</p>
+
+<p>A gate that no longer catches meaningful problems becomes delay dressed as safety. But removing it without replacing the risk it controlled is not efficiency. It is an unowned change to the operating model.</p>
+
+<p>Before removing human review, I would make five things explicit:</p>
+
+<div class="q"><span>Which failure modes the current review catches</span><span>Which of them deterministic tooling or AI can catch reliably</span><span>Which changes still require domain judgment</span><span>How knowledge will spread when nobody reads every implementation</span><span>Who owns the result after the change reaches production</span></div>
+
+<p>The useful question is no longer whether humans or AI should review the code. It is which evidence we need before taking a particular risk, which control can produce that evidence, and who is accountable when the evidence is wrong.</p>
+    </div>
+  </article>
+
+  <section class="contact-section compact">
+    <div class="contact-cta"><div class="contact-copy"><h2>Want to discuss engineering leadership or a product build?</h2><p>I am open to conversations about leadership, advisory work and product builds.</p></div><div class="contact-actions"><a class="btn" href="mailto:aga@besz.me">Get in touch →</a><a class="btn" href="https://www.linkedin.com/in/agabesz">LinkedIn</a></div></div>
+  </section>
+</main>
+
+<footer><div class="foot-in"><span>© <span id="yr">2026</span> Agnieszka Besz</span><div class="social"><a href="https://github.com/aixaCode">GitHub</a><a href="https://www.linkedin.com/in/agabesz">LinkedIn</a><a href="mailto:aga@besz.me">Email</a></div></div></footer>
+<script src="../site.js?v=diagram-responsive-1"></script>
+</body>
+</html>

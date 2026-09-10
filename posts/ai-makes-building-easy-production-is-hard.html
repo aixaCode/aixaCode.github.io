@@ -52,23 +52,11 @@
 
       <p>AI has also removed effort as a useful signal. Producing a twenty-page proposal once required enough work to filter out many weak ideas. Now the proposal is cheap, but rejecting it still requires someone to understand the system, trace the dependencies and explain why the confident answer does not fit reality.</p>
 
-      <figure class="article-figure workflow-figure" aria-labelledby="workflow-title workflow-caption">
-        <h3 id="workflow-title">Faster code does not make every step faster</h3>
-        <div class="workflow-chart" role="img" aria-label="An illustrative comparison showing AI shortening generation while deciding, understanding, reviewing, testing, integrating and operating remain. Review grows slightly because more generated output must be checked.">
-          <div class="workflow-key"><span>Illustrative effort</span><span>Not measured time</span></div>
-          <div class="workflow-row">
-            <strong>Without AI</strong>
-            <div class="workflow-track">
-              <span style="--w:14">Decide</span><span style="--w:17">Understand</span><span class="generation" style="--w:21">Generate</span><span style="--w:14">Review</span><span style="--w:13">Test</span><span style="--w:10">Integrate</span><span style="--w:11">Operate</span>
-            </div>
-          </div>
-          <div class="workflow-row">
-            <strong>With AI</strong>
-            <div class="workflow-track">
-              <span style="--w:14">Decide</span><span style="--w:17">Understand</span><span class="generation ai" style="--w:8">Generate</span><span class="review" style="--w:20">Review <i aria-hidden="true">↗</i></span><span style="--w:13">Test</span><span style="--w:10">Integrate</span><span style="--w:11">Operate</span>
-            </div>
-          </div>
-        </div>
+      <figure class="article-figure sketch-flow-figure">
+        <picture>
+          <source media="(max-width: 640px)" srcset="../assets/article-diagrams/delivery-effort-mobile.svg">
+          <img src="../assets/article-diagrams/delivery-effort.svg" alt="An illustrative comparison of delivery effort without and with AI. Generation becomes shorter, review grows, and the other production work remains." loading="lazy" decoding="async">
+        </picture>
         <figcaption id="workflow-caption">AI can make generation much cheaper while leaving most of the delivery system unchanged. Cheap output may also move work into review.</figcaption>
       </figure>
 
@@ -86,15 +74,11 @@
 
       <p>I see a similar gap in real-time products. A feature that works with one user, one machine and controlled content may say very little about how it behaves with many avatars, unpredictable assets, network handoffs and a fixed frame budget. The code can be correct while the product is unusable.</p>
 
-      <figure class="article-figure" aria-labelledby="demo-title demo-caption">
-        <h3 id="demo-title">A demo proves the visible path</h3>
-        <div class="sketch-diagram" aria-label="Visible demo and hidden production obligations">
-          <p class="sketch-state-label">What the demo shows</p>
-          <div class="sketch-chain"><div class="sketch-node is-accent">Prompt</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Generated specification</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">Working happy path</div></div>
-          <div class="sketch-separator"></div>
-          <p class="sketch-state-label">What production still needs</p>
-          <div class="sketch-grid" style="--columns:2"><div class="sketch-node is-warning">Authentication + permissions</div><div class="sketch-node is-warning">Failure recovery + migration</div><div class="sketch-node is-warning">Observability + support</div><div class="sketch-node is-warning">Cost + ownership</div></div>
-        </div>
+      <figure class="article-figure sketch-flow-figure">
+        <picture>
+          <source media="(max-width: 640px)" srcset="../assets/article-diagrams/demo-to-production-mobile.svg">
+          <img src="../assets/article-diagrams/demo-to-production.svg" alt="A prompt, generated specification and working happy path lead to four additional production obligations: permissions, recovery, observability and ownership." loading="lazy" decoding="async">
+        </picture>
         <figcaption id="demo-caption">The generated path is visible. Most production obligations remain unanswered until someone designs and owns them.</figcaption>
       </figure>
 
@@ -134,13 +118,11 @@
 
       <p>The same principle appears in finance automation I have built. The model extracts information and suggests matches. A human resolves uncertainty, and deterministic code performs reconciliation, calculations and reporting. A wrong suggestion cannot quietly become a tax or reporting error. Someone must be able to find it, correct it and explain what happened.</p>
 
-      <figure class="article-figure" aria-labelledby="boundary-title boundary-caption">
-        <h3 id="boundary-title">The model can act. A person still owns the outcome.</h3>
-        <div class="sketch-diagram" aria-label="AI action with a named human owner">
-          <div class="sketch-node is-warning" style="margin:0 auto 18px">Named owner<br>Sets goal · defines rules · monitors result</div>
-          <div class="sketch-chain"><div class="sketch-node">Goal</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-accent">AI action</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-warning">Permissions + checks</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node">Production change</div><span class="sketch-step-arrow" aria-hidden="true">→</span><div class="sketch-node is-positive">Observable result</div></div>
-          <div class="sketch-loop">Failure or context change returns to the owner: correct · stop · change rules</div>
-        </div>
+      <figure class="article-figure sketch-flow-figure">
+        <picture>
+          <source media="(max-width: 640px)" srcset="../assets/article-diagrams/human-owns-outcome-mobile.svg">
+          <img src="../assets/article-diagrams/human-owns-outcome.svg" alt="A named owner defines the goal and rules. AI acts through permissions and checks, producing a production change and an observable result." loading="lazy" decoding="async">
+        </picture>
         <figcaption id="boundary-caption">Ownership means defining the goal and rules, monitoring the result and responding when the system fails or its context changes. An audit trail helps the owner do that work; it does not replace them.</figcaption>
       </figure>
 

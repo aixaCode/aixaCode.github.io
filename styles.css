@@ -272,6 +272,11 @@ body:has(.article) .body h2 { margin: 56px 0 22px; color: var(--fg); font-size: 
 .article-figure > h3 { margin-bottom: 22px; color: var(--fg); font-family: "Segoe Print", "Bradley Hand", ui-rounded, sans-serif; font-size: clamp(1.05rem, .96rem + .35vw, 1.25rem); }
 .article-figure .diagram { margin: 0; padding: 10px 0; border: 0; background: transparent; }
 .article-figure figcaption { margin-top: 18px; color: var(--subtle); font-size: .82rem; line-height: 1.55; }
+.article-figure.sketch-flow-figure { padding: 0; border: 0; background: transparent; }
+.sketch-flow-figure picture,
+.sketch-flow-figure img { display: block; width: 100%; }
+.sketch-flow-figure img { height: auto; background: #fff; }
+.sketch-flow-figure figcaption { max-width: 760px; margin: 14px 0 0; }
 .workflow-key { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 14px; color: var(--subtle); font-family: var(--mono); font-size: .62rem; letter-spacing: .06em; text-transform: uppercase; }
 .workflow-row { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 12px; align-items: center; margin: 12px 0; }
 .workflow-row > strong { color: var(--fg); font-family: "Segoe Print", "Bradley Hand", ui-rounded, sans-serif; font-size: .82rem; font-weight: 600; }
