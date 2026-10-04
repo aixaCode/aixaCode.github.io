@@ -1,0 +1,132 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Multiplayer Mobile Game - Agnieszka Besz</title><meta name="description" content="Animal Park, in development: a multiplayer mobile game for iOS and Android, built end to end from Unity client and content pipeline to backend services and release automation."><meta name="theme-color" content="#fff8f0"><link rel="icon" href="../favicon.ico" sizes="32x32"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="manifest" href="../site.webmanifest"><link rel="preload" href="../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="canonical" href="https://besz.me/projects/animal-park-management.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Agnieszka Besz"><meta property="og:title" content="Multiplayer Mobile Game"><meta property="og:description" content="Animal Park, in development: a multiplayer mobile game for iOS and Android, built end to end from Unity client and content pipeline to backend services and release automation."><meta property="og:url" content="https://besz.me/projects/animal-park-management.html"><meta property="og:image" content="https://besz.me/assets/images/og-default.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Multiplayer Mobile Game"><meta name="twitter:description" content="Animal Park, in development: a multiplayer mobile game for iOS and Android, built end to end from Unity client and content pipeline to backend services and release automation."><meta name="twitter:image" content="https://besz.me/assets/images/og-default.jpg"><link rel="stylesheet" href="../assets/content.css?v=a513520e61"><link rel="stylesheet" href="../assets/site.css?v=f300770929"><script src="../assets/site.js?v=52b5215894" defer></script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header" id="site-header"><div class="shell header-inner"><div class="identity"><a class="wordmark" href="../index.html" aria-label="aixaCode — Agnieszka Besz, home">aixa<em>Code.</em></a><span class="identity-note">AGNIESZKA BESZ<br>VP OF ENGINEERING</span></div><button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" type="button">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="../writing.html">Writing</a><a href="../projects/index.html" aria-current="page">Selected work</a><a href="../about.html">About</a><a href="../index.html#contact">Contact</a></nav></div></header><main class="shell content-page" id="main">
+<section class="hero">
+<p class="eyebrow mono"> Architecture case study</p>
+<h1>Multiplayer Mobile Game</h1>
+<p class="lead">Animal Park is a multiplayer mobile game I am building for iOS and Android, including the Unity client, Firebase backend, social systems and release automation.</p>
+<p class="stack">Unity/C# / IL2CPP (Android + iOS) / Addressables / Firebase Cloud Functions / Node.js 22 / Firestore / Crashlytics / TeamCity / fastlane / GitHub Actions</p>
+<div aria-label="Project topics" class="topic-tags"><a href="index.html?filter=games">Games</a></div>
+<div class="actions"><span class="meta">In development. Backend details are based on local project code.</span><a class="btn" href="index.html">All projects</a></div>
+</section>
+<div class="case-layout">
+<div>
+<section class="case-section" id="overview">
+<h2>Overview</h2>
+<p>Animal Park is a full iOS and Android game build rather than a single feature demo. The backend supports player progress, inventory and map state, public profiles, clubs, club chat, tournaments, remote configuration and environment-specific deployment. The client is a Unity/C# game shipped as IL2CPP builds for Android and iOS.</p>
+<p>The engineering challenge is the normal one in live games: keep iteration fast without letting saves, social systems or live configuration become unsafe or inconsistent.</p>
+</section>
+<section class="case-section" id="requirements">
+<h2>Requirements</h2>
+<div class="spec-grid">
+<div class="spec"><strong>Player state</strong><span>Save and load inventory, map, persistent map data and user profile safely.</span></div>
+<div class="spec"><strong>Social systems</strong><span>Support clubs, membership flows, roles, chat and public profile lookups.</span></div>
+<div class="spec"><strong>Live operations</strong><span>Remote config, server-version migrations and weekly tournament jobs.</span></div>
+<div class="spec"><strong>Release safety</strong><span>Three isolated environments (dev/stage/prod), emulator support, Node test coverage and CI-built, store-ready client builds.</span></div>
+</div>
+</section>
+<section class="case-section" id="architecture">
+<h2>Architecture</h2>
+<figure class="article-figure sketch-flow-figure project-flow-figure">
+<h3 class="diagram-title">The client can request a change. Only the server can approve it.</h3>
+<picture>
+<source media="(max-width: 640px)" srcset="../assets/project-diagrams/server-authoritative-game-state-mobile.svg"/>
+<img alt="A player action becomes an authenticated client request. The server validates game rules before changing shared state or rejecting an invalid request." decoding="async" loading="lazy" src="../assets/project-diagrams/server-authoritative-game-state.svg"/>
+</picture>
+<figcaption>The phone presents the experience, but it cannot award progress or alter shared state on its own. Invalid requests leave the authoritative state untouched.</figcaption>
+</figure>
+</section>
+<section class="case-section" id="components">
+<h2>Key components</h2>
+<table class="decision-table">
+<thead><tr><th>Component</th><th>Responsibility</th><th>Notable decision</th></tr></thead>
+<tbody>
+<tr><td><code>utils.onAuthedCall</code></td><td>Wraps callable functions with a uniform authentication guard.</td><td>Every gameplay function returns a consistent <code>error</code> envelope and server time.</td></tr>
+<tr><td><code>user-progress.js</code></td><td>Create, load and save player data across user, inventory and map documents.</td><td>Uses Firestore batches and a save index to reject old saves.</td></tr>
+<tr><td><code>clubs.js</code></td><td>Club creation, joining, role changes, pending requests and member management.</td><td>Role checks distinguish leader/admin operations from normal membership flows.</td></tr>
+<tr><td><code>chat.js</code></td><td>Club-scoped chat fetch and send.</td><td>Verifies the authenticated user's club before reading or writing messages.</td></tr>
+<tr><td><code>tournaments.js</code></td><td>Weekly tournament creation and score reporting.</td><td>Score updates run in Firestore transactions; tournament creation buckets eligible clubs.</td></tr>
+<tr><td><code>core.js</code></td><td>Remote configuration fetch.</td><td>Returns only newer config values by version to reduce unnecessary client updates.</td></tr>
+</tbody>
+</table>
+</section>
+<section class="case-section" id="client">
+<h2>Unity client &amp; release automation</h2>
+<p>The client is a Unity/C# game shipped as IL2CPP builds for Android and iOS. Gameplay code is organized by domain — core simulation, level generation, online services, rewards and collection, ads/analytics/IAP integrations, UI — with editor tests alongside. Content ships through Addressables with separate dev and production build layouts, so asset iteration does not require client releases.</p>
+<p>The DevOps path is the part that makes a one-studio game operable. TeamCity drives the Unity builds through a custom editor build layer (build manifests, build tags and TeamCity service-message integration live in the project as code). fastlane owns everything store-facing:</p>
+<ul>
+<li><strong>Dev distribution</strong> — Firebase App Distribution with generated changelogs per build.</li>
+<li><strong>iOS</strong> — Xcode build lanes and TestFlight upload via App Store Connect API keys.</li>
+<li><strong>Android</strong> — Google Play upload and track promotion from testing to production.</li>
+<li><strong>Operations</strong> — git tagging per build and Crashlytics dSYM symbol upload, so crash reports stay symbolicated.</li>
+</ul>
+</section>
+<section class="case-section" id="implementation">
+<h2>Implementation detail</h2>
+<p>The highest-risk backend paths are the ones where a client claims identity or ordering: chat, saves and tournament scores. Those paths use server-side membership checks, server timestamps, save-index validation and transactions instead of trusting client state.</p>
+<pre class="code-block"><code>// Score reporting is accepted only when the authenticated user
+// belongs to the claimed club and the club is in the active tournament.
+if (!caller || caller.userData.clubId !== request.data.clubId) {
+    return utils.err("permission-denied")
+}
+
+await db.runTransaction(async (transaction) =&gt; {
+    const [tournamentDoc, clubDoc, memberDoc] = await Promise.all([
+        transaction.get(tournamentRef),
+        transaction.get(clubRef),
+        transaction.get(memberRef),
+    ])
+    // update tournament participant score and member score together
+})</code></pre>
+</section>
+<section class="case-section" id="problems">
+<h2>Interesting engineering problems</h2>
+<ul class="list-clean">
+<li><strong>How do you stop clients from writing social data outside their authority?</strong> Chat and tournament APIs verify the authenticated user's current club server-side before writing.</li>
+<li><strong>How do you avoid old mobile saves overwriting newer state?</strong> Save requests carry a save index; older saves are rejected instead of merged.</li>
+<li><strong>How do you start tournaments without loading the world into memory?</strong> Eligible clubs are fetched in buckets, tournament documents are created per bucket and participant club records are updated in parallel.</li>
+<li><strong>How do you change game configuration without forcing client releases?</strong> Remote config documents include versions, and the client fetch returns only newer values.</li>
+</ul>
+</section>
+<section class="case-section" id="tradeoffs">
+<h2>Trade-offs</h2>
+<table class="decision-table">
+<thead><tr><th>Decision</th><th>Why</th><th>Cost</th></tr></thead>
+<tbody>
+<tr><td>Firebase Cloud Functions and Firestore</td><td>Fast to build, good fit for mobile backend iteration and authenticated callable APIs.</td><td>Requires care around query shape, transactions and document-level consistency.</td></tr>
+<tr><td>Callable modules by feature</td><td>Keeps progress, clubs, chat, tournaments and config understandable as separate domains.</td><td>Shared invariants must be kept in utilities and tests to avoid drift.</td></tr>
+<tr><td>Remote config by version</td><td>Lets the game tune behavior without client releases.</td><td>Configuration becomes part of production state and needs discipline.</td></tr>
+</tbody>
+</table>
+</section>
+<section class="case-section" id="results">
+<h2>Current state</h2>
+<ul>
+<li>End-to-end mobile build path across Unity client, backend functions, Addressables content and store-facing release automation.</li>
+<li>Server-side ownership for the risky paths: saves, club membership, chat and tournament score updates.</li>
+<li>Separated dev, stage and production environments so backend and client changes can be tested without touching live state.</li>
+<li>Release automation covers generated changelogs, TestFlight, Google Play tracks and Crashlytics symbol upload.</li>
+</ul>
+</section>
+<section class="case-section" id="lessons">
+<h2>Lessons learned</h2>
+<ul>
+<li>Small game backends need production habits early: environment separation, tests, explicit deploy paths and predictable error envelopes.</li>
+<li>Social features are trust systems. Permission checks and server-owned timestamps matter before scale makes them painful to retrofit.</li>
+<li>Firebase is productive when feature modules stay narrow and high-risk updates use batches or transactions deliberately.</li>
+</ul>
+</section>
+</div>
+<aside class="toc">
+<a href="#overview">Overview</a>
+<a href="#requirements">Requirements</a>
+<a href="#architecture">Architecture</a>
+<a href="#components">Components</a>
+<a href="#client">Client &amp; release</a>
+<a href="#implementation">Implementation</a>
+<a href="#problems">Engineering problems</a>
+<a href="#tradeoffs">Trade-offs</a>
+<a href="#results">Current state</a>
+<a href="#lessons">Lessons</a>
+</aside>
+</div>
+
+</main><footer class="site-footer shell" id="contact"><div class="footer-top"><div><div class="label">LET’S TALK</div><h2>Good work starts with a thoughtful conversation.</h2></div><a class="footer-email" href="mailto:aga@besz.me">aga@besz.me</a></div><div class="footer-bottom"><span>© 2026 Agnieszka Besz · aixaCode</span><div class="social-links"><a href="https://www.linkedin.com/in/agabesz">LinkedIn</a><a href="https://github.com/aixaCode">GitHub</a><a href="https://gbfactory.uk/">GB Factory</a><a href="../cv.html">CV</a></div></div></footer></body></html>

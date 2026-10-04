@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Engineering Management Dashboard - Agnieszka Besz</title><meta name="description" content="Engineering-management dashboard for releases, CI health, Sentry signals, Unity Cloud costs, priority reviews and team-load evidence."><meta name="theme-color" content="#fff8f0"><link rel="icon" href="../favicon.ico" sizes="32x32"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="manifest" href="../site.webmanifest"><link rel="preload" href="../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="canonical" href="https://besz.me/projects/engineering-platform.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Agnieszka Besz"><meta property="og:title" content="Engineering Management Dashboard"><meta property="og:description" content="Engineering-management dashboard for releases, CI health, Sentry signals, Unity Cloud costs, priority reviews and team-load evidence."><meta property="og:url" content="https://besz.me/projects/engineering-platform.html"><meta property="og:image" content="https://besz.me/assets/images/og-default.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Engineering Management Dashboard"><meta name="twitter:description" content="Engineering-management dashboard for releases, CI health, Sentry signals, Unity Cloud costs, priority reviews and team-load evidence."><meta name="twitter:image" content="https://besz.me/assets/images/og-default.jpg"><link rel="stylesheet" href="../assets/content.css?v=a513520e61"><link rel="stylesheet" href="../assets/site.css?v=f300770929"><script src="../assets/site.js?v=52b5215894" defer></script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header" id="site-header"><div class="shell header-inner"><div class="identity"><a class="wordmark" href="../index.html" aria-label="aixaCode — Agnieszka Besz, home">aixa<em>Code.</em></a><span class="identity-note">AGNIESZKA BESZ<br>VP OF ENGINEERING</span></div><button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" type="button">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="../writing.html">Writing</a><a href="../projects/index.html" aria-current="page">Selected work</a><a href="../about.html">About</a><a href="../index.html#contact">Contact</a></nav></div></header><main class="shell content-page" id="main">
+<section class="hero">
+<p class="eyebrow mono"> Case study</p>
+<h1>Engineering Management Dashboard</h1>
+<p class="lead">A dashboard I built to collect the engineering information I was otherwise assembling by hand each week.</p>
+<p class="stack">GitHub Actions / scheduled agents / Sentry MCP / Unity Cloud costs / priority reviews / AI-assisted notes</p>
+<div aria-label="Project topics" class="topic-tags"><a href="index.html?filter=leadership">Leadership</a><a href="index.html?filter=platform">Platform</a></div>
+<div class="actions"><span class="meta">Internal or private project material.</span><a class="btn" href="index.html">All projects</a></div>
+</section>
+<div class="case-layout">
+<div>
+<section class="case-section" id="problem">
+<h2>Problem</h2>
+<p>With frequent releases, information was spread across GitHub, Sentry, Unity Cloud and several reports. I built one view for the questions I kept asking in priority and release reviews. Scheduled agents collect the data and prepare summaries, with links back to the underlying issues and pull requests.</p>
+</section>
+<section class="case-section" id="goals">
+<h2>Goals</h2>
+<ul><li>Turn repository activity into a daily management view.</li><li>Surface release, CI, Sentry and team-load signals.</li><li>Track Unity Cloud cost data alongside engineering activity.</li><li>Use AI-assisted summaries to reduce manual status gathering.</li><li>Support priority reviews without inventing a heavy process.</li></ul>
+</section>
+<section class="case-section" id="architecture">
+<h2>Architecture</h2>
+<figure class="article-figure sketch-flow-figure project-flow-figure">
+<h3 class="diagram-title">Raw activity becomes a decision only after its meaning is defined.</h3>
+<picture>
+<source media="(max-width: 640px)" srcset="../assets/project-diagrams/engineering-signal-to-decision-mobile.svg"/>
+<img alt="Raw engineering activity becomes traceable evidence after the signal and threshold are defined, then supports a priority decision and an explicit action." decoding="async" loading="lazy" src="../assets/project-diagrams/engineering-signal-to-decision.svg"/>
+</picture>
+<figcaption>The platform does not treat activity as impact. It fixes definitions, preserves the underlying evidence and closes the loop when a metric produces the wrong decision.</figcaption>
+</figure>
+</section>
+<section class="case-section" id="metrics">
+<h2>What it computes</h2>
+<p>Each run collects four groups of information:</p>
+<ul>
+<li><strong>Flow</strong> — lead time to production (median and p75, with sample sizes), PR aging bucketed by <em>reason</em> it waits: on the author, on developer review, on QA, or ready to merge.</li>
+<li><strong>Quality</strong> — escaped defects per release (pre-release vs 14-day escape window), regression rate per release, rework rate with confidence tags, hotfix pressure.</li>
+<li><strong>Team</strong> — review distribution and concentration, QA queue size, bus factor per critical system over a 90-day window, with former-employee attribution flagged as a knowledge gap.</li>
+<li><strong>Operations</strong> — CI health, release deltas, Sentry signals, Unity Cloud build costs.</li>
+</ul>
+<p>Every metric has a pinned definition — formula, window, exclusions — recorded next to the code. When a definition has to change, the change itself is called out in the next report, so a delta is never silently a redefinition. Ratios come with drill-downs listing the exact issues and PRs counted, so any number can be re-derived by a human.</p>
+</section>
+<section class="case-section" id="hard-problems">
+<h2>Interesting problems</h2>
+<ul class="list-clean"><li><strong>How do you keep metrics from becoming vanity dashboards?</strong> Put them where priority reviews and engineering-management decisions happen, and delete the ones that never change a decision.</li><li><strong>How do you make week-over-week deltas trustworthy?</strong> Pin the definitions and cache the fetches. Ad-hoc redefinitions across runs make trends meaningless — the fix is boring discipline, not smarter models.</li><li><strong>How do you make AI useful for management work?</strong> Use it to summarize evidence and flag changes, while humans keep ownership of decisions. Every AI-computed number links back to the artifacts it counted.</li><li><strong>How does the system get better?</strong> A lessons file: every correction becomes a written rule the next run applies — cumulative totals are not trends, duplicates are excluded and named, partial windows are flagged instead of silently substituted.</li></ul>
+</section>
+<section class="case-section" id="lessons">
+<h2>Lessons learned</h2>
+<ul><li>The dashboard became useful when it was part of an existing review, not another destination people had to remember.</li><li>AI summaries need links to the issues, releases and pull requests they describe.</li><li>We removed metrics that nobody used.</li></ul>
+</section>
+</div>
+<aside class="toc">
+<a href="#problem">Problem</a>
+<a href="#goals">Goals</a>
+<a href="#architecture">Architecture</a>
+<a href="#metrics">What it computes</a>
+<a href="#hard-problems">Interesting problems</a>
+<a href="#lessons">Lessons learned</a>
+</aside>
+</div>
+
+</main><footer class="site-footer shell" id="contact"><div class="footer-top"><div><div class="label">LET’S TALK</div><h2>Good work starts with a thoughtful conversation.</h2></div><a class="footer-email" href="mailto:aga@besz.me">aga@besz.me</a></div><div class="footer-bottom"><span>© 2026 Agnieszka Besz · aixaCode</span><div class="social-links"><a href="https://www.linkedin.com/in/agabesz">LinkedIn</a><a href="https://github.com/aixaCode">GitHub</a><a href="https://gbfactory.uk/">GB Factory</a><a href="../cv.html">CV</a></div></div></footer></body></html>

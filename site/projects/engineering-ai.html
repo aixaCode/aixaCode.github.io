@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI for Engineering Teams - Agnieszka Besz</title><meta name="description" content="Putting AI where it changes engineering decisions: review signal, QA evidence, knowledge access and leadership visibility."><meta name="theme-color" content="#fff8f0"><link rel="icon" href="../favicon.ico" sizes="32x32"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="manifest" href="../site.webmanifest"><link rel="preload" href="../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="canonical" href="https://besz.me/projects/engineering-ai.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Agnieszka Besz"><meta property="og:title" content="AI for Engineering Teams"><meta property="og:description" content="Putting AI where it changes engineering decisions: review signal, QA evidence, knowledge access and leadership visibility."><meta property="og:url" content="https://besz.me/projects/engineering-ai.html"><meta property="og:image" content="https://besz.me/assets/images/og-default.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AI for Engineering Teams"><meta name="twitter:description" content="Putting AI where it changes engineering decisions: review signal, QA evidence, knowledge access and leadership visibility."><meta name="twitter:image" content="https://besz.me/assets/images/og-default.jpg"><link rel="stylesheet" href="../assets/content.css?v=a513520e61"><link rel="stylesheet" href="../assets/site.css?v=f300770929"><script src="../assets/site.js?v=52b5215894" defer></script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header" id="site-header"><div class="shell header-inner"><div class="identity"><a class="wordmark" href="../index.html" aria-label="aixaCode — Agnieszka Besz, home">aixa<em>Code.</em></a><span class="identity-note">AGNIESZKA BESZ<br>VP OF ENGINEERING</span></div><button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" type="button">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="../writing.html">Writing</a><a href="../projects/index.html" aria-current="page">Selected work</a><a href="../about.html">About</a><a href="../index.html#contact">Contact</a></nav></div></header><main class="shell content-page" id="main">
+<section class="hero">
+<p class="eyebrow mono"> Case study</p>
+<h1>AI for Engineering Teams</h1>
+<p class="lead">AI-assisted checks and reports that my teams use in code review, QA and day-to-day engineering work.</p>
+<p class="stack">AI PR review / visual regression suites / per-PR performance benchmarks / scheduled analysis agents / engineering dashboards</p>
+<div aria-label="Project topics" class="topic-tags"><a href="index.html?filter=ai">AI</a><a href="index.html?filter=platform">Platform</a></div>
+<div class="actions"><span class="meta">Runs in production on an open-source codebase.</span><a class="btn" href="index.html">All projects</a></div>
+</section>
+<div class="case-layout">
+<div>
+<section class="case-section" id="problem">
+<h2>Problem</h2>
+<p>I was less interested in measuring how much code AI generated than in finding places where it could remove a real source of friction. We started with review checks, visual regressions, performance results and summaries linked back to their sources.</p>
+<p>These workflows run on an open-source codebase and are part of the normal development process.</p>
+</section>
+<section class="case-section" id="systems">
+<h2>The systems</h2>
+<div class="spec-grid">
+<div class="spec"><h3>AI review on every PR</h3><p>Each pull request carries an AI review status check that analyzes correctness, performance and error handling and sets pass/fail. It does not replace the accountable reviewers — every PR still needs developer and QA approval — it raises the floor before humans spend attention.</p></div>
+<div class="spec"><h3>Visual regression as a comment</h3><p>A PR comment triggers a pixel-diff suite against committed image baselines and posts the verdict back to the PR; a second command regenerates baselines when a change is intentional. Rendering regressions became a reviewable artifact instead of a QA lottery.</p></div>
+<div class="spec"><h3>Performance signal per PR</h3><p>Successful builds dispatch frame-time benchmarks on a dedicated machine fleet, and the results land back on the PR as a comment — CPU, GPU, exceptions. A performance regression is visible before merge, not after release.</p></div>
+<div class="spec"><h3>Leadership intelligence agents</h3><p>Scheduled agents turn repository activity into a daily engineering dashboard: releases and deltas, CI health, escaped-defect and regression rates, review distribution and bus factor per system — with pinned metric definitions so week-over-week deltas mean something.</p></div>
+</div>
+</section>
+<section class="case-section" id="architecture">
+<h2>Where AI sits</h2>
+<figure class="article-figure sketch-flow-figure project-flow-figure">
+<h3 class="diagram-title">Automation produces early evidence. People still decide what ships.</h3>
+<picture>
+<source media="(max-width: 640px)" srcset="../assets/project-diagrams/engineering-ai-release-loop-mobile.svg"/>
+<img alt="A code change produces AI review, test, visual and performance evidence before developers and QA decide whether to release or return to the change." decoding="async" loading="lazy" src="../assets/project-diagrams/engineering-ai-release-loop.svg"/>
+</picture>
+<figcaption>AI and automated tests shorten the path to useful evidence. Developers and QA remain accountable for interpreting it and approving the release.</figcaption>
+</figure>
+</section>
+<section class="case-section" id="hard-problems">
+<h2>Interesting problems</h2>
+<ul class="list-clean"><li><strong>Where should AI sit in the review process?</strong> We run the AI check before developer and QA review. Named people still approve the change and remain responsible for it.</li><li><strong>How do you keep the output useful?</strong> We ask for something concrete: a pass/fail check, pixel diff or frame-time change. If the output repeatedly has no effect on the review, it is removed.</li><li><strong>How do you trust AI-computed metrics?</strong> Each metric has a fixed formula and time window. When the definition changes, the report says so.</li><li><strong>How do you check a summary?</strong> The dashboard links to the pull requests, issues and releases it counted, so a person can reproduce the number.</li></ul>
+</section>
+<section class="case-section" id="lessons">
+<h2>Lessons learned</h2>
+<ul><li>The most useful workflows were attached to an existing review or release step.</li><li>Quality checks gave us more value than measuring generated-code volume.</li><li>If a report repeatedly produced no action, we removed or changed it.</li></ul>
+</section>
+</div>
+<aside class="toc">
+<a href="#problem">Problem</a>
+<a href="#systems">The systems</a>
+<a href="#architecture">Where AI sits</a>
+<a href="#hard-problems">Interesting problems</a>
+<a href="#lessons">Lessons learned</a>
+</aside>
+</div>
+
+</main><footer class="site-footer shell" id="contact"><div class="footer-top"><div><div class="label">LET’S TALK</div><h2>Good work starts with a thoughtful conversation.</h2></div><a class="footer-email" href="mailto:aga@besz.me">aga@besz.me</a></div><div class="footer-bottom"><span>© 2026 Agnieszka Besz · aixaCode</span><div class="social-links"><a href="https://www.linkedin.com/in/agabesz">LinkedIn</a><a href="https://github.com/aixaCode">GitHub</a><a href="https://gbfactory.uk/">GB Factory</a><a href="../cv.html">CV</a></div></div></footer></body></html>

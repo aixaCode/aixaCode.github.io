@@ -1,0 +1,37 @@
+name: Static website checks
+on:
+  pull_request:
+  push:
+    branches: [main, development, feat/besz-source]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.12'
+      - run: python scripts/build-site.py --check
+      - run: python scripts/build-site.py
+      - uses: actions/upload-artifact@v7.0.1
+        with:
+          name: besz-site-${{ github.sha }}
+          path: dist/
+          if-no-files-found: error
+  pr-title:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Conventional Commit title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          python - <<'PY'
+          import os, re
+          title = os.environ['PR_TITLE']
+          assert re.fullmatch(r'(feat|fix|perf|refactor|chore|docs|test|ci)(!)?: .+', title), title
+          assert len(title) <= 72 and not title.endswith('.'), title
+          PY
