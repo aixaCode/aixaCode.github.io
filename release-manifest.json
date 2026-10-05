@@ -1,0 +1,1031 @@
+{
+  "schema": 1,
+  "artifact_sha256": "c1470e498293cde38d4dcbefb72d404cb3a87d2ddad5af9b32a38f0dbd508446",
+  "files": [
+    {
+      "path": ".nojekyll",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "404.html",
+      "bytes": 2683,
+      "sha256": "309398fb224dfa1b9a51fbb0996f32497aadaef9dbe9bb26ecbdb8d5b4f616c6"
+    },
+    {
+      "path": "about.html",
+      "bytes": 5830,
+      "sha256": "e17f59ff48314a9846f50b3ff6ae6247e1a78046c7d8a98974233da035d8c11d"
+    },
+    {
+      "path": "apple-touch-icon.png",
+      "bytes": 3335,
+      "sha256": "e184d00bdf68354edffa339cccc298434d37244037af33cec30e37dda2a5f8a9"
+    },
+    {
+      "path": "assets/article-diagrams/ai-evidence-boundary-mobile-v2.svg",
+      "bytes": 19184,
+      "sha256": "f260dae0579c09424890d974ce4ac6b3ea8a1e09437e93e6c9298feb1a07b5de"
+    },
+    {
+      "path": "assets/article-diagrams/ai-evidence-boundary-mobile-v4.svg",
+      "bytes": 52465,
+      "sha256": "5350afc1fb0ccbd3e473fd3955c690a9b8663f8b6fcbdf45aaeffad1cf3d629d"
+    },
+    {
+      "path": "assets/article-diagrams/ai-evidence-boundary-v2.svg",
+      "bytes": 20574,
+      "sha256": "83e0119560d3470412f463e980d6cf023d65f7394f42433ccec0295b6a8599f8"
+    },
+    {
+      "path": "assets/article-diagrams/ai-evidence-boundary-v4.svg",
+      "bytes": 52051,
+      "sha256": "439d22af4c5dbf526c60deaddc8d2534ff7954c39cbd42e8754d765318140511"
+    },
+    {
+      "path": "assets/article-diagrams/changing-constraint-mobile-v2.svg",
+      "bytes": 14094,
+      "sha256": "6b2f58465d6432d25b9f4d79f5e87c3e4cbf288159c629200d911c4d852bdb5b"
+    },
+    {
+      "path": "assets/article-diagrams/changing-constraint-mobile-v4.svg",
+      "bytes": 51295,
+      "sha256": "438dddfc441518137029f5d0e7e05bd5a3548447f1676011f8a466a922c9079e"
+    },
+    {
+      "path": "assets/article-diagrams/changing-constraint-v2.svg",
+      "bytes": 24416,
+      "sha256": "b82492ecab4d8e8897198d1c039c4ed6b5014669fd10b666ffbe9bf449ee0620"
+    },
+    {
+      "path": "assets/article-diagrams/changing-constraint-v4.svg",
+      "bytes": 51120,
+      "sha256": "04b7f2eaf9d057d83e4a33b35a3cf0cad4b79b37c2f85d056bbcc72eac45bab4"
+    },
+    {
+      "path": "assets/article-diagrams/delivery-effort-mobile-v2.svg",
+      "bytes": 13287,
+      "sha256": "beaaaecd2116fd7bc6174419271874bd7521c6e02e4d8e8f3928d56651ec94e4"
+    },
+    {
+      "path": "assets/article-diagrams/delivery-effort-mobile-v4.svg",
+      "bytes": 51359,
+      "sha256": "baa305edc1481e7975e391b0f1a23023cdeff09732eddf4dbbeb5b9d59fec945"
+    },
+    {
+      "path": "assets/article-diagrams/delivery-effort-v2.svg",
+      "bytes": 26687,
+      "sha256": "b4c9ea56f1dfde3b051ebe4132c96d2cc30021d26893d18cb37d962e2afca568"
+    },
+    {
+      "path": "assets/article-diagrams/delivery-effort-v4.svg",
+      "bytes": 51183,
+      "sha256": "f6f7617662b7ab8a0db91bb1445ff721e481cae41df6416c1b3d7d29253dd41a"
+    },
+    {
+      "path": "assets/article-diagrams/demo-to-production-mobile-v2.svg",
+      "bytes": 19750,
+      "sha256": "886875c330c1f4b6161f45f4974eb0b1dd32accf5ac535eab46d3e34352d8098"
+    },
+    {
+      "path": "assets/article-diagrams/demo-to-production-mobile-v4.svg",
+      "bytes": 53112,
+      "sha256": "ea5c217e3f06ddc14660e92df5757964836a58842878ff836b8ee67a1e73f737"
+    },
+    {
+      "path": "assets/article-diagrams/demo-to-production-v2.svg",
+      "bytes": 21972,
+      "sha256": "4fe6d3060354b64a5e0d0963e7a92b1025a22b252d4220b455a4372b4f6c62c2"
+    },
+    {
+      "path": "assets/article-diagrams/demo-to-production-v4.svg",
+      "bytes": 53481,
+      "sha256": "ee2c7c081f95ef58e7f88ff6dee7bb7b93514ea3b1b0e1de1ea76572cde225a7"
+    },
+    {
+      "path": "assets/article-diagrams/development-feedback-loop-mobile-v2.svg",
+      "bytes": 18237,
+      "sha256": "f69c6fa378f0274457328a72072f63ea93dc8ff065b5762525c935459ed15f16"
+    },
+    {
+      "path": "assets/article-diagrams/development-feedback-loop-mobile-v4.svg",
+      "bytes": 51855,
+      "sha256": "a6e50d69a4e48fb369bb3e6c7db3d66d79ec2e25e86c7d737e7dca354c4037c5"
+    },
+    {
+      "path": "assets/article-diagrams/development-feedback-loop-v2.svg",
+      "bytes": 17568,
+      "sha256": "1564fb1f2084948c22e8918c1fd7ff9db54b491902cecef975e2a6a96fb9225f"
+    },
+    {
+      "path": "assets/article-diagrams/development-feedback-loop-v4.svg",
+      "bytes": 52097,
+      "sha256": "471c9cc0cc475c2516f4a5209858885f691c8e021150f611322fd3d1f4e93f19"
+    },
+    {
+      "path": "assets/article-diagrams/evidence-states-mobile-v2.svg",
+      "bytes": 20701,
+      "sha256": "db22a21bebd2eac677bd369d2959bddc1797d108a8ed6648c93aea8ad3c5c23f"
+    },
+    {
+      "path": "assets/article-diagrams/evidence-states-mobile-v4.svg",
+      "bytes": 52489,
+      "sha256": "2412e77c53e59d43064ebd5d60d4eaa720d9ce53116db0e7f57d3094fd9dd988"
+    },
+    {
+      "path": "assets/article-diagrams/evidence-states-v2.svg",
+      "bytes": 21129,
+      "sha256": "0d21389372c94465b2d512403d5323c9bee80200efb35a10a36da8daee66de70"
+    },
+    {
+      "path": "assets/article-diagrams/evidence-states-v4.svg",
+      "bytes": 52890,
+      "sha256": "4794d889ca6fd586f7a1196e64ba7cae34dee965c86ebbd177c61515c92f88c2"
+    },
+    {
+      "path": "assets/article-diagrams/feedback-core-path-mobile-v2.svg",
+      "bytes": 18211,
+      "sha256": "80f244fcb663f220ce07968d55cffad1fcf1cda9b857b32de2e485b59675eebf"
+    },
+    {
+      "path": "assets/article-diagrams/feedback-core-path-mobile-v4.svg",
+      "bytes": 51775,
+      "sha256": "29778a092861084c14e5f42f9b0b3fef892df9f7d6e77a153718dc644d604cbe"
+    },
+    {
+      "path": "assets/article-diagrams/feedback-core-path-v2.svg",
+      "bytes": 18411,
+      "sha256": "ae904b31ec2b2befc503fd5bea1e19fca03b4a8128e61dc438766763035f40ea"
+    },
+    {
+      "path": "assets/article-diagrams/feedback-core-path-v4.svg",
+      "bytes": 51930,
+      "sha256": "3684fb31487fb48e563219a619a8e369f3569abd7d1576b08c47f783705236e6"
+    },
+    {
+      "path": "assets/article-diagrams/feedback-pattern-mobile-v2.svg",
+      "bytes": 18238,
+      "sha256": "e185dafcd6508dab24b0c8c06265fc61232a0e18b691f9ca70e000bb5c5abd6e"
+    },
+    {
+      "path": "assets/article-diagrams/feedback-pattern-mobile-v4.svg",
+      "bytes": 51890,
+      "sha256": "07b37fd727d8966651179c22ce8b0e184fe9425bec8a9c1c2a4cb53cc0ec84f5"
+    },
+    {
+      "path": "assets/article-diagrams/feedback-pattern-v2.svg",
+      "bytes": 18495,
+      "sha256": "ef363ab5c6d62e74a764a4664eb4061d307e102120372d279c4c64ab020f283a"
+    },
+    {
+      "path": "assets/article-diagrams/feedback-pattern-v4.svg",
+      "bytes": 52214,
+      "sha256": "411a0953f792f4bf4982c5281b94d120e40d49ed1ed8feb42be816958da6a0b7"
+    },
+    {
+      "path": "assets/article-diagrams/human-owns-outcome-mobile-v2.svg",
+      "bytes": 18729,
+      "sha256": "b7b3674038fa8624c26143febf9fe934c80f01d6736fa3705fcc6525dbca3a9e"
+    },
+    {
+      "path": "assets/article-diagrams/human-owns-outcome-mobile-v4.svg",
+      "bytes": 52070,
+      "sha256": "55552f81ce06c91423acf3f4aff28b76548a8ee49fb4752dc8b269b70144dda4"
+    },
+    {
+      "path": "assets/article-diagrams/human-owns-outcome-v2.svg",
+      "bytes": 19132,
+      "sha256": "4ec195d137cda5038e5299682fda504d7d832412f24f367b93e43e41963d3841"
+    },
+    {
+      "path": "assets/article-diagrams/human-owns-outcome-v4.svg",
+      "bytes": 51912,
+      "sha256": "df57d25a2eac24dd158ff4b9232826cdbc588b33d037539d73a060d64505ef30"
+    },
+    {
+      "path": "assets/article-diagrams/pip-diagnosis-mobile-v2.svg",
+      "bytes": 20399,
+      "sha256": "c2eb8b702031eb32bdc86df342856499d18924b7b6930ca65408702ed8356a02"
+    },
+    {
+      "path": "assets/article-diagrams/pip-diagnosis-mobile-v4.svg",
+      "bytes": 55612,
+      "sha256": "ba3db9e54a25a62a2285598704052c4b35667cca8ed7405c78ea328ad0e47ccf"
+    },
+    {
+      "path": "assets/article-diagrams/pip-diagnosis-v2.svg",
+      "bytes": 27561,
+      "sha256": "6c25b64e579f2d39d1bb3932c467d9e4e723382a301eeadb2e4092413fad7689"
+    },
+    {
+      "path": "assets/article-diagrams/pip-diagnosis-v4.svg",
+      "bytes": 56331,
+      "sha256": "5e51f316ddde80a30fff93f15b63b708454f30e46db93891ddf01767ff496881"
+    },
+    {
+      "path": "assets/article-diagrams/prioritization-scoring-trap-mobile-v2.svg",
+      "bytes": 15383,
+      "sha256": "3422a57fe42aad44cc89c588db58bf52ecddbfa988ee04039d5f345eb8688741"
+    },
+    {
+      "path": "assets/article-diagrams/prioritization-scoring-trap-mobile-v4.svg",
+      "bytes": 52718,
+      "sha256": "38beae9490152a88a79e68ebb3b847ab0e69282e7f88081e4e6d6b22f9a05718"
+    },
+    {
+      "path": "assets/article-diagrams/prioritization-scoring-trap-v2.svg",
+      "bytes": 20413,
+      "sha256": "b0e5bbabd4e043d8a5af16743a70b9b21d33d0428e326cdc148fbf8fee8ce5f2"
+    },
+    {
+      "path": "assets/article-diagrams/prioritization-scoring-trap-v4.svg",
+      "bytes": 53104,
+      "sha256": "14896de24500a366d128a840d03040c9ce253752775c35fff7ab6e152988cc33"
+    },
+    {
+      "path": "assets/article-diagrams/product-to-technology-mobile-v2.svg",
+      "bytes": 17951,
+      "sha256": "dd232d511976883e5fc20191ba0a0d215b9af2daa2af2710df69c41d19f54e1d"
+    },
+    {
+      "path": "assets/article-diagrams/product-to-technology-mobile-v4.svg",
+      "bytes": 52646,
+      "sha256": "b19004a088d39e9b6ef8783f02e1db2589da023cc5f4945a52f975ce23f75f35"
+    },
+    {
+      "path": "assets/article-diagrams/product-to-technology-v2.svg",
+      "bytes": 20605,
+      "sha256": "b5757ef8d10190d2ee69c6de54aa41cd03bad49278ca108911faf00f3692bd99"
+    },
+    {
+      "path": "assets/article-diagrams/product-to-technology-v4.svg",
+      "bytes": 52147,
+      "sha256": "fa4a9e50aee31790ab956f297f1378627db84214ef4dc2f5ff5ee3e2a51be042"
+    },
+    {
+      "path": "assets/article-diagrams/promotion-evidence-mobile-v2.svg",
+      "bytes": 19059,
+      "sha256": "75c7e841476a110163a5bac3d5908e06fd0c827a883667254b507d58097e6e91"
+    },
+    {
+      "path": "assets/article-diagrams/promotion-evidence-mobile-v4.svg",
+      "bytes": 52575,
+      "sha256": "01e0a5fa1e0dc33c2f67d2ca3033ed1448bf8ef53ac99bf9e046954bc88f00e2"
+    },
+    {
+      "path": "assets/article-diagrams/promotion-evidence-v2.svg",
+      "bytes": 20585,
+      "sha256": "ea695f8fe463561400dea84877dd1dfe32b46894a39cf0b7d306f75f2c9eff52"
+    },
+    {
+      "path": "assets/article-diagrams/promotion-evidence-v4.svg",
+      "bytes": 52989,
+      "sha256": "6cdf46042b2c9a831c444865713bbe7107f87ad48d6a6a0268fe50e20957dd0e"
+    },
+    {
+      "path": "assets/article-diagrams/review-evolution-mobile-v2.svg",
+      "bytes": 14766,
+      "sha256": "fe6cf78c4d33324e7e65bdad532674bef5aab51570872ed21ad0a8dd2a3faea0"
+    },
+    {
+      "path": "assets/article-diagrams/review-evolution-mobile-v4.svg",
+      "bytes": 51315,
+      "sha256": "b826b531438cd7796c4c815e16776f3687441972ccbd0765630d497673061fd1"
+    },
+    {
+      "path": "assets/article-diagrams/review-evolution-v2.svg",
+      "bytes": 27251,
+      "sha256": "b78a3df8e62a8b95339b6f9124b3f1ca49a2da29fb039712e42934f40a301a4a"
+    },
+    {
+      "path": "assets/article-diagrams/review-evolution-v4.svg",
+      "bytes": 51139,
+      "sha256": "91f6be38c29b57d7ba40112b6815c0f088c07e007f52b545cd930cf3301d157b"
+    },
+    {
+      "path": "assets/article-diagrams/review-gate-mobile-v2.svg",
+      "bytes": 23022,
+      "sha256": "ddfce56394b48262d67c4a2f292fef0be0ac57e20bd2eace141b57b59b574bb0"
+    },
+    {
+      "path": "assets/article-diagrams/review-gate-mobile-v4.svg",
+      "bytes": 52778,
+      "sha256": "ad954c185de512564743c5f6aa47925032ecf33f4ed897f3b50a420f4c71147d"
+    },
+    {
+      "path": "assets/article-diagrams/review-gate-v2.svg",
+      "bytes": 22997,
+      "sha256": "c359e29deba2a344ecaff7e632f2c06e0718e038c759f98a0a8da6892b58b084"
+    },
+    {
+      "path": "assets/article-diagrams/review-gate-v4.svg",
+      "bytes": 53263,
+      "sha256": "1d0770d802616c83bddd951a812a5225bd03dd3769b6e80660cc379c5171d344"
+    },
+    {
+      "path": "assets/article-diagrams/risk-based-assurance-mobile-v2.svg",
+      "bytes": 20965,
+      "sha256": "e9aa201b1bcb4fafa8bbc9ca24acde1f48f64822cc5336101aa5508a1e15642d"
+    },
+    {
+      "path": "assets/article-diagrams/risk-based-assurance-mobile-v4.svg",
+      "bytes": 54470,
+      "sha256": "af18b47a0c3cded9f9c5d9686fbe885a9c21b157841cf6ee8679fa5021def59a"
+    },
+    {
+      "path": "assets/article-diagrams/risk-based-assurance-v2.svg",
+      "bytes": 28143,
+      "sha256": "c205f4fe97046b9266d740d414aa2452363bb1922d8423f3fc4a90e902fb7510"
+    },
+    {
+      "path": "assets/article-diagrams/risk-based-assurance-v4.svg",
+      "bytes": 54214,
+      "sha256": "f3cb303c2e2c36cf27371360f6680d3eb3193c1d7936a7e5172111e1deab73af"
+    },
+    {
+      "path": "assets/article-diagrams/winnable-improvement-plan-mobile-v2.svg",
+      "bytes": 20620,
+      "sha256": "1835e8b8880cd4dc199a37dddda5ba035e9d142bac899306f713d3f22b5f504e"
+    },
+    {
+      "path": "assets/article-diagrams/winnable-improvement-plan-mobile-v4.svg",
+      "bytes": 52460,
+      "sha256": "5b8415260d6e632879937b4d4decec92771a56e0d602ca76f9ba0e7462e197af"
+    },
+    {
+      "path": "assets/article-diagrams/winnable-improvement-plan-v2.svg",
+      "bytes": 20990,
+      "sha256": "31a7b94a25bc05eb12151d1c1ffbe6dbb50bfcebdf365590a5ab43a7c9f9f28c"
+    },
+    {
+      "path": "assets/article-diagrams/winnable-improvement-plan-v4.svg",
+      "bytes": 52046,
+      "sha256": "1e6d05293e01dd3d6ed289d018900cf457c80edc03dd5e343daf3c7d354a85b2"
+    },
+    {
+      "path": "assets/content.css",
+      "bytes": 30397,
+      "sha256": "cb4c737c7eb2ba6ed1b32c6ae17ad46180a4a1659dff84f903559e8b959fed99"
+    },
+    {
+      "path": "assets/fonts/chart.xkcd-LICENSE",
+      "bytes": 1138,
+      "sha256": "d28aa1bfd1c69420b62dda4814d918822132bc0801f1a75b26a16302e213b63c"
+    },
+    {
+      "path": "assets/fonts/dm-sans-latin-ext.woff2",
+      "bytes": 18228,
+      "sha256": "a5d38fe99f930275684999b462c7123faa063d9e44e73b4b241723d884aa0f49"
+    },
+    {
+      "path": "assets/fonts/dm-sans-latin.woff2",
+      "bytes": 36932,
+      "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+    },
+    {
+      "path": "assets/fonts/ibm-plex-mono-400-latin-ext.woff2",
+      "bytes": 13348,
+      "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+    },
+    {
+      "path": "assets/fonts/ibm-plex-mono-400-latin.woff2",
+      "bytes": 14708,
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+    },
+    {
+      "path": "assets/fonts/ibm-plex-mono-500-latin-ext.woff2",
+      "bytes": 13432,
+      "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+    },
+    {
+      "path": "assets/fonts/ibm-plex-mono-500-latin.woff2",
+      "bytes": 14888,
+      "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+    },
+    {
+      "path": "assets/fonts/instrument-serif-italic-latin-ext.woff2",
+      "bytes": 12384,
+      "sha256": "d0014821252a8a770bf7551641572f239a8ede83d75652d84fef0c3627751baf"
+    },
+    {
+      "path": "assets/fonts/instrument-serif-italic-latin.woff2",
+      "bytes": 22128,
+      "sha256": "5a51946dfffa82972bc98745359c46761515641fda557c25116459a9f83da4a7"
+    },
+    {
+      "path": "assets/fonts/instrument-serif-latin-ext.woff2",
+      "bytes": 11604,
+      "sha256": "290e6267dd833bf5f899eba4c29ad0a9b09dbe53f6075b18af38057159e1ff20"
+    },
+    {
+      "path": "assets/fonts/instrument-serif-latin.woff2",
+      "bytes": 21032,
+      "sha256": "5eb09b5ac0e28b67c2f041c8ba6d244604ca0c0980d65912ab2d47fed84ddc31"
+    },
+    {
+      "path": "assets/fonts/xkcd.woff",
+      "bytes": 40056,
+      "sha256": "8268cf96f833c66a212f714d72141d77eaff4f9b30532b356300b655c2cfbf54"
+    },
+    {
+      "path": "assets/images/agnieszka-besz.webp",
+      "bytes": 14172,
+      "sha256": "fa42867122c4648711ef942f5b5e04612afa816cbdbc080a47f614af8345b6fb"
+    },
+    {
+      "path": "assets/images/ai-makes-building-easy-production-is-hard-editorial-v3-768.webp",
+      "bytes": 11936,
+      "sha256": "a6e9c5f4e07782eddd5e8c4fc61730fa019d47d4475bf107b4e2239c3dcede14"
+    },
+    {
+      "path": "assets/images/ai-makes-building-easy-production-is-hard-editorial-v3.webp",
+      "bytes": 59508,
+      "sha256": "e0a770d8b22c1f27a62da78d234cac8349db030cf77a3fdd4dd2668102d2cbf2"
+    },
+    {
+      "path": "assets/images/ai-makes-building-easy-production-is-hard-og-v4.jpg",
+      "bytes": 56479,
+      "sha256": "c15c185227ffc938631752f513492dcc516d2923504b83997d8eda569170a4fc"
+    },
+    {
+      "path": "assets/images/ai-makes-building-easy-production-is-hard-og.jpg",
+      "bytes": 32757,
+      "sha256": "a49bee19a0c13588a97a279865e74faa22676363a48f3eff1287ef2033e43102"
+    },
+    {
+      "path": "assets/images/before-you-remove-code-review-name-the-risk-editorial-v3-768.webp",
+      "bytes": 12214,
+      "sha256": "7ddf42405b3446a70eb50a364e917b72056b0791bcb3039a9de89dd2f0feaee5"
+    },
+    {
+      "path": "assets/images/before-you-remove-code-review-name-the-risk-editorial-v3.webp",
+      "bytes": 66990,
+      "sha256": "11fdfad3cdd9e607f37200e7d2dce55d28df1acf0290e748e1944dd5e037c049"
+    },
+    {
+      "path": "assets/images/before-you-remove-code-review-name-the-risk-og-v4.jpg",
+      "bytes": 64162,
+      "sha256": "686011dec887b80233326d95215881a78c22e88131e580ff269141ea60e5c78d"
+    },
+    {
+      "path": "assets/images/before-you-remove-code-review-name-the-risk-og.jpg",
+      "bytes": 37785,
+      "sha256": "ad90d5475e95893230c26d43719f41803e3cb8bd16d7310c0e6126e5b551dcef"
+    },
+    {
+      "path": "assets/images/career-ladder-should-reduce-surprises-editorial-v3-768.webp",
+      "bytes": 11200,
+      "sha256": "22841fc626f2e127b3d273a37de6e4dd7db2dc406892b158ea46b2e0fddbfdf9"
+    },
+    {
+      "path": "assets/images/career-ladder-should-reduce-surprises-editorial-v3.webp",
+      "bytes": 45032,
+      "sha256": "9e305e7ef4b91ace2810c2fdd70ca7d5a1c7f9f076fa026e2c5150463fdf0688"
+    },
+    {
+      "path": "assets/images/career-ladder-should-reduce-surprises-og-v4.jpg",
+      "bytes": 68312,
+      "sha256": "4fe305cc6aec690ddbddcc0839e7e1a31c1f9d3cec865a8afa77df5eb3963352"
+    },
+    {
+      "path": "assets/images/career-ladder-should-reduce-surprises-og.jpg",
+      "bytes": 31088,
+      "sha256": "806b00e791296bf1802d4d906bd526e824c41061012b5da7993b4ddd3768e849"
+    },
+    {
+      "path": "assets/images/engineering-notebook-v2-480.webp",
+      "bytes": 42390,
+      "sha256": "3332cbd0476031ffef30878bf561c9be5ff5997bc44f60d266b69965b18f6fe3"
+    },
+    {
+      "path": "assets/images/engineering-notebook-v2-800.webp",
+      "bytes": 102148,
+      "sha256": "aeb515ba079dfe5859b384526c0765d950ce4d645e5757d237b9929c0c0db1d1"
+    },
+    {
+      "path": "assets/images/engineering-notebook-v2.webp",
+      "bytes": 445170,
+      "sha256": "5145fb3dc1292b9aaeb13b8cc6bd5bee7c9723f4e236e792e1674071395d9fbb"
+    },
+    {
+      "path": "assets/images/feedback-is-the-performance-system-editorial-v3-768.webp",
+      "bytes": 10466,
+      "sha256": "0f03baa6c169448ef8c3efadfe833a0d9f29115e7b8959209aef8e4aae2e397f"
+    },
+    {
+      "path": "assets/images/feedback-is-the-performance-system-editorial-v3.webp",
+      "bytes": 54398,
+      "sha256": "2fe8b684d2dab315327a2b2fefa4167504964f23192eed42df85f7c3f898afd4"
+    },
+    {
+      "path": "assets/images/feedback-is-the-performance-system-og-v4.jpg",
+      "bytes": 53187,
+      "sha256": "d9e4e011dcc2e814e9b275874ce46c0da02dcde1d92c29b67646fe2997567042"
+    },
+    {
+      "path": "assets/images/feedback-is-the-performance-system-og.jpg",
+      "bytes": 36124,
+      "sha256": "7d261d272693b24e1209697270767bdc2350fc38acc67c192ac160151e11e929"
+    },
+    {
+      "path": "assets/images/make-improvement-plans-winnable-editorial-v3-768.webp",
+      "bytes": 13302,
+      "sha256": "c723535fe9e5afc76baa68b407651d7afff693415c0df9b6c762b90cf061ceba"
+    },
+    {
+      "path": "assets/images/make-improvement-plans-winnable-editorial-v3.webp",
+      "bytes": 56422,
+      "sha256": "6cfc0a10390748758627ddeb5739f61ee2edbf1f077c484afc8bf28063c1405f"
+    },
+    {
+      "path": "assets/images/make-improvement-plans-winnable-editorial-v4-768.webp",
+      "bytes": 40386,
+      "sha256": "fc39d0e71daa8373df1030e9c1003360609959923a802bcaf5ea275e1eae072b"
+    },
+    {
+      "path": "assets/images/make-improvement-plans-winnable-editorial-v4.webp",
+      "bytes": 113322,
+      "sha256": "965c8acb6df84a4d53c4a57a4fbca9049ebbc31829cb35ef3850f1d022841079"
+    },
+    {
+      "path": "assets/images/make-improvement-plans-winnable-og-v4.jpg",
+      "bytes": 80796,
+      "sha256": "c9dbe187db4c9b3215a6fbaa7fd5a3f114b3965961fe5297763422358d3392c7"
+    },
+    {
+      "path": "assets/images/make-improvement-plans-winnable-og.jpg",
+      "bytes": 40041,
+      "sha256": "d2d59284516f09510ae8ddf9c3ea1f1245a8630d4577c2aeb5cb10a8a7dfe816"
+    },
+    {
+      "path": "assets/images/og-default-v4.jpg",
+      "bytes": 86808,
+      "sha256": "70e43736806cbbca2be9cd9419b17f019e60e8a7048a35012e1f20a54a020ef9"
+    },
+    {
+      "path": "assets/images/og-default.jpg",
+      "bytes": 131353,
+      "sha256": "9db6b9fdb7f1b988ec9e969db9c6996b9b671bf5e7f912660f03c25a05bd8dc9"
+    },
+    {
+      "path": "assets/images/prioritization-is-constraint-management-editorial-v3-768.webp",
+      "bytes": 12762,
+      "sha256": "c74bffa23ebc8f02c9818f380517eff52fca1cb677f28bb6357de9d443697a8a"
+    },
+    {
+      "path": "assets/images/prioritization-is-constraint-management-editorial-v3.webp",
+      "bytes": 66864,
+      "sha256": "3f77f70c9305be6089034eb04eb9f2cf2d0a83a896e587efe7542bcc88102cd5"
+    },
+    {
+      "path": "assets/images/prioritization-is-constraint-management-og-v4.jpg",
+      "bytes": 55109,
+      "sha256": "5b5eefe399a31703208b64d18205a90cea014b29b700cf0f97f973ff03caee24"
+    },
+    {
+      "path": "assets/images/prioritization-is-constraint-management-og.jpg",
+      "bytes": 36647,
+      "sha256": "7cb9ae686c5f2203b1dd030290b00493c757453a88514da846d3fcb7474fbb98"
+    },
+    {
+      "path": "assets/images/technical-direction-is-not-a-technology-decision-editorial-v3-768.webp",
+      "bytes": 12168,
+      "sha256": "108b793b02f59d8f8394b55f7c259bfb3112f5e3480bd22db9fcd6265e935815"
+    },
+    {
+      "path": "assets/images/technical-direction-is-not-a-technology-decision-editorial-v3.webp",
+      "bytes": 55682,
+      "sha256": "20df11f6491231c8b9e6e16ba08f82f119ea4d3b17c7fb639091d8ebebd5d264"
+    },
+    {
+      "path": "assets/images/technical-direction-is-not-a-technology-decision-og-v4.jpg",
+      "bytes": 60275,
+      "sha256": "c8974ab4b12f9dcd9c7cfff5c902507c2de4dc144de0a775b9a5347a5c446962"
+    },
+    {
+      "path": "assets/images/technical-direction-is-not-a-technology-decision-og.jpg",
+      "bytes": 36914,
+      "sha256": "dc86f45182013d61c65b9bdcd4b535b963104d394c249d22cc8029fe9cabc873"
+    },
+    {
+      "path": "assets/images/use-ai-to-find-evidence-not-score-engineers-editorial-v3-768.webp",
+      "bytes": 10514,
+      "sha256": "25eaf3def8f670586366834c12259605a95c4da3c5df0ec40aed3837bc804f8f"
+    },
+    {
+      "path": "assets/images/use-ai-to-find-evidence-not-score-engineers-editorial-v3.webp",
+      "bytes": 52374,
+      "sha256": "a06d2a48d28c0b4a2bd25ea720ca136d6bad2c6b5fd5506cbc286da9adf7906b"
+    },
+    {
+      "path": "assets/images/use-ai-to-find-evidence-not-score-engineers-og-v4.jpg",
+      "bytes": 56562,
+      "sha256": "aef43c7a49094f314f1f59d3f78520f974dd4de2be6c97c5a1ac04c3d2e39b8b"
+    },
+    {
+      "path": "assets/images/use-ai-to-find-evidence-not-score-engineers-og.jpg",
+      "bytes": 32674,
+      "sha256": "dfb21b0a7e328f69e86ee4566e3f90f58f1c891195614647fc28030f85ce0a80"
+    },
+    {
+      "path": "assets/project-diagrams/accounting-evidence-pipeline-mobile-v4.svg",
+      "bytes": 51700,
+      "sha256": "dbbac0ff796c0087e022121a9169045f25089ead0924d7b5563147064c38edd8"
+    },
+    {
+      "path": "assets/project-diagrams/accounting-evidence-pipeline-mobile.svg",
+      "bytes": 10758,
+      "sha256": "00bf2c6f6c7d9f8f5c93d3de9c31008af75ed59757c0ad90421c00025260dd50"
+    },
+    {
+      "path": "assets/project-diagrams/accounting-evidence-pipeline-v4.svg",
+      "bytes": 52184,
+      "sha256": "f3b5f4c7778e252a97e492c540ec1a24b00f0f1efa9e20aea376db0efab0e799"
+    },
+    {
+      "path": "assets/project-diagrams/accounting-evidence-pipeline.svg",
+      "bytes": 11034,
+      "sha256": "8a945181c7a3c0c02725f89ec8d08bc2570bba46a53996f33c340cc47465562a"
+    },
+    {
+      "path": "assets/project-diagrams/assistant-permission-boundary-mobile-v4.svg",
+      "bytes": 52885,
+      "sha256": "0adaf5d55f7af37414ff15953378226131857ed717c3a8435925297e0d97a63c"
+    },
+    {
+      "path": "assets/project-diagrams/assistant-permission-boundary-mobile.svg",
+      "bytes": 16642,
+      "sha256": "558c94877419c815b50494e7140916d1bcce6d409cfade78d12eef78003ca5b3"
+    },
+    {
+      "path": "assets/project-diagrams/assistant-permission-boundary-v4.svg",
+      "bytes": 52717,
+      "sha256": "932f4168adb0b04e57e2e51cfcb87ac5ca5fa141722bf2b8f6b27543e766ccb2"
+    },
+    {
+      "path": "assets/project-diagrams/assistant-permission-boundary.svg",
+      "bytes": 19422,
+      "sha256": "85630a6d1a71f3b64c99cfdbe31d536c991baaf3cceecabf51226edb56b7ecd6"
+    },
+    {
+      "path": "assets/project-diagrams/creator-content-pipeline-mobile-v4.svg",
+      "bytes": 52580,
+      "sha256": "b626e6a78671216d3b591758b33e695df915ffba3a4b15d8d4996711b0a2e137"
+    },
+    {
+      "path": "assets/project-diagrams/creator-content-pipeline-mobile.svg",
+      "bytes": 14614,
+      "sha256": "9ce7d39ef1964a6dbe6ff9c2d88d270503a40d527e0959948d59b379bfcf7864"
+    },
+    {
+      "path": "assets/project-diagrams/creator-content-pipeline-v4.svg",
+      "bytes": 52325,
+      "sha256": "7293bbfceab887c3e0d150d1ff027fb6a37e1b144e99fc12aaeb43c37daff016"
+    },
+    {
+      "path": "assets/project-diagrams/creator-content-pipeline.svg",
+      "bytes": 15129,
+      "sha256": "54f1a44bb8f77f5f6ee043703ec05bcc47753d68eb4461bd5046131d4e0413dd"
+    },
+    {
+      "path": "assets/project-diagrams/decision-ownership-shift-mobile-v4.svg",
+      "bytes": 52033,
+      "sha256": "1e32b192856a193c450dc2364814aafe7a44e2af4c1ebacf919df36620bde902"
+    },
+    {
+      "path": "assets/project-diagrams/decision-ownership-shift-mobile.svg",
+      "bytes": 14750,
+      "sha256": "021b12c5b430186041a1cfdf1eace0a6b05c55c2b0aadc4213f9a977c3360969"
+    },
+    {
+      "path": "assets/project-diagrams/decision-ownership-shift-v4.svg",
+      "bytes": 52397,
+      "sha256": "e1bc41c590e9019db33b40d31dc9755ec412152a9592764e14b3b9fd49421733"
+    },
+    {
+      "path": "assets/project-diagrams/decision-ownership-shift.svg",
+      "bytes": 16368,
+      "sha256": "e9450b7e65c342be84114f5a3342d898ea70320a8c31bfac0a33f381e0728d45"
+    },
+    {
+      "path": "assets/project-diagrams/engineering-ai-release-loop-mobile-v4.svg",
+      "bytes": 52372,
+      "sha256": "984531c9aa06a7d73c5f2d43e3d8e329cc8c87411fb9a89bd7606c2eb8cd2408"
+    },
+    {
+      "path": "assets/project-diagrams/engineering-ai-release-loop-mobile.svg",
+      "bytes": 10019,
+      "sha256": "999428862affed025fb038997811afeab01ed5b9e3ed147e403ea6f41f959526"
+    },
+    {
+      "path": "assets/project-diagrams/engineering-ai-release-loop-v4.svg",
+      "bytes": 52789,
+      "sha256": "a228611761ca029e6e0060f2a84016975f92abaa0c1628be7926a61354d93892"
+    },
+    {
+      "path": "assets/project-diagrams/engineering-ai-release-loop.svg",
+      "bytes": 13191,
+      "sha256": "18dac8ca8d76a606debf7d6bbd563ead9eaf7fa0aad94e9415f499878134e120"
+    },
+    {
+      "path": "assets/project-diagrams/engineering-signal-to-decision-mobile-v4.svg",
+      "bytes": 52366,
+      "sha256": "87e813e8e73f9a80a2b857fc99b3d1ee779d70d5c1ee55d10b65a69362706d60"
+    },
+    {
+      "path": "assets/project-diagrams/engineering-signal-to-decision-mobile.svg",
+      "bytes": 12295,
+      "sha256": "51aa544ee3883790a236be2bfb91b54d6363fb688bee02b5ec9770e6648c6a38"
+    },
+    {
+      "path": "assets/project-diagrams/engineering-signal-to-decision-v4.svg",
+      "bytes": 52028,
+      "sha256": "a93dcceed111edf564795cedc9718e6e5ce5bee1fbbf0c2f4d0bfe7c6631c524"
+    },
+    {
+      "path": "assets/project-diagrams/engineering-signal-to-decision.svg",
+      "bytes": 16650,
+      "sha256": "296b1d76730544587cf6a8d53944f3e2d478959c00421fcb86e9cf3b92175e62"
+    },
+    {
+      "path": "assets/project-diagrams/explorer-priority-decision-mobile-v4.svg",
+      "bytes": 52638,
+      "sha256": "002352fa9ff4e82f05d063c3811e39201549a05475d40a86409f719871d22f88"
+    },
+    {
+      "path": "assets/project-diagrams/explorer-priority-decision-mobile.svg",
+      "bytes": 13286,
+      "sha256": "bb32f04d6e7134bf4fea365794e6620f2aac265086032d3574c37c515f94c471"
+    },
+    {
+      "path": "assets/project-diagrams/explorer-priority-decision-v4.svg",
+      "bytes": 53281,
+      "sha256": "98726584031ac42bf355445864286217ae0a3540c3732b771491566e82b27b6e"
+    },
+    {
+      "path": "assets/project-diagrams/explorer-priority-decision.svg",
+      "bytes": 18432,
+      "sha256": "be6d663d177613aff574308b5c34db737c93d154dfe1fab8f294ba95c56619ab"
+    },
+    {
+      "path": "assets/project-diagrams/explorer-product-boundaries-mobile-v4.svg",
+      "bytes": 53073,
+      "sha256": "92acb73d7b831546dd83ab0e9ca8075dd6c4abf9e033700d6174e736606e12eb"
+    },
+    {
+      "path": "assets/project-diagrams/explorer-product-boundaries-mobile.svg",
+      "bytes": 10934,
+      "sha256": "d95114e39b806540f5ee4954a7098f4bb4c1b39df3678fa7108e3fe8528bb5f8"
+    },
+    {
+      "path": "assets/project-diagrams/explorer-product-boundaries-v4.svg",
+      "bytes": 53754,
+      "sha256": "c2e3546788d57174b21f22358135411f52766914c9290ce1e8579967fef32798"
+    },
+    {
+      "path": "assets/project-diagrams/explorer-product-boundaries.svg",
+      "bytes": 19967,
+      "sha256": "b4ff4f66203e9e87fb6d7eee3a6c568f77015ea02a849e2bdefee7b62a517cb5"
+    },
+    {
+      "path": "assets/project-diagrams/launcher-verification-flow-mobile-v4.svg",
+      "bytes": 52393,
+      "sha256": "4382868621cb8d598f4980dc953b6ee178f9b03d44094978c9a326d2d22a1879"
+    },
+    {
+      "path": "assets/project-diagrams/launcher-verification-flow-mobile.svg",
+      "bytes": 14348,
+      "sha256": "66e48d383dc8538bad0ea8db13cb175b9eb1567a438c71861e24592389e35a2f"
+    },
+    {
+      "path": "assets/project-diagrams/launcher-verification-flow-v4.svg",
+      "bytes": 52310,
+      "sha256": "72d447d9c02706f20ced813d295bc104593c33c58c237311e44842f855755323"
+    },
+    {
+      "path": "assets/project-diagrams/launcher-verification-flow.svg",
+      "bytes": 17989,
+      "sha256": "3028a436697a95001a8b9a0687db1632f0d9009cf06525f3654b5d3ac781ca45"
+    },
+    {
+      "path": "assets/project-diagrams/local-first-home-platform-mobile-v4.svg",
+      "bytes": 52464,
+      "sha256": "7cc3bb680eba2df63b43c703baa30ecdcae1b495e3827e030c00263f5b4f32ba"
+    },
+    {
+      "path": "assets/project-diagrams/local-first-home-platform-mobile.svg",
+      "bytes": 13165,
+      "sha256": "0b79a9f9fb6833e1efd29f397aa2ccf6d2a3d6f9b5c5dc3a558be27c5def49d5"
+    },
+    {
+      "path": "assets/project-diagrams/local-first-home-platform-v4.svg",
+      "bytes": 52928,
+      "sha256": "1347a78548e002659f9d289911ce7bf7ff05465caa6344103ec5b8653d5858f4"
+    },
+    {
+      "path": "assets/project-diagrams/local-first-home-platform.svg",
+      "bytes": 12857,
+      "sha256": "c15883aade9c46559da7882c7319eee2a3a700871a88bd1de62e90e91d54a794"
+    },
+    {
+      "path": "assets/project-diagrams/server-authoritative-game-state-mobile-v4.svg",
+      "bytes": 52759,
+      "sha256": "8e89d8d203ef8ae15a137b1af259551f4645e173ec31ff7a0f0e46038d92ac3e"
+    },
+    {
+      "path": "assets/project-diagrams/server-authoritative-game-state-mobile.svg",
+      "bytes": 12583,
+      "sha256": "bf222b1a5cad49e7d1b52eabfab357739395b271f9133afcce9149f79767cc2a"
+    },
+    {
+      "path": "assets/project-diagrams/server-authoritative-game-state-v4.svg",
+      "bytes": 52420,
+      "sha256": "a5a0c8e64cd176af0b16feb30b3f2ac04bd6700e05c592096ef7afc19c855618"
+    },
+    {
+      "path": "assets/project-diagrams/server-authoritative-game-state.svg",
+      "bytes": 17736,
+      "sha256": "e91b1dc2d49ff72c1074829947626b8fe42bf69410125a0d0ca5edac61135461"
+    },
+    {
+      "path": "assets/site.css",
+      "bytes": 25604,
+      "sha256": "66312ba223c953fced9a903695bea65a1665e4c748cf8130d417217a20d0d7a2"
+    },
+    {
+      "path": "assets/site.js",
+      "bytes": 3246,
+      "sha256": "d74f2632ba643733cacb4936b609870ff7b90de9fb7c82d475f3050d15e9a216"
+    },
+    {
+      "path": "assets/underline-hero.svg",
+      "bytes": 275,
+      "sha256": "7063b8bf29eb53dff142a0da79e66d7da1a46f83bf78783db7fd885bc2355792"
+    },
+    {
+      "path": "assets/underline.svg",
+      "bytes": 271,
+      "sha256": "66943342b0cbf3f0f9c7ff53cb3a610d5f2f9e83cb79e0401c86d38bdfc67c59"
+    },
+    {
+      "path": "cv.html",
+      "bytes": 14479,
+      "sha256": "e4eea28d8a1c1045bd0ed3367857a961c376879a5ee8ebd6b6c5e1b15629adee"
+    },
+    {
+      "path": "cv.pdf",
+      "bytes": 9174,
+      "sha256": "b2e678bd63f09dabdbeb3afc1c59ea337fee00fdd0445af8d736775a03a877e8"
+    },
+    {
+      "path": "favicon-32.png",
+      "bytes": 778,
+      "sha256": "670e22846dd27e131527d0f579ccbae931e2278d3f418f156267165ee612f702"
+    },
+    {
+      "path": "favicon.ico",
+      "bytes": 800,
+      "sha256": "6fc1b8324d4608e0a7200f290c0204725039cc0fc88072835a9e21066a61362d"
+    },
+    {
+      "path": "favicon.svg",
+      "bytes": 812,
+      "sha256": "911aae9d5ef4a8c95f464c3411e2701a40eec25ac338a8199713f8eae258c229"
+    },
+    {
+      "path": "feed.xml",
+      "bytes": 3922,
+      "sha256": "54a944a9d98e5502940ab7f22002eb2290cdd97b9ce700e3943dbd4eee0ee007"
+    },
+    {
+      "path": "icon-192.png",
+      "bytes": 3608,
+      "sha256": "b94ea0896b5a59b7e486029241d09058c102f9b3b7b12ab60494c68e7ae03fb9"
+    },
+    {
+      "path": "icon-512.png",
+      "bytes": 13858,
+      "sha256": "99b077272a1af883b0513109ac641ad37b6223fff597d46a454fd3a58ef8373e"
+    },
+    {
+      "path": "index.html",
+      "bytes": 9885,
+      "sha256": "bbe8c0e36b0be88513e293918936e6f4bcd9ed9a522e558706cb814c3d0fa3b5"
+    },
+    {
+      "path": "leadership.html",
+      "bytes": 14465,
+      "sha256": "774093fbf3c5142c04642825326180a8d60a329ab91300fb04d6c378ab17d265"
+    },
+    {
+      "path": "posts/ai-makes-building-easy-production-is-hard.html",
+      "bytes": 17247,
+      "sha256": "84d2b60e62f5b0c24db1748b03631970195d594396acc00adf138745231a59eb"
+    },
+    {
+      "path": "posts/before-you-remove-code-review-name-the-risk.html",
+      "bytes": 19467,
+      "sha256": "0f0a6a12105cf03a9d82a1fc19762932061abfadb893d04185941d8efd987106"
+    },
+    {
+      "path": "posts/career-ladder-should-reduce-surprises.html",
+      "bytes": 17374,
+      "sha256": "74e0f14c8036f1dd09a2094628cdc780a8cfc36655fad94e2b95969b371c4766"
+    },
+    {
+      "path": "posts/feedback-is-the-performance-system.html",
+      "bytes": 17877,
+      "sha256": "48c8c88a3e916c00d5d245b2f12c7d5f43e401151449812d992e8520364fcc63"
+    },
+    {
+      "path": "posts/make-improvement-plans-winnable.html",
+      "bytes": 20777,
+      "sha256": "f74ac20c5d5d2f5bfb291abef4534eecc4c6dba0f038793f57137c3d8d61ba76"
+    },
+    {
+      "path": "posts/prioritization-is-constraint-management.html",
+      "bytes": 12325,
+      "sha256": "dd2f300bafbc82d4efb6785acfd85887c3d477700d69593192a18352eb3d0525"
+    },
+    {
+      "path": "posts/technical-direction-is-not-a-technology-decision.html",
+      "bytes": 7988,
+      "sha256": "de1a4b1716d19b56a022287f6c86dc4d603ec2f3c39f3829115f983baa055827"
+    },
+    {
+      "path": "posts/use-ai-to-find-evidence-not-score-engineers.html",
+      "bytes": 22969,
+      "sha256": "1bbe0fce63b47b66f95e73678fc7d44de3d936c352cf5b991a4998ffb04f4125"
+    },
+    {
+      "path": "projects/accounting-agent.html",
+      "bytes": 14567,
+      "sha256": "1c66cc0328dbe1eb9a854006aa45e35287a67c218f7e2725ed6e270eacd88596"
+    },
+    {
+      "path": "projects/ai-personal-assistant.html",
+      "bytes": 20067,
+      "sha256": "58c17619c9a3076c7089416efff65f11ef72c507bdd1d6ce05b4ea65ac1c0b7a"
+    },
+    {
+      "path": "projects/animal-park-management.html",
+      "bytes": 13617,
+      "sha256": "174d5889a0def888a5fd799d56a4e9c7f2faac92bbd66a9d976faecf61ea5926"
+    },
+    {
+      "path": "projects/engineering-ai.html",
+      "bytes": 8312,
+      "sha256": "3f8843bf45d11070dded6255578dabe577de505e68fadea3ea120395007833f6"
+    },
+    {
+      "path": "projects/engineering-platform.html",
+      "bytes": 8930,
+      "sha256": "c4342335ba16c5b9b0d577472cf3e3c3552f0a5a66787ffd93989cad7bc13b78"
+    },
+    {
+      "path": "projects/home-automation-platform.html",
+      "bytes": 7335,
+      "sha256": "d74ded3d787a038fae8d9433ae48ab988ac60c71435c59eccaba0b4c29c8fd6b"
+    },
+    {
+      "path": "projects/index.html",
+      "bytes": 7244,
+      "sha256": "f786f9f26fc5d4ac34c53fcae655d2796fce451ce35f2a898f25eb3735b25ad7"
+    },
+    {
+      "path": "projects/launcher.html",
+      "bytes": 8790,
+      "sha256": "a43c99e2cb965e535668548b91824566e4537470729f8f4685668c1360be385b"
+    },
+    {
+      "path": "projects/scaling-engineering-org.html",
+      "bytes": 12103,
+      "sha256": "cfb08a300ef23885df0ac0d245672113090408a80db201062a8e17bb9d369f6a"
+    },
+    {
+      "path": "projects/unity-explorer.html",
+      "bytes": 12847,
+      "sha256": "b37a218df7c6c0c9e5c45f9c69fb625f5f6514a6b1ac7cfc527ee4a99556a406"
+    },
+    {
+      "path": "robots.txt",
+      "bytes": 61,
+      "sha256": "3dac15e1cc69660282a5064463a44bbc31f4e5404ad21a03f4757f7819a7a982"
+    },
+    {
+      "path": "site.webmanifest",
+      "bytes": 351,
+      "sha256": "8afc6117ca96227e9a27d8e5b675d4ed2a022cccf68338936d7b49b447f8a79d"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 2404,
+      "sha256": "e0c44c07be689df42ba33565a45a9b71f174d75723b50a05a8edf3dcb90f99bb"
+    },
+    {
+      "path": "writing.html",
+      "bytes": 12586,
+      "sha256": "3d85f2f13c1e014eec33c5ce3f0faba99acb2bf903aadb034cfa40db833eb452"
+    }
+  ]
+}

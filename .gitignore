@@ -2,7 +2,6 @@
 .idea/
 
 # Generated static releases and local configuration
-/public/
 /dist/
 __pycache__/
 *.pyc

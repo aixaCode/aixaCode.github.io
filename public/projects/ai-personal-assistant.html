@@ -1,0 +1,167 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Assistant - Agnieszka Besz</title><meta name="description" content="A self-hosted family assistant built around user-owned data, replaceable models and channels, and permission-gated capabilities."><meta name="theme-color" content="#fff8f0"><link rel="icon" href="../favicon.ico" sizes="32x32"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="manifest" href="../site.webmanifest"><link rel="preload" href="../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="canonical" href="https://besz.me/projects/ai-personal-assistant.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Agnieszka Besz"><meta property="og:title" content="AI Assistant"><meta property="og:description" content="A self-hosted family assistant built around user-owned data, replaceable models and channels, and permission-gated capabilities."><meta property="og:url" content="https://besz.me/projects/ai-personal-assistant.html"><meta property="og:image" content="https://besz.me/assets/images/og-default-v4.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AI Assistant"><meta name="twitter:description" content="A self-hosted family assistant built around user-owned data, replaceable models and channels, and permission-gated capabilities."><meta name="twitter:image" content="https://besz.me/assets/images/og-default-v4.jpg"><link rel="stylesheet" href="../assets/content.css?v=cb4c737c7e"><link rel="stylesheet" href="../assets/site.css?v=66312ba223"><script src="../assets/site.js?v=d74f2632ba" defer></script><link rel="alternate" type="application/rss+xml" title="Agnieszka Besz — essays" href="../feed.xml"></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header" id="site-header"><div class="shell header-inner"><div class="identity"><a class="wordmark" href="../index.html" aria-label="aixaCode — Agnieszka Besz, home">aixa<em>Code.</em></a><span class="identity-note">AGNIESZKA BESZ<br>VP OF ENGINEERING</span></div><button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" type="button">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="../writing.html">Writing</a><a href="../projects/index.html" aria-current="page">Selected work</a><a href="../about.html">About</a><a href="../index.html#contact">Contact</a></nav></div></header><main class="shell content-page" id="main">
+<section class="hero">
+<p class="eyebrow mono"> Architecture case study</p>
+<h1>AI Assistant</h1>
+<p class="lead">I am building a self-hosted family assistant whose knowledge, documents and skills remain useful when I change the model, channel or application around them.</p>
+<p class="stack">TypeScript / Node.js / provider-neutral model runtime / SQLite working state / channel adapters / Markdown and versioned JSON / permission-gated capabilities</p>
+<div aria-label="Project topics" class="topic-tags"><a href="index.html?filter=ai">AI</a></div>
+<div class="actions"><a class="btn" href="index.html">All projects</a></div>
+</section>
+<div class="case-layout">
+<div>
+<section class="case-section" id="overview">
+<h2>Overview</h2>
+<p>I built this because useful family context was scattered across chats, calendars, email and files. Repeating it to a generic assistant did not create durable knowledge or a system the household could inspect and own.</p>
+<p>The project started as a conversational tool runner and gradually became a local-first family assistant. One installation serves the household, but each person keeps a stable identity and attributed actions. I wanted approved knowledge, documents and skills to be shareable without pretending that a messaging account is the person or the source of truth.</p>
+<p>I treat channels and model providers as adapters around the same runtime. The current implementation supports the Claude Agent SDK and an OpenAI-compatible tool loop behind the same permission and session boundaries. I do not silently fall back between providers. If an adapter cannot read a PDF, it refuses the request before sending anything to the model.</p>
+</section>
+<section class="case-section" id="requirements">
+<h2>Requirements</h2>
+<ul>
+<li>Run locally on a developer-controlled machine, with private workspace data outside the Git repository.</li>
+<li>Serve one household with stable, attributed members and shared approved information.</li>
+<li>Support hosted and local models through explicit provider adapters and configured fallback routes.</li>
+<li>Execute tools only through deterministic authorization, not through prompt instruction alone.</li>
+<li>Support CLI, private Telegram, email ingress and calendar-aware workflows without losing conversation continuity.</li>
+<li>Produce an auditable execution history for tool decisions and confirmations.</li>
+<li>Accept concurrent messages durably and recover unfinished work after model limits, process restarts or infrastructure failure.</li>
+<li>Keep permanent knowledge, original documents and approved interpretations human-readable and recoverable.</li>
+<li>Keep embeddings, indexes and dashboards replaceable; preserve operational records with verified backups and exports.</li>
+<li>Let a family propose and improve readable skills through conversation, with versioning, checks, approval and rollback.</li>
+</ul>
+</section>
+<section class="case-section" id="architecture">
+<h2>Architecture</h2>
+<figure class="article-figure sketch-flow-figure project-flow-figure">
+<h3 class="diagram-title">Every request gets context, crosses a permission boundary and leaves a record.</h3>
+<picture>
+<source media="(max-width: 640px)" srcset="../assets/project-diagrams/assistant-permission-boundary-mobile-v4.svg"/>
+<img alt="A request receives member and conversation context before the model proposes a capability. A permission gate allows, asks or denies the action." decoding="async" loading="lazy" src="../assets/project-diagrams/assistant-permission-boundary-v4.svg"/>
+</picture>
+<figcaption>The model can propose an action. It cannot give itself permission to perform it.</figcaption>
+</figure>
+<p>I only acknowledge work after it has been persisted. From there it can be retried, resumed after a restart and traced back to the member, conversation and source that created it. The interaction contract keeps those facts stable without pushing channel-specific behavior into the agent runtime.</p>
+<p>The model sees only enabled capabilities. Every tool passes through scope and risk checks plus optional human confirmation; unknown tools fail closed. File operations also enforce lexical and real-path confinement. I keep permanent information in Markdown, versioned JSON and original files, while databases hold working state that I can rebuild.</p>
+</section>
+<section class="case-section" id="components">
+<h2>Key components</h2>
+<div class="spec-grid">
+<div class="spec"><h3>Interaction contract</h3><p>Every channel supplies the same member, source, conversation, attachment and capability context to the runtime.</p></div>
+<div class="spec"><h3>Family identity</h3><p>External channel identities map to stable household members. Conversations stay separate and actions remain attributable.</p></div>
+<div class="spec"><h3>Model providers</h3><p>Provider adapters own the complete tool-using turn. Fallback is limited to configured routes; it does not authorize an arbitrary provider change or expand tool permissions.</p></div>
+<div class="spec"><h3>Permission engine</h3><p><code>src/permissions.ts</code> evaluates tool metadata, asks for human confirmation when required and logs allow/deny decisions.</p></div>
+<div class="spec"><h3>Safe file layer</h3><p><code>src/files.ts</code> blocks traversal and symlink escapes. Dedicated handlers then narrow writes to their own notes, knowledge, document, memory or skill locations.</p></div>
+<div class="spec"><h3>Durable intake</h3><p><code>src/durable-jobs.ts</code> persists Telegram messages, PDFs and email before processing. It deduplicates message IDs, recovers interrupted jobs and applies bounded retry with subscription-reset awareness.</p></div>
+<div class="spec"><h3>Capability catalogue</h3><p>Capabilities group tools with the settings, storage, workers and health checks they require. Configuration can disable them; only the permission gate can authorize them.</p></div>
+<div class="spec"><h3>Versioned skills</h3><p>Conversational changes create inspectable proposals. Checks and human approval activate an exact immutable version; rollback preserves history.</p></div>
+<div class="spec"><h3>Document pipeline</h3><p>Original evidence is retained alongside a validated, versioned JSON record with provenance, ambiguities and correction history. Integrations consume that portable boundary.</p></div>
+<div class="spec"><h3>Telegram state</h3><p><code>src/telegram-state.ts</code> persists sessions and reminders, serializes each conversation and lets confirmation replies unblock an active tool call. Shared scheduled work executes once before delivery to multiple recipients.</p></div>
+<div class="spec"><h3>Portable storage</h3><p>Markdown, original files and versioned JSON hold permanent information. Search indexes and dashboard views are replaceable projections. Lifecycle-bearing runtime records require their own verified backups and exports.</p></div>
+<div class="spec"><h3>Configuration boundary</h3><p>A validated, secret-free configuration describes household identity, providers, storage and enabled capabilities. Migration and activation are explicit.</p></div>
+<div class="spec"><h3>Recovery</h3><p>SQLite stores runtime and lifecycle state. Versioned, checksummed JSON exports provide a portable recovery route, but original documents alone do not replace backups of operational records. Restore must be verified against a new empty database.</p></div>
+</div>
+</section>
+<section class="case-section" id="implementation">
+<h2>Implementation detail</h2>
+<p>I did not want “provider-neutral” to mean a thin text-completion interface that stopped being useful as soon as the model called a tool. The abstraction covers the complete agent turn, including tool continuation and declared capabilities:</p>
+<pre class="code-block"><code>export interface AgentRuntime {
+  readonly providerId: string;
+  execute(request: AgentRequest): Promise&lt;AgentResult&gt;;
+  capabilities(): ModelCapabilities;
+}
+
+if (attachments.some(isPdf)) {
+  throw new Error(`${providerId} cannot read PDF documents.`);
+}</code></pre>
+<p>The OpenAI-compatible runtime converts each tool's Zod schema to JSON Schema, validates returned arguments before calling the handler, limits the number of turns, aborts on timeout and refuses unavailable tools. I keep provider sessions behind application-owned IDs, so channel records do not inherit a provider's identity model.</p>
+<p>For documents, I use content-addressed extraction revisions. A revision ID hashes the original bytes, extractor identity, extractor version and normalized payload. Approval re-hashes the source, rejects unresolved ambiguity and supersedes the previous approved revision:</p>
+<pre class="code-block"><code>revisionId = sha256({
+  sourceSha256,
+  extractor,
+  extractorVersion,
+  facts,
+  references,
+  amounts,
+  dates,
+  ambiguities
+});
+
+approve only if currentSourceHash === sourceSha256
+             &amp;&amp; ambiguities.length === 0;</code></pre>
+<p>I use the same pattern for skills. Proposed Markdown becomes an immutable semantic version with its content hash, requested capabilities, diff and deterministic include/exclude assertions. Activation revalidates the exact bytes and records who approved them. A skill can request an existing capability, but it cannot grant itself one.</p>
+</section>
+<section class="case-section" id="problems">
+<h2>Interesting engineering problems</h2>
+<ul class="list-clean">
+<li><strong>Policy-based tool execution.</strong> The model generates intent, never authority. Capability switches narrow the available tools, channel policy narrows them again, and scope/risk metadata plus confirmation and audit remain the final authorization layer.</li>
+<li><strong>Prompt injection boundary.</strong> The dangerous boundary is the moment text becomes action. Unknown or unavailable tools are denied, returned arguments are schema-validated and monitored external content receives a deliberately restricted capability set.</li>
+<li><strong>Knowledge is not workflow state.</strong> Human-readable Markdown remains the source for narrative context, while SQLite stores lifecycle-bearing objects that need filtering, status transitions and due dates. Facts in either layer carry explicit provenance.</li>
+<li><strong>Identity without data silos.</strong> Members have separate authenticated conversations and attributed actions, while approved household knowledge remains shared according to visibility rules.</li>
+<li><strong>Durable asynchronous UX.</strong> Ingress and execution are separate. The assistant acknowledges accepted work only after persistence, serializes each conversation, retries recoverable failures and avoids asking the user to resend a request.</li>
+<li><strong>One computation, many recipients.</strong> Shared scheduled routines execute once and fan out the same result, avoiding duplicate model runs and inconsistent summaries.</li>
+<li><strong>Portable state without dual authority.</strong> SQLite supports queries and transitions during execution, while versioned JSON exports carry provenance, ownership, event history and a checksum. Restore verifies the export and rebuilds a fresh projection.</li>
+</ul>
+</section>
+<section class="case-section" id="tradeoffs">
+<h2>Trade-offs</h2>
+<table class="decision-table">
+<thead><tr><th>Decision</th><th>Trade-off</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Provider adapters behind one complete-turn contract</td><td>More adapter code, consistent tools and permissions across hosted and local models</td><td>I keep provider-specific sessions and response formats outside channels and durable household records.</td></tr>
+<tr><td>Markdown knowledge before vector search</td><td>Less fuzzy retrieval, better debuggability</td><td>For early usage, grep-able source-of-truth files were more reliable than opaque embeddings.</td></tr>
+<tr><td>One household, attributed members</td><td>More identity and visibility rules, less duplicate context</td><td>Approved information can be shared without losing who requested or changed something.</td></tr>
+<tr><td>Risk-based confirmation rather than confirmation for every write</td><td>Routine automation stays usable, sensitive actions still pause</td><td>Scope describes where a tool acts; independently assigned risk determines whether a human must approve it.</td></tr>
+<tr><td>Markdown plus SQLite</td><td>Two storage models to maintain, clearer semantics and queries</td><td>Knowledge, evidence and operational lifecycle have different access patterns and should not be forced into one format.</td></tr>
+<tr><td>Authenticated chat for action approval</td><td>Monitored email is observational rather than autonomous</td><td>Untrusted message content can propose an action but cannot directly modify state or contact an external recipient.</td></tr>
+<tr><td>Runtime database with portable snapshots</td><td>More export and restore machinery, no database becomes the only copy</td><td>Operational queries stay fast while checksummed JSON preserves a provider-neutral recovery path.</td></tr>
+</tbody>
+</table>
+</section>
+<section class="case-section" id="results">
+<h2>Where it is now</h2>
+<ul>
+<li>CLI, private Telegram and allow-listed email intake working with durable session resume and persistent request queuing.</li>
+<li>Stable member identities implemented across channels, attachments and scheduled work.</li>
+<li>Permission gate, safe file layer and append-only audit log implemented in code.</li>
+<li>Google Calendar, Telegram-first email drafts, structured reminders, accounting intake, document organisation and skill-loading tools integrated behind the same authorization path.</li>
+<li>Queryable operational objects and provenance-aware facts separate active commitments from narrative knowledge.</li>
+<li>Concurrent requests, subscription limits and restarts no longer require users to resend accepted work.</li>
+<li>Shared scheduled routines execute once and fan out to all intended recipients.</li>
+<li>Security and reliability tests cover configuration, permissions, safe files, calendar, email, durable jobs, operational state and Telegram state.</li>
+<li>Claude Agent SDK and OpenAI-compatible provider loops implemented behind the same permission-gated capability registry.</li><li>The codebase includes authenticated web interactions and a household dashboard with read-only projections and narrowly defined commands, alongside CLI, Telegram and email.</li>
+<li>Universal document records preserve original evidence, extraction revisions, approval and correction history.</li>
+<li>Conversational skills can be proposed, checked, approved, versioned and rolled back without changing code-level permissions.</li>
+</ul>
+</section>
+<section class="case-section" id="lessons">
+<h2>Lessons</h2>
+<ul>
+<li>A prompt is not a security boundary. Permission checks have to live in code.</li>
+<li>The model can suggest an action, but the runtime decides whether it is allowed.</li>
+<li>Good folder structure and readable household context solved more of the memory problem than vector search would have.</li>
+<li>Audit logs and session recovery became necessary much earlier than I expected.</li>
+<li>Acknowledgment must mean durable acceptance, not merely that a webhook or poller saw a message.</li>
+<li>Personal-assistant memory needs provenance and lifecycle, not just better retrieval.</li>
+</ul>
+</section>
+<section class="case-section" id="next">
+<h2>What I would build next</h2>
+<p>The current installation is still the proving environment. The interaction contract, stable member identity, provider adapters, explicit migrations, portable restore path and versioned skill lifecycle are now in place. I still want capability compatibility to fail during configuration rather than relying on adapter-level rejection at execution time.</p>
+<p>After that, I would focus on packaging and access: run the same application and durable data through Docker, then validate local models and ARM64 hardware. I do not want any of those delivery formats to create a second data model or weaken the household boundary.</p>
+</section>
+</div>
+<aside class="toc">
+<a href="#overview">Overview</a>
+<a href="#requirements">Requirements</a>
+<a href="#architecture">Architecture</a>
+<a href="#components">Key components</a>
+<a href="#implementation">Implementation</a>
+<a href="#problems">Engineering problems</a>
+<a href="#tradeoffs">Trade-offs</a>
+<a href="#results">Where it is now</a>
+<a href="#lessons">Lessons</a>
+<a href="#next">What I would build next</a>
+</aside>
+</div>
+
+</main><footer class="site-footer shell" id="contact"><div class="footer-top"><div><div class="label">LET’S TALK</div><h2>Good work starts with a thoughtful conversation.</h2></div><a class="footer-email" href="mailto:aga@besz.me">aga@besz.me</a></div><div class="footer-bottom"><span>© 2026 Agnieszka Besz · aixaCode</span><div class="social-links"><a href="https://www.linkedin.com/in/agabesz">LinkedIn</a><a href="https://github.com/aixaCode">GitHub</a><a href="https://gbfactory.uk/">GB Factory</a><a href="../cv.html">CV</a></div></div></footer></body></html>

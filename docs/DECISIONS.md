@@ -25,3 +25,20 @@ The HTML CV is the source for PDF regeneration; a recorded source hash prevents
 ordinary edits from silently leaving its PDF stale. ReportLab and Sharp are optional
 pinned authoring tools, not dependencies of the static production build. Generated
 image provenance and the final prompt remain in Git outside the public output.
+
+## 2026-10-06: Publish committed static files over SSH Git
+
+Match the other sites' read-only Git deploy-key model. Commit generated public/
+and release-manifest.json together with source; keep dist/ ignored. CI rebuilds
+and fails on changed or untracked output. The trusted deployer reads only exact
+commit blobs, reconstructs the deterministic tar and validates every manifest
+entry. It never runs website code and needs no Actions download credential.
+Keep the existing restricted receiver, health checks and atomic rollback.
+
+The generated public tree duplicates source assets in Git; this is the deliberate
+tradeoff for a simpler credential and publishing workflow. CI is a stale-output
+check, not a runtime success gate in the SSH Git path. Publish only reviewed
+commits on the configured branch; until branch protections/promotion are agreed,
+pushing that branch after activation can trigger deployment before CI finishes.
+The new path is prepared locally; push, host update and target activation remain
+separate user approvals.

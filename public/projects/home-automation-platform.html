@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Home Infrastructure Platform - Agnieszka Besz</title><meta name="description" content="Private infrastructure for local services, automations, observability and secure remote access."><meta name="theme-color" content="#fff8f0"><link rel="icon" href="../favicon.ico" sizes="32x32"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="manifest" href="../site.webmanifest"><link rel="preload" href="../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="canonical" href="https://besz.me/projects/home-automation-platform.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Agnieszka Besz"><meta property="og:title" content="Home Infrastructure Platform"><meta property="og:description" content="Private infrastructure for local services, automations, observability and secure remote access."><meta property="og:url" content="https://besz.me/projects/home-automation-platform.html"><meta property="og:image" content="https://besz.me/assets/images/og-default-v4.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Home Infrastructure Platform"><meta name="twitter:description" content="Private infrastructure for local services, automations, observability and secure remote access."><meta name="twitter:image" content="https://besz.me/assets/images/og-default-v4.jpg"><link rel="stylesheet" href="../assets/content.css?v=cb4c737c7e"><link rel="stylesheet" href="../assets/site.css?v=66312ba223"><script src="../assets/site.js?v=d74f2632ba" defer></script><link rel="alternate" type="application/rss+xml" title="Agnieszka Besz — essays" href="../feed.xml"></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header" id="site-header"><div class="shell header-inner"><div class="identity"><a class="wordmark" href="../index.html" aria-label="aixaCode — Agnieszka Besz, home">aixa<em>Code.</em></a><span class="identity-note">AGNIESZKA BESZ<br>VP OF ENGINEERING</span></div><button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" type="button">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="../writing.html">Writing</a><a href="../projects/index.html" aria-current="page">Selected work</a><a href="../about.html">About</a><a href="../index.html#contact">Contact</a></nav></div></header><main class="shell content-page" id="main">
+<section class="hero">
+<p class="eyebrow mono"> Case study</p>
+<h1>Home Infrastructure Platform</h1>
+<p class="lead">The small home server setup where I run automations, monitoring and my private AI and finance tools.</p>
+<p class="stack">Home Assistant / Zigbee / Docker / Proxmox / Cloudflare / Grafana / Linux</p>
+<div aria-label="Project topics" class="topic-tags"><a href="index.html?filter=platform">Platform</a></div>
+<div class="actions"><span class="meta">Internal or private project material.</span><a class="btn" href="index.html">All projects</a></div>
+</section>
+<div class="case-layout">
+<div>
+<section class="case-section" id="problem">
+<h2>Problem</h2>
+<p>This began as home automation and gradually became a small private platform. It has many of the same problems as a production system—unreliable devices, networking, access control, monitoring and backups—except a bad deployment can also turn off a light somebody is using.</p>
+<p>The same platform is also the deployment target for the other local-first systems in this portfolio: the <a href="ai-personal-assistant.html">AI assistant</a> and the <a href="accounting-agent.html">finance agents</a> run here as isolated containers, next to the home services.</p>
+</section>
+<section class="case-section" id="goals">
+<h2>Goals</h2>
+<ul><li>Run local-first automations with minimal cloud dependency</li><li>Integrate many device types without creating a maintenance trap</li><li>Expose selected services securely</li><li>Track system health and energy use</li><li>Keep infrastructure understandable enough to repair quickly</li></ul>
+</section>
+<section class="case-section" id="architecture">
+<h2>Architecture</h2><p>The platform also hosts public static websites. Cloudflare Tunnel routes requests through a local reverse proxy to nginx in a dedicated Proxmox container; versioned releases allow the site to return to an earlier working version.</p>
+<figure class="article-figure sketch-flow-figure project-flow-figure">
+<h3 class="diagram-title">Local control is the main path. Remote access is optional.</h3>
+<picture>
+<source media="(max-width: 640px)" srcset="../assets/project-diagrams/local-first-home-platform-mobile-v4.svg"/>
+<img alt="The core path connects devices to a local controller and automations. A separate protected tunnel provides optional remote access without becoming a dependency for local operation." decoding="async" loading="lazy" src="../assets/project-diagrams/local-first-home-platform-v4.svg"/>
+</picture>
+<figcaption>The local controller owns normal operation. Remote access reaches that controller through a narrow protected path, but the house does not depend on that path to function.</figcaption>
+</figure>
+</section>
+<section class="case-section" id="hard-problems">
+<h2>Interesting problems</h2>
+<ul class="list-clean"><li><strong>How do you design automations that fail safely?</strong> Physical fallback and local control matter more than clever triggers.</li><li><strong>How do you keep the system debuggable?</strong> Observability and naming conventions are not optional once devices multiply.</li><li><strong>How do you expose access without opening the house to the internet?</strong> Use narrow tunnels and minimal public surface.</li></ul>
+</section>
+<section class="case-section" id="lessons">
+<h2>Lessons learned</h2>
+<ul><li>Naming, backups and recovery notes matter once the number of devices starts growing.</li><li>Local control has been more reliable than depending on several vendor clouds.</li><li>I keep automations predictable and leave a physical fallback for anything important.</li></ul>
+</section>
+</div>
+<aside class="toc">
+<a href="#problem">Problem</a>
+<a href="#goals">Goals</a>
+<a href="#architecture">Architecture</a>
+<a href="#hard-problems">Interesting problems</a>
+<a href="#lessons">Lessons learned</a>
+</aside>
+</div>
+
+</main><footer class="site-footer shell" id="contact"><div class="footer-top"><div><div class="label">LET’S TALK</div><h2>Good work starts with a thoughtful conversation.</h2></div><a class="footer-email" href="mailto:aga@besz.me">aga@besz.me</a></div><div class="footer-bottom"><span>© 2026 Agnieszka Besz · aixaCode</span><div class="social-links"><a href="https://www.linkedin.com/in/agabesz">LinkedIn</a><a href="https://github.com/aixaCode">GitHub</a><a href="https://gbfactory.uk/">GB Factory</a><a href="../cv.html">CV</a></div></div></footer></body></html>

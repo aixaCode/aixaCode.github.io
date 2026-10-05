@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Unity Explorer - Agnieszka Besz</title><meta name="description" content="Leading the ground-up rebuild and production release of Decentraland&#x27;s Unity/C# PC client after working on the original web client."><meta name="theme-color" content="#fff8f0"><link rel="icon" href="../favicon.ico" sizes="32x32"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="manifest" href="../site.webmanifest"><link rel="preload" href="../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="canonical" href="https://besz.me/projects/unity-explorer.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Agnieszka Besz"><meta property="og:title" content="Unity Explorer"><meta property="og:description" content="Leading the ground-up rebuild and production release of Decentraland&#x27;s Unity/C# PC client after working on the original web client."><meta property="og:url" content="https://besz.me/projects/unity-explorer.html"><meta property="og:image" content="https://besz.me/assets/images/og-default-v4.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Unity Explorer"><meta name="twitter:description" content="Leading the ground-up rebuild and production release of Decentraland&#x27;s Unity/C# PC client after working on the original web client."><meta name="twitter:image" content="https://besz.me/assets/images/og-default-v4.jpg"><link rel="stylesheet" href="../assets/content.css?v=cb4c737c7e"><link rel="stylesheet" href="../assets/site.css?v=66312ba223"><script src="../assets/site.js?v=d74f2632ba" defer></script><link rel="alternate" type="application/rss+xml" title="Agnieszka Besz — essays" href="../feed.xml"></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header" id="site-header"><div class="shell header-inner"><div class="identity"><a class="wordmark" href="../index.html" aria-label="aixaCode — Agnieszka Besz, home">aixa<em>Code.</em></a><span class="identity-note">AGNIESZKA BESZ<br>VP OF ENGINEERING</span></div><button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" type="button">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="../writing.html">Writing</a><a href="../projects/index.html" aria-current="page">Selected work</a><a href="../about.html">About</a><a href="../index.html#contact">Contact</a></nav></div></header><main class="shell content-page" id="main">
+<section class="hero">
+<p class="eyebrow mono"> Case study</p>
+<h1>Unity Explorer</h1>
+<p class="lead">I worked on Decentraland's original web client before leading the ground-up rebuild and production release of its Unity/C# PC client, while the existing product continued to ship.</p>
+<p class="stack">Unity / C# / Arch ECS / V8 / CRDT / LiveKit / SQS / headless Unity workers / asset bundles / Catalyst / Sentry</p>
+<div aria-label="Project topics" class="topic-tags"><a href="index.html?filter=games">Games</a><a href="index.html?filter=platform">Platform</a></div>
+<div class="actions"><a class="btn" href="https://github.com/decentraland/unity-explorer">Repository</a><a class="btn" href="index.html">All projects</a></div>
+</section>
+<div class="case-layout">
+<div>
+<section class="case-section" id="problem">
+<h2>Context</h2>
+<p>Decentraland needed more people and avatars in the same place, long sightlines, reliable real-time presence, creator content and weekly delivery. The old web client had carried years of technical debt. It could still be patched, but every patch made something else more fragile: more special cases, weaker ownership, slower development and less confidence in releases.</p>
+<p>We decided to rebuild after upkeep stopped being a realistic option. Unity was already part of the legacy path; the important change was the client architecture and what it allowed the product to do.</p>
+</section>
+<section class="case-section" id="goals">
+<h2>What changed</h2>
+<ul><li>Replaced an architecture that could not sustainably support the open-world direction with a modular Unity client designed around streaming, observability, creator content and release confidence.</li><li>Moved high-density social experiences toward Pulse's server-authoritative multiplayer model, targeting reliable shared state at approximately 100-user density.</li><li>Worked directly on the distributed asset-bundle converter: SQS-queued processing and headless Unity workers turn creator GLTF/GLB assets into optimized client content.</li><li>Moved performance work toward a stable 60 FPS with approximately 100 concurrent users while reducing CPU, memory and GPU memory pressure.</li><li>Connected telemetry to prioritization: crashes, hangs, frame time, loading and release regressions became inputs to technical direction.</li><li>Improved release discipline to support approximately 75 public builds per year, including a recent 52-day period without a hotfix.</li></ul>
+</section>
+<section class="case-section" id="architecture">
+<h2>Architecture</h2>
+<figure class="article-figure sketch-flow-figure project-flow-figure">
+<h3 class="diagram-title">The product direction determines which technical boundaries matter.</h3>
+<picture>
+<source media="(max-width: 640px)" srcset="../assets/project-diagrams/explorer-product-boundaries-mobile-v4.svg"/>
+<img alt="The product outcome and operating constraints lead to a Unity client that loads a changing world, isolates creator code and supports reliable shared presence." decoding="async" loading="lazy" src="../assets/project-diagrams/explorer-product-boundaries-v4.svg"/>
+</picture>
+<figcaption>The architecture starts from the experience Decentraland wants to support. Streaming, runtime isolation and real-time presence are responses to those product constraints.</figcaption>
+</figure>
+<figure class="article-figure sketch-flow-figure project-flow-figure">
+<h3 class="diagram-title">Production evidence shows which problem comes first.</h3>
+<picture>
+<source media="(max-width: 640px)" srcset="../assets/project-diagrams/explorer-priority-decision-mobile-v4.svg"/>
+<img alt="Production evidence identifies whether crashes, performance or the quality bar currently limits users, routing work to stability, performance or features." decoding="async" loading="lazy" src="../assets/project-diagrams/explorer-priority-decision-v4.svg"/>
+</picture>
+<figcaption>These are decision conditions, not three stages of delivery. Feature work moves first only when stability and performance are good enough for the product promise to hold.</figcaption>
+</figure>
+<p>Three decisions define the client. Game state lives in a data-oriented ECS because frame-time spikes are user-facing product problems. Creator scenes run in isolated V8 runtimes and communicate through CRDT, which helps reconcile scene and engine state but does not solve multiplayer authority by itself. Real-time multiplayer still needs an explicit authority boundary; peer-to-peer did not scale as more players shared the same space, so reliable voice, avatar sync and coordination moved toward server-backed infrastructure.</p>
+</section>
+<section class="case-section" id="creator-pipeline">
+<h2>Creator content pipeline</h2>
+<p>I worked directly on the asset-bundle converter that connects Decentraland's creator tools to the production client. Creators build scenes with the TypeScript SDK and publish their original GLTF/GLB assets to Catalyst. Catalyst remains the content-addressed source of truth; optimization is a derived, replaceable distribution step rather than a mutation of the creator's source content.</p>
+<figure class="article-figure sketch-flow-figure project-flow-figure">
+<h3 class="diagram-title">Creator source stays intact while a replaceable pipeline optimizes delivery.</h3>
+<picture>
+<source media="(max-width: 640px)" srcset="../assets/project-diagrams/creator-content-pipeline-mobile-v4.svg"/>
+<img alt="Creator source remains canonical in Catalyst while a queue and isolated Unity workers build replaceable optimized assets for Explorer." decoding="async" loading="lazy" src="../assets/project-diagrams/creator-content-pipeline-v4.svg"/>
+</picture>
+<figcaption>Optimization creates replaceable delivery assets; it does not mutate the creator's published source. Explorer can still fall back to the original content.</figcaption>
+</figure>
+<p>The dependency graph matters because changes cross several ownership boundaries: SDK contracts shape creator output, Catalyst owns canonical content and manifests, the converter produces platform-specific derivatives, and Explorer consumes both the source metadata and optimized bundles. SQS decouples deployment from conversion, absorbs changes in demand and lets conversion capacity scale horizontally without blocking creators.</p>
+<p>The outcome is faster runtime loading and distribution of optimized content while preserving portable GLTF/GLB assets as the canonical source. If the optimization strategy changes, bundles can be regenerated from Catalyst instead of asking creators to republish their scenes.</p>
+</section>
+<section class="case-section" id="hard-problems">
+<h2>Interesting problems</h2>
+<ul class="list-clean"><li><strong>How does one bad scene not take down the client?</strong> Scenes are isolated per V8 engine with explicit error budgets — a scene that throws too many errors per minute is suspended, not the client. User-generated content means the client must assume hostile input as the normal case.</li><li><strong>How do you convert an open-ended stream of creator content?</strong> The asset-bundle converter separates orchestration from conversion: SQS buffers asynchronous jobs while headless Unity workers transform GLTF/GLB assets into client-ready bundles. That boundary allows worker capacity to scale independently from content ingestion.</li><li><strong>How do you keep a frame budget with unbounded content?</strong> No allocation in hot paths, aggressive pooling, LOD and prioritization of avatars by relevance — the work is bounded even when the world is not.</li><li><strong>How do you rebuild without stopping delivery?</strong> Split the work into shippable verticals and keep release quality visible. The legacy client kept serving users while the new one earned its place.</li><li><strong>How do you make performance work measurable?</strong> Tie technical debt to product KPIs — loading time, frame rate, crash rate — and let telemetry, not opinion, order the backlog.</li><li><strong>Where does authority live in real-time multiplayer?</strong> CRDTs are useful for state reconciliation, but they do not remove the need to decide who owns the truth. Peer-to-peer looked attractive, but it became error-prone as more players joined the same space; connections failed and state resolution became too fragile. The practical answer was to keep the protocol open while using server-backed multiplayer where reliability required it.</li></ul>
+</section>
+<section class="case-section" id="lessons">
+<h2>Lessons learned</h2>
+<ul><li>The rebuild became real when the new client could ship every week, not when the architecture looked complete.</li><li>CRDTs helped reconcile state but did not answer who held authority in multiplayer.</li><li>Peer-to-peer became too fragile as more players shared the same space.</li><li>Crash, loading and frame-time data gave us a better backlog than opinion alone.</li><li>For a social product, unreliable presence is a product failure.</li></ul>
+</section>
+</div>
+<aside class="toc">
+<a href="#problem">Context</a>
+<a href="#goals">What changed</a>
+<a href="#architecture">Architecture</a>
+<a href="#creator-pipeline">Creator pipeline</a>
+<a href="#hard-problems">Interesting problems</a>
+<a href="#lessons">Lessons learned</a>
+</aside>
+</div>
+
+</main><footer class="site-footer shell" id="contact"><div class="footer-top"><div><div class="label">LET’S TALK</div><h2>Good work starts with a thoughtful conversation.</h2></div><a class="footer-email" href="mailto:aga@besz.me">aga@besz.me</a></div><div class="footer-bottom"><span>© 2026 Agnieszka Besz · aixaCode</span><div class="social-links"><a href="https://www.linkedin.com/in/agabesz">LinkedIn</a><a href="https://github.com/aixaCode">GitHub</a><a href="https://gbfactory.uk/">GB Factory</a><a href="../cv.html">CV</a></div></div></footer></body></html>

@@ -122,6 +122,9 @@ def build(files):
     (DIST / 'site.tar.sha256').write_text(f'{checksum}  site.tar\n')
     (DIST / 'manifest.json').write_text(json.dumps({'schema': 1, 'artifact_sha256': checksum,
                                                    'files': records}, indent=2) + '\n')
+    # Sidecar stays outside the published tree. The trusted receiver recreates the
+    # same deterministic tar from committed public/ bytes and checks this inventory.
+    (ROOT / 'release-manifest.json').write_bytes((DIST / 'manifest.json').read_bytes())
     print(f'Built public/ and dist/site.tar ({checksum})')
 
 if __name__ == '__main__':

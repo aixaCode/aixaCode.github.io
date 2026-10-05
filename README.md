@@ -12,13 +12,13 @@ python3 scripts/build-site.py
 python3 -m http.server 8080 --bind 127.0.0.1 --directory public
 ```
 
-Open http://127.0.0.1:8080. Edit `site/`, then rebuild and refresh. Generated `public/` and `dist/` are ignored. The build validates local links, fragments and responsive image references, derives essay metadata/reading times, RSS and sitemap, and creates a deterministic `dist/site.tar`, SHA-256 file and file manifest. The archive contains only website files; deployment metadata is a sidecar.
+Open http://127.0.0.1:8080. Edit `site/`, then rebuild and refresh. Commit generated `public/` and `release-manifest.json` alongside each source change. `dist/` remains ignored. Never edit publish files by hand. The build validates local links, fragments and responsive image references, derives essay metadata/reading times, RSS and sitemap, and creates a deterministic `dist/site.tar`, SHA-256 file and file manifest. The archive contains only website files; deployment metadata is a sidecar.
 
 ## Version control and deployment
 
 Continuous-deployment profile: the eventual release identity is the immutable Git commit SHA plus artifact SHA-256. No version tags are needed. This migration branch is `feat/besz-source`, based on local main at bf8113b; the existing dirty `writing-first` checkout is preserved separately.
 
-CI configuration is prepared to validate and upload a static artifact, but has not been pushed or executed on GitHub. It does not publish or deploy. CT 116 website-deployer and CT 126 hosting changes require separate approval. GitHub Pages remains untouched until the new release is verified and redirects are approved.
+The previously pushed source passed GitHub CI. CI now also rebuilds and checks that committed publish files match source; the new Git publishing preparation remains local until approved. CT 116 has the prior deployment components and CT 126 has a restricted receiver installed, with the besz target disabled. The proposed Git path uses a read-only SSH deploy key and publishes committed static files without a GitHub Actions token. GitHub Pages remains untouched until the new release is verified and redirects are approved.
 
 See `docs/AI_CONTEXT.md`, `docs/DECISIONS.md`, and the migration/content/visual reviews. Step 6 applies the recorded editorial and visual fixes locally. RSS is restored; unconfirmed claims are listed in docs/BESZ_STEP6_REVIEW.md.
 

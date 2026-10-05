@@ -5,7 +5,8 @@ Read README.md and docs/AI_CONTEXT.md before changes. Preserve user-owned change
 - `site/`: editable recovered besz.me source, including HTML, CSS, JS, fonts, images, SVG diagrams and CV PDF.
 - Root HTML: legacy GitHub Pages content; do not replace during source preparation.
 - `scripts/build-site.py`: dependency-free build and local reference checks.
-- `public/`, `dist/`: ignored generated output; never edit by hand.
+- `public/` and `release-manifest.json`: committed generated publish files; rebuild from source and commit together, never edit by hand.
+- `dist/`: ignored local release archive.
 - `docs/BESZ_*`: migration audit and pending decisions.
 
 Commands: `python3 scripts/build-site.py --check`; `python3 scripts/build-site.py`; preview with `python3 -m http.server 8080 --bind 127.0.0.1 --directory public`.
