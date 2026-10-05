@@ -36,3 +36,13 @@
 @keyframes hero-rise{from{transform:translateY(105%)}to{transform:none}}
 @keyframes hero-draw{to{clip-path:inset(0 0 0 0)}}
 @keyframes fade-up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* Shared editorial navigation, introduced with the recovered-site migration. */
+.series-nav{border-top:1px solid var(--line,#decfc1);border-bottom:1px solid var(--line,#decfc1);padding:28px 0;margin:56px 0;color:#4c332c}
+.series-nav ol{list-style:none;padding:0;margin:14px 0;display:grid;gap:12px}
+.series-nav a{color:inherit;text-decoration-thickness:1px;text-underline-offset:4px}
+.series-nav a[aria-current=page]{font-weight:600}
+.writing-feed{padding-top:24px}
+.article-layout--short{grid-template-columns:minmax(0,1fr);max-width:860px;margin-inline:auto}
+
+.sketch-flow-figure img{background:transparent}

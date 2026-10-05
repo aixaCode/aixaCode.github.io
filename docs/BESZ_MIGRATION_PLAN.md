@@ -95,3 +95,11 @@ Normal editing becomes: edit content/assets -> preview -> commit -> CI -> review
 - CT 116 publishes and records a tested CT 126 release without disrupting its existing targets.
 - Old GitHub Pages HTML URLs lead to their matching new pages.
 - A failed release leaves or restores the healthy site, and rollback is documented and verified.
+
+## Progress through 5 October 2026
+
+Recovery and content/visual audits are complete. Step 4 established a committed
+local source/build baseline. Step 5 prepared and tested the separate deployer locally.
+Step 6 applies the supported content/visual fixes locally; see BESZ_STEP6_REVIEW.md
+for delivered changes and unresolved facts. RSS is now generated. Neither repo has
+been pushed and neither Proxmox nor GitHub Pages has been changed by these steps.

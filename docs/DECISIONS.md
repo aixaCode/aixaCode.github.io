@@ -11,3 +11,17 @@ Use `feat/besz-source` in a separate local checkout so the staged and unstaged w
 ## 2026-10-04: Separate build from deployment
 
 Use Python standard library tooling and deterministic tar metadata. Prepare CI validation/artifacts only. Website-deployer must consume validated artifacts and a trusted destination rather than run arbitrary repository code. Dedicated deployment authorization and identity will be handled in the next approved step.
+
+## 2026-10-05: Generate editorial metadata and editable diagrams
+
+Use content/essays.json for original publication dates and descriptions, body-only
+reading times, RSS and sitemap. Keep actual page update dates explicit. Generate
+SVG variants from a single graph specification and shared palette; use pixel-width
+wrapping and larger mobile labels instead of compressing all meaning into a tiny
+box. Long desktop flows stack to preserve readability. Keep versioned asset names
+because production caches images for 30 days.
+
+The HTML CV is the source for PDF regeneration; a recorded source hash prevents
+ordinary edits from silently leaving its PDF stale. ReportLab and Sharp are optional
+pinned authoring tools, not dependencies of the static production build. Generated
+image provenance and the final prompt remain in Git outside the public output.

@@ -1,0 +1,1295 @@
+[
+  {
+    "folder": "article-diagrams",
+    "slug": "ai-evidence-boundary",
+    "title": "AI assembles the record. People decide.",
+    "nodes": [
+      {
+        "id": "sources",
+        "label": "APPROVED SOURCES Ladder + work records"
+      },
+      {
+        "id": "assistant",
+        "label": "AI EVIDENCE ASSISTANT"
+      },
+      {
+        "id": "evidence",
+        "label": "LINKED EVIDENCE Contradictions + gaps"
+      },
+      {
+        "id": "verify",
+        "label": "MANAGER + EMPLOYEE VERIFY THE RECORD"
+      },
+      {
+        "id": "assessment",
+        "label": "HUMAN-OWNED ASSESSMENT"
+      }
+    ],
+    "edges": [
+      [
+        "sources",
+        "assistant"
+      ],
+      [
+        "assistant",
+        "evidence"
+      ],
+      [
+        "evidence",
+        "verify"
+      ],
+      [
+        "verify",
+        "assessment"
+      ]
+    ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "changing-constraint",
+    "title": "The constraint moves",
+    "nodes": [
+      {
+        "id": "today",
+        "label": "TODAY / Acquisition → onboarding → RETENTION → stability → delivery"
+      },
+      {
+        "id": "later",
+        "label": "LATER / Acquisition → onboarding → retention → STABILITY → delivery"
+      }
+    ],
+    "edges": []
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "delivery-effort",
+    "title": "Where AI changes delivery effort",
+    "nodes": [
+      {
+        "id": "before",
+        "label": "WITHOUT AI / Generation is a large part of the work"
+      },
+      {
+        "id": "after",
+        "label": "WITH AI / Generation shrinks / Review handles more output / Decision, understanding, testing, integration and operation remain"
+      }
+    ],
+    "edges": []
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "demo-to-production",
+    "title": "A demo proves the visible path",
+    "nodes": [
+      {
+        "id": "prompt",
+        "label": "PROMPT"
+      },
+      {
+        "id": "spec",
+        "label": "GENERATED SPECIFICATION"
+      },
+      {
+        "id": "path",
+        "label": "WORKING HAPPY PATH"
+      },
+      {
+        "id": "permissions",
+        "label": "AUTHENTICATION + PERMISSIONS"
+      },
+      {
+        "id": "recovery",
+        "label": "FAILURE RECOVERY + MIGRATION"
+      },
+      {
+        "id": "observability",
+        "label": "OBSERVABILITY + SUPPORT"
+      },
+      {
+        "id": "ownership",
+        "label": "COST + OWNERSHIP"
+      }
+    ],
+    "edges": [
+      [
+        "prompt",
+        "spec"
+      ],
+      [
+        "spec",
+        "path"
+      ],
+      [
+        "path",
+        "permissions"
+      ],
+      [
+        "path",
+        "recovery"
+      ],
+      [
+        "path",
+        "observability"
+      ],
+      [
+        "path",
+        "ownership"
+      ]
+    ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "development-feedback-loop",
+    "title": "The ladder should create a development loop",
+    "nodes": [
+      {
+        "id": "expectation",
+        "label": "CURRENT-LEVEL EXPECTATION"
+      },
+      {
+        "id": "opportunity",
+        "label": "WORK OPPORTUNITY"
+      },
+      {
+        "id": "evidence",
+        "label": "OBSERVED EVIDENCE"
+      },
+      {
+        "id": "feedback",
+        "label": "SPECIFIC FEEDBACK"
+      }
+    ],
+    "edges": [
+      [
+        "expectation",
+        "opportunity"
+      ],
+      [
+        "opportunity",
+        "evidence"
+      ],
+      [
+        "evidence",
+        "feedback"
+      ],
+      [
+        "feedback",
+        "opportunity"
+      ]
+    ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "evidence-states",
+    "title": "Missing evidence is not negative evidence",
+    "nodes": [
+      {
+        "id": "search",
+        "label": "EVIDENCE SEARCH"
+      },
+      {
+        "id": "supports",
+        "label": "SUPPORTS A CLAIM Review the source"
+      },
+      {
+        "id": "contradicts",
+        "label": "CONTRADICTS A CLAIM Keep both visible"
+      },
+      {
+        "id": "missing",
+        "label": "NOT FOUND Do not infer failure"
+      },
+      {
+        "id": "excluded",
+        "label": "DELIBERATELY EXCLUDED Privacy is a boundary"
+      }
+    ],
+    "edges": [
+      [
+        "search",
+        "supports"
+      ],
+      [
+        "search",
+        "contradicts"
+      ],
+      [
+        "search",
+        "missing"
+      ],
+      [
+        "search",
+        "excluded"
+      ]
+    ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "feedback-core-path",
+    "title": "Useful feedback reduces uncertainty",
+    "nodes": [
+      {
+        "id": "context",
+        "label": "CONTEXT Where + when"
+      },
+      {
+        "id": "observation",
+        "label": "OBSERVATION What happened"
+      },
+      {
+        "id": "result",
+        "label": "RESULT Why it mattered"
+      },
+      {
+        "id": "next",
+        "label": "NEXT STEP Observable change"
+      }
+    ],
+    "edges": [
+      [
+        "context",
+        "observation"
+      ],
+      [
+        "observation",
+        "result"
+      ],
+      [
+        "result",
+        "next"
+      ]
+    ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "feedback-pattern",
+    "title": "A pattern appears across comparable work",
+    "nodes": [
+      {
+        "id": "first",
+        "label": "ONE DELAYED START"
+      },
+      {
+        "id": "feedback",
+        "label": "EXPECTATION MADE CLEAR"
+      },
+      {
+        "id": "later",
+        "label": "COMPARABLE WORK Same gap observed"
+      },
+      {
+        "id": "pattern",
+        "label": "REPEATED PATTERN Evidence, not memory"
+      }
+    ],
+    "edges": [
+      [
+        "first",
+        "feedback"
+      ],
+      [
+        "feedback",
+        "later"
+      ],
+      [
+        "later",
+        "pattern"
+      ]
+    ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "human-owns-outcome",
+    "title": "The model can act. A person owns the outcome.",
+    "nodes": [
+      {
+        "id": "owner",
+        "label": "NAMED OWNER Goal + rules + response"
+      },
+      {
+        "id": "ai",
+        "label": "AI ACTION"
+      },
+      {
+        "id": "checks",
+        "label": "PERMISSIONS + CHECKS"
+      },
+      {
+        "id": "change",
+        "label": "PRODUCTION CHANGE"
+      },
+      {
+        "id": "result",
+        "label": "OBSERVABLE RESULT"
+      }
+    ],
+    "edges": [
+      [
+        "owner",
+        "ai"
+      ],
+      [
+        "ai",
+        "checks"
+      ],
+      [
+        "checks",
+        "change"
+      ],
+      [
+        "change",
+        "result"
+      ]
+    ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "pip-diagnosis",
+    "title": "Diagnose the gap before choosing a PIP",
+    "nodes": [
+      {
+        "id": "diagnose",
+        "label": "WHAT IS CAUSING THE GAP?"
+      },
+      {
+        "id": "unclear",
+        "label": "UNCLEAR EXPECTATION"
+      },
+      {
+        "id": "clarify",
+        "label": "CLARIFY + CREATE AN OPPORTUNITY"
+      },
+      {
+        "id": "support",
+        "label": "MISSING TOOLS, CONTEXT OR TRAINING"
+      },
+      {
+        "id": "fix-support",
+        "label": "FIX THE SUPPORT OR PROCESS GAP"
+      },
+      {
+        "id": "temporary",
+        "label": "TEMPORARY CIRCUMSTANCES"
+      },
+      {
+        "id": "agree",
+        "label": "AGREE SUPPORT + REVIEW DATE"
+      },
+      {
+        "id": "fit",
+        "label": "ROLE IS NOT A PLAUSIBLE FIT"
+      },
+      {
+        "id": "role",
+        "label": "DISCUSS SCOPE, REASSIGNMENT OR EXIT"
+      },
+      {
+        "id": "missed",
+        "label": "CLEAR EXPECTATION REPEATEDLY MISSED"
+      },
+      {
+        "id": "pip",
+        "label": "FORMAL PIP MAY BE APPROPRIATE"
+      }
+    ],
+    "edges": [
+      [
+        "diagnose",
+        "unclear"
+      ],
+      [
+        "unclear",
+        "clarify"
+      ],
+      [
+        "diagnose",
+        "support"
+      ],
+      [
+        "support",
+        "fix-support"
+      ],
+      [
+        "diagnose",
+        "temporary"
+      ],
+      [
+        "temporary",
+        "agree"
+      ],
+      [
+        "diagnose",
+        "fit"
+      ],
+      [
+        "fit",
+        "role"
+      ],
+      [
+        "diagnose",
+        "missed"
+      ],
+      [
+        "missed",
+        "pip"
+      ]
+    ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "prioritization-scoring-trap",
+    "title": "A rational score can optimise the wrong thing",
+    "nodes": [
+      {
+        "id": "score",
+        "label": "SCORING FAVOURS"
+      },
+      {
+        "id": "predictable",
+        "label": "CLEAR SCOPE LOWER RISK PREDICTABLE DELIVERY"
+      },
+      {
+        "id": "high",
+        "label": "RANKS HIGH"
+      },
+      {
+        "id": "constraint",
+        "label": "ACTIVE CONSTRAINT"
+      },
+      {
+        "id": "uncertain",
+        "label": "UNCERTAIN SCOPE HIGH POTENTIAL IMPACT HARDER TO ESTIMATE"
+      },
+      {
+        "id": "low",
+        "label": "CAN RANK LOW"
+      }
+    ],
+    "edges": [
+      [
+        "score",
+        "predictable"
+      ],
+      [
+        "predictable",
+        "high"
+      ],
+      [
+        "constraint",
+        "uncertain"
+      ],
+      [
+        "uncertain",
+        "low"
+      ]
+    ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "product-to-technology",
+    "title": "Product direction determines technical choices",
+    "nodes": [
+      {
+        "id": "direction",
+        "label": "PRODUCT DIRECTION Open world"
+      },
+      {
+        "id": "outcomes",
+        "label": "USER OUTCOMES More people + stable performance"
+      },
+      {
+        "id": "constraints",
+        "label": "TECHNICAL CONSTRAINTS Streaming + frame budget"
+      },
+      {
+        "id": "boundaries",
+        "label": "ARCHITECTURE BOUNDARIES What changes + what stays"
+      },
+      {
+        "id": "choices",
+        "label": "TECHNOLOGY CHOICES"
+      }
+    ],
+    "edges": [
+      [
+        "direction",
+        "outcomes"
+      ],
+      [
+        "outcomes",
+        "constraints"
+      ],
+      [
+        "constraints",
+        "boundaries"
+      ],
+      [
+        "boundaries",
+        "choices"
+      ]
+    ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "promotion-evidence",
+    "title": "Promotion confirms a level already reached",
+    "nodes": [
+      {
+        "id": "work",
+        "label": "SUSTAINED NEXT-LEVEL WORK"
+      },
+      {
+        "id": "scope",
+        "label": "ACCESS TO NEXT-LEVEL SCOPE"
+      },
+      {
+        "id": "case",
+        "label": "WRITTEN CASE Evidence linked to the ladder"
+      },
+      {
+        "id": "calibration",
+        "label": "CALIBRATION Challenges visibility + bias"
+      },
+      {
+        "id": "promotion",
+        "label": "PROMOTION Confirms demonstrated level"
+      }
+    ],
+    "edges": [
+      [
+        "work",
+        "case"
+      ],
+      [
+        "scope",
+        "case"
+      ],
+      [
+        "case",
+        "calibration"
+      ],
+      [
+        "calibration",
+        "promotion"
+      ]
+    ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "review-evolution",
+    "title": "How review attention shifted",
+    "nodes": [
+      {
+        "id": "before",
+        "label": "BEFORE / Developer review and QA for every change / CI checks"
+      },
+      {
+        "id": "after",
+        "label": "LATER ITERATIONS / Early automated checks / Human review and QA routed by risk / CI + observability"
+      }
+    ],
+    "edges": []
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "review-gate",
+    "title": "One review gate has been doing several jobs",
+    "nodes": [
+      {
+        "id": "pull-request",
+        "label": "PULL REQUEST"
+      },
+      {
+        "id": "mechanical",
+        "label": "MECHANICAL CHECKS / Rules, tests, consistency"
+      },
+      {
+        "id": "judgment",
+        "label": "SYSTEM JUDGMENT / Architecture, intent, blast radius"
+      },
+      {
+        "id": "runtime",
+        "label": "RUNTIME CONFIDENCE / QA, performance, real behaviour"
+      },
+      {
+        "id": "knowledge",
+        "label": "SHARED KNOWLEDGE / Who else can operate it?"
+      }
+    ],
+    "edges": [
+      [
+        "pull-request",
+        "mechanical"
+      ],
+      [
+        "pull-request",
+        "judgment"
+      ],
+      [
+        "pull-request",
+        "runtime"
+      ],
+      [
+        "pull-request",
+        "knowledge"
+      ]
+    ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "risk-based-assurance",
+    "title": "Match the review to the risk",
+    "nodes": [
+      {
+        "id": "change",
+        "label": "CHANGE"
+      },
+      {
+        "id": "risk",
+        "label": "WHAT CAN GO WRONG?"
+      },
+      {
+        "id": "low",
+        "label": "LOW RISK"
+      },
+      {
+        "id": "low-detect",
+        "label": "Reversible + easy to detect"
+      },
+      {
+        "id": "low-checks",
+        "label": "CHECKS + AI + OBSERVABILITY"
+      },
+      {
+        "id": "medium",
+        "label": "MEDIUM RISK"
+      },
+      {
+        "id": "medium-review",
+        "label": "Human reviews behaviour, tests and system fit"
+      },
+      {
+        "id": "high",
+        "label": "HIGH RISK / ONE-WAY DOOR"
+      },
+      {
+        "id": "high-judgment",
+        "label": "Human judgment before implementation"
+      },
+      {
+        "id": "high-rollout",
+        "label": "Focused review + rollout plan"
+      }
+    ],
+    "edges": [
+      [
+        "change",
+        "risk"
+      ],
+      [
+        "risk",
+        "low"
+      ],
+      [
+        "low",
+        "low-detect"
+      ],
+      [
+        "low-detect",
+        "low-checks"
+      ],
+      [
+        "risk",
+        "medium"
+      ],
+      [
+        "medium",
+        "medium-review"
+      ],
+      [
+        "risk",
+        "high"
+      ],
+      [
+        "high",
+        "high-judgment"
+      ],
+      [
+        "high-judgment",
+        "high-rollout"
+      ]
+    ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "winnable-improvement-plan",
+    "title": "A winnable plan is a shared contract",
+    "nodes": [
+      {
+        "id": "bar",
+        "label": "CLEAR BAR + FAIR SCOPE"
+      },
+      {
+        "id": "support",
+        "label": "NAMED SUPPORT + BLOCKERS REMOVED"
+      },
+      {
+        "id": "opportunity",
+        "label": "REAL OPPORTUNITY TO DEMONSTRATE CHANGE"
+      },
+      {
+        "id": "review",
+        "label": "REGULAR EVIDENCE REVIEW"
+      },
+      {
+        "id": "outcome",
+        "label": "HONEST OUTCOME Improve · change role · exit"
+      }
+    ],
+    "edges": [
+      [
+        "bar",
+        "support"
+      ],
+      [
+        "support",
+        "opportunity"
+      ],
+      [
+        "opportunity",
+        "review"
+      ],
+      [
+        "review",
+        "outcome"
+      ]
+    ]
+  },
+  {
+    "folder": "project-diagrams",
+    "slug": "accounting-evidence-pipeline",
+    "title": "Accounting evidence pipeline",
+    "nodes": [
+      {
+        "id": "evidence",
+        "label": "ORIGINAL EVIDENCE"
+      },
+      {
+        "id": "ai",
+        "label": "AI READS + SUGGESTS"
+      },
+      {
+        "id": "metadata",
+        "label": "PORTABLE METADATA + APPROVED CORRECTIONS"
+      },
+      {
+        "id": "reports",
+        "label": "DETERMINISTIC ACCOUNTS + REPORTS"
+      }
+    ],
+    "edges": [
+      [
+        "evidence",
+        "ai"
+      ],
+      [
+        "ai",
+        "metadata"
+      ],
+      [
+        "metadata",
+        "reports"
+      ]
+    ]
+  },
+  {
+    "folder": "project-diagrams",
+    "slug": "assistant-permission-boundary",
+    "title": "Assistant permission boundary",
+    "nodes": [
+      {
+        "id": "channel",
+        "label": "CHANNEL"
+      },
+      {
+        "id": "context",
+        "label": "MEMBER + SOURCE + CONVERSATION"
+      },
+      {
+        "id": "model",
+        "label": "MODEL PROPOSES A CAPABILITY"
+      },
+      {
+        "id": "gate",
+        "label": "PERMISSION GATE"
+      },
+      {
+        "id": "allow",
+        "label": "ALLOW Use approved tool"
+      },
+      {
+        "id": "ask",
+        "label": "ASK Human confirms"
+      },
+      {
+        "id": "deny",
+        "label": "DENY Stop safely"
+      }
+    ],
+    "edges": [
+      [
+        "channel",
+        "context"
+      ],
+      [
+        "context",
+        "model"
+      ],
+      [
+        "model",
+        "gate"
+      ],
+      [
+        "gate",
+        "allow"
+      ],
+      [
+        "gate",
+        "ask"
+      ],
+      [
+        "gate",
+        "deny"
+      ]
+    ]
+  },
+  {
+    "folder": "project-diagrams",
+    "slug": "creator-content-pipeline",
+    "title": "Creator content pipeline",
+    "nodes": [
+      {
+        "id": "publish",
+        "label": "CREATOR PUBLISHES SOURCE"
+      },
+      {
+        "id": "source",
+        "label": "SOURCE OF TRUTH CATALYST + GLTF/GLB"
+      },
+      {
+        "id": "queue",
+        "label": "CONVERSION QUEUE"
+      },
+      {
+        "id": "workers",
+        "label": "ISOLATED UNITY WORKERS"
+      },
+      {
+        "id": "assets",
+        "label": "OPTIMISED ASSETS + CDN"
+      },
+      {
+        "id": "explorer",
+        "label": "EXPLORER"
+      }
+    ],
+    "edges": [
+      [
+        "publish",
+        "source"
+      ],
+      [
+        "source",
+        "queue"
+      ],
+      [
+        "queue",
+        "workers"
+      ],
+      [
+        "workers",
+        "assets"
+      ],
+      [
+        "assets",
+        "explorer"
+      ]
+    ]
+  },
+  {
+    "folder": "project-diagrams",
+    "slug": "decision-ownership-shift",
+    "title": "Decision ownership shift",
+    "nodes": [
+      {
+        "id": "before",
+        "label": "BEFORE Senior people decide Work waits in approval QA arrives late"
+      },
+      {
+        "id": "change",
+        "label": "SHARED OBJECTIVES DECISION BOUNDARIES VISIBLE RELEASE EVIDENCE"
+      },
+      {
+        "id": "after",
+        "label": "AFTER Teams own normal decisions Exceptions escalate QA joins while risk can change"
+      }
+    ],
+    "edges": [
+      [
+        "before",
+        "change"
+      ],
+      [
+        "change",
+        "after"
+      ]
+    ]
+  },
+  {
+    "folder": "project-diagrams",
+    "slug": "engineering-ai-release-loop",
+    "title": "Engineering ai release loop",
+    "nodes": [
+      {
+        "id": "change",
+        "label": "CODE CHANGE"
+      },
+      {
+        "id": "evidence",
+        "label": "AI REVIEW + TESTS VISUAL DIFF + FRAME TIME"
+      },
+      {
+        "id": "decision",
+        "label": "DEVELOPER + QA RELEASE DECISION"
+      },
+      {
+        "id": "release",
+        "label": "READY RELEASE"
+      },
+      {
+        "id": "return",
+        "label": "NOT READY RETURN TO CHANGE"
+      }
+    ],
+    "edges": [
+      [
+        "change",
+        "evidence"
+      ],
+      [
+        "evidence",
+        "decision"
+      ],
+      [
+        "decision",
+        "release"
+      ],
+      [
+        "decision",
+        "return"
+      ],
+      [
+        "return",
+        "change"
+      ]
+    ]
+  },
+  {
+    "folder": "project-diagrams",
+    "slug": "engineering-signal-to-decision",
+    "title": "Engineering signal to decision",
+    "nodes": [
+      {
+        "id": "activity",
+        "label": "RAW ACTIVITY PRs + releases + failures"
+      },
+      {
+        "id": "definition",
+        "label": "DEFINE SIGNAL + THRESHOLD"
+      },
+      {
+        "id": "evidence",
+        "label": "TRACEABLE EVIDENCE Owner + age + checks"
+      },
+      {
+        "id": "decision",
+        "label": "PRIORITY DECISION"
+      },
+      {
+        "id": "action",
+        "label": "FIX · DELAY ESCALATE · IGNORE"
+      }
+    ],
+    "edges": [
+      [
+        "activity",
+        "definition"
+      ],
+      [
+        "definition",
+        "evidence"
+      ],
+      [
+        "evidence",
+        "decision"
+      ],
+      [
+        "decision",
+        "action"
+      ]
+    ]
+  },
+  {
+    "folder": "project-diagrams",
+    "slug": "explorer-priority-decision",
+    "title": "Explorer priority decision",
+    "nodes": [
+      {
+        "id": "evidence",
+        "label": "PRODUCTION EVIDENCE Crashes + hangs + frame time + loading"
+      },
+      {
+        "id": "constraint",
+        "label": "WHAT LIMITS THE USER EXPERIENCE?"
+      },
+      {
+        "id": "stability",
+        "label": "CRASHES OR HANGS STABILITY FIRST"
+      },
+      {
+        "id": "performance",
+        "label": "FRAME TIME OR LOADING PERFORMANCE FIRST"
+      },
+      {
+        "id": "features",
+        "label": "QUALITY BAR HOLDS FEATURE WORK"
+      }
+    ],
+    "edges": [
+      [
+        "evidence",
+        "constraint"
+      ],
+      [
+        "constraint",
+        "stability"
+      ],
+      [
+        "constraint",
+        "performance"
+      ],
+      [
+        "constraint",
+        "features"
+      ]
+    ]
+  },
+  {
+    "folder": "project-diagrams",
+    "slug": "explorer-product-boundaries",
+    "title": "Explorer product boundaries",
+    "nodes": [
+      {
+        "id": "outcome",
+        "label": "OUTCOME More people in one stable world"
+      },
+      {
+        "id": "constraints",
+        "label": "CONSTRAINTS Density + streaming Creator content + weekly releases"
+      },
+      {
+        "id": "client",
+        "label": "UNITY CLIENT COORDINATES THE SHARED EXPERIENCE"
+      },
+      {
+        "id": "world",
+        "label": "LOAD A CHANGING WORLD"
+      },
+      {
+        "id": "creator",
+        "label": "ISOLATE CREATOR CODE"
+      },
+      {
+        "id": "presence",
+        "label": "KEEP PEOPLE VISIBLE + MOVING + TALKING"
+      }
+    ],
+    "edges": [
+      [
+        "outcome",
+        "constraints"
+      ],
+      [
+        "constraints",
+        "client"
+      ],
+      [
+        "client",
+        "world"
+      ],
+      [
+        "client",
+        "creator"
+      ],
+      [
+        "client",
+        "presence"
+      ]
+    ]
+  },
+  {
+    "folder": "project-diagrams",
+    "slug": "launcher-verification-flow",
+    "title": "Launcher verification flow",
+    "nodes": [
+      {
+        "id": "play",
+        "label": "PRESS PLAY"
+      },
+      {
+        "id": "version",
+        "label": "CHECK VERSION"
+      },
+      {
+        "id": "download",
+        "label": "DOWNLOAD FILES"
+      },
+      {
+        "id": "verify",
+        "label": "VERIFY BEFORE INSTALL"
+      },
+      {
+        "id": "valid",
+        "label": "VALID Install + launch Explorer"
+      },
+      {
+        "id": "failed",
+        "label": "FAILED Keep working install"
+      }
+    ],
+    "edges": [
+      [
+        "play",
+        "version"
+      ],
+      [
+        "version",
+        "download"
+      ],
+      [
+        "download",
+        "verify"
+      ],
+      [
+        "verify",
+        "valid"
+      ],
+      [
+        "verify",
+        "failed"
+      ]
+    ]
+  },
+  {
+    "folder": "project-diagrams",
+    "slug": "local-first-home-platform",
+    "title": "Local first home platform",
+    "nodes": [
+      {
+        "id": "devices",
+        "label": "SENSORS + DEVICES"
+      },
+      {
+        "id": "controller",
+        "label": "LOCAL CONTROLLER"
+      },
+      {
+        "id": "automation",
+        "label": "AUTOMATIONS DASHBOARDS + ALERTS"
+      },
+      {
+        "id": "away",
+        "label": "AWAY FROM HOME"
+      },
+      {
+        "id": "tunnel",
+        "label": "PROTECTED REMOTE TUNNEL"
+      },
+      {
+        "id": "local",
+        "label": "CONNECTS TO LOCAL CONTROLLER"
+      }
+    ],
+    "edges": [
+      [
+        "devices",
+        "controller"
+      ],
+      [
+        "controller",
+        "automation"
+      ],
+      [
+        "away",
+        "tunnel"
+      ],
+      [
+        "tunnel",
+        "local"
+      ]
+    ]
+  },
+  {
+    "folder": "project-diagrams",
+    "slug": "server-authoritative-game-state",
+    "title": "Server authoritative game state",
+    "nodes": [
+      {
+        "id": "action",
+        "label": "PLAYER ACTION"
+      },
+      {
+        "id": "client",
+        "label": "MOBILE CLIENT REQUESTS CHANGE"
+      },
+      {
+        "id": "api",
+        "label": "AUTHENTICATED API CHECKS VERSION"
+      },
+      {
+        "id": "validate",
+        "label": "SERVER VALIDATES GAME RULES"
+      },
+      {
+        "id": "valid",
+        "label": "VALID State changes safely"
+      },
+      {
+        "id": "invalid",
+        "label": "INVALID OR OUTDATED State stays unchanged"
+      }
+    ],
+    "edges": [
+      [
+        "action",
+        "client"
+      ],
+      [
+        "client",
+        "api"
+      ],
+      [
+        "api",
+        "validate"
+      ],
+      [
+        "validate",
+        "valid"
+      ],
+      [
+        "validate",
+        "invalid"
+      ]
+    ]
+  }
+]

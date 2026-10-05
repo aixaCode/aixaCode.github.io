@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Build a byte-preserving static release; no dependencies or network access."""
+"""Build a deterministic static release with generated editorial metadata."""
 import argparse
+import importlib.util
 import hashlib
 import io
 import json
@@ -14,6 +15,9 @@ ROOT = Path(__file__).resolve().parent.parent
 SOURCE = (ROOT / 'site').resolve()
 OUTPUT = ROOT / 'public'
 DIST = ROOT / 'dist'
+spec = importlib.util.spec_from_file_location('metadata', ROOT / 'scripts/content-metadata.py')
+metadata = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(metadata)
 
 class Page(HTMLParser):
     def __init__(self):
@@ -33,6 +37,10 @@ class Page(HTMLParser):
 
 
 def inventory():
+    expected = (ROOT / 'content/cv-pdf-source.sha256').read_text().strip()
+    actual = hashlib.sha256((SOURCE / 'cv.html').read_bytes()).hexdigest()
+    if expected != actual:
+        raise ValueError('HTML CV changed: regenerate and review its PDF before building')
     files = sorted(p for p in SOURCE.rglob('*') if p.is_file())
     for path in SOURCE.rglob('*'):
         if path.is_symlink():
@@ -44,8 +52,8 @@ def inventory():
     return files
 
 
-def check(files):
-    source = SOURCE.resolve()
+def check(files, root=SOURCE, generated=True):
+    source = root.resolve()
     pages = {}
     for path in files:
         if path.suffix == '.html':
@@ -58,34 +66,45 @@ def check(files):
             url = urlsplit(ref)
             if url.scheme or url.netloc:
                 continue
-            target = (SOURCE / unquote(url.path).lstrip('/') if url.path.startswith('/')
+            target = (source / unquote(url.path).lstrip('/') if url.path.startswith('/')
                       else path.parent / unquote(url.path)) if url.path else path
             target = target.resolve()
-            if not target.is_relative_to(SOURCE.resolve()):
+            if not target.is_relative_to(source):
                 errors.append(f'{path.relative_to(source)}: reference escapes source: {ref}')
                 continue
             if target.is_dir():
                 target /= 'index.html'
+            if generated and target == (source / 'feed.xml').resolve():
+                continue
             if not target.is_file():
                 errors.append(f'{path.relative_to(source)}: missing {ref}')
             elif url.fragment and target in pages and unquote(url.fragment) not in pages[target].ids:
                 errors.append(f'{path.relative_to(source)}: missing anchor {ref}')
     if errors:
         raise ValueError('\n'.join(errors))
-    print(f'Checked {len(pages)} pages and {len(files)} source files')
+    print(f'Checked {len(pages)} pages and {len(files)} files')
 
 
 def build(files):
     if OUTPUT.exists():
         shutil.rmtree(OUTPUT)
     OUTPUT.mkdir()
-    records = []
+    essays = metadata.inventory()
     for path in files:
         relative = path.relative_to(SOURCE)
         destination = OUTPUT / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
         data = path.read_bytes()
+        if path.suffix == '.html':
+            data = metadata.page_metadata(data.decode(), essays, relative.as_posix()).encode()
         destination.write_bytes(data)
+    for name, data in metadata.outputs(essays, [p.relative_to(SOURCE).as_posix() for p in files]).items():
+        (OUTPUT / name).write_bytes(data)
+    check(sorted(p for p in OUTPUT.rglob('*') if p.is_file()), OUTPUT, generated=False)
+    records = []
+    for destination in sorted(p for p in OUTPUT.rglob('*') if p.is_file()):
+        relative = destination.relative_to(OUTPUT)
+        data = destination.read_bytes()
         records.append({'path': relative.as_posix(), 'bytes': len(data),
                         'sha256': hashlib.sha256(data).hexdigest()})
     DIST.mkdir(exist_ok=True)

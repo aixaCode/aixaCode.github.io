@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "ai-makes-building-easy-production-is-hard",
+    "title": "AI Makes Building Easy. Production Is Hard.",
+    "description": "AI makes code, specifications and demos cheaper to produce. Production still depends on review, testing, controlled authority and human ownership.",
+    "published": "2026-08-10"
+  },
+  {
+    "slug": "before-you-remove-code-review-name-the-risk",
+    "title": "Before You Remove Code Review, Name the Risk It Controls",
+    "description": "Code review controls several different risks. A safer process routes changes to the evidence and human attention they actually need.",
+    "published": "2026-09-10"
+  },
+  {
+    "slug": "career-ladder-should-reduce-surprises",
+    "title": "A Career Ladder Should Reduce Surprises, Not Create Bureaucracy",
+    "description": "Career ladders should make expectations, evidence and promotion decisions easier to explain without turning growth into a checklist.",
+    "published": "2026-08-13"
+  },
+  {
+    "slug": "feedback-is-the-performance-system",
+    "title": "Feedback Is the Performance System",
+    "description": "Annual reviews cannot replace clear, timely feedback grounded in real work, role expectations and evidence collected while it is fresh.",
+    "published": "2026-08-19"
+  },
+  {
+    "slug": "make-improvement-plans-winnable",
+    "title": "Make Improvement Plans Winnable—or Don't Pretend",
+    "description": "A performance improvement plan should diagnose the real problem, define observable expectations and give the employee a genuine chance to pass.",
+    "published": "2026-08-24"
+  },
+  {
+    "slug": "prioritization-is-constraint-management",
+    "title": "Prioritization Is Constraint Management",
+    "description": "Most teams have more good ideas than capacity. The job is to find the constraint holding the business back and put enough attention on it to make a difference.",
+    "published": "2026-06-20"
+  },
+  {
+    "slug": "technical-direction-is-not-a-technology-decision",
+    "title": "Technical Direction Is Not a Technology Decision",
+    "description": "Architecture debates go nowhere when the product direction is unclear. Once the outcome and tradeoffs are explicit, many technology choices become easier.",
+    "published": "2026-06-20"
+  },
+  {
+    "slug": "use-ai-to-find-evidence-not-score-engineers",
+    "title": "Use AI to Find Evidence, Not Score Engineers",
+    "description": "AI can help managers recover evidence and challenge their reasoning, but it should never score engineers or make employment decisions.",
+    "published": "2026-09-01"
+  }
+]

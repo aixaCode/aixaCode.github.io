@@ -1,0 +1,7 @@
+{
+  "name": "besz-website-authoring",
+  "private": true,
+  "type": "module",
+  "scripts": {"social-cards": "node scripts/render-social-cards.mjs"},
+  "devDependencies": {"sharp": "0.35.4"}
+}
