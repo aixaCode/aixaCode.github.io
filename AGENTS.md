@@ -15,7 +15,7 @@ Versioning uses the continuous-deployment profile: commit SHA plus artifact SHA-
 
 ## Existing-repository exceptions
 
-The repo currently uses main and working branches; development/promotion branches and protection have not been configured. Preserve this flow during migration preparation; changes to GitHub settings need separate approval. The migration branch starts at main to avoid mixing unreconciled local writing changes. Recovered HTML is the initial source because the original generator was unavailable; shared templates and content extraction require a later behavior-preserving conversion. This is a documented intermediate baseline, not the final editing architecture.
+The permanent besz.me publishing branch is develop; pushing reviewed rebuilt output there can deploy automatically. Main remains the legacy GitHub Pages site. Branch protection has not been configured; changes to GitHub settings need separate approval. The migration branch starts at main to avoid mixing unreconciled local writing changes. Recovered HTML is the initial source because the original generator was unavailable; shared templates and content extraction require a later behavior-preserving conversion. This is a documented intermediate baseline, not the final editing architecture.
 
 ## Editorial source map
 

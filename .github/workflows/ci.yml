@@ -2,7 +2,7 @@ name: Static website checks
 on:
   pull_request:
   push:
-    branches: [main, development, feat/besz-source]
+    branches: [main, develop, development, feat/besz-source]
   workflow_dispatch:
 permissions:
   contents: read

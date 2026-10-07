@@ -7,3 +7,5 @@ Data flow prepared locally: `site/` → build → committed `public/` and `relea
 Public route: Cloudflare → CT 102 tunnel → CT 106 NPMplus → CT 126 nginx. CT 116 currently deploys other sites to NAS. The prior artifact components and CT 126 receiver are installed, but no active besz.me target exists. The new Git publishing code is still local and requires approval before push/installation. This branch contains no production credentials or remote deployment commands.
 
 Build checks internal href/src/srcset references and HTML fragment IDs. It does not check remote availability, CSS URL references, accessibility, content accuracy or all layouts. The manifest records file bytes and hashes; CI/deployer must bind it to the exact commit when deployment is configured. A tar checksum alone does not establish publisher authenticity.
+
+Permanent publishing branch: develop. The approved switch follows the initial feat/besz-source release; source/public/manifest must be committed together. Main and GitHub Pages remain unchanged.

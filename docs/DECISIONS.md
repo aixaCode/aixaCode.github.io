@@ -42,3 +42,7 @@ commits on the configured branch; until branch protections/promotion are agreed,
 pushing that branch after activation can trigger deployment before CI finishes.
 The new path is prepared locally; push, host update and target activation remain
 separate user approvals.
+
+## 2026-10-07: Publish besz.me from develop
+
+User approved creating develop from the reviewed migration and switching both host-owned mappings to it. Include develop in CI triggers. Preserve main and GitHub Pages. Git polling does not wait for CI; validate locally and commit generated public files with source.

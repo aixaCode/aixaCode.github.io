@@ -48,3 +48,12 @@ Run `python3 test/content-test.py` and the build after changes. Updating the HTM
 CV requires regenerating its PDF in the same reviewed change. CI checks the HTML
 source hash in content/cv-pdf-source.sha256 so that a changed CV requires PDF regeneration. The hash is an editing guard,
 not proof of visual correctness; review the regenerated pages before committing.
+
+## Publishing updates
+
+`develop` is the permanent besz.me publishing branch. Edit site/ and editorial
+sources, run python3 scripts/build-site.py and python3 test/content-test.py, then
+commit source, public/ and release-manifest.json together and push to develop.
+The Proxmox timer checks every five minutes. It validates committed publish files
+and uses health checks/rollback; it does not wait for GitHub CI to finish. Run
+checks locally before pushing. Main still holds the legacy GitHub Pages site.
