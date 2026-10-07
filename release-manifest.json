@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "c1470e498293cde38d4dcbefb72d404cb3a87d2ddad5af9b32a38f0dbd508446",
+  "artifact_sha256": "2227f77cbc50887b3d6a2c7ed6a0638a307f7077873e19816b83bd5af50c82cc",
   "files": [
     {
       "path": ".nojekyll",
@@ -213,12 +213,22 @@
       "sha256": "ba3db9e54a25a62a2285598704052c4b35667cca8ed7405c78ea328ad0e47ccf"
     },
     {
+      "path": "assets/article-diagrams/pip-diagnosis-mobile-v5.svg",
+      "bytes": 56677,
+      "sha256": "59b7b48efc50c785fd6c018a85eef20c4e93b4e5e9bb3148d68aa8b464c46c35"
+    },
+    {
       "path": "assets/article-diagrams/pip-diagnosis-v2.svg",
       "bytes": 27561,
       "sha256": "6c25b64e579f2d39d1bb3932c467d9e4e723382a301eeadb2e4092413fad7689"
     },
     {
       "path": "assets/article-diagrams/pip-diagnosis-v4.svg",
+      "bytes": 56331,
+      "sha256": "5e51f316ddde80a30fff93f15b63b708454f30e46db93891ddf01767ff496881"
+    },
+    {
+      "path": "assets/article-diagrams/pip-diagnosis-v5.svg",
       "bytes": 56331,
       "sha256": "5e51f316ddde80a30fff93f15b63b708454f30e46db93891ddf01767ff496881"
     },
@@ -233,12 +243,22 @@
       "sha256": "38beae9490152a88a79e68ebb3b847ab0e69282e7f88081e4e6d6b22f9a05718"
     },
     {
+      "path": "assets/article-diagrams/prioritization-scoring-trap-mobile-v5.svg",
+      "bytes": 53119,
+      "sha256": "25823e1c6d52986081ee80aa2fe5fdfe64a7451ddb761b509e998edc923c2dc5"
+    },
+    {
       "path": "assets/article-diagrams/prioritization-scoring-trap-v2.svg",
       "bytes": 20413,
       "sha256": "b0e5bbabd4e043d8a5af16743a70b9b21d33d0428e326cdc148fbf8fee8ce5f2"
     },
     {
       "path": "assets/article-diagrams/prioritization-scoring-trap-v4.svg",
+      "bytes": 53104,
+      "sha256": "14896de24500a366d128a840d03040c9ce253752775c35fff7ab6e152988cc33"
+    },
+    {
+      "path": "assets/article-diagrams/prioritization-scoring-trap-v5.svg",
       "bytes": 53104,
       "sha256": "14896de24500a366d128a840d03040c9ce253752775c35fff7ab6e152988cc33"
     },
@@ -333,6 +353,11 @@
       "sha256": "af18b47a0c3cded9f9c5d9686fbe885a9c21b157841cf6ee8679fa5021def59a"
     },
     {
+      "path": "assets/article-diagrams/risk-based-assurance-mobile-v5.svg",
+      "bytes": 55146,
+      "sha256": "d6f9deaecdb83eeedabcc78117b9a9f428afd31f0fbef4de50d5f603a8a1d7fe"
+    },
+    {
       "path": "assets/article-diagrams/risk-based-assurance-v2.svg",
       "bytes": 28143,
       "sha256": "c205f4fe97046b9266d740d414aa2452363bb1922d8423f3fc4a90e902fb7510"
@@ -341,6 +366,11 @@
       "path": "assets/article-diagrams/risk-based-assurance-v4.svg",
       "bytes": 54214,
       "sha256": "f3cb303c2e2c36cf27371360f6680d3eb3193c1d7936a7e5172111e1deab73af"
+    },
+    {
+      "path": "assets/article-diagrams/risk-based-assurance-v5.svg",
+      "bytes": 55987,
+      "sha256": "e60b4312fa6766598604fb6e9342d1c61264e5ec1f63fbf2ca6b86fdde6f660e"
     },
     {
       "path": "assets/article-diagrams/winnable-improvement-plan-mobile-v2.svg",
@@ -583,6 +613,11 @@
       "sha256": "5b5eefe399a31703208b64d18205a90cea014b29b700cf0f97f973ff03caee24"
     },
     {
+      "path": "assets/images/prioritization-is-constraint-management-og-v5.jpg",
+      "bytes": 55402,
+      "sha256": "5ff5d2ca478695397935e319101d360fe2fde96c38cf8ba995f6066ee03f35e4"
+    },
+    {
       "path": "assets/images/prioritization-is-constraint-management-og.jpg",
       "bytes": 36647,
       "sha256": "7cb9ae686c5f2203b1dd030290b00493c757453a88514da846d3fcb7474fbb98"
@@ -813,12 +848,22 @@
       "sha256": "7cc3bb680eba2df63b43c703baa30ecdcae1b495e3827e030c00263f5b4f32ba"
     },
     {
+      "path": "assets/project-diagrams/local-first-home-platform-mobile-v5.svg",
+      "bytes": 52806,
+      "sha256": "ae562d9f895d22ea7fe77a75087846b755c4c13134b3231633309f3ae822956a"
+    },
+    {
       "path": "assets/project-diagrams/local-first-home-platform-mobile.svg",
       "bytes": 13165,
       "sha256": "0b79a9f9fb6833e1efd29f397aa2ccf6d2a3d6f9b5c5dc3a558be27c5def49d5"
     },
     {
       "path": "assets/project-diagrams/local-first-home-platform-v4.svg",
+      "bytes": 52928,
+      "sha256": "1347a78548e002659f9d289911ce7bf7ff05465caa6344103ec5b8653d5858f4"
+    },
+    {
+      "path": "assets/project-diagrams/local-first-home-platform-v5.svg",
       "bytes": 52928,
       "sha256": "1347a78548e002659f9d289911ce7bf7ff05465caa6344103ec5b8653d5858f4"
     },
@@ -925,7 +970,7 @@
     {
       "path": "posts/before-you-remove-code-review-name-the-risk.html",
       "bytes": 19467,
-      "sha256": "0f0a6a12105cf03a9d82a1fc19762932061abfadb893d04185941d8efd987106"
+      "sha256": "33b1fb6a89009bf3717318b9bed6c918256acfa7066c65d6762dee62c812e08b"
     },
     {
       "path": "posts/career-ladder-should-reduce-surprises.html",
@@ -940,12 +985,12 @@
     {
       "path": "posts/make-improvement-plans-winnable.html",
       "bytes": 20777,
-      "sha256": "f74ac20c5d5d2f5bfb291abef4534eecc4c6dba0f038793f57137c3d8d61ba76"
+      "sha256": "bd4fe788a526d4cd89daff98967a3b956ebdb9b450445b5ac7a22d17bc6cf620"
     },
     {
       "path": "posts/prioritization-is-constraint-management.html",
       "bytes": 12325,
-      "sha256": "dd2f300bafbc82d4efb6785acfd85887c3d477700d69593192a18352eb3d0525"
+      "sha256": "146ab62c42daf78aca07e5374455ae85deadc8ba7015c34299e6041b94058a21"
     },
     {
       "path": "posts/technical-direction-is-not-a-technology-decision.html",
@@ -985,7 +1030,7 @@
     {
       "path": "projects/home-automation-platform.html",
       "bytes": 7335,
-      "sha256": "d74ded3d787a038fae8d9433ae48ab988ac60c71435c59eccaba0b4c29c8fd6b"
+      "sha256": "640f7e4cda8f31186220dd524c480a20938d0fa9b3cf46abd69923c94ea49377"
     },
     {
       "path": "projects/index.html",
@@ -1004,8 +1049,8 @@
     },
     {
       "path": "projects/unity-explorer.html",
-      "bytes": 12847,
-      "sha256": "b37a218df7c6c0c9e5c45f9c69fb625f5f6514a6b1ac7cfc527ee4a99556a406"
+      "bytes": 12840,
+      "sha256": "9a8b0f8ac78dcfb9d807fa50d85d26c37ff8c9bf85619e3e6f73b838e8e177c4"
     },
     {
       "path": "robots.txt",
@@ -1020,7 +1065,7 @@
     {
       "path": "sitemap.xml",
       "bytes": 2404,
-      "sha256": "e0c44c07be689df42ba33565a45a9b71f174d75723b50a05a8edf3dcb90f99bb"
+      "sha256": "a793df6e48e889b0c9917b28ad1cfd0314d862ad99ceb0b6a8ef805764dc9cf6"
     },
     {
       "path": "writing.html",

@@ -51,11 +51,11 @@
     "nodes": [
       {
         "id": "today",
-        "label": "TODAY / Acquisition → onboarding → RETENTION → stability → delivery"
+        "label": "TODAY / Acquisition \u2192 onboarding \u2192 RETENTION \u2192 stability \u2192 delivery"
       },
       {
         "id": "later",
-        "label": "LATER / Acquisition → onboarding → retention → STABILITY → delivery"
+        "label": "LATER / Acquisition \u2192 onboarding \u2192 retention \u2192 STABILITY \u2192 delivery"
       }
     ],
     "edges": []
@@ -433,7 +433,34 @@
         "missed",
         "pip"
       ]
-    ]
+    ],
+    "branch_prefix": [
+      "diagnose"
+    ],
+    "branch_paths": [
+      [
+        "unclear",
+        "clarify"
+      ],
+      [
+        "support",
+        "fix-support"
+      ],
+      [
+        "temporary",
+        "agree"
+      ],
+      [
+        "fit",
+        "role"
+      ],
+      [
+        "missed",
+        "pip"
+      ]
+    ],
+    "branch_desktop": false,
+    "asset_version": "v5"
   },
   {
     "folder": "article-diagrams",
@@ -482,7 +509,22 @@
         "uncertain",
         "low"
       ]
-    ]
+    ],
+    "branch_prefix": [],
+    "branch_paths": [
+      [
+        "score",
+        "predictable",
+        "high"
+      ],
+      [
+        "constraint",
+        "uncertain",
+        "low"
+      ]
+    ],
+    "branch_desktop": false,
+    "asset_version": "v5"
   },
   {
     "folder": "article-diagrams",
@@ -718,7 +760,29 @@
         "high-judgment",
         "high-rollout"
       ]
-    ]
+    ],
+    "branch_prefix": [
+      "change",
+      "risk"
+    ],
+    "branch_paths": [
+      [
+        "low",
+        "low-detect",
+        "low-checks"
+      ],
+      [
+        "medium",
+        "medium-review"
+      ],
+      [
+        "high",
+        "high-judgment",
+        "high-rollout"
+      ]
+    ],
+    "branch_desktop": true,
+    "asset_version": "v5"
   },
   {
     "folder": "article-diagrams",
@@ -743,7 +807,7 @@
       },
       {
         "id": "outcome",
-        "label": "HONEST OUTCOME Improve · change role · exit"
+        "label": "HONEST OUTCOME Improve \u00b7 change role \u00b7 exit"
       }
     ],
     "edges": [
@@ -1017,7 +1081,7 @@
       },
       {
         "id": "action",
-        "label": "FIX · DELAY ESCALATE · IGNORE"
+        "label": "FIX \u00b7 DELAY ESCALATE \u00b7 IGNORE"
       }
     ],
     "edges": [
@@ -1237,7 +1301,22 @@
         "tunnel",
         "local"
       ]
-    ]
+    ],
+    "branch_prefix": [],
+    "branch_paths": [
+      [
+        "devices",
+        "controller",
+        "automation"
+      ],
+      [
+        "away",
+        "tunnel",
+        "local"
+      ]
+    ],
+    "branch_desktop": false,
+    "asset_version": "v5"
   },
   {
     "folder": "project-diagrams",

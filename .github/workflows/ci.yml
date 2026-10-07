@@ -15,6 +15,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python test/content-test.py
+      - run: python test/diagram-test.py
       - run: python scripts/build-site.py --check
       - run: python scripts/build-site.py
       - name: Verify committed publish files match source

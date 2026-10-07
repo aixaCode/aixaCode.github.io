@@ -27,6 +27,8 @@ def lines(label,width,font=30):
     return result
 
 def render(graph,mobile):
+    if graph.get('branch_paths') and (mobile or graph.get('branch_desktop')):
+        return render_branches(graph,mobile)
     nodes=graph['nodes']; ids=[n['id'] for n in nodes]
     rank={i:0 for i in ids};forward=[];returns=[]
     # Source order records the original reading direction; feedback arrows return.
@@ -91,10 +93,72 @@ def render(graph,mobile):
         parts.append('</g>')
     parts.append('</svg>');return '\n'.join(parts)
 
+
+def render_branches(graph,mobile):
+    """Keep each diagnostic/decision path together instead of flattening ranks."""
+    nodes={n['id']:n for n in graph['nodes']}
+    prefix=graph.get('branch_prefix',[]);paths=graph['branch_paths']
+    expected=list(zip(prefix,prefix[1:]))
+    for path in paths:
+        if prefix:expected.append((prefix[-1],path[0]))
+        expected.extend(zip(path,path[1:]))
+    if set(expected)!={tuple(e) for e in graph['edges']}:
+        raise ValueError('Branch layout must preserve every semantic edge')
+    if sorted(prefix+[i for path in paths for i in path])!=sorted(nodes):
+        raise ValueError('Every node must appear once in branch layout')
+    font=34 if mobile else 30;step=44 if mobile else 40
+    width=650 if mobile else 1200
+    positions={};labels={};panels=[];y=160
+    def add(node,x,y,w):
+        label=lines(nodes[node]['label'],w-50,font)
+        h=max(118,len(label)*step+44)
+        labels[node]=label;positions[node]=(x,y,w,h)
+        return h
+    for node in prefix:y+=add(node,115 if mobile else 290,y,495 if mobile else 620)+65
+    if mobile:
+        for path in paths:
+            start=y-18
+            for node in path:y+=add(node,115,y,495)+60
+            panels.append((98,start,527,y-start-35));y+=62
+        height=y+10
+    else:
+        top=y+20;lane_w=(width-100)/len(paths)
+        bottoms=[]
+        for col,path in enumerate(paths):
+            x=50+col*lane_w;cy=top
+            for node in path:cy+=add(node,x+18,cy,lane_w-36)+65
+            panels.append((x,top-18,lane_w,cy-top-15));bottoms.append(cy)
+        height=max(bottoms)+45
+    esc=html.escape
+    parts=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">',
+        f'<title id="title">{esc(graph["title"])}</title>',
+        f'<desc id="desc">{esc("; ".join(nodes[a]["label"]+" leads to "+nodes[b]["label"] for a,b in graph["edges"]))}</desc>',
+        f'<defs><style>@font-face{{font-family:Diagram;src:url(data:font/woff2;base64,{FONT})}}text{{font-family:Diagram,Arial,sans-serif}}</style><marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M2 2 L10 6 L2 10" fill="none" stroke="{PALETTE["edge"]}" stroke-width="1.7"/></marker></defs>',
+        f'<rect width="{width}" height="{height}" rx="16" fill="{PALETTE["paper"]}"/>']
+    for j,line in enumerate(lines(graph['title'],width-95,38)):
+        parts.append(f'<text x="45" y="{61+j*44}" font-size="36" fill="{PALETTE["ink"]}" font-weight="600">{esc(line)}</text>')
+    for x,py,w,h in panels:
+        parts.append(f'<rect data-branch-panel="true" x="{x}" y="{py}" width="{w}" height="{h}" rx="18" fill="none" stroke="#d9c6b7" stroke-width="2" stroke-dasharray="8 8"/>')
+    for a,b in graph['edges']:
+        x,y,w,h=positions[a];tx,ty,tw,th=positions[b]
+        if prefix and a==prefix[-1] and b in [p[0] for p in paths]:
+            if mobile:d=f'M{x} {y+h/2} H62 V{ty+th/2} H{tx-8}'
+            else:d=f'M{x+w/2} {y+h+4} V{ty-34} H{tx+tw/2} V{ty-8}'
+        else:d=f'M{x+w/2} {y+h+4} L{tx+tw/2} {ty-8}'
+        parts.append(f'<path data-edge="{esc(a)} {esc(b)}" d="{d}" fill="none" stroke="{PALETTE["edge"]}" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)"/>')
+    for index,node in enumerate(nodes):
+        x,y,w,h=positions[node];label=labels[node];fill=PALETTE[['blue','sage','rose'][index%3]]
+        parts.append(f'<g data-node="{esc(node)}"><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="{fill}" stroke="{PALETTE["edge"]}" stroke-width="2.2"/>')
+        start=y+h/2-(len(label)-1)*step/2+font*.32
+        for j,line in enumerate(label):parts.append(f'<text x="{x+w/2}" y="{start+j*step}" fill="{PALETTE["ink"]}" font-size="{font}" text-anchor="middle">{esc(line)}</text>')
+        parts.append('</g>')
+    parts.append('</svg>');return '\n'.join(parts)
+
 if __name__=='__main__':
     graphs=json.loads((ROOT/'design/diagrams.json').read_text())
     for graph in graphs:
         for mobile in (False,True):
-            filename=graph['slug']+('-mobile' if mobile else '')+'-v4.svg'
+            version=graph.get('asset_version','v4')
+            filename=graph['slug']+('-mobile' if mobile else '')+'-'+version+'.svg'
             (ROOT/'site/assets'/graph['folder']/filename).write_text(render(graph,mobile))
     print(f'Rendered {len(graphs)*2} diagrams from design/diagrams.json')
