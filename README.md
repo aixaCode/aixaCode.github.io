@@ -31,10 +31,14 @@ It applies the same values to article bylines, Home and Writing cards, and gener
 RSS and sitemap. Record real page update dates in `content/page-updates.json`;
 deployment never advances those dates automatically.
 
-`python3 scripts/render-diagrams.py` regenerates all v4 SVGs from
-`design/diagrams.json` with no external packages. Long desktop flows use stacked
-cards to keep their labels readable. Source assets and generated web assets are
-both committed; the ordinary static build does not regenerate illustrations.
+`python3 scripts/render-diagrams.py` regenerates all v6 SVGs from
+`design/diagrams.json` with no external packages. Each node has a sentence-case
+`label`, an optional `detail` and a `role` (input, step, human, safe, caution,
+risk, key, open, excluded) that sets its colour, so colour always means the same
+thing. Long desktop flows wrap into two rows; on phones, branches become compact
+cards. `kind: "bars"` draws illustrative comparisons. Source assets and generated
+web assets are both committed; the ordinary static build does not regenerate
+illustrations.
 
 Optional authoring tools are separate from the production build:
 

@@ -6,23 +6,30 @@
     "nodes": [
       {
         "id": "sources",
-        "label": "APPROVED SOURCES Ladder + work records"
+        "label": "Approved sources",
+        "detail": "Ladder + work records",
+        "role": "input"
       },
       {
         "id": "assistant",
-        "label": "AI EVIDENCE ASSISTANT"
+        "label": "AI evidence assistant",
+        "role": "step"
       },
       {
         "id": "evidence",
-        "label": "LINKED EVIDENCE Contradictions + gaps"
+        "label": "Linked evidence",
+        "detail": "Contradictions + gaps",
+        "role": "step"
       },
       {
         "id": "verify",
-        "label": "MANAGER + EMPLOYEE VERIFY THE RECORD"
+        "label": "Manager + employee verify the record",
+        "role": "human"
       },
       {
         "id": "assessment",
-        "label": "HUMAN-OWNED ASSESSMENT"
+        "label": "Human-owned assessment",
+        "role": "key"
       }
     ],
     "edges": [
@@ -51,30 +58,71 @@
     "nodes": [
       {
         "id": "today",
-        "label": "TODAY / Acquisition \u2192 onboarding \u2192 RETENTION \u2192 stability \u2192 delivery"
+        "label": "Today",
+        "detail": "Acquisition → onboarding → RETENTION → stability → delivery",
+        "role": "step"
       },
       {
         "id": "later",
-        "label": "LATER / Acquisition \u2192 onboarding \u2192 retention \u2192 STABILITY \u2192 delivery"
+        "label": "Later",
+        "detail": "Acquisition → onboarding → retention → STABILITY → delivery",
+        "role": "step"
       }
     ],
-    "edges": []
+    "edges": [],
+    "emphasis": [
+      "RETENTION",
+      "STABILITY"
+    ]
   },
   {
     "folder": "article-diagrams",
     "slug": "delivery-effort",
+    "kind": "bars",
     "title": "Where AI changes delivery effort",
-    "nodes": [
+    "rows": [
       {
-        "id": "before",
-        "label": "WITHOUT AI / Generation is a large part of the work"
+        "label": "Without AI",
+        "parts": [
+          [
+            "Generation",
+            40,
+            "step"
+          ],
+          [
+            "Review",
+            15,
+            "human"
+          ],
+          [
+            "Decide, test, integrate, operate",
+            45,
+            "input"
+          ]
+        ]
       },
       {
-        "id": "after",
-        "label": "WITH AI / Generation shrinks / Review handles more output / Decision, understanding, testing, integration and operation remain"
+        "label": "With AI",
+        "parts": [
+          [
+            "Gen.",
+            14,
+            "step"
+          ],
+          [
+            "Review",
+            27,
+            "human"
+          ],
+          [
+            "Decide, test, integrate, operate",
+            45,
+            "input"
+          ]
+        ]
       }
     ],
-    "edges": []
+    "note": "Illustrative: generation shrinks, review grows, the rest remains"
   },
   {
     "folder": "article-diagrams",
@@ -83,31 +131,38 @@
     "nodes": [
       {
         "id": "prompt",
-        "label": "PROMPT"
+        "label": "Prompt",
+        "role": "input"
       },
       {
         "id": "spec",
-        "label": "GENERATED SPECIFICATION"
+        "label": "Generated specification",
+        "role": "step"
       },
       {
         "id": "path",
-        "label": "WORKING HAPPY PATH"
+        "label": "Working happy path",
+        "role": "step"
       },
       {
         "id": "permissions",
-        "label": "AUTHENTICATION + PERMISSIONS"
+        "label": "Authentication + permissions",
+        "role": "open"
       },
       {
         "id": "recovery",
-        "label": "FAILURE RECOVERY + MIGRATION"
+        "label": "Failure recovery + migration",
+        "role": "open"
       },
       {
         "id": "observability",
-        "label": "OBSERVABILITY + SUPPORT"
+        "label": "Observability + support",
+        "role": "open"
       },
       {
         "id": "ownership",
-        "label": "COST + OWNERSHIP"
+        "label": "Cost + ownership",
+        "role": "open"
       }
     ],
     "edges": [
@@ -144,19 +199,23 @@
     "nodes": [
       {
         "id": "expectation",
-        "label": "CURRENT-LEVEL EXPECTATION"
+        "label": "Current-level expectation",
+        "role": "input"
       },
       {
         "id": "opportunity",
-        "label": "WORK OPPORTUNITY"
+        "label": "Work opportunity",
+        "role": "step"
       },
       {
         "id": "evidence",
-        "label": "OBSERVED EVIDENCE"
+        "label": "Observed evidence",
+        "role": "step"
       },
       {
         "id": "feedback",
-        "label": "SPECIFIC FEEDBACK"
+        "label": "Specific feedback",
+        "role": "human"
       }
     ],
     "edges": [
@@ -185,23 +244,32 @@
     "nodes": [
       {
         "id": "search",
-        "label": "EVIDENCE SEARCH"
+        "label": "Evidence search",
+        "role": "input"
       },
       {
         "id": "supports",
-        "label": "SUPPORTS A CLAIM Review the source"
+        "label": "Supports a claim",
+        "detail": "Review the source",
+        "role": "safe"
       },
       {
         "id": "contradicts",
-        "label": "CONTRADICTS A CLAIM Keep both visible"
+        "label": "Contradicts a claim",
+        "detail": "Keep both visible",
+        "role": "caution"
       },
       {
         "id": "missing",
-        "label": "NOT FOUND Do not infer failure"
+        "label": "Not found",
+        "detail": "Do not infer failure",
+        "role": "open"
       },
       {
         "id": "excluded",
-        "label": "DELIBERATELY EXCLUDED Privacy is a boundary"
+        "label": "Deliberately excluded",
+        "detail": "Privacy is a boundary",
+        "role": "excluded"
       }
     ],
     "edges": [
@@ -230,19 +298,27 @@
     "nodes": [
       {
         "id": "context",
-        "label": "CONTEXT Where + when"
+        "label": "Context",
+        "detail": "Where + when",
+        "role": "input"
       },
       {
         "id": "observation",
-        "label": "OBSERVATION What happened"
+        "label": "Observation",
+        "detail": "What happened",
+        "role": "step"
       },
       {
         "id": "result",
-        "label": "RESULT Why it mattered"
+        "label": "Result",
+        "detail": "Why it mattered",
+        "role": "step"
       },
       {
         "id": "next",
-        "label": "NEXT STEP Observable change"
+        "label": "Next step",
+        "detail": "Observable change",
+        "role": "key"
       }
     ],
     "edges": [
@@ -267,19 +343,25 @@
     "nodes": [
       {
         "id": "first",
-        "label": "ONE DELAYED START"
+        "label": "One delayed start",
+        "role": "input"
       },
       {
         "id": "feedback",
-        "label": "EXPECTATION MADE CLEAR"
+        "label": "Expectation made clear",
+        "role": "step"
       },
       {
         "id": "later",
-        "label": "COMPARABLE WORK Same gap observed"
+        "label": "Comparable work",
+        "detail": "Same gap observed",
+        "role": "step"
       },
       {
         "id": "pattern",
-        "label": "REPEATED PATTERN Evidence, not memory"
+        "label": "Repeated pattern",
+        "detail": "Evidence, not memory",
+        "role": "key"
       }
     ],
     "edges": [
@@ -304,23 +386,29 @@
     "nodes": [
       {
         "id": "owner",
-        "label": "NAMED OWNER Goal + rules + response"
+        "label": "Named owner",
+        "detail": "Goal + rules + response",
+        "role": "human"
       },
       {
         "id": "ai",
-        "label": "AI ACTION"
+        "label": "AI action",
+        "role": "step"
       },
       {
         "id": "checks",
-        "label": "PERMISSIONS + CHECKS"
+        "label": "Permissions + checks",
+        "role": "step"
       },
       {
         "id": "change",
-        "label": "PRODUCTION CHANGE"
+        "label": "Production change",
+        "role": "step"
       },
       {
         "id": "result",
-        "label": "OBSERVABLE RESULT"
+        "label": "Observable result",
+        "role": "key"
       }
     ],
     "edges": [
@@ -349,47 +437,58 @@
     "nodes": [
       {
         "id": "diagnose",
-        "label": "WHAT IS CAUSING THE GAP?"
+        "label": "What is causing the gap?",
+        "role": "human"
       },
       {
         "id": "unclear",
-        "label": "UNCLEAR EXPECTATION"
+        "label": "Unclear expectation",
+        "role": "step"
       },
       {
         "id": "clarify",
-        "label": "CLARIFY + CREATE AN OPPORTUNITY"
+        "label": "Clarify + create an opportunity",
+        "role": "step"
       },
       {
         "id": "support",
-        "label": "MISSING TOOLS, CONTEXT OR TRAINING"
+        "label": "Missing tools, context or training",
+        "role": "step"
       },
       {
         "id": "fix-support",
-        "label": "FIX THE SUPPORT OR PROCESS GAP"
+        "label": "Fix the support or process gap",
+        "role": "step"
       },
       {
         "id": "temporary",
-        "label": "TEMPORARY CIRCUMSTANCES"
+        "label": "Temporary circumstances",
+        "role": "step"
       },
       {
         "id": "agree",
-        "label": "AGREE SUPPORT + REVIEW DATE"
+        "label": "Agree support + review date",
+        "role": "step"
       },
       {
         "id": "fit",
-        "label": "ROLE IS NOT A PLAUSIBLE FIT"
+        "label": "Role is not a plausible fit",
+        "role": "step"
       },
       {
         "id": "role",
-        "label": "DISCUSS SCOPE, REASSIGNMENT OR EXIT"
+        "label": "Discuss scope, reassignment or exit",
+        "role": "step"
       },
       {
         "id": "missed",
-        "label": "CLEAR EXPECTATION REPEATEDLY MISSED"
+        "label": "Clear expectation repeatedly missed",
+        "role": "risk"
       },
       {
         "id": "pip",
-        "label": "FORMAL PIP MAY BE APPROPRIATE"
+        "label": "Formal PIP may be appropriate",
+        "role": "risk"
       }
     ],
     "edges": [
@@ -459,8 +558,7 @@
         "pip"
       ]
     ],
-    "branch_desktop": false,
-    "asset_version": "v5"
+    "branch_desktop": false
   },
   {
     "folder": "article-diagrams",
@@ -469,27 +567,35 @@
     "nodes": [
       {
         "id": "score",
-        "label": "SCORING FAVOURS"
+        "label": "Scoring favours",
+        "role": "input"
       },
       {
         "id": "predictable",
-        "label": "CLEAR SCOPE LOWER RISK PREDICTABLE DELIVERY"
+        "label": "Clear scope",
+        "detail": "Lower risk / Predictable delivery",
+        "role": "step"
       },
       {
         "id": "high",
-        "label": "RANKS HIGH"
+        "label": "Ranks high",
+        "role": "safe"
       },
       {
         "id": "constraint",
-        "label": "ACTIVE CONSTRAINT"
+        "label": "Active constraint",
+        "role": "key"
       },
       {
         "id": "uncertain",
-        "label": "UNCERTAIN SCOPE HIGH POTENTIAL IMPACT HARDER TO ESTIMATE"
+        "label": "Uncertain scope",
+        "detail": "High potential impact / Harder to estimate",
+        "role": "step"
       },
       {
         "id": "low",
-        "label": "CAN RANK LOW"
+        "label": "Can rank low",
+        "role": "risk"
       }
     ],
     "edges": [
@@ -523,8 +629,7 @@
         "low"
       ]
     ],
-    "branch_desktop": false,
-    "asset_version": "v5"
+    "branch_desktop": false
   },
   {
     "folder": "article-diagrams",
@@ -533,23 +638,32 @@
     "nodes": [
       {
         "id": "direction",
-        "label": "PRODUCT DIRECTION Open world"
+        "label": "Product direction",
+        "detail": "Open world",
+        "role": "key"
       },
       {
         "id": "outcomes",
-        "label": "USER OUTCOMES More people + stable performance"
+        "label": "User outcomes",
+        "detail": "More people + stable performance",
+        "role": "step"
       },
       {
         "id": "constraints",
-        "label": "TECHNICAL CONSTRAINTS Streaming + frame budget"
+        "label": "Technical constraints",
+        "detail": "Streaming + frame budget",
+        "role": "step"
       },
       {
         "id": "boundaries",
-        "label": "ARCHITECTURE BOUNDARIES What changes + what stays"
+        "label": "Architecture boundaries",
+        "detail": "What changes + what stays",
+        "role": "step"
       },
       {
         "id": "choices",
-        "label": "TECHNOLOGY CHOICES"
+        "label": "Technology choices",
+        "role": "step"
       }
     ],
     "edges": [
@@ -578,23 +692,31 @@
     "nodes": [
       {
         "id": "work",
-        "label": "SUSTAINED NEXT-LEVEL WORK"
+        "label": "Sustained next-level work",
+        "role": "input"
       },
       {
         "id": "scope",
-        "label": "ACCESS TO NEXT-LEVEL SCOPE"
+        "label": "Access to next-level scope",
+        "role": "step"
       },
       {
         "id": "case",
-        "label": "WRITTEN CASE Evidence linked to the ladder"
+        "label": "Written case",
+        "detail": "Evidence linked to the ladder",
+        "role": "input"
       },
       {
         "id": "calibration",
-        "label": "CALIBRATION Challenges visibility + bias"
+        "label": "Calibration",
+        "detail": "Challenges visibility + bias",
+        "role": "human"
       },
       {
         "id": "promotion",
-        "label": "PROMOTION Confirms demonstrated level"
+        "label": "Promotion",
+        "detail": "Confirms demonstrated level",
+        "role": "key"
       }
     ],
     "edges": [
@@ -619,18 +741,51 @@
   {
     "folder": "article-diagrams",
     "slug": "review-evolution",
-    "title": "How review attention shifted",
-    "nodes": [
+    "kind": "bars",
+    "title": "Where review attention went",
+    "rows": [
       {
-        "id": "before",
-        "label": "BEFORE / Developer review and QA for every change / CI checks"
+        "label": "Before",
+        "parts": [
+          [
+            "Developer review of every change",
+            40,
+            "human"
+          ],
+          [
+            "QA on every change",
+            38,
+            "human"
+          ],
+          [
+            "CI checks",
+            22,
+            "step"
+          ]
+        ]
       },
       {
-        "id": "after",
-        "label": "LATER ITERATIONS / Early automated checks / Human review and QA routed by risk / CI + observability"
+        "label": "Later",
+        "parts": [
+          [
+            "AI + automated first pass",
+            38,
+            "step"
+          ],
+          [
+            "Human review + QA, routed by risk",
+            34,
+            "human"
+          ],
+          [
+            "CI + observability",
+            28,
+            "input"
+          ]
+        ]
       }
     ],
-    "edges": []
+    "note": "Widths are illustrative, not measured"
   },
   {
     "folder": "article-diagrams",
@@ -639,23 +794,32 @@
     "nodes": [
       {
         "id": "pull-request",
-        "label": "PULL REQUEST"
+        "label": "Pull request",
+        "role": "input"
       },
       {
         "id": "mechanical",
-        "label": "MECHANICAL CHECKS / Rules, tests, consistency"
+        "label": "Mechanical checks",
+        "detail": "Rules, tests, consistency",
+        "role": "step"
       },
       {
         "id": "judgment",
-        "label": "SYSTEM JUDGMENT / Architecture, intent, blast radius"
+        "label": "System judgement",
+        "detail": "Architecture, intent, blast radius",
+        "role": "human"
       },
       {
         "id": "runtime",
-        "label": "RUNTIME CONFIDENCE / QA, performance, real behaviour"
+        "label": "Runtime confidence",
+        "detail": "QA, performance, real behaviour",
+        "role": "step"
       },
       {
         "id": "knowledge",
-        "label": "SHARED KNOWLEDGE / Who else can operate it?"
+        "label": "Shared knowledge",
+        "detail": "Who else can operate it?",
+        "role": "step"
       }
     ],
     "edges": [
@@ -684,43 +848,54 @@
     "nodes": [
       {
         "id": "change",
-        "label": "CHANGE"
+        "label": "Change",
+        "role": "input"
       },
       {
         "id": "risk",
-        "label": "WHAT CAN GO WRONG?"
+        "label": "What can go wrong?",
+        "role": "step"
       },
       {
         "id": "low",
-        "label": "LOW RISK"
+        "label": "Low risk",
+        "role": "safe"
       },
       {
         "id": "low-detect",
-        "label": "Reversible + easy to detect"
+        "label": "Reversible + easy to detect",
+        "role": "safe"
       },
       {
         "id": "low-checks",
-        "label": "CHECKS + AI + OBSERVABILITY"
+        "label": "Checks + AI + observability",
+        "role": "safe"
       },
       {
         "id": "medium",
-        "label": "MEDIUM RISK"
+        "label": "Medium risk",
+        "role": "caution"
       },
       {
         "id": "medium-review",
-        "label": "Human reviews behaviour, tests and system fit"
+        "label": "Human reviews behaviour, tests and system fit",
+        "role": "caution"
       },
       {
         "id": "high",
-        "label": "HIGH RISK / ONE-WAY DOOR"
+        "label": "High risk",
+        "detail": "One-way door",
+        "role": "risk"
       },
       {
         "id": "high-judgment",
-        "label": "Human judgment before implementation"
+        "label": "Human judgement before implementation",
+        "role": "risk"
       },
       {
         "id": "high-rollout",
-        "label": "Focused review + rollout plan"
+        "label": "Focused review + rollout plan",
+        "role": "risk"
       }
     ],
     "edges": [
@@ -781,8 +956,7 @@
         "high-rollout"
       ]
     ],
-    "branch_desktop": true,
-    "asset_version": "v5"
+    "branch_desktop": true
   },
   {
     "folder": "article-diagrams",
@@ -791,23 +965,31 @@
     "nodes": [
       {
         "id": "bar",
-        "label": "CLEAR BAR + FAIR SCOPE"
+        "label": "Clear bar + fair scope",
+        "role": "input"
       },
       {
         "id": "support",
-        "label": "NAMED SUPPORT + BLOCKERS REMOVED"
+        "label": "Named support",
+        "detail": "Blockers removed",
+        "role": "step"
       },
       {
         "id": "opportunity",
-        "label": "REAL OPPORTUNITY TO DEMONSTRATE CHANGE"
+        "label": "Real opportunity",
+        "detail": "To show the change in real work",
+        "role": "step"
       },
       {
         "id": "review",
-        "label": "REGULAR EVIDENCE REVIEW"
+        "label": "Regular evidence review",
+        "role": "step"
       },
       {
         "id": "outcome",
-        "label": "HONEST OUTCOME Improve \u00b7 change role \u00b7 exit"
+        "label": "Honest outcome",
+        "detail": "Improve · change role · exit",
+        "role": "key"
       }
     ],
     "edges": [
@@ -817,38 +999,66 @@
       ],
       [
         "support",
-        "opportunity"
+        "review"
       ],
       [
-        "opportunity",
-        "review"
+        "bar",
+        "opportunity"
       ],
       [
         "review",
         "outcome"
+      ],
+      [
+        "opportunity",
+        "outcome"
       ]
-    ]
+    ],
+    "branch_prefix": [
+      "bar"
+    ],
+    "branch_paths": [
+      [
+        "support",
+        "review"
+      ],
+      [
+        "opportunity"
+      ]
+    ],
+    "branch_labels": [
+      "Manager provides",
+      "Employee shows"
+    ],
+    "branch_suffix": [
+      "outcome"
+    ],
+    "branch_desktop": true
   },
   {
     "folder": "project-diagrams",
     "slug": "accounting-evidence-pipeline",
-    "title": "Accounting evidence pipeline",
+    "title": "AI reads the evidence. Code owns the numbers.",
     "nodes": [
       {
         "id": "evidence",
-        "label": "ORIGINAL EVIDENCE"
+        "label": "Original evidence",
+        "role": "input"
       },
       {
         "id": "ai",
-        "label": "AI READS + SUGGESTS"
+        "label": "AI reads + suggests",
+        "role": "step"
       },
       {
         "id": "metadata",
-        "label": "PORTABLE METADATA + APPROVED CORRECTIONS"
+        "label": "Portable metadata + approved corrections",
+        "role": "step"
       },
       {
         "id": "reports",
-        "label": "DETERMINISTIC ACCOUNTS + REPORTS"
+        "label": "Deterministic accounts + reports",
+        "role": "key"
       }
     ],
     "edges": [
@@ -869,35 +1079,45 @@
   {
     "folder": "project-diagrams",
     "slug": "assistant-permission-boundary",
-    "title": "Assistant permission boundary",
+    "title": "The model proposes. The permission gate decides.",
     "nodes": [
       {
         "id": "channel",
-        "label": "CHANNEL"
+        "label": "Channel",
+        "role": "input"
       },
       {
         "id": "context",
-        "label": "MEMBER + SOURCE + CONVERSATION"
+        "label": "Member + source + conversation",
+        "role": "step"
       },
       {
         "id": "model",
-        "label": "MODEL PROPOSES A CAPABILITY"
+        "label": "Model proposes a capability",
+        "role": "step"
       },
       {
         "id": "gate",
-        "label": "PERMISSION GATE"
+        "label": "Permission gate",
+        "role": "key"
       },
       {
         "id": "allow",
-        "label": "ALLOW Use approved tool"
+        "label": "Allow",
+        "detail": "Use an approved tool",
+        "role": "safe"
       },
       {
         "id": "ask",
-        "label": "ASK Human confirms"
+        "label": "Ask",
+        "detail": "A person confirms",
+        "role": "human"
       },
       {
         "id": "deny",
-        "label": "DENY Stop safely"
+        "label": "Deny",
+        "detail": "Stop safely",
+        "role": "risk"
       }
     ],
     "edges": [
@@ -930,31 +1150,38 @@
   {
     "folder": "project-diagrams",
     "slug": "creator-content-pipeline",
-    "title": "Creator content pipeline",
+    "title": "Creator content is converted before it reaches players",
     "nodes": [
       {
         "id": "publish",
-        "label": "CREATOR PUBLISHES SOURCE"
+        "label": "Creator publishes source",
+        "role": "input"
       },
       {
         "id": "source",
-        "label": "SOURCE OF TRUTH CATALYST + GLTF/GLB"
+        "label": "Source of truth",
+        "detail": "Catalyst + GLTF/GLB",
+        "role": "step"
       },
       {
         "id": "queue",
-        "label": "CONVERSION QUEUE"
+        "label": "Conversion queue",
+        "role": "step"
       },
       {
         "id": "workers",
-        "label": "ISOLATED UNITY WORKERS"
+        "label": "Isolated Unity workers",
+        "role": "step"
       },
       {
         "id": "assets",
-        "label": "OPTIMISED ASSETS + CDN"
+        "label": "Optimised assets + CDN",
+        "role": "step"
       },
       {
         "id": "explorer",
-        "label": "EXPLORER"
+        "label": "Explorer",
+        "role": "key"
       }
     ],
     "edges": [
@@ -983,19 +1210,25 @@
   {
     "folder": "project-diagrams",
     "slug": "decision-ownership-shift",
-    "title": "Decision ownership shift",
+    "title": "Decisions moved closer to the teams",
     "nodes": [
       {
         "id": "before",
-        "label": "BEFORE Senior people decide Work waits in approval QA arrives late"
+        "label": "Before",
+        "detail": "Senior people decide / Work waits in approval / QA arrives late",
+        "role": "open"
       },
       {
         "id": "change",
-        "label": "SHARED OBJECTIVES DECISION BOUNDARIES VISIBLE RELEASE EVIDENCE"
+        "label": "What changed",
+        "detail": "Shared objectives / Decision boundaries / Visible release evidence",
+        "role": "step"
       },
       {
         "id": "after",
-        "label": "AFTER Teams own normal decisions Exceptions escalate QA joins while risk can change"
+        "label": "After",
+        "detail": "Teams own normal decisions / Exceptions escalate / QA joins while risk can change",
+        "role": "key"
       }
     ],
     "edges": [
@@ -1012,27 +1245,36 @@
   {
     "folder": "project-diagrams",
     "slug": "engineering-ai-release-loop",
-    "title": "Engineering ai release loop",
+    "title": "AI checks every change. People decide the release.",
     "nodes": [
       {
         "id": "change",
-        "label": "CODE CHANGE"
+        "label": "Code change",
+        "role": "input"
       },
       {
         "id": "evidence",
-        "label": "AI REVIEW + TESTS VISUAL DIFF + FRAME TIME"
+        "label": "AI review + tests",
+        "detail": "Visual diff + frame time",
+        "role": "step"
       },
       {
         "id": "decision",
-        "label": "DEVELOPER + QA RELEASE DECISION"
+        "label": "Release decision",
+        "detail": "Developer + QA",
+        "role": "human"
       },
       {
         "id": "release",
-        "label": "READY RELEASE"
+        "label": "Ready",
+        "detail": "Release",
+        "role": "safe"
       },
       {
         "id": "return",
-        "label": "NOT READY RETURN TO CHANGE"
+        "label": "Not ready",
+        "detail": "Return to the change",
+        "role": "risk"
       }
     ],
     "edges": [
@@ -1061,27 +1303,34 @@
   {
     "folder": "project-diagrams",
     "slug": "engineering-signal-to-decision",
-    "title": "Engineering signal to decision",
+    "title": "A signal is only useful if it leads to a decision",
     "nodes": [
       {
         "id": "activity",
-        "label": "RAW ACTIVITY PRs + releases + failures"
+        "label": "Raw activity",
+        "detail": "PRs + releases + failures",
+        "role": "input"
       },
       {
         "id": "definition",
-        "label": "DEFINE SIGNAL + THRESHOLD"
+        "label": "Define signal + threshold",
+        "role": "step"
       },
       {
         "id": "evidence",
-        "label": "TRACEABLE EVIDENCE Owner + age + checks"
+        "label": "Traceable evidence",
+        "detail": "Owner + age + checks",
+        "role": "step"
       },
       {
         "id": "decision",
-        "label": "PRIORITY DECISION"
+        "label": "Priority decision",
+        "role": "human"
       },
       {
         "id": "action",
-        "label": "FIX \u00b7 DELAY ESCALATE \u00b7 IGNORE"
+        "label": "Fix · delay · escalate · ignore",
+        "role": "step"
       }
     ],
     "edges": [
@@ -1106,27 +1355,36 @@
   {
     "folder": "project-diagrams",
     "slug": "explorer-priority-decision",
-    "title": "Explorer priority decision",
+    "title": "Fix what limits the experience first",
     "nodes": [
       {
         "id": "evidence",
-        "label": "PRODUCTION EVIDENCE Crashes + hangs + frame time + loading"
+        "label": "Production evidence",
+        "detail": "Crashes + hangs + frame time + loading",
+        "role": "input"
       },
       {
         "id": "constraint",
-        "label": "WHAT LIMITS THE USER EXPERIENCE?"
+        "label": "What limits the user experience?",
+        "role": "human"
       },
       {
         "id": "stability",
-        "label": "CRASHES OR HANGS STABILITY FIRST"
+        "label": "Crashes or hangs",
+        "detail": "Stability first",
+        "role": "step"
       },
       {
         "id": "performance",
-        "label": "FRAME TIME OR LOADING PERFORMANCE FIRST"
+        "label": "Frame time or loading",
+        "detail": "Performance first",
+        "role": "step"
       },
       {
         "id": "features",
-        "label": "QUALITY BAR HOLDS FEATURE WORK"
+        "label": "Quality bar holds",
+        "detail": "Feature work",
+        "role": "step"
       }
     ],
     "edges": [
@@ -1151,31 +1409,40 @@
   {
     "folder": "project-diagrams",
     "slug": "explorer-product-boundaries",
-    "title": "Explorer product boundaries",
+    "title": "One stable world, three hard boundaries",
     "nodes": [
       {
         "id": "outcome",
-        "label": "OUTCOME More people in one stable world"
+        "label": "Outcome",
+        "detail": "More people in one stable world",
+        "role": "key"
       },
       {
         "id": "constraints",
-        "label": "CONSTRAINTS Density + streaming Creator content + weekly releases"
+        "label": "Constraints",
+        "detail": "Density + streaming / Creator content + weekly releases",
+        "role": "step"
       },
       {
         "id": "client",
-        "label": "UNITY CLIENT COORDINATES THE SHARED EXPERIENCE"
+        "label": "Unity client",
+        "detail": "Coordinates the shared experience",
+        "role": "input"
       },
       {
         "id": "world",
-        "label": "LOAD A CHANGING WORLD"
+        "label": "Load a changing world",
+        "role": "step"
       },
       {
         "id": "creator",
-        "label": "ISOLATE CREATOR CODE"
+        "label": "Isolate creator code",
+        "role": "step"
       },
       {
         "id": "presence",
-        "label": "KEEP PEOPLE VISIBLE + MOVING + TALKING"
+        "label": "Keep people visible + moving + talking",
+        "role": "step"
       }
     ],
     "edges": [
@@ -1204,31 +1471,39 @@
   {
     "folder": "project-diagrams",
     "slug": "launcher-verification-flow",
-    "title": "Launcher verification flow",
+    "title": "Verify before installing",
     "nodes": [
       {
         "id": "play",
-        "label": "PRESS PLAY"
+        "label": "Press play",
+        "role": "input"
       },
       {
         "id": "version",
-        "label": "CHECK VERSION"
+        "label": "Check version",
+        "role": "step"
       },
       {
         "id": "download",
-        "label": "DOWNLOAD FILES"
+        "label": "Download files",
+        "role": "step"
       },
       {
         "id": "verify",
-        "label": "VERIFY BEFORE INSTALL"
+        "label": "Verify before install",
+        "role": "step"
       },
       {
         "id": "valid",
-        "label": "VALID Install + launch Explorer"
+        "label": "Valid",
+        "detail": "Install + launch Explorer",
+        "role": "safe"
       },
       {
         "id": "failed",
-        "label": "FAILED Keep working install"
+        "label": "Failed",
+        "detail": "Keep the working install",
+        "role": "risk"
       }
     ],
     "edges": [
@@ -1257,31 +1532,32 @@
   {
     "folder": "project-diagrams",
     "slug": "local-first-home-platform",
-    "title": "Local first home platform",
+    "title": "The house runs locally. Remote access is optional.",
     "nodes": [
       {
-        "id": "devices",
-        "label": "SENSORS + DEVICES"
-      },
-      {
-        "id": "controller",
-        "label": "LOCAL CONTROLLER"
-      },
-      {
-        "id": "automation",
-        "label": "AUTOMATIONS DASHBOARDS + ALERTS"
-      },
-      {
         "id": "away",
-        "label": "AWAY FROM HOME"
+        "label": "Away from home",
+        "role": "input"
       },
       {
         "id": "tunnel",
-        "label": "PROTECTED REMOTE TUNNEL"
+        "label": "Protected remote tunnel",
+        "role": "open"
       },
       {
-        "id": "local",
-        "label": "CONNECTS TO LOCAL CONTROLLER"
+        "id": "devices",
+        "label": "Sensors + devices",
+        "role": "input"
+      },
+      {
+        "id": "controller",
+        "label": "Local controller",
+        "role": "key"
+      },
+      {
+        "id": "automation",
+        "label": "Automations, dashboards + alerts",
+        "role": "step"
       }
     ],
     "edges": [
@@ -1299,53 +1575,47 @@
       ],
       [
         "tunnel",
-        "local"
-      ]
-    ],
-    "branch_prefix": [],
-    "branch_paths": [
-      [
-        "devices",
         "controller",
-        "automation"
-      ],
-      [
-        "away",
-        "tunnel",
-        "local"
+        "optional"
       ]
-    ],
-    "branch_desktop": false,
-    "asset_version": "v5"
+    ]
   },
   {
     "folder": "project-diagrams",
     "slug": "server-authoritative-game-state",
-    "title": "Server authoritative game state",
+    "title": "The client asks. The server decides.",
     "nodes": [
       {
         "id": "action",
-        "label": "PLAYER ACTION"
+        "label": "Player action",
+        "role": "input"
       },
       {
         "id": "client",
-        "label": "MOBILE CLIENT REQUESTS CHANGE"
+        "label": "Mobile client requests change",
+        "role": "step"
       },
       {
         "id": "api",
-        "label": "AUTHENTICATED API CHECKS VERSION"
+        "label": "Authenticated API checks version",
+        "role": "step"
       },
       {
         "id": "validate",
-        "label": "SERVER VALIDATES GAME RULES"
+        "label": "Server validates game rules",
+        "role": "key"
       },
       {
         "id": "valid",
-        "label": "VALID State changes safely"
+        "label": "Valid",
+        "detail": "State changes safely",
+        "role": "safe"
       },
       {
         "id": "invalid",
-        "label": "INVALID OR OUTDATED State stays unchanged"
+        "label": "Invalid or outdated",
+        "detail": "State stays unchanged",
+        "role": "risk"
       }
     ],
     "edges": [

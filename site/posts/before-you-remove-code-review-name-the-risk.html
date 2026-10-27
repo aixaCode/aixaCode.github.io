@@ -3,8 +3,8 @@
 <p>Some review comments are mechanical and should have been automated already. Others depend on product intent, architecture, operational context or knowledge that has never been written down. Treating those as the same activity made review inefficient before AI. The current volume of generated code has made that inefficiency impossible to ignore.</p>
 <figure class="article-figure sketch-flow-figure">
 <picture>
-<source media="(max-width: 640px)" srcset="../assets/article-diagrams/review-gate-mobile-v4.svg" width="650" height="1264"/>
-<img alt="One pull request feeding four different forms of assurance: mechanical checks, system judgement, runtime confidence and shared knowledge." decoding="async" loading="lazy" src="../assets/article-diagrams/review-gate-v4.svg" width="1040" height="1215"/>
+<source media="(max-width: 640px)" srcset="../assets/article-diagrams/review-gate-mobile-v6.svg" width="650" height="1046"/>
+<img alt="One pull request feeding four different forms of assurance: mechanical checks, system judgement, runtime confidence and shared knowledge." decoding="async" loading="lazy" src="../assets/article-diagrams/review-gate-v6.svg" width="1100" height="786"/>
 </picture>
 <figcaption>One review gate has been doing several different jobs.</figcaption>
 </figure>
@@ -12,8 +12,8 @@
 <p>I recognise the problem. At Decentraland, we tried several versions of the review process for the Unity Explorer. The useful lesson was not that one of them was the answer. Each version made a different tradeoff between speed, confidence, knowledge and ownership.</p>
 <figure class="article-figure sketch-flow-figure">
 <picture>
-<source media="(max-width: 640px)" srcset="../assets/article-diagrams/review-evolution-mobile-v4.svg" width="650" height="811"/>
-<img alt="An illustrative before-and-after comparison of the Decentraland Unity Explorer review process: AI takes the first pass for every change, while human review and QA focus on higher-risk work." decoding="async" loading="lazy" src="../assets/article-diagrams/review-evolution-v4.svg" width="1040" height="666"/>
+<source media="(max-width: 640px)" srcset="../assets/article-diagrams/review-evolution-mobile-v6.svg" width="650" height="908"/>
+<img alt="An illustrative before-and-after comparison of the Decentraland Unity Explorer review process: AI takes the first pass for every change, while human review and QA focus on higher-risk work." decoding="async" loading="lazy" src="../assets/article-diagrams/review-evolution-v6.svg" width="1100" height="492"/>
 </picture>
 <figcaption>The process evolved by changing where human attention was required, not by removing quality controls altogether. Block width is illustrative relative review attention, not measured elapsed time.</figcaption>
 </figure>
@@ -40,8 +40,8 @@
 <p>A one-line permission change can have a larger blast radius than a new internal tool. A small database migration can be harder to reverse than a large stateless implementation. A change in a public protocol can constrain several clients for years. A large refactor behind a feature flag may be comparatively safe if it is observable and easy to disable.</p>
 <figure class="article-figure sketch-flow-figure">
 <picture>
-<source media="(max-width: 640px)" srcset="../assets/article-diagrams/risk-based-assurance-mobile-v5.svg" width="650" height="2202"/>
-<img alt="A decision tree routing low-risk changes to checks, AI and observability; medium-risk changes to focused human review; and high-risk one-way doors to human judgement before implementation." decoding="async" loading="lazy" src="../assets/article-diagrams/risk-based-assurance-v5.svg" width="1200" height="1198"/>
+<source media="(max-width: 640px)" srcset="../assets/article-diagrams/risk-based-assurance-mobile-v6.svg" width="650" height="1182"/>
+<img alt="A decision tree routing low-risk changes to checks, AI and observability; medium-risk changes to focused human review; and high-risk one-way doors to human judgement before implementation." decoding="async" loading="lazy" src="../assets/article-diagrams/risk-based-assurance-v6.svg" width="1150" height="1094"/>
 </picture>
 <figcaption>Risk determines the evidence and attention a change needs.</figcaption>
 </figure>
