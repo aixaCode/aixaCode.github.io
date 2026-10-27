@@ -13,7 +13,7 @@
 <h2>Overview</h2>
 <p>I built this because useful family context was scattered across chats, calendars, email and files. Repeating it to a generic assistant did not create durable knowledge or a system the household could inspect and own.</p>
 <p>The project started as a conversational tool runner and gradually became a local-first family assistant. One installation serves the household, but each person keeps a stable identity and attributed actions. I wanted approved knowledge, documents and skills to be shareable without pretending that a messaging account is the person or the source of truth.</p>
-<p>I treat channels and model providers as adapters around the same runtime. The current implementation supports the Claude Agent SDK and an OpenAI-compatible tool loop behind the same permission and session boundaries. I do not silently fall back between providers. If an adapter cannot read a PDF, it refuses the request before sending anything to the model.</p>
+<p>I treat channels and model providers as adapters around the same runtime. The current implementation supports a hosted LLM through an agent SDK and a generic tool loop for compatible chat-completions APIs, both behind the same permission and session boundaries. I do not silently fall back between providers. If an adapter cannot read a PDF, it refuses the request before sending anything to the model.</p>
 </section>
 <section class="case-section" id="requirements">
 <h2>Requirements</h2>
@@ -73,7 +73,7 @@
 if (attachments.some(isPdf)) {
   throw new Error(`${providerId} cannot read PDF documents.`);
 }</code></pre>
-<p>The OpenAI-compatible runtime converts each tool's Zod schema to JSON Schema, validates returned arguments before calling the handler, limits the number of turns, aborts on timeout and refuses unavailable tools. I keep provider sessions behind application-owned IDs, so channel records do not inherit a provider's identity model.</p>
+<p>The generic tool-loop runtime converts each tool's Zod schema to JSON Schema, validates returned arguments before calling the handler, limits the number of turns, aborts on timeout and refuses unavailable tools. I keep provider sessions behind application-owned IDs, so channel records do not inherit a provider's identity model.</p>
 <p>For documents, I use content-addressed extraction revisions. A revision ID hashes the original bytes, extractor identity, extractor version and normalized payload. Approval re-hashes the source, rejects unresolved ambiguity and supersedes the previous approved revision:</p>
 <pre class="code-block"><code>revisionId = sha256({
   sourceSha256,
@@ -128,7 +128,7 @@ approve only if currentSourceHash === sourceSha256
 <li>Concurrent requests, subscription limits and restarts no longer require users to resend accepted work.</li>
 <li>Shared scheduled routines execute once and fan out to all intended recipients.</li>
 <li>Security and reliability tests cover configuration, permissions, safe files, calendar, email, durable jobs, operational state and Telegram state.</li>
-<li>Claude Agent SDK and OpenAI-compatible provider loops implemented behind the same permission-gated capability registry.</li><li>The codebase includes authenticated web interactions and a household dashboard with read-only projections and narrowly defined commands, alongside CLI, Telegram and email.</li>
+<li>Agent SDK and generic chat-completions provider loops implemented behind the same permission-gated capability registry.</li><li>The codebase includes authenticated web interactions and a household dashboard with read-only projections and narrowly defined commands, alongside CLI, Telegram and email.</li>
 <li>Universal document records preserve original evidence, extraction revisions, approval and correction history.</li>
 <li>Conversational skills can be proposed, checked, approved, versioned and rolled back without changing code-level permissions.</li>
 </ul>

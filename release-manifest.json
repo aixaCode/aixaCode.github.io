@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "2227f77cbc50887b3d6a2c7ed6a0638a307f7077873e19816b83bd5af50c82cc",
+  "artifact_sha256": "eb96caa883fce5d076265cce0080ac0e8a8bd1b9330c7416410b7d5332181aee",
   "files": [
     {
       "path": ".nojekyll",
@@ -914,13 +914,13 @@
     },
     {
       "path": "cv.html",
-      "bytes": 14479,
-      "sha256": "e4eea28d8a1c1045bd0ed3367857a961c376879a5ee8ebd6b6c5e1b15629adee"
+      "bytes": 14480,
+      "sha256": "0d38584064a53f27db803b2d0f28c21e92544a2b3a1a06c475f159874cbb4ad0"
     },
     {
       "path": "cv.pdf",
-      "bytes": 9174,
-      "sha256": "b2e678bd63f09dabdbeb3afc1c59ea337fee00fdd0445af8d736775a03a877e8"
+      "bytes": 9166,
+      "sha256": "ee9dbd85e974998445b997e52ea6d728888591db5d7e168ef2eb809472f31603"
     },
     {
       "path": "favicon-32.png",
@@ -964,18 +964,18 @@
     },
     {
       "path": "posts/ai-makes-building-easy-production-is-hard.html",
-      "bytes": 17247,
-      "sha256": "84d2b60e62f5b0c24db1748b03631970195d594396acc00adf138745231a59eb"
+      "bytes": 17377,
+      "sha256": "a8bc552b68c98b46a961fee07115c0d76c15bddf8a773d5d69207fec790eb9d8"
     },
     {
       "path": "posts/before-you-remove-code-review-name-the-risk.html",
-      "bytes": 19467,
-      "sha256": "33b1fb6a89009bf3717318b9bed6c918256acfa7066c65d6762dee62c812e08b"
+      "bytes": 19643,
+      "sha256": "0c30f5d105beda8e03fd2f445122c4013cbe891c193aea51673514b1ad75ac6b"
     },
     {
       "path": "posts/career-ladder-should-reduce-surprises.html",
-      "bytes": 17374,
-      "sha256": "74e0f14c8036f1dd09a2094628cdc780a8cfc36655fad94e2b95969b371c4766"
+      "bytes": 17378,
+      "sha256": "a3ac38357e9c217f4bd6d8b220063cb5aedf6cd87d474e65b653f2fc3b1afcd4"
     },
     {
       "path": "posts/feedback-is-the-performance-system.html",
@@ -984,23 +984,23 @@
     },
     {
       "path": "posts/make-improvement-plans-winnable.html",
-      "bytes": 20777,
-      "sha256": "bd4fe788a526d4cd89daff98967a3b956ebdb9b450445b5ac7a22d17bc6cf620"
+      "bytes": 20778,
+      "sha256": "0586c28007bdf11fdb82d512d874fb517b4c316f5f30f137e447f0bb8687f513"
     },
     {
       "path": "posts/prioritization-is-constraint-management.html",
-      "bytes": 12325,
-      "sha256": "146ab62c42daf78aca07e5374455ae85deadc8ba7015c34299e6041b94058a21"
+      "bytes": 11835,
+      "sha256": "c6bf6de6976b81bda358548ffab3bf8056b2134388870ddf0cf6b9af424355b1"
     },
     {
       "path": "posts/technical-direction-is-not-a-technology-decision.html",
-      "bytes": 7988,
-      "sha256": "de1a4b1716d19b56a022287f6c86dc4d603ec2f3c39f3829115f983baa055827"
+      "bytes": 7739,
+      "sha256": "de9ea8202b587889eba400d5a3b9bd4856024c61ad423d13c877140a93d42924"
     },
     {
       "path": "posts/use-ai-to-find-evidence-not-score-engineers.html",
-      "bytes": 22969,
-      "sha256": "1bbe0fce63b47b66f95e73678fc7d44de3d936c352cf5b991a4998ffb04f4125"
+      "bytes": 22816,
+      "sha256": "b4f87b6b2a05e240dc1298a688647e84d543590657c1ad64607da94f3ece23a2"
     },
     {
       "path": "projects/accounting-agent.html",
@@ -1009,13 +1009,13 @@
     },
     {
       "path": "projects/ai-personal-assistant.html",
-      "bytes": 20067,
-      "sha256": "58c17619c9a3076c7089416efff65f11ef72c507bdd1d6ce05b4ea65ac1c0b7a"
+      "bytes": 20112,
+      "sha256": "2fe8ef59f6c671d0b5a85d5e1942f47612e9c742ed33926ff2cf0c6eec2c8304"
     },
     {
       "path": "projects/animal-park-management.html",
-      "bytes": 13617,
-      "sha256": "174d5889a0def888a5fd799d56a4e9c7f2faac92bbd66a9d976faecf61ea5926"
+      "bytes": 13589,
+      "sha256": "deae68d85b0de289ef9a049641edfc8a28a0e5957438904c7002ba8a706fd26c"
     },
     {
       "path": "projects/engineering-ai.html",
@@ -1034,8 +1034,8 @@
     },
     {
       "path": "projects/index.html",
-      "bytes": 7244,
-      "sha256": "f786f9f26fc5d4ac34c53fcae655d2796fce451ce35f2a898f25eb3735b25ad7"
+      "bytes": 7232,
+      "sha256": "3c0f3582608e4c0ccc3fdf75427ac06593b2786ae8c6224d4e7d11559687d41c"
     },
     {
       "path": "projects/launcher.html",
