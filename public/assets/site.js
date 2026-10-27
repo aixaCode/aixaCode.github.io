@@ -36,20 +36,3 @@
     }));
   }
 })();
-(() => {
-  // Fade sections in as they scroll into view. Only for things below the fold at load, so nothing visible blinks.
-  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const selector = 'main > section:not(.home-hero):not(.page-hero):not(:has(.article-card, .filter-card)), main > div, .article-card, .filter-card, .notes-rail, .article-body figure, .pillar, .role, .site-footer .footer-top';
-  const fold = window.innerHeight;
-  const items = [...document.querySelectorAll(selector)].filter(el => el.getBoundingClientRect().top > fold * 0.9);
-  if (!items.length) return;
-  document.documentElement.classList.add('js-motion');
-  const observer = new IntersectionObserver(entries => {
-    entries.filter(entry => entry.isIntersecting).forEach((entry, index) => {
-      entry.target.style.setProperty('--i', index);
-      entry.target.classList.add('is-in');
-      observer.unobserve(entry.target);
-    });
-  }, { rootMargin: '0px 0px -8% 0px' });
-  items.forEach(el => { el.classList.add('reveal'); observer.observe(el); });
-})();
