@@ -16,7 +16,7 @@
 <figure class="product-shot product-shot-small"><img src="../assets/images/decentraland/launcher-start.webp" alt="The Decentraland launcher window showing a progress bar and the text Launching Decentraland, over a view of Genesis Plaza" width="788" height="480" loading="lazy" decoding="async"/><figcaption>The launcher opening the client. Image from the decentraland.org install guide.</figcaption></figure></section>
 <section class="case-section" id="goals">
 <h2>Goals</h2>
-<ul><li>Keep the download and launch funnel small enough that users do not drop before reaching the product</li><li>Improve install and update reliability - users should always end up on the latest client</li><li>Cut the launcher's own footprint: binary size, memory and startup time</li><li>Support signed builds, release channels and store distribution</li><li>Handle <code>decentraland://</code> deep links into an app that may not be installed or running yet</li><li>Make failures diagnosable: typed errors, user-readable messages, full detail to Sentry</li></ul>
+<ul><li>Keep the download and launch funnel small enough that users do not drop before reaching the product</li><li>Make install and update reliable, so users always end up on the latest client</li><li>Cut the launcher's own footprint: binary size, memory and startup time</li><li>Support signed builds, release channels and store distribution</li><li>Handle <code>decentraland://</code> deep links into an app that may not be installed or running yet</li><li>Make failures diagnosable: typed errors, user-readable messages, full detail to Sentry</li></ul>
 </section>
 <section class="case-section" id="architecture">
 <h2>Architecture</h2>
@@ -26,7 +26,7 @@
 <source media="(max-width: 640px)" srcset="../assets/project-diagrams/launcher-verification-flow-mobile-v6.svg" width="650" height="1042"/>
 <img alt="The launcher checks and downloads files, verifies them before installation, then either launches Explorer or preserves the working installation." decoding="async" loading="lazy" src="../assets/project-diagrams/launcher-verification-flow-v6.svg" width="1170" height="722"/>
 </picture>
-<figcaption>The Rust core and Tauri bridge implement the steps behind the simple user journey. Verification fails before a bad package can replace the working installation.</figcaption>
+<figcaption>The Rust core and Tauri bridge handle every step behind that one click. Verification fails before a bad package can replace the working installation.</figcaption>
 </figure>
 <p>The Rust core owns everything that can fail in a way that matters: download and verification, install state, version channels, process launch and deep-link routing. Frontend and backend communicate through one union-typed command enum, so the IPC surface is explicit and exhaustively matched rather than a bag of ad-hoc events.</p>
 </section>
@@ -36,7 +36,7 @@
 </section>
 <section class="case-section" id="lessons">
 <h2>Lessons learned</h2>
-<ul><li>Reducing launcher size mattered because it removed friction before the user reached the product.</li><li>We started treating distribution failures with the same seriousness as client crashes.</li><li>The migration itself was the riskiest release because the old launcher had to replace itself.</li></ul>
+<ul><li>Reducing launcher size mattered because it removed friction before the user reached the product.</li><li>We started treating distribution failures with the same seriousness as client crashes.</li></ul>
 </section>
 </div>
 <aside class="toc">
