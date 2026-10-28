@@ -225,9 +225,9 @@ li { margin-bottom: 8px; }
 .sketch-comparison-summary { min-height: 3.3em; margin: 6px 0 18px; color: var(--fg); font-size: .86rem; line-height: 1.5; }
 .sketch-comparison-panel dl { display: grid; gap: 0; margin: 0; }
 .sketch-comparison-panel dl div { padding: 11px 0; border-top: 1px solid var(--line); }
-.sketch-comparison-panel dt { margin-bottom: 3px; color: var(--subtle); font-family: var(--mono); font-size: .58rem; font-weight: 500; letter-spacing: .05em; line-height: 1.35; text-transform: uppercase; }
+.sketch-comparison-panel dt { margin-bottom: 3px; color: var(--subtle); font-family: var(--mono); font-size: .72rem; font-weight: 500; letter-spacing: .05em; line-height: 1.35; text-transform: uppercase; }
 .sketch-comparison-panel dd { margin: 0; color: var(--fg); font-size: .78rem; line-height: 1.4; }
-.sketch-comparison-change { display: grid; justify-items: center; gap: 5px; color: var(--subtle); font-family: var(--mono); font-size: .56rem; letter-spacing: .04em; line-height: 1.35; text-align: center; text-transform: uppercase; }
+.sketch-comparison-change { display: grid; justify-items: center; gap: 5px; color: var(--subtle); font-family: var(--mono); font-size: .7rem; letter-spacing: .04em; line-height: 1.35; text-align: center; text-transform: uppercase; }
 .sketch-comparison-change::before { content: "What changed"; margin-bottom: 3px; color: var(--fg); font-weight: 500; }
 .sketch-comparison-change b { color: var(--accent); font-family: var(--font); font-size: 1.4rem; font-weight: 400; }
 .sketch-separator { height: 1px; margin: 22px 0; background: var(--line); }
@@ -244,7 +244,7 @@ li { margin-bottom: 8px; }
 .code-block code { font-family: var(--mono); font-size: .78rem; line-height: 1.6; white-space: pre; }
 .decision-table { width: 100%; margin: 28px 0; border-collapse: collapse; font-size: .9rem; }
 .decision-table th, .decision-table td { padding: 14px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-.decision-table th { color: var(--subtle); font-family: var(--mono); font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+.decision-table th { color: var(--subtle); font-family: var(--mono); font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
 
 /* Footer */
 footer { border-top: 1px solid var(--line); }
