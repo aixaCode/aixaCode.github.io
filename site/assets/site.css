@@ -208,3 +208,15 @@
 .wordmark::after{content:'';position:absolute;right:0;top:-2px;width:16px;height:16px;background:var(--accent);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;transition:transform .35s ease}
 .wordmark:hover::after,.wordmark:focus-visible::after{transform:rotate(45deg) scale(1.15)}
 @media(max-width:720px){.wordmark{padding-right:15px;background-size:calc(100% - 15px) 8px}.wordmark::after{width:13px;height:13px}}
+/* Home: notebook-style Selected work card and a single underline on the rail link */
+.notes-rail>.text-link{border-bottom:0;justify-self:start}
+.work-feature{position:relative;background:var(--white);border-radius:2px 2px 18px 2px;box-shadow:0 1px 0 var(--rule),0 18px 34px -24px rgba(76,51,44,.5);margin-top:20px}
+.work-feature::before{content:'';position:absolute;top:-12px;left:50%;width:96px;height:24px;margin-left:-48px;background:var(--tape);transform:rotate(-3deg)}
+.work-feature h2{font-size:42px}
+.work-shot{margin:0 0 26px}
+.work-shot img{display:block;width:100%;height:auto;border:6px solid var(--white);border-radius:16px;box-shadow:0 1px 0 var(--rule),0 14px 26px -18px rgba(76,51,44,.55);transform:rotate(1.2deg)}
+.work-facts{display:flex;flex-wrap:wrap;gap:16px;border-top:0;padding-top:0}
+.work-facts strong{font-size:30px}
+.work-facts>div{flex:1 1 120px;background:var(--butter);padding:16px 18px;border-radius:2px 2px 12px 2px;box-shadow:0 1px 0 var(--butter-line),0 10px 18px -14px rgba(76,51,44,.45);transform:rotate(-1deg)}
+.work-facts>div:nth-child(2){background:var(--peach);transform:rotate(1deg)}
+@media(max-width:720px){.work-facts>div{padding:14px}.work-facts strong{font-size:23px}.work-feature{padding:32px 22px 26px}.work-feature h2{font-size:34px}.work-shot img{transform:none}}
