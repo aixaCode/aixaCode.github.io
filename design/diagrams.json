@@ -1450,5 +1450,49 @@
         "invalid"
       ]
     ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "kpi-question",
+    "title": "A KPI should start a question, not settle it.",
+    "nodes": [
+      {
+        "id": "drop",
+        "label": "Escalations drop",
+        "role": "input"
+      },
+      {
+        "id": "ask",
+        "label": "Ask why",
+        "detail": "Check other evidence",
+        "role": "human"
+      },
+      {
+        "id": "good",
+        "label": "Stronger ownership",
+        "detail": "Keep the KPI",
+        "role": "safe"
+      },
+      {
+        "id": "bad",
+        "label": "Risks kept quiet",
+        "detail": "Add context or replace it",
+        "role": "risk"
+      }
+    ],
+    "edges": [
+      [
+        "drop",
+        "ask"
+      ],
+      [
+        "ask",
+        "good"
+      ],
+      [
+        "ask",
+        "bad"
+      ]
+    ]
   }
 ]
