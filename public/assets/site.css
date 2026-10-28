@@ -95,3 +95,9 @@
 .case-section .list-clean strong{display:block;margin-bottom:4px;color:var(--ink);font-weight:600}
 @media(max-width:720px){.code-block code,.article-body .code-block code{font-size:12.5px;padding:4px 18px 18px}.case-section .list-clean{gap:18px}}
 
+/* Single product screenshot in a case study. */
+.product-shot{margin:34px 0 8px}
+.product-shot img{display:block;width:100%;height:auto;border:6px solid var(--white);border-radius:18px;box-shadow:0 1px 0 var(--rule),0 16px 30px -20px rgba(76,51,44,.55);transform:rotate(-.6deg)}
+.product-shot-small img{max-width:620px}
+.product-shot figcaption{margin-top:16px;color:var(--subtle);font-size:.82rem}
+@media(max-width:720px){.product-shot img{transform:none}}
