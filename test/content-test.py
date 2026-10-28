@@ -19,7 +19,7 @@ class ContentTests(unittest.TestCase):
     def test_feed_original_dates_and_sitemap_exclusions(self):
         essays=metadata.inventory();output=metadata.outputs(essays,['index.html','404.html','posts/example.html'])
         feed=E.fromstring(output['feed.xml']);items=feed.findall('./channel/item')
-        self.assertEqual(len(items),8)
+        self.assertEqual(len(items),9)
         self.assertEqual({i.findtext('guid') for i in items},{e['url'] for e in essays})
         self.assertTrue(all(i.findtext('pubDate').endswith('+0000') for i in items))
         sitemap=E.fromstring(output['sitemap.xml']);ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}

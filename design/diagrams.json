@@ -1450,5 +1450,69 @@
         "invalid"
       ]
     ]
+  },
+  {
+    "folder": "article-diagrams",
+    "slug": "agent-authority-gate",
+    "title": "Reversible work runs. Anything that reaches people waits for a yes.",
+    "nodes": [
+      {
+        "id": "owner",
+        "label": "Owner",
+        "detail": "Goal + written rules",
+        "role": "human"
+      },
+      {
+        "id": "coord",
+        "label": "Coordinator",
+        "detail": "Plan, two outcomes max",
+        "role": "step"
+      },
+      {
+        "id": "worker",
+        "label": "Named worker",
+        "detail": "One outcome, own branch",
+        "role": "step"
+      },
+      {
+        "id": "checks",
+        "label": "Checks + independent review",
+        "role": "step"
+      },
+      {
+        "id": "rev",
+        "label": "Reversible",
+        "detail": "Merge to development, dev build",
+        "role": "safe"
+      },
+      {
+        "id": "gate",
+        "label": "Reaches people",
+        "detail": "Release, store, production: owner's yes",
+        "role": "key"
+      }
+    ],
+    "edges": [
+      [
+        "owner",
+        "coord"
+      ],
+      [
+        "coord",
+        "worker"
+      ],
+      [
+        "worker",
+        "checks"
+      ],
+      [
+        "checks",
+        "rev"
+      ],
+      [
+        "checks",
+        "gate"
+      ]
+    ]
   }
 ]
