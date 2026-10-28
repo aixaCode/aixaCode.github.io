@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "a1dd495a9ee4e95a99969ab611c2e5afefef83b060ea730139aef17ee8a65434",
+  "artifact_sha256": "a1cf763bc9c9876e97752a3c6570864b4eff6550b1b9592de80791c59779baaa",
   "files": [
     {
       "path": ".nojekyll",
@@ -481,6 +481,16 @@
       "path": "assets/images/career-ladder-should-reduce-surprises-og.jpg",
       "bytes": 31088,
       "sha256": "806b00e791296bf1802d4d906bd526e824c41061012b5da7993b4ddd3768e849"
+    },
+    {
+      "path": "assets/images/dashboard/sample-charts.webp",
+      "bytes": 42968,
+      "sha256": "1eea278560efbbb151f1e18e64fdcb1aacbc6168c923f08f492def31c685b675"
+    },
+    {
+      "path": "assets/images/dashboard/sample-summary.webp",
+      "bytes": 83690,
+      "sha256": "7e4bd37bbcf65355b80010712937f98c1a4afabd1cbddd21965d1077f66c9968"
     },
     {
       "path": "assets/images/decentraland/explorer-in-world.webp",
@@ -979,8 +989,8 @@
     },
     {
       "path": "projects/engineering-platform.html",
-      "bytes": 10711,
-      "sha256": "b22aaa989cd1553ceaca4fa7576adb6c29dcff7be7f94cef1f2014012c4d38ae"
+      "bytes": 11425,
+      "sha256": "0a672b3e2521d36147cc366a60a9ea05e3853545a20e5686838cc31b0afee40f"
     },
     {
       "path": "projects/index.html",
