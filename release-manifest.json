@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "7f8eba44d9a370b663879cf21d0560b87d1610775352c6af7ac6c1b1e53b3446",
+  "artifact_sha256": "e25f450da87cbe758df7760bef39bc4524df5c983042186675c5bb73d62a42c8",
   "files": [
     {
       "path": ".nojekyll",
@@ -209,8 +209,8 @@
     },
     {
       "path": "assets/article-diagrams/pip-diagnosis-mobile-v6.svg",
-      "bytes": 55220,
-      "sha256": "511f73dbb8acade1bf221f5d8e803f71bd79c26c938c068fb36d671d4b87e58b"
+      "bytes": 55357,
+      "sha256": "838b5c7ef4c3533b9c563bcf3ed91da3c07eb041b5230f0cac7a4d6cc0f051af"
     },
     {
       "path": "assets/article-diagrams/pip-diagnosis-v2.svg",
@@ -229,8 +229,8 @@
     },
     {
       "path": "assets/article-diagrams/prioritization-scoring-trap-mobile-v6.svg",
-      "bytes": 52371,
-      "sha256": "0b4734a36eb4e45f9bde29633579e287a8eb9fa6d6bbe706d5df45ec7225368d"
+      "bytes": 52445,
+      "sha256": "0027fd1bc37cac7878d87d2fa4aa4e34deafb9433b5c736ddba0497c61c0db00"
     },
     {
       "path": "assets/article-diagrams/prioritization-scoring-trap-v2.svg",
@@ -329,8 +329,8 @@
     },
     {
       "path": "assets/article-diagrams/risk-based-assurance-mobile-v6.svg",
-      "bytes": 54337,
-      "sha256": "266f5e8219025cf2506ecfd3d0a5a0158e5cb7b32d8e13d38a80f0559952c67a"
+      "bytes": 54455,
+      "sha256": "1dee9c64e94313cc7518884227ef8b1ece2df1c22c8f97236e7ce80649cf3397"
     },
     {
       "path": "assets/article-diagrams/risk-based-assurance-v2.svg",
@@ -339,8 +339,8 @@
     },
     {
       "path": "assets/article-diagrams/risk-based-assurance-v6.svg",
-      "bytes": 57418,
-      "sha256": "3a60dba5816ac729d498e8a1073a8efa26e7eb514a3c1d441125a5de5eb5cc75"
+      "bytes": 57739,
+      "sha256": "0043e30aa2474a202f0c8eecefdfb54cd497a83d05c344ece68f89cd4177b070"
     },
     {
       "path": "assets/article-diagrams/winnable-improvement-plan-mobile-v2.svg",
@@ -349,8 +349,8 @@
     },
     {
       "path": "assets/article-diagrams/winnable-improvement-plan-mobile-v6.svg",
-      "bytes": 53709,
-      "sha256": "7ba9d647614c6c53f2a34e213830961595a611bdf962e34c496e0c24e4642f88"
+      "bytes": 53762,
+      "sha256": "262e90f4286fb35d0814ca98654fdbdf9443e9a4d51df101f743c6a1b08425e0"
     },
     {
       "path": "assets/article-diagrams/winnable-improvement-plan-v2.svg",
@@ -359,8 +359,8 @@
     },
     {
       "path": "assets/article-diagrams/winnable-improvement-plan-v6.svg",
-      "bytes": 54413,
-      "sha256": "719e8e44806c188c12e4f684ab97d0fafe88b98e7df476c080971dd501d9b297"
+      "bytes": 54595,
+      "sha256": "ac5261f99f1b0fca8cda59add8345fb492d08bc146326cf4e67e483cad2e162f"
     },
     {
       "path": "assets/content.css",

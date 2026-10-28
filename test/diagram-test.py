@@ -18,10 +18,18 @@ class DiagramTests(unittest.TestCase):
             for mobile in ([False,True] if graph.get('branch_desktop') else [True]):
                 with self.subTest(graph=graph['slug'],mobile=mobile):
                     svg=E.fromstring(diagrams.render(graph,mobile))
-                    edges=[p.attrib['data-edge'].split() for p in svg.findall('s:path',NS) if 'data-edge' in p.attrib]
-                    self.assertEqual(sorted(edges),sorted(graph['edges']))
-                    boxes={g.attrib['data-node']:g.find('s:rect',NS).attrib for g in svg.findall('s:g',NS)}
-                    panels=[r.attrib for r in svg.findall('s:rect',NS) if r.attrib.get('data-branch-panel')]
+                    groups=[g for g in svg.iter('{%s}g'%NS['s']) if 'data-node' in g.attrib]
+                    if mobile:
+                        # Phones fold each branch into one card that lists its steps.
+                        cards=[g.attrib['data-holds'].split() for g in groups if 'data-holds' in g.attrib]
+                        self.assertEqual(cards,graph['branch_paths'])
+                        shown=[g.attrib['data-node'] for g in groups if 'data-holds' not in g.attrib]+[n for c in cards for n in c]
+                        self.assertEqual(sorted(shown),sorted(n['id'] for n in graph['nodes']))
+                        continue
+                    edges=[p.attrib['data-edge'].split() for p in svg.iter('{%s}path'%NS['s']) if 'data-edge' in p.attrib]
+                    self.assertEqual(sorted(edges),sorted(e[:2] for e in graph['edges']))
+                    boxes={g.attrib['data-node']:g.findall('s:rect',NS)[-1].attrib for g in groups}
+                    panels=[r.attrib for r in svg.iter('{%s}rect'%NS['s']) if r.attrib.get('data-branch-panel')]
                     self.assertEqual(len(panels),len(graph['branch_paths']))
                     def contains(panel,box):
                         return (float(box['x'])>=float(panel['x']) and float(box['y'])>=float(panel['y'])

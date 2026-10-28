@@ -19,33 +19,33 @@
 <rect x="90" y="150" width="520" height="104" rx="16" fill="#e9e1f1" stroke="#84685b" stroke-width="2.2"/>
 <text x="350.0" y="211.2" font-size="34" font-weight="600" fill="#4c332c" text-anchor="middle">What is causing the gap?</text>
 </g>
-<g data-node="lane0">
+<g data-node="lane0" data-holds="unclear clarify">
 <rect x="93" y="313" width="520" height="129" rx="16" fill="none" stroke="#84685b" stroke-opacity=".28" stroke-width="1.6"/>
 <rect x="90" y="310" width="520" height="129" rx="16" fill="#fdf2e6" stroke="#84685b" stroke-width="2.2"/>
 <text x="350.0" y="362.2" font-size="34" font-weight="600" fill="#4c332c" text-anchor="middle">Unclear expectation</text>
 <text x="350.0" y="410.2" font-size="29" fill="#6f5649" text-anchor="middle">→ Clarify + create an opportunity</text>
 </g>
-<g data-node="lane1">
+<g data-node="lane1" data-holds="support fix-support">
 <rect x="93" y="472" width="520" height="171" rx="16" fill="none" stroke="#84685b" stroke-opacity=".28" stroke-width="1.6"/>
 <rect x="90" y="469" width="520" height="171" rx="16" fill="#fdf2e6" stroke="#84685b" stroke-width="2.2"/>
 <text x="350.0" y="521.2" font-size="34" font-weight="600" fill="#4c332c" text-anchor="middle">Missing tools, context or</text>
 <text x="350.0" y="563.2" font-size="34" font-weight="600" fill="#4c332c" text-anchor="middle">training</text>
 <text x="350.0" y="611.2" font-size="29" fill="#6f5649" text-anchor="middle">→ Fix the support or process gap</text>
 </g>
-<g data-node="lane2">
+<g data-node="lane2" data-holds="temporary agree">
 <rect x="93" y="673" width="520" height="129" rx="16" fill="none" stroke="#84685b" stroke-opacity=".28" stroke-width="1.6"/>
 <rect x="90" y="670" width="520" height="129" rx="16" fill="#fdf2e6" stroke="#84685b" stroke-width="2.2"/>
 <text x="350.0" y="722.2" font-size="34" font-weight="600" fill="#4c332c" text-anchor="middle">Temporary circumstances</text>
 <text x="350.0" y="770.2" font-size="29" fill="#6f5649" text-anchor="middle">→ Agree support + review date</text>
 </g>
-<g data-node="lane3">
+<g data-node="lane3" data-holds="fit role">
 <rect x="93" y="832" width="520" height="166" rx="16" fill="none" stroke="#84685b" stroke-opacity=".28" stroke-width="1.6"/>
 <rect x="90" y="829" width="520" height="166" rx="16" fill="#fdf2e6" stroke="#84685b" stroke-width="2.2"/>
 <text x="350.0" y="881.2" font-size="34" font-weight="600" fill="#4c332c" text-anchor="middle">Role is not a plausible fit</text>
 <text x="350.0" y="929.2" font-size="29" fill="#6f5649" text-anchor="middle">→ Discuss scope, reassignment or</text>
 <text x="350.0" y="966.2" font-size="29" fill="#6f5649" text-anchor="middle">exit</text>
 </g>
-<g data-node="lane4">
+<g data-node="lane4" data-holds="missed pip">
 <rect x="93" y="1028" width="520" height="171" rx="16" fill="none" stroke="#84685b" stroke-opacity=".28" stroke-width="1.6"/>
 <rect x="90" y="1025" width="520" height="171" rx="16" fill="#f3d9cf" stroke="#84685b" stroke-width="2.2"/>
 <text x="350.0" y="1077.2" font-size="34" font-weight="600" fill="#4c332c" text-anchor="middle">Clear expectation repeatedly</text>

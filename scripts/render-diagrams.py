@@ -64,8 +64,8 @@ class Canvas:
                                       role=node.get('role', 'step'))
         return height or h
 
-    def arrow(self, d, dashed=False):
-        self.paths.append((d, dashed))
+    def arrow(self, d, dashed=False, edge=None):
+        self.paths.append((d, dashed, edge))
 
 
 def edge_list(graph):
@@ -212,6 +212,7 @@ def branches(graph, c):
                     'detail': ' / '.join(lines + ['→ ' + nodes[i]['label'] + (': ' + nodes[i]['detail'].replace(' / ', ', ').lower() if nodes[i].get('detail') else '') for i in rest]),
                     'role': 'step' if labels else nodes[path[0]].get('role', 'step')}
             y += c.place(card, 90, y, 520) + 30
+            c.boxes[card['id']]['holds'] = path
             cards.append(c.boxes[card['id']])
         y += 26
         for i in suffix:
@@ -239,7 +240,7 @@ def branches(graph, c):
     bottom = max(bottoms)
     for j in range(len(paths)):
         x = 45 + j * (lane_w + 26)
-        c.extra.append(f'<rect x="{x}" y="{lane_top - (52 if labels else 20)}" width="{lane_w}" height="{bottom - lane_top + (40 if labels else 8)}" rx="18" fill="none" stroke="#d9c6b7" stroke-width="2" stroke-dasharray="8 8"/>')
+        c.extra.append(f'<rect data-branch-panel="{j}" x="{x}" y="{lane_top - (52 if labels else 20)}" width="{lane_w}" height="{bottom - lane_top + (40 if labels else 8)}" rx="18" fill="none" stroke="#d9c6b7" stroke-width="2" stroke-dasharray="8 8"/>')
         if labels:
             c.extra.append(f'<text x="{x + 20}" y="{lane_top - 16}" font-size="20" fill="{ACCENT}" font-weight="600" letter-spacing="1">{esc(labels[j].upper())}</text>')
     y = bottom + (40 if suffix else 0)
@@ -256,7 +257,7 @@ def branches(graph, c):
             else:
                 mid = t['y'] - 34 if b in suffix else s['y'] + s['h'] + 30
             d = f'M{sx} {s["y"] + s["h"] + 4} V{mid} H{tx} V{t["y"] - 8}'
-        c.arrow(d, optional)
+        c.arrow(d, optional, (a, b))
     return width, (y - 10 if suffix else bottom + 10)
 
 
@@ -363,11 +364,13 @@ def render(graph, mobile):
     parts.append(f'<path d="M46 {uy} C{46 + tw * .3} {uy + 7} {46 + tw * .6} {uy - 5} {46 + tw} {uy + 3}" fill="none" stroke="{ACCENT}" stroke-width="3.2" stroke-linecap="round" opacity=".75"/>')
     parts.append(f'<g transform="translate(0 {shift})">')
     parts += c.extra
-    for d, dashed in c.paths:
+    for d, dashed, edge in c.paths:
         dash = ' stroke-dasharray="10 8"' if dashed else ''
-        parts.append(f'<path d="{d}" fill="none" stroke="{EDGE}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"{dash} marker-end="url(#arrow)"/>')
+        tag = f' data-edge="{esc(" ".join(edge))}"' if edge else ''
+        parts.append(f'<path{tag} d="{d}" fill="none" stroke="{EDGE}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"{dash} marker-end="url(#arrow)"/>')
     for key, b in c.boxes.items():
-        parts.append(f'<g data-node="{esc(key)}">')
+        holds = f' data-holds="{esc(" ".join(b["holds"]))}"' if b.get('holds') else ''
+        parts.append(f'<g data-node="{esc(key)}"{holds}>')
         parts += sketch_box(b) + text_block(b, c, graph.get('emphasis', []))
         parts.append('</g>')
     parts.append('</g></svg>')

@@ -17,7 +17,7 @@
 <rect x="90" y="150" width="520" height="104" rx="16" fill="#e0eaf0" stroke="#84685b" stroke-width="2.2"/>
 <text x="350.0" y="211.2" font-size="34" font-weight="600" fill="#4c332c" text-anchor="middle">Clear bar + fair scope</text>
 </g>
-<g data-node="lane0">
+<g data-node="lane0" data-holds="support review">
 <rect x="93" y="313" width="520" height="203" rx="16" fill="none" stroke="#84685b" stroke-opacity=".28" stroke-width="1.6"/>
 <rect x="90" y="310" width="520" height="203" rx="16" fill="#fdf2e6" stroke="#84685b" stroke-width="2.2"/>
 <text x="350.0" y="362.2" font-size="34" font-weight="600" fill="#4c332c" text-anchor="middle">Manager provides</text>
@@ -25,7 +25,7 @@
 <text x="350.0" y="447.2" font-size="29" fill="#6f5649" text-anchor="middle">removed</text>
 <text x="350.0" y="484.2" font-size="29" fill="#6f5649" text-anchor="middle">→ Regular evidence review</text>
 </g>
-<g data-node="lane1">
+<g data-node="lane1" data-holds="opportunity">
 <rect x="93" y="546" width="520" height="166" rx="16" fill="none" stroke="#84685b" stroke-opacity=".28" stroke-width="1.6"/>
 <rect x="90" y="543" width="520" height="166" rx="16" fill="#fdf2e6" stroke="#84685b" stroke-width="2.2"/>
 <text x="350.0" y="595.2" font-size="34" font-weight="600" fill="#4c332c" text-anchor="middle">Employee shows</text>

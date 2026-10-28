@@ -7,7 +7,7 @@
 <text x="45" y="108" font-size="36" fill="#4c332c" font-weight="600">optimise the wrong thing</text>
 <path d="M46 124 C124.0 131 202.0 119 306 127" fill="none" stroke="#a04637" stroke-width="3.2" stroke-linecap="round" opacity=".75"/>
 <g transform="translate(0 44)">
-<g data-node="lane0">
+<g data-node="lane0" data-holds="score predictable high">
 <rect x="93" y="153" width="520" height="203" rx="16" fill="none" stroke="#84685b" stroke-opacity=".28" stroke-width="1.6"/>
 <rect x="90" y="150" width="520" height="203" rx="16" fill="#e0eaf0" stroke="#84685b" stroke-width="2.2"/>
 <text x="350.0" y="202.2" font-size="34" font-weight="600" fill="#4c332c" text-anchor="middle">Scoring favours</text>
@@ -15,7 +15,7 @@
 <text x="350.0" y="287.2" font-size="29" fill="#6f5649" text-anchor="middle">predictable delivery</text>
 <text x="350.0" y="324.2" font-size="29" fill="#6f5649" text-anchor="middle">→ Ranks high</text>
 </g>
-<g data-node="lane1">
+<g data-node="lane1" data-holds="constraint uncertain low">
 <rect x="93" y="386" width="520" height="203" rx="16" fill="none" stroke="#a04637" stroke-opacity=".28" stroke-width="1.6"/>
 <rect x="90" y="383" width="520" height="203" rx="16" fill="#f7ddd2" stroke="#a04637" stroke-width="3.2"/>
 <text x="350.0" y="435.2" font-size="34" font-weight="600" fill="#4c332c" text-anchor="middle">Active constraint</text>

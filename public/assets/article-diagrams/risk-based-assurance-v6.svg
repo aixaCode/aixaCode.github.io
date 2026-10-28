@@ -6,18 +6,18 @@
 <text x="45" y="64" font-size="36" fill="#4c332c" font-weight="600">Match the review to the risk</text>
 <path d="M46 80 C124.0 87 202.0 75 306 83" fill="none" stroke="#a04637" stroke-width="3.2" stroke-linecap="round" opacity=".75"/>
 <g transform="translate(0 0)">
-<rect x="45.0" y="492" width="336.0" height="580" rx="18" fill="none" stroke="#d9c6b7" stroke-width="2" stroke-dasharray="8 8"/>
-<rect x="407.0" y="492" width="336.0" height="580" rx="18" fill="none" stroke="#d9c6b7" stroke-width="2" stroke-dasharray="8 8"/>
-<rect x="769.0" y="492" width="336.0" height="580" rx="18" fill="none" stroke="#d9c6b7" stroke-width="2" stroke-dasharray="8 8"/>
-<path d="M575.0 250 V308" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
-<path d="M575.0 416 V467 H213.0 V504" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
-<path d="M213.0 612 V660" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
-<path d="M213.0 790 V838" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
-<path d="M575.0 416 V504" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
-<path d="M575.0 612 V660" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
-<path d="M575.0 416 V467 H937.0 V504" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
-<path d="M937.0 635 V683" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
-<path d="M937.0 850 V898" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect data-branch-panel="0" x="45.0" y="492" width="336.0" height="580" rx="18" fill="none" stroke="#d9c6b7" stroke-width="2" stroke-dasharray="8 8"/>
+<rect data-branch-panel="1" x="407.0" y="492" width="336.0" height="580" rx="18" fill="none" stroke="#d9c6b7" stroke-width="2" stroke-dasharray="8 8"/>
+<rect data-branch-panel="2" x="769.0" y="492" width="336.0" height="580" rx="18" fill="none" stroke="#d9c6b7" stroke-width="2" stroke-dasharray="8 8"/>
+<path data-edge="change risk" d="M575.0 250 V308" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path data-edge="risk low" d="M575.0 416 V467 H213.0 V504" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path data-edge="low low-detect" d="M213.0 612 V660" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path data-edge="low-detect low-checks" d="M213.0 790 V838" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path data-edge="risk medium" d="M575.0 416 V504" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path data-edge="medium medium-review" d="M575.0 612 V660" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path data-edge="risk high" d="M575.0 416 V467 H937.0 V504" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path data-edge="high high-judgment" d="M937.0 635 V683" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path data-edge="high-judgment high-rollout" d="M937.0 850 V898" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
 <g data-node="change">
 <rect x="303" y="153" width="550" height="96" rx="16" fill="none" stroke="#84685b" stroke-opacity=".28" stroke-width="1.6"/>
 <rect x="300" y="150" width="550" height="96" rx="16" fill="#e0eaf0" stroke="#84685b" stroke-width="2.2"/>

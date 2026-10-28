@@ -6,15 +6,15 @@
 <text x="45" y="64" font-size="36" fill="#4c332c" font-weight="600">A winnable plan is a shared contract</text>
 <path d="M46 80 C124.0 87 202.0 75 306 83" fill="none" stroke="#a04637" stroke-width="3.2" stroke-linecap="round" opacity=".75"/>
 <g transform="translate(0 0)">
-<rect x="45.0" y="334" width="517.0" height="375" rx="18" fill="none" stroke="#d9c6b7" stroke-width="2" stroke-dasharray="8 8"/>
+<rect data-branch-panel="0" x="45.0" y="334" width="517.0" height="375" rx="18" fill="none" stroke="#d9c6b7" stroke-width="2" stroke-dasharray="8 8"/>
 <text x="65.0" y="370" font-size="20" fill="#a04637" font-weight="600" letter-spacing="1">MANAGER PROVIDES</text>
-<rect x="588.0" y="334" width="517.0" height="375" rx="18" fill="none" stroke="#d9c6b7" stroke-width="2" stroke-dasharray="8 8"/>
+<rect data-branch-panel="1" x="588.0" y="334" width="517.0" height="375" rx="18" fill="none" stroke="#d9c6b7" stroke-width="2" stroke-dasharray="8 8"/>
 <text x="608.0" y="370" font-size="20" fill="#a04637" font-weight="600" letter-spacing="1">EMPLOYEE SHOWS</text>
-<path d="M575.0 250 V306 H303.5 V378" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
-<path d="M303.5 509 V557" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
-<path d="M575.0 250 V306 H846.5 V378" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
-<path d="M303.5 665 V727 H575.0 V753" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
-<path d="M846.5 509 V727 H575.0 V753" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path data-edge="bar support" d="M575.0 250 V306 H303.5 V378" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path data-edge="support review" d="M303.5 509 V557" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path data-edge="bar opportunity" d="M575.0 250 V306 H846.5 V378" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path data-edge="review outcome" d="M303.5 665 V727 H575.0 V753" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path data-edge="opportunity outcome" d="M846.5 509 V727 H575.0 V753" fill="none" stroke="#84685b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
 <g data-node="bar">
 <rect x="303" y="153" width="550" height="96" rx="16" fill="none" stroke="#84685b" stroke-opacity=".28" stroke-width="1.6"/>
 <rect x="300" y="150" width="550" height="96" rx="16" fill="#e0eaf0" stroke="#84685b" stroke-width="2.2"/>
