@@ -1,8 +1,8 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Engineering Management Dashboard - Agnieszka Besz</title><meta name="description" content="Engineering-management dashboard for releases, CI health, Sentry signals, Unity Cloud costs, priority reviews and team-load evidence."><meta name="theme-color" content="#fff8f0"><link rel="icon" href="../favicon.ico" sizes="32x32"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="manifest" href="../site.webmanifest"><link rel="preload" href="../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="canonical" href="https://besz.me/projects/engineering-platform.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Agnieszka Besz"><meta property="og:title" content="Engineering Management Dashboard"><meta property="og:description" content="Engineering-management dashboard for releases, CI health, Sentry signals, Unity Cloud costs, priority reviews and team-load evidence."><meta property="og:url" content="https://besz.me/projects/engineering-platform.html"><meta property="og:image" content="https://besz.me/assets/images/og-default-v4.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Engineering Management Dashboard"><meta name="twitter:description" content="Engineering-management dashboard for releases, CI health, Sentry signals, Unity Cloud costs, priority reviews and team-load evidence."><meta name="twitter:image" content="https://besz.me/assets/images/og-default-v4.jpg"><link rel="stylesheet" href="../assets/content.css?v=a513520e61"><link rel="stylesheet" href="../assets/site.css?v=f300770929"><script src="../assets/site.js?v=52b5215894" defer></script><link rel="alternate" type="application/rss+xml" title="Agnieszka Besz — essays" href="../feed.xml"></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header" id="site-header"><div class="shell header-inner"><div class="identity"><a class="wordmark" href="../index.html" aria-label="aixaCode — Agnieszka Besz, home">aixa<em>Code.</em></a><span class="identity-note">AGNIESZKA BESZ<br>ENGINEERING LEADER &amp; BUILDER</span></div><button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" type="button">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="../writing.html">Writing</a><a href="../projects/index.html" aria-current="page">Selected work</a><a href="../about.html">About</a><a href="../index.html#contact">Contact</a></nav></div></header><main class="shell content-page" id="main">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Engineering Dashboard and AI Checks - Agnieszka Besz</title><meta name="description" content="The AI checks on every Unity Explorer pull request and the daily engineering dashboard I built, with pinned metric definitions and links to the records behind every number."><meta name="theme-color" content="#fff8f0"><link rel="icon" href="../favicon.ico" sizes="32x32"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><link rel="manifest" href="../site.webmanifest"><link rel="preload" href="../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="canonical" href="https://besz.me/projects/engineering-platform.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Agnieszka Besz"><meta property="og:title" content="Engineering Dashboard and AI Checks"><meta property="og:description" content="The AI checks on every Unity Explorer pull request and the daily engineering dashboard I built, with pinned metric definitions and links to the records behind every number."><meta property="og:url" content="https://besz.me/projects/engineering-platform.html"><meta property="og:image" content="https://besz.me/assets/images/og-default-v4.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Engineering Dashboard and AI Checks"><meta name="twitter:description" content="The AI checks on every Unity Explorer pull request and the daily engineering dashboard I built, with pinned metric definitions and links to the records behind every number."><meta name="twitter:image" content="https://besz.me/assets/images/og-default-v4.jpg"><link rel="stylesheet" href="../assets/content.css?v=a513520e61"><link rel="stylesheet" href="../assets/site.css?v=f300770929"><script src="../assets/site.js?v=52b5215894" defer></script><link rel="alternate" type="application/rss+xml" title="Agnieszka Besz — essays" href="../feed.xml"></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header" id="site-header"><div class="shell header-inner"><div class="identity"><a class="wordmark" href="../index.html" aria-label="aixaCode — Agnieszka Besz, home">aixa<em>Code.</em></a><span class="identity-note">AGNIESZKA BESZ<br>ENGINEERING LEADER &amp; BUILDER</span></div><button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" type="button">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="../writing.html">Writing</a><a href="../projects/index.html" aria-current="page">Selected work</a><a href="../about.html">About</a><a href="../index.html#contact">Contact</a></nav></div></header><main class="shell content-page" id="main">
 <section class="hero">
 <p class="eyebrow mono"> Case study</p>
-<h1>Engineering Management Dashboard</h1>
-<p class="lead">A dashboard I built to collect the engineering information I was otherwise assembling by hand each week.</p>
+<h1>Engineering Dashboard and AI Checks</h1>
+<p class="lead">The checks on every Unity Explorer pull request and the daily dashboard I built for release and priority reviews, so those decisions started from evidence rather than a weekly scramble for status.</p>
 <p class="stack">GitHub Actions / scheduled agents / Sentry MCP / Unity Cloud costs / priority reviews / AI-assisted notes</p>
 <div aria-label="Project topics" class="topic-tags"><a href="index.html?filter=leadership">Leadership</a><a href="index.html?filter=platform">Platform</a></div>
 <div class="actions"><span class="meta">Internal or private project material.</span><a class="btn" href="index.html">All projects</a></div>
@@ -12,6 +12,25 @@
 <section class="case-section" id="problem">
 <h2>Problem</h2>
 <p>With frequent releases, information was spread across GitHub, Sentry, Unity Cloud and several reports. I built one view for the questions I kept asking in priority and release reviews. Scheduled agents collect the data and prepare summaries, with links back to the underlying issues and pull requests.</p>
+</section>
+<section class="case-section" id="checks">
+<h2>Checks on every pull request</h2>
+<div class="spec-grid">
+<div class="spec"><h3>AI review on every PR</h3><p>Each pull request carries an AI review status check that analyses correctness, performance and error handling and sets pass/fail. It does not replace the accountable reviewers — every PR still needs developer and QA approval — it raises the floor before humans spend attention.</p></div>
+<div class="spec"><h3>Visual regression as a comment</h3><p>A PR comment triggers a pixel-diff suite against committed image baselines and posts the verdict back to the PR; a second command regenerates baselines when a change is intentional. Rendering regressions became a reviewable artefact instead of a QA lottery.</p></div>
+<div class="spec"><h3>Performance signal per PR</h3><p>Successful builds dispatch frame-time benchmarks on a dedicated machine fleet, and the results land back on the PR as a comment — CPU, GPU, exceptions. A performance regression is visible before merge, not after release.</p></div>
+</div>
+</section>
+<section class="case-section" id="where-ai-sits">
+<h2>Where AI sits</h2>
+<figure class="article-figure sketch-flow-figure project-flow-figure">
+<h3 class="diagram-title">Automation produces early evidence. People still decide what ships.</h3>
+<picture>
+<source media="(max-width: 640px)" srcset="../assets/project-diagrams/engineering-ai-release-loop-mobile-v6.svg" width="650" height="1016"/>
+<img alt="A code change produces AI review, test, visual and performance evidence before developers and QA decide whether to release or return to the change." decoding="async" loading="lazy" src="../assets/project-diagrams/engineering-ai-release-loop-v6.svg" width="1100" height="545"/>
+</picture>
+<figcaption>AI and automated tests shorten the path to useful evidence. Developers and QA remain accountable for interpreting it and approving the release.</figcaption>
+</figure>
 </section>
 <section class="case-section" id="goals">
 <h2>Goals</h2>
@@ -40,21 +59,23 @@
 <p>Every metric has a pinned definition — formula, window, exclusions — recorded next to the code. When a definition has to change, the change itself is called out in the next report, so a delta is never silently a redefinition. Ratios come with drill-downs listing the exact issues and PRs counted, so any number can be re-derived by a human.</p>
 </section>
 <section class="case-section" id="hard-problems">
-<h2>Interesting problems</h2>
-<ul class="list-clean"><li><strong>How do you keep metrics from becoming vanity dashboards?</strong> Put them where priority reviews and engineering-management decisions happen, and delete the ones that never change a decision.</li><li><strong>How do you make week-over-week deltas trustworthy?</strong> Pin the definitions and cache the fetches. Ad-hoc redefinitions across runs make trends meaningless — the fix is boring discipline, not smarter models.</li><li><strong>How do you make AI useful for management work?</strong> Use it to summarize evidence and flag changes, while humans keep ownership of decisions. Each reported metric uses a fixed definition and links to the records counted. AI helps summarize changes and surface questions; the underlying records and definitions remain inspectable.</li><li><strong>How does the system get better?</strong> A lessons file: every correction becomes a written rule the next run applies — cumulative totals are not trends, duplicates are excluded and named, partial windows are flagged instead of silently substituted.</li></ul>
+<h2>Decisions that mattered</h2>
+<ul class="list-clean"><li><strong>AI checks run before people, not instead of them.</strong> Every pull request still needs developer and QA approval. The AI check raises the floor before people spend attention.</li><li><strong>Ask for something concrete.</strong> A pass or fail, a pixel diff, a frame-time change. Output that repeatedly changed nothing in review was removed.</li><li><strong>Pin every metric definition.</strong> Each metric has a fixed formula, window and exclusions, recorded next to the code. When a definition changes, the next report says so, so a delta is never a quiet redefinition.</li><li><strong>Link every number to its records.</strong> Ratios come with the exact issues and pull requests counted, so anyone can re-derive them.</li><li><strong>Turn corrections into rules.</strong> A lessons file records each mistake as a rule the next run applies: cumulative totals are not trends, duplicates are excluded and named, partial windows are flagged.</li></ul>
 </section>
 <section class="case-section" id="lessons">
 <h2>Lessons learned</h2>
-<ul><li>The dashboard became useful when it was part of an existing review, not another destination people had to remember.</li><li>AI summaries need links to the issues, releases and pull requests they describe.</li><li>We removed metrics that nobody used.</li></ul>
+<ul><li>The checks that stuck were attached to an existing review or release step.</li><li>Quality checks were worth more than measuring how much code AI generated.</li><li>The dashboard became useful once it was part of the priority review. We removed the metrics nobody used.</li></ul>
 </section>
 </div>
 <aside class="toc">
 <a href="#problem">Problem</a>
-<a href="#goals">Goals</a>
+<a href="#checks">Pull request checks</a>
+<a href="#where-ai-sits">Where AI sits</a>
+<a href="#goals">Dashboard goals</a>
 <a href="#architecture">Architecture</a>
 <a href="#metrics">What it computes</a>
-<a href="#hard-problems">Interesting problems</a>
-<a href="#lessons">Lessons learned</a>
+<a href="#hard-problems">Decisions</a>
+<a href="#lessons">Lessons</a>
 </aside>
 </div>
 

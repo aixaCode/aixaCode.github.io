@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "7865bb41690f9cdcd31b4942c8b9211f8062dd7491f1fd64adf4a0227db80549",
+  "artifact_sha256": "459c48f06047f28066fa4cd1f84d01ba2ea59bc7d77bb6762517814b17f8c83e",
   "files": [
     {
       "path": ".nojekyll",
@@ -904,8 +904,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 9970,
-      "sha256": "ca69a1cec3698d9108a94470a2a0d98c3416f91284209cf1e6b519014baf72ef"
+      "bytes": 9969,
+      "sha256": "70d3efe794c92d3e47f15b9eba77ffdde1e9243d7cbac0feaac7251586355f00"
     },
     {
       "path": "leadership.html",
@@ -954,53 +954,43 @@
     },
     {
       "path": "projects/accounting-agent.html",
-      "bytes": 14633,
-      "sha256": "dbc7f68110ce0b5af1eed0f7e80c8a4cd5923b379752ade2b30a8ed3a8d2e5bd"
+      "bytes": 14139,
+      "sha256": "33b6df19bcfebb4ca304ab4c200a951f4c5b4cf9ffdb2f28b637146efbc560bc"
     },
     {
       "path": "projects/ai-personal-assistant.html",
-      "bytes": 20180,
-      "sha256": "c299ce688dcf4d1d410f5e20d34911dd67bc2c6abaaf004c52eaaf5274c5f314"
+      "bytes": 21625,
+      "sha256": "767ea0d68fc7352090128fd9b329ea9fa4de9439f7dc61214bc13780eb774e70"
     },
     {
       "path": "projects/animal-park-management.html",
-      "bytes": 14449,
-      "sha256": "311d5be31313174542257adbb93e47f8eeaffbf6c4665840e89d6664f30afb6f"
-    },
-    {
-      "path": "projects/engineering-ai.html",
-      "bytes": 8379,
-      "sha256": "028ef904b6074828f01ff1c182f0d54a015bd0d40eb5a36f7a170dc5d8b95033"
+      "bytes": 16034,
+      "sha256": "9cb7503468eba33514e395aaf9bbbb9d4f282a7695a4a62de1d4a8899e7fa7b0"
     },
     {
       "path": "projects/engineering-platform.html",
-      "bytes": 8997,
-      "sha256": "be3544870254fdf1bf21ccc3048935091f902c6a65da008ef7166ffb42bf6eb7"
-    },
-    {
-      "path": "projects/home-automation-platform.html",
-      "bytes": 7401,
-      "sha256": "a3d37510a094932ed6c791996d80f5e03e6f967125343253df738e32375a25d4"
+      "bytes": 11186,
+      "sha256": "b7f22fbbfaf4749cf8ea449d8904e2ece1ccf74561ab2c6f0a1be1a348e80fce"
     },
     {
       "path": "projects/index.html",
-      "bytes": 7247,
-      "sha256": "395d113ef3b5b785731c69fbd7cb8c7e8bbe53039d1800d03edf4baed9aeec09"
+      "bytes": 6606,
+      "sha256": "24d8297a2976e33cd49d6007ae4bb4b9dd5a457135135c60f89f83d1b8f5f90e"
     },
     {
       "path": "projects/launcher.html",
-      "bytes": 8857,
-      "sha256": "7f5105bad4a41d914de55584b62ef578a56be600e6e9f22f9275ab87cedc9278"
+      "bytes": 8540,
+      "sha256": "4728068515cec332371fbeaa71a10ad444b97bbf00c2af64b97756d3578b203c"
     },
     {
       "path": "projects/scaling-engineering-org.html",
-      "bytes": 12174,
-      "sha256": "6adf3a1424085adf96bf845d53a54008cd567e899409cfed687e136f76ab5fbf"
+      "bytes": 10978,
+      "sha256": "481185ee223229e4f869d1d5c0c165507084235a01a055204edf6d803e2562e3"
     },
     {
       "path": "projects/unity-explorer.html",
-      "bytes": 13011,
-      "sha256": "87309aa912f6108b40db40b296f409576768e350c910fc59f206e7c630a9d2e4"
+      "bytes": 12634,
+      "sha256": "6bc2a1b7857361172cb7d282faaf11bcaab19622f7948552848371e5906e84f8"
     },
     {
       "path": "robots.txt",
@@ -1014,8 +1004,8 @@
     },
     {
       "path": "sitemap.xml",
-      "bytes": 2404,
-      "sha256": "a793df6e48e889b0c9917b28ad1cfd0314d862ad99ceb0b6a8ef805764dc9cf6"
+      "bytes": 2204,
+      "sha256": "75eb3b28c6f7d5fa88a18d9fa5d56192eea1016756a126d7bc86e57db5caf10f"
     },
     {
       "path": "writing.html",
