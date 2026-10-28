@@ -18,7 +18,7 @@ await fs.mkdir(path.join(root,'design/social-cards'),{recursive:true});
 for(const card of cards){
  if(process.argv[2] && process.argv[2]!==card.slug)continue;
  const layout=layouts[card.slug] || {};
- const artwork=await fs.readFile(path.join(root,'site/assets/images',card.image || `${card.slug}-editorial-${card.slug==='make-improvement-plans-winnable'?'v4':'v3'}.webp`));
+ const artwork=await fs.readFile(path.join(root,'site/assets/images',card.image || `${card.slug}-editorial-${card.slug==='make-improvement-plans-winnable'?'v4':'v5'}.webp`));
  const image=await sharp(artwork).png().toBuffer();
  const words=card.title.split(/\s+/);let line='';const lines=[];
  for(const word of words){if(line && textWidth(line+' '+word)>540){lines.push(line);line=word;}else line+=(line?' ':'')+word;}if(line)lines.push(line);
