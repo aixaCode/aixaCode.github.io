@@ -1,6 +1,28 @@
 {
   "prioritization-is-constraint-management": {
-    "title_lines": ["Prioritization Is", "Constraint", "Management"],
-    "asset_version": "v5"
+    "title_lines": [
+      "Prioritization Is",
+      "Constraint",
+      "Management"
+    ],
+    "asset_version": "v6"
+  },
+  "ai-makes-building-easy-production-is-hard": {
+    "asset_version": "v6"
+  },
+  "before-you-remove-code-review-name-the-risk": {
+    "asset_version": "v6"
+  },
+  "career-ladder-should-reduce-surprises": {
+    "asset_version": "v6"
+  },
+  "feedback-is-the-performance-system": {
+    "asset_version": "v6"
+  },
+  "technical-direction-is-not-a-technology-decision": {
+    "asset_version": "v6"
+  },
+  "use-ai-to-find-evidence-not-score-engineers": {
+    "asset_version": "v6"
   }
 }
