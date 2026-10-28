@@ -55,7 +55,7 @@
 <section class="case-section" id="implementation">
 <h2>Implementation detail</h2>
 <p>The implementation choice I care about most is lossless intake. Every file gets a SHA-256 identity and inspection record before it moves. I check canonical originals for byte-identical duplicates, validate archives against path traversal, and send uncertainty to a named review state rather than guessing a destination.</p>
-<pre class="code-block"><code>manifest = {
+<pre class="code-block" data-label="pseudo-code"><code>manifest = {
   document_id: `sha256:${digest}`,
   original_name,
   inspection,

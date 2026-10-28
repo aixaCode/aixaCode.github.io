@@ -64,7 +64,7 @@
 <section class="case-section" id="implementation">
 <h2>Implementation detail</h2>
 <p>I did not want “provider-neutral” to mean a thin text-completion interface that stopped being useful as soon as the model called a tool. The abstraction covers the complete agent turn, including tool continuation and declared capabilities:</p>
-<pre class="code-block"><code>export interface AgentRuntime {
+<pre class="code-block" data-label="agent-runtime.ts"><code>export interface AgentRuntime {
   readonly providerId: string;
   execute(request: AgentRequest): Promise&lt;AgentResult&gt;;
   capabilities(): ModelCapabilities;
@@ -75,7 +75,7 @@ if (attachments.some(isPdf)) {
 }</code></pre>
 <p>The generic tool-loop runtime converts each tool's Zod schema to JSON Schema, validates returned arguments before calling the handler, limits the number of turns, aborts on timeout and refuses unavailable tools. I keep provider sessions behind application-owned IDs, so channel records do not inherit a provider's identity model.</p>
 <p>For documents, I use content-addressed extraction revisions. A revision ID hashes the original bytes, extractor identity, extractor version and normalized payload. Approval re-hashes the source, rejects unresolved ambiguity and supersedes the previous approved revision:</p>
-<pre class="code-block"><code>revisionId = sha256({
+<pre class="code-block" data-label="pseudo-code"><code>revisionId = sha256({
   sourceSha256,
   extractor,
   extractorVersion,

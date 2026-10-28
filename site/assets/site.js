@@ -12,6 +12,20 @@
     document.addEventListener('keydown', event => { if (event.key === 'Escape') { close(); menu.focus(); } });
     window.matchMedia('(min-width: 721px)').addEventListener('change', close);
   }
+  // Gentle syntax colours for the few code samples; the source stays plain text.
+  const token = /(\/\/.*|#.*)|("(?:[^"\\]|\\.)*"|`(?:[^`\\]|\\.)*`)|\b(if|return|await|async|const|let|export|interface|readonly|throw|new|function|only)\b|^(\s*-?\s*[\w]+)(?=:\s)/gm;
+  const kinds = ['comment', 'string', 'keyword', 'key'];
+  const escape = text => text.replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'}[c]));
+  document.querySelectorAll('.code-block code').forEach(code => {
+    const text = code.textContent;
+    let html = '', last = 0;
+    for (const match of text.matchAll(token)) {
+      const kind = kinds[match.slice(1).findIndex(Boolean)];
+      html += escape(text.slice(last, match.index)) + `<span class="tok-${kind}">${escape(match[0])}</span>`;
+      last = match.index + match[0].length;
+    }
+    code.innerHTML = html + escape(text.slice(last));
+  });
   const filters = [...document.querySelectorAll('[data-filter]')];
   const cards = [...document.querySelectorAll('[data-tags]')];
   const contents = document.querySelector('.article-toc details');
