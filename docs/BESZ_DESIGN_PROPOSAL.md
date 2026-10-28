@@ -84,6 +84,12 @@ good alt text on every image. Keep the notebook direction.
 | Regenerate career-ladder and one diff-window cover with people and hands, like the improvement-plan cover | covers | M–L |
 | Fix share cards: title font, artwork to the edge, washi tape, per-project cards | social cards | M |
 
+Done in the first phase 3 pass: checklists as taped sticky notes, serif pull
+quotes, doodle divider at the end of essays, curly arrow on figure captions,
+portrait frame, pixel heart on game cards, pixel "continue?" 404, and line
+doodles (pencil, sparkle, plant, teacup) on section labels. Still open: Animal
+Park screenshots, regenerated covers, share cards.
+
 ### Phase 4: housekeeping
 
 - Add a 1000w hero image (the full one is 445 KB).
