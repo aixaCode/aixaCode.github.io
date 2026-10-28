@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "728cc8f77d64c01d7d5643ed2be218840afc7a98439f8cbf6b6df9646930162f",
+  "artifact_sha256": "e103b6325b2a60eebdac78621fd3fceff6cbdc3185fe654a2cf4f85bf001ed68",
   "files": [
     {
       "path": ".nojekyll",
@@ -21,6 +21,16 @@
       "path": "apple-touch-icon.png",
       "bytes": 3335,
       "sha256": "e184d00bdf68354edffa339cccc298434d37244037af33cec30e37dda2a5f8a9"
+    },
+    {
+      "path": "assets/article-diagrams/agent-authority-gate-mobile-v6.svg",
+      "bytes": 54851,
+      "sha256": "86cd254f90f2f09609e7037e371187d209557e93fe63173aa6618a216029b395"
+    },
+    {
+      "path": "assets/article-diagrams/agent-authority-gate-v6.svg",
+      "bytes": 55415,
+      "sha256": "38f5436b0e8d5abb12dd62189325ec2a655a57795b1b5c67c82e3a75d6d86fc4"
     },
     {
       "path": "assets/article-diagrams/ai-evidence-boundary-mobile-v2.svg",
@@ -411,6 +421,21 @@
       "path": "assets/images/agnieszka-besz.webp",
       "bytes": 14172,
       "sha256": "fa42867122c4648711ef942f5b5e04612afa816cbdbc080a47f614af8345b6fb"
+    },
+    {
+      "path": "assets/images/ai-agents-write-the-code-i-own-done-editorial-v5-768.webp",
+      "bytes": 27392,
+      "sha256": "3f2e94c7d47a34de49e781daa8b01709f2c6ca4f013f886e92b34ce4abe81893"
+    },
+    {
+      "path": "assets/images/ai-agents-write-the-code-i-own-done-editorial-v5.webp",
+      "bytes": 72072,
+      "sha256": "c6e38bb080fa90295666209b749dfc21ab76e7f80873a5b8350fd62cb405ba89"
+    },
+    {
+      "path": "assets/images/ai-agents-write-the-code-i-own-done-og-v6.jpg",
+      "bytes": 77945,
+      "sha256": "536c24c6512f868bfd4bc9b6198fcfe638deea84f1a433f631719b81f04b484c"
     },
     {
       "path": "assets/images/ai-makes-building-easy-production-is-hard-editorial-v5-768.webp",
@@ -869,8 +894,8 @@
     },
     {
       "path": "feed.xml",
-      "bytes": 3922,
-      "sha256": "54a944a9d98e5502940ab7f22002eb2290cdd97b9ce700e3943dbd4eee0ee007"
+      "bytes": 4374,
+      "sha256": "16f337ecb488adfa05352ffd11bd97759baa87983bef77a26d17b0d437012725"
     },
     {
       "path": "icon-192.png",
@@ -884,13 +909,18 @@
     },
     {
       "path": "index.html",
-      "bytes": 9968,
-      "sha256": "7f6b9b668bf520bc0dc9a652d9f89a95419a6827167274267bbd7629b23448f7"
+      "bytes": 10003,
+      "sha256": "c4c9d65dfc1a70f5289ec1117689f731aef0962f4e1ef08e5d2eb9f744a73dea"
     },
     {
       "path": "leadership.html",
       "bytes": 12010,
       "sha256": "125a4dffac258dac7abca57d8eb6b7f98d933431c9e53680b2f663f5570e1364"
+    },
+    {
+      "path": "posts/ai-agents-write-the-code-i-own-done.html",
+      "bytes": 13799,
+      "sha256": "c7e8cb16a6d83fbb6bf26e3eff4aabbce55a8f9337d738e3081cf9b4c1144e27"
     },
     {
       "path": "posts/ai-makes-building-easy-production-is-hard.html",
@@ -984,13 +1014,13 @@
     },
     {
       "path": "sitemap.xml",
-      "bytes": 2204,
-      "sha256": "77fb5f8f53c661678974e3bad259fd32680893a97889afd4019f5602e2482ca4"
+      "bytes": 2317,
+      "sha256": "c8d4e90d02209bd783be28131c4e2aebc98e8ae57217f65b0229949a60acb207"
     },
     {
       "path": "writing.html",
-      "bytes": 12600,
-      "sha256": "97b47fb57a03eab68391792d81b8240fb2bc1288b82c6e6654e268202ff30276"
+      "bytes": 13747,
+      "sha256": "e8dd95e31cf6d72b3e3b8f14abaebf0c3068aeac741d1136529b60982e17dcb6"
     }
   ]
 }

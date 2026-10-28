@@ -1,7 +1,7 @@
 {
   "index.html": "2026-10-28",
   "about.html": "2026-10-28",
-  "writing.html": "2026-10-05",
+  "writing.html": "2026-10-28",
   "cv.html": "2026-10-05",
   "leadership.html": "2026-10-28",
   "posts/use-ai-to-find-evidence-not-score-engineers.html": "2026-10-05",
@@ -19,5 +19,6 @@
   "projects/ai-personal-assistant.html": "2026-10-28",
   "projects/animal-park-management.html": "2026-10-28",
   "projects/launcher.html": "2026-10-28",
-  "projects/scaling-engineering-org.html": "2026-10-28"
+  "projects/scaling-engineering-org.html": "2026-10-28",
+  "posts/ai-agents-write-the-code-i-own-done.html": "2026-10-28"
 }

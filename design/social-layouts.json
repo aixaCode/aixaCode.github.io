@@ -24,5 +24,8 @@
   },
   "use-ai-to-find-evidence-not-score-engineers": {
     "asset_version": "v6"
+  },
+  "ai-agents-write-the-code-i-own-done": {
+    "asset_version": "v6"
   }
 }
