@@ -13,7 +13,7 @@
 <h2>Problem</h2>
 <p>The launcher is the first part of the product a new user sees. A large download, a stalled update or a process that silently fails can lose that user before the client opens.</p>
 <p>The original Electron launcher was heavy for what it needed to do, with an entry-point download over 100 MB. The rework moved the system-level work into Rust: update checks, downloads, verification, process launch, deep links and typed errors. The UI stayed web technology through Tauri, but the bundled-browser cost was removed and the launcher came down to about 1 MB.</p>
-</section>
+<figure class="product-shot product-shot-small"><img src="../assets/images/decentraland/launcher-start.webp" alt="The Decentraland launcher window showing a progress bar and the text Launching Decentraland, over a view of Genesis Plaza" width="788" height="480" loading="lazy" decoding="async"/><figcaption>The launcher opening the client. Image from the decentraland.org install guide.</figcaption></figure></section>
 <section class="case-section" id="goals">
 <h2>Goals</h2>
 <ul><li>Keep the download and launch funnel small enough that users do not drop before reaching the product</li><li>Improve install and update reliability - users should always end up on the latest client</li><li>Cut the launcher's own footprint: binary size, memory and startup time</li><li>Support signed builds, release channels and store distribution</li><li>Handle <code>decentraland://</code> deep links into an app that may not be installed or running yet</li><li>Make failures diagnosable: typed errors, user-readable messages, full detail to Sentry</li></ul>
