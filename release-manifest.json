@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "455f393e7178aedccbf555f8411669ffb2c3ee39950e1d086344262d55247351",
+  "artifact_sha256": "728cc8f77d64c01d7d5643ed2be218840afc7a98439f8cbf6b6df9646930162f",
   "files": [
     {
       "path": ".nojekyll",
@@ -413,24 +413,19 @@
       "sha256": "fa42867122c4648711ef942f5b5e04612afa816cbdbc080a47f614af8345b6fb"
     },
     {
-      "path": "assets/images/ai-makes-building-easy-production-is-hard-editorial-v3-768.webp",
-      "bytes": 11936,
-      "sha256": "a6e9c5f4e07782eddd5e8c4fc61730fa019d47d4475bf107b4e2239c3dcede14"
+      "path": "assets/images/ai-makes-building-easy-production-is-hard-editorial-v5-768.webp",
+      "bytes": 38778,
+      "sha256": "8ffb548f65df674521f188c98b9bd95123391ef546ef2e62dea3198881384a02"
     },
     {
-      "path": "assets/images/ai-makes-building-easy-production-is-hard-editorial-v3.webp",
-      "bytes": 59508,
-      "sha256": "e0a770d8b22c1f27a62da78d234cac8349db030cf77a3fdd4dd2668102d2cbf2"
+      "path": "assets/images/ai-makes-building-easy-production-is-hard-editorial-v5.webp",
+      "bytes": 103740,
+      "sha256": "43246f911ddd70a3cf0b9c2ed5602dbd7dc6a11049a4655f552871e5bcced602"
     },
     {
-      "path": "assets/images/ai-makes-building-easy-production-is-hard-og-v4.jpg",
-      "bytes": 56479,
-      "sha256": "c15c185227ffc938631752f513492dcc516d2923504b83997d8eda569170a4fc"
-    },
-    {
-      "path": "assets/images/ai-makes-building-easy-production-is-hard-og.jpg",
-      "bytes": 32757,
-      "sha256": "a49bee19a0c13588a97a279865e74faa22676363a48f3eff1287ef2033e43102"
+      "path": "assets/images/ai-makes-building-easy-production-is-hard-og-v6.jpg",
+      "bytes": 83995,
+      "sha256": "c226dd36703d1c2c5c2cc22185390392f38df4d189fade1ac69a4947a66cee8c"
     },
     {
       "path": "assets/images/animal-park/screen-1.webp",
@@ -453,44 +448,34 @@
       "sha256": "ee239f215e11ddae3a222fac5de91450b481e5df1ba29dbc34ab3a5c5e87cce6"
     },
     {
-      "path": "assets/images/before-you-remove-code-review-name-the-risk-editorial-v3-768.webp",
-      "bytes": 12214,
-      "sha256": "7ddf42405b3446a70eb50a364e917b72056b0791bcb3039a9de89dd2f0feaee5"
+      "path": "assets/images/before-you-remove-code-review-name-the-risk-editorial-v5-768.webp",
+      "bytes": 36614,
+      "sha256": "e2655d2fbbef42d12c1e9c1412359363d9107d0ded537c259cddddffe31700af"
     },
     {
-      "path": "assets/images/before-you-remove-code-review-name-the-risk-editorial-v3.webp",
-      "bytes": 66990,
-      "sha256": "11fdfad3cdd9e607f37200e7d2dce55d28df1acf0290e748e1944dd5e037c049"
+      "path": "assets/images/before-you-remove-code-review-name-the-risk-editorial-v5.webp",
+      "bytes": 96814,
+      "sha256": "0ccedb857be961f2440de108322c335bde66ecadc7f45fec58386cbb8427d36f"
     },
     {
-      "path": "assets/images/before-you-remove-code-review-name-the-risk-og-v4.jpg",
-      "bytes": 64162,
-      "sha256": "686011dec887b80233326d95215881a78c22e88131e580ff269141ea60e5c78d"
+      "path": "assets/images/before-you-remove-code-review-name-the-risk-og-v6.jpg",
+      "bytes": 87670,
+      "sha256": "e235db731ee6c8b3b74339c4ea6900c852a87c165aa8cf15fc9225aeb150b867"
     },
     {
-      "path": "assets/images/before-you-remove-code-review-name-the-risk-og.jpg",
-      "bytes": 37785,
-      "sha256": "ad90d5475e95893230c26d43719f41803e3cb8bd16d7310c0e6126e5b551dcef"
+      "path": "assets/images/career-ladder-should-reduce-surprises-editorial-v5-768.webp",
+      "bytes": 32324,
+      "sha256": "1d28750e3bbba70b3b6d9c01cbe9169be04c18d3957d86110d0d4f437417b2a3"
     },
     {
-      "path": "assets/images/career-ladder-should-reduce-surprises-editorial-v3-768.webp",
-      "bytes": 11200,
-      "sha256": "22841fc626f2e127b3d273a37de6e4dd7db2dc406892b158ea46b2e0fddbfdf9"
+      "path": "assets/images/career-ladder-should-reduce-surprises-editorial-v5.webp",
+      "bytes": 89276,
+      "sha256": "81a7af4a9c74bcc131262757ab7f5ca9d33ccd811a2549fe85487406a1ad324f"
     },
     {
-      "path": "assets/images/career-ladder-should-reduce-surprises-editorial-v3.webp",
-      "bytes": 45032,
-      "sha256": "9e305e7ef4b91ace2810c2fdd70ca7d5a1c7f9f076fa026e2c5150463fdf0688"
-    },
-    {
-      "path": "assets/images/career-ladder-should-reduce-surprises-og-v4.jpg",
-      "bytes": 68312,
-      "sha256": "4fe305cc6aec690ddbddcc0839e7e1a31c1f9d3cec865a8afa77df5eb3963352"
-    },
-    {
-      "path": "assets/images/career-ladder-should-reduce-surprises-og.jpg",
-      "bytes": 31088,
-      "sha256": "806b00e791296bf1802d4d906bd526e824c41061012b5da7993b4ddd3768e849"
+      "path": "assets/images/career-ladder-should-reduce-surprises-og-v6.jpg",
+      "bytes": 87125,
+      "sha256": "beea7fbba9ebe38ecb46913ef5f02862b736fa659c9862a8924c83f75b9749a6"
     },
     {
       "path": "assets/images/dashboard/sample-charts.webp",
@@ -528,34 +513,19 @@
       "sha256": "5145fb3dc1292b9aaeb13b8cc6bd5bee7c9723f4e236e792e1674071395d9fbb"
     },
     {
-      "path": "assets/images/feedback-is-the-performance-system-editorial-v3-768.webp",
-      "bytes": 10466,
-      "sha256": "0f03baa6c169448ef8c3efadfe833a0d9f29115e7b8959209aef8e4aae2e397f"
+      "path": "assets/images/feedback-is-the-performance-system-editorial-v5-768.webp",
+      "bytes": 39226,
+      "sha256": "b676c8500033846a78220fd581baf3cb2004334bd86269ab212bd30756128bf3"
     },
     {
-      "path": "assets/images/feedback-is-the-performance-system-editorial-v3.webp",
-      "bytes": 54398,
-      "sha256": "2fe8b684d2dab315327a2b2fefa4167504964f23192eed42df85f7c3f898afd4"
+      "path": "assets/images/feedback-is-the-performance-system-editorial-v5.webp",
+      "bytes": 101470,
+      "sha256": "a0cfbf26e5e336cc327e97608eb047e1a012568db0e1de659428649520a3d5b0"
     },
     {
-      "path": "assets/images/feedback-is-the-performance-system-og-v4.jpg",
-      "bytes": 53187,
-      "sha256": "d9e4e011dcc2e814e9b275874ce46c0da02dcde1d92c29b67646fe2997567042"
-    },
-    {
-      "path": "assets/images/feedback-is-the-performance-system-og.jpg",
-      "bytes": 36124,
-      "sha256": "7d261d272693b24e1209697270767bdc2350fc38acc67c192ac160151e11e929"
-    },
-    {
-      "path": "assets/images/make-improvement-plans-winnable-editorial-v3-768.webp",
-      "bytes": 13302,
-      "sha256": "c723535fe9e5afc76baa68b407651d7afff693415c0df9b6c762b90cf061ceba"
-    },
-    {
-      "path": "assets/images/make-improvement-plans-winnable-editorial-v3.webp",
-      "bytes": 56422,
-      "sha256": "6cfc0a10390748758627ddeb5739f61ee2edbf1f077c484afc8bf28063c1405f"
+      "path": "assets/images/feedback-is-the-performance-system-og-v6.jpg",
+      "bytes": 81128,
+      "sha256": "b80cbc9ccbc18dd1710a5096583671f7df8c16bb5bbc266029b27ae94e5784a3"
     },
     {
       "path": "assets/images/make-improvement-plans-winnable-editorial-v4-768.webp",
@@ -573,44 +543,24 @@
       "sha256": "c9dbe187db4c9b3215a6fbaa7fd5a3f114b3965961fe5297763422358d3392c7"
     },
     {
-      "path": "assets/images/make-improvement-plans-winnable-og.jpg",
-      "bytes": 40041,
-      "sha256": "d2d59284516f09510ae8ddf9c3ea1f1245a8630d4577c2aeb5cb10a8a7dfe816"
-    },
-    {
       "path": "assets/images/og-default-v4.jpg",
       "bytes": 86808,
       "sha256": "70e43736806cbbca2be9cd9419b17f019e60e8a7048a35012e1f20a54a020ef9"
     },
     {
-      "path": "assets/images/og-default.jpg",
-      "bytes": 131353,
-      "sha256": "9db6b9fdb7f1b988ec9e969db9c6996b9b671bf5e7f912660f03c25a05bd8dc9"
+      "path": "assets/images/prioritization-is-constraint-management-editorial-v5-768.webp",
+      "bytes": 34346,
+      "sha256": "bb9652acd755e557bd128b5825fee031c9c1f1902d1c3ed28dddd6ee683c4778"
     },
     {
-      "path": "assets/images/prioritization-is-constraint-management-editorial-v3-768.webp",
-      "bytes": 12762,
-      "sha256": "c74bffa23ebc8f02c9818f380517eff52fca1cb677f28bb6357de9d443697a8a"
+      "path": "assets/images/prioritization-is-constraint-management-editorial-v5.webp",
+      "bytes": 91864,
+      "sha256": "850ae83cd408380ffd5d5bf0aa4b0d9f67c429db9fc00bcd0656cb19022f6fca"
     },
     {
-      "path": "assets/images/prioritization-is-constraint-management-editorial-v3.webp",
-      "bytes": 66864,
-      "sha256": "3f77f70c9305be6089034eb04eb9f2cf2d0a83a896e587efe7542bcc88102cd5"
-    },
-    {
-      "path": "assets/images/prioritization-is-constraint-management-og-v4.jpg",
-      "bytes": 55109,
-      "sha256": "5b5eefe399a31703208b64d18205a90cea014b29b700cf0f97f973ff03caee24"
-    },
-    {
-      "path": "assets/images/prioritization-is-constraint-management-og-v5.jpg",
-      "bytes": 55402,
-      "sha256": "5ff5d2ca478695397935e319101d360fe2fde96c38cf8ba995f6066ee03f35e4"
-    },
-    {
-      "path": "assets/images/prioritization-is-constraint-management-og.jpg",
-      "bytes": 36647,
-      "sha256": "7cb9ae686c5f2203b1dd030290b00493c757453a88514da846d3fcb7474fbb98"
+      "path": "assets/images/prioritization-is-constraint-management-og-v6.jpg",
+      "bytes": 77887,
+      "sha256": "e97216c412063fdbd757372021cfac9b55656bfa363b98dbf3fbdce33d45b5cc"
     },
     {
       "path": "assets/images/talks/summit-2024-stage.webp",
@@ -623,44 +573,34 @@
       "sha256": "3e9e1b7f81b069a36001676d82bd3b2fe611d8dc413a0bc6b6d9c4ed2b52e6c0"
     },
     {
-      "path": "assets/images/technical-direction-is-not-a-technology-decision-editorial-v3-768.webp",
-      "bytes": 12168,
-      "sha256": "108b793b02f59d8f8394b55f7c259bfb3112f5e3480bd22db9fcd6265e935815"
+      "path": "assets/images/technical-direction-is-not-a-technology-decision-editorial-v5-768.webp",
+      "bytes": 33090,
+      "sha256": "8b9c619905d6f9d09db925a3b54f2e6e66837cf2cd67a2c8bd3333a30a676542"
     },
     {
-      "path": "assets/images/technical-direction-is-not-a-technology-decision-editorial-v3.webp",
-      "bytes": 55682,
-      "sha256": "20df11f6491231c8b9e6e16ba08f82f119ea4d3b17c7fb639091d8ebebd5d264"
+      "path": "assets/images/technical-direction-is-not-a-technology-decision-editorial-v5.webp",
+      "bytes": 86430,
+      "sha256": "113f9232921e1f77eeb4477e649660ce07b82698649863a7ecedab24d1ef7303"
     },
     {
-      "path": "assets/images/technical-direction-is-not-a-technology-decision-og-v4.jpg",
-      "bytes": 60275,
-      "sha256": "c8974ab4b12f9dcd9c7cfff5c902507c2de4dc144de0a775b9a5347a5c446962"
+      "path": "assets/images/technical-direction-is-not-a-technology-decision-og-v6.jpg",
+      "bytes": 81279,
+      "sha256": "b5f7a1250fc01afe736e9994f413937687acc03831d5574b022dce4e808e2383"
     },
     {
-      "path": "assets/images/technical-direction-is-not-a-technology-decision-og.jpg",
-      "bytes": 36914,
-      "sha256": "dc86f45182013d61c65b9bdcd4b535b963104d394c249d22cc8029fe9cabc873"
+      "path": "assets/images/use-ai-to-find-evidence-not-score-engineers-editorial-v5-768.webp",
+      "bytes": 29884,
+      "sha256": "589d1dbf74def8d36a7a1263102096d579b08df88d69a4917e8575839f3d8edb"
     },
     {
-      "path": "assets/images/use-ai-to-find-evidence-not-score-engineers-editorial-v3-768.webp",
-      "bytes": 10514,
-      "sha256": "25eaf3def8f670586366834c12259605a95c4da3c5df0ec40aed3837bc804f8f"
+      "path": "assets/images/use-ai-to-find-evidence-not-score-engineers-editorial-v5.webp",
+      "bytes": 77924,
+      "sha256": "22c8206ef0aa0ec24af4a51b2f6ca3234292d4ead47ba88035438c0335293fd0"
     },
     {
-      "path": "assets/images/use-ai-to-find-evidence-not-score-engineers-editorial-v3.webp",
-      "bytes": 52374,
-      "sha256": "a06d2a48d28c0b4a2bd25ea720ca136d6bad2c6b5fd5506cbc286da9adf7906b"
-    },
-    {
-      "path": "assets/images/use-ai-to-find-evidence-not-score-engineers-og-v4.jpg",
-      "bytes": 56562,
-      "sha256": "aef43c7a49094f314f1f59d3f78520f974dd4de2be6c97c5a1ac04c3d2e39b8b"
-    },
-    {
-      "path": "assets/images/use-ai-to-find-evidence-not-score-engineers-og.jpg",
-      "bytes": 32674,
-      "sha256": "dfb21b0a7e328f69e86ee4566e3f90f58f1c891195614647fc28030f85ce0a80"
+      "path": "assets/images/use-ai-to-find-evidence-not-score-engineers-og-v6.jpg",
+      "bytes": 76049,
+      "sha256": "eca5ea032bb5f6647bb92722486e10f1127d563861c55c3f1d7387e73ad999ee"
     },
     {
       "path": "assets/project-diagrams/accounting-evidence-pipeline-mobile-v6.svg",
@@ -945,7 +885,7 @@
     {
       "path": "index.html",
       "bytes": 9968,
-      "sha256": "da91436658d3870ed6205715d21d186763ef5483429f548c585a5239799dbc27"
+      "sha256": "7f6b9b668bf520bc0dc9a652d9f89a95419a6827167274267bbd7629b23448f7"
     },
     {
       "path": "leadership.html",
@@ -955,22 +895,22 @@
     {
       "path": "posts/ai-makes-building-easy-production-is-hard.html",
       "bytes": 16889,
-      "sha256": "1d0fd795f06a23f631e0231db524831fec72bf04c6f8638a707c47df303b103d"
+      "sha256": "7e3ba9061b86c38bfbb627dcb3f868c2e20ea0e5fdaf7d947b8beed3237b6a5d"
     },
     {
       "path": "posts/before-you-remove-code-review-name-the-risk.html",
       "bytes": 19813,
-      "sha256": "99e97adc330f2ad09fd12710e628287348eb2a595bb36069c56509d94555f23a"
+      "sha256": "a949d37c4cd71c94a724271e98b83e7cc36472ce5cccace2cc4b9466b17eece6"
     },
     {
       "path": "posts/career-ladder-should-reduce-surprises.html",
       "bytes": 17495,
-      "sha256": "52a62a032a017b839a71e5c1cbcf25e0e85b193bf5ae23a6769282d103ecb800"
+      "sha256": "75a894c28000804ecdd814177bc42b7e93d164883a5bda69d032eb057e0e7501"
     },
     {
       "path": "posts/feedback-is-the-performance-system.html",
       "bytes": 17514,
-      "sha256": "c8d56f600b804477b39360d07f48e45e4f465ebdf0e1020d361bcf42580606f7"
+      "sha256": "c5a5a577ce6b74fc8d4a4413c661d2787535719072b397cac7c8d5cf709b66b2"
     },
     {
       "path": "posts/make-improvement-plans-winnable.html",
@@ -980,17 +920,17 @@
     {
       "path": "posts/prioritization-is-constraint-management.html",
       "bytes": 11951,
-      "sha256": "d914dcf4fd09dd2160a803494eb0e2e810322d72779fc92dd086da6bf79292eb"
+      "sha256": "771a5078af0319006d7f65e9e79577cc4002c1aae1949886aa2ee868639b1db9"
     },
     {
       "path": "posts/technical-direction-is-not-a-technology-decision.html",
       "bytes": 7805,
-      "sha256": "b96471b00d9f0356973c51f5a05cc8f1f4a1f5aa2d7138ee1bb25b0390d4d225"
+      "sha256": "93b6cf7fa78e6f36837fbfc3176a17b2c923fb173c1f835b4a9a15a1a3ec5034"
     },
     {
       "path": "posts/use-ai-to-find-evidence-not-score-engineers.html",
       "bytes": 22959,
-      "sha256": "b67dcc9a6ebc36a7e96e2f938fe257f9a09a270ea865b9b0169b7fc1c43889d6"
+      "sha256": "efee2dccd67145e7cece2b5c19015dab95931f69ad579563a7d425ebe325ccd7"
     },
     {
       "path": "projects/accounting-agent.html",
@@ -1050,7 +990,7 @@
     {
       "path": "writing.html",
       "bytes": 12600,
-      "sha256": "185c671f0addc3f3f7e18241ed4a79f33ddd7bba1b059cc231d1dcf828c64990"
+      "sha256": "97b47fb57a03eab68391792d81b8240fb2bc1288b82c6e6654e268202ff30276"
     }
   ]
 }

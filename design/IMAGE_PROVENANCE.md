@@ -14,3 +14,11 @@ The 7 October polish versions four diagram families as v5 with explicit grouped
 branch paths; nodes and semantic edges are preserved. The prioritization v5 share
 card uses a reviewed three-line title in design/social-layouts.json to prevent
 artwork covering its last letters. Artwork is unchanged. Other v4 cards remain.
+
+The 28 October 2026 v5 covers for seven essays and the draft agents essay were
+generated in Codex with its built-in image tool, using the improvement-plan v4
+illustration as the style reference and the prompts in design/cover-prompts-v5.md.
+Originals are in design/originals/*-v5.png. Published WebP variants are
+site/assets/images/<slug>-editorial-v5*.webp; their share cards are the v6 JPEGs
+rendered by scripts/render-social-cards.mjs. The v3 covers and older cards they
+replace were removed.
