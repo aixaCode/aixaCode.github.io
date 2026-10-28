@@ -88,13 +88,13 @@ approve only if currentSourceHash === sourceSha256
 <table class="decision-table">
 <thead><tr><th>Decision</th><th>Trade-off</th><th>Why</th></tr></thead>
 <tbody>
-<tr><td>Provider adapters behind one complete-turn contract</td><td>More adapter code, consistent tools and permissions across hosted and local models</td><td>I keep provider-specific sessions and response formats outside channels and durable household records.</td></tr>
-<tr><td>Markdown knowledge before vector search</td><td>Less fuzzy retrieval, better debuggability</td><td>For early usage, grep-able source-of-truth files were more reliable than opaque embeddings.</td></tr>
-<tr><td>One household, attributed members</td><td>More identity and visibility rules, less duplicate context</td><td>Approved information can be shared without losing who requested or changed something.</td></tr>
-<tr><td>Risk-based confirmation rather than confirmation for every write</td><td>Routine automation stays usable, sensitive actions still pause</td><td>Scope describes where a tool acts; independently assigned risk determines whether a human must approve it.</td></tr>
-<tr><td>Markdown plus SQLite</td><td>Two storage models to maintain, clearer semantics and queries</td><td>Knowledge, evidence and operational lifecycle have different access patterns and should not be forced into one format.</td></tr>
-<tr><td>Authenticated chat for action approval</td><td>Monitored email is observational rather than autonomous</td><td>Untrusted message content can propose an action but cannot directly modify state or contact an external recipient.</td></tr>
-<tr><td>Runtime database with portable snapshots</td><td>More export and restore machinery, no database becomes the only copy</td><td>Operational queries stay fast while checksummed JSON preserves a provider-neutral recovery path.</td></tr>
+<tr><td>Provider adapters behind one complete-turn contract</td><td data-label="Trade-off">More adapter code, consistent tools and permissions across hosted and local models</td><td data-label="Why">I keep provider-specific sessions and response formats outside channels and durable household records.</td></tr>
+<tr><td>Markdown knowledge before vector search</td><td data-label="Trade-off">Less fuzzy retrieval, better debuggability</td><td data-label="Why">For early usage, grep-able source-of-truth files were more reliable than opaque embeddings.</td></tr>
+<tr><td>One household, attributed members</td><td data-label="Trade-off">More identity and visibility rules, less duplicate context</td><td data-label="Why">Approved information can be shared without losing who requested or changed something.</td></tr>
+<tr><td>Risk-based confirmation rather than confirmation for every write</td><td data-label="Trade-off">Routine automation stays usable, sensitive actions still pause</td><td data-label="Why">Scope describes where a tool acts; independently assigned risk determines whether a human must approve it.</td></tr>
+<tr><td>Markdown plus SQLite</td><td data-label="Trade-off">Two storage models to maintain, clearer semantics and queries</td><td data-label="Why">Knowledge, evidence and operational lifecycle have different access patterns and should not be forced into one format.</td></tr>
+<tr><td>Authenticated chat for action approval</td><td data-label="Trade-off">Monitored email is observational rather than autonomous</td><td data-label="Why">Untrusted message content can propose an action but cannot directly modify state or contact an external recipient.</td></tr>
+<tr><td>Runtime database with portable snapshots</td><td data-label="Trade-off">More export and restore machinery, no database becomes the only copy</td><td data-label="Why">Operational queries stay fast while checksummed JSON preserves a provider-neutral recovery path.</td></tr>
 </tbody>
 </table>
 </section>
