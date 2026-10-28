@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "728cc8f77d64c01d7d5643ed2be218840afc7a98439f8cbf6b6df9646930162f",
+  "artifact_sha256": "c1ec42e1e7b241dcc793bae627e194a5237336d2c39a3af1cf6c9c5486e7c5cc",
   "files": [
     {
       "path": ".nojekyll",
@@ -884,8 +884,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 9968,
-      "sha256": "7f6b9b668bf520bc0dc9a652d9f89a95419a6827167274267bbd7629b23448f7"
+      "bytes": 10034,
+      "sha256": "c2c616ae9c74f139b298c8975e9a7852254e7a992e1a2ba42fa588c5df58f5f6"
     },
     {
       "path": "leadership.html",
@@ -894,23 +894,23 @@
     },
     {
       "path": "posts/ai-makes-building-easy-production-is-hard.html",
-      "bytes": 16889,
-      "sha256": "7e3ba9061b86c38bfbb627dcb3f868c2e20ea0e5fdaf7d947b8beed3237b6a5d"
+      "bytes": 16934,
+      "sha256": "10df3d3e51ac902d2094826e485170a83e7819e7e79ba6dd53fe0c39dc6b6e6b"
     },
     {
       "path": "posts/before-you-remove-code-review-name-the-risk.html",
-      "bytes": 19813,
-      "sha256": "a949d37c4cd71c94a724271e98b83e7cc36472ce5cccace2cc4b9466b17eece6"
+      "bytes": 19834,
+      "sha256": "d1950ab290adf82e142fd9a6581718055c80330c8f3dc958fac4402fbdcfd2fd"
     },
     {
       "path": "posts/career-ladder-should-reduce-surprises.html",
-      "bytes": 17495,
-      "sha256": "75a894c28000804ecdd814177bc42b7e93d164883a5bda69d032eb057e0e7501"
+      "bytes": 17536,
+      "sha256": "fc2609dd3ee2487156926dae6edaa75f0086154269e840a333e7568b6d43e612"
     },
     {
       "path": "posts/feedback-is-the-performance-system.html",
-      "bytes": 17514,
-      "sha256": "c5a5a577ce6b74fc8d4a4413c661d2787535719072b397cac7c8d5cf709b66b2"
+      "bytes": 17531,
+      "sha256": "6bf92f9c109849b55e35cdb8a9f5ad63d7ae6bcd08fd8fefc3c3c70616746a82"
     },
     {
       "path": "posts/make-improvement-plans-winnable.html",
@@ -919,18 +919,18 @@
     },
     {
       "path": "posts/prioritization-is-constraint-management.html",
-      "bytes": 11951,
-      "sha256": "771a5078af0319006d7f65e9e79577cc4002c1aae1949886aa2ee868639b1db9"
+      "bytes": 12001,
+      "sha256": "8fa95d6a0dbcce26f5667dcc39a50af3842b0aaa61dcb47420ab9d8e4eb9149d"
     },
     {
       "path": "posts/technical-direction-is-not-a-technology-decision.html",
-      "bytes": 7805,
-      "sha256": "93b6cf7fa78e6f36837fbfc3176a17b2c923fb173c1f835b4a9a15a1a3ec5034"
+      "bytes": 7822,
+      "sha256": "e1765ece7cb5e33092cdc247a2b6f9c8a77a30385ea49702687da92e0b6872b1"
     },
     {
       "path": "posts/use-ai-to-find-evidence-not-score-engineers.html",
-      "bytes": 22959,
-      "sha256": "efee2dccd67145e7cece2b5c19015dab95931f69ad579563a7d425ebe325ccd7"
+      "bytes": 23009,
+      "sha256": "efe0b827f4496bc2d0cae4eed55083932eb00dc2468494e2350601d8964c02bb"
     },
     {
       "path": "projects/accounting-agent.html",
@@ -989,8 +989,8 @@
     },
     {
       "path": "writing.html",
-      "bytes": 12600,
-      "sha256": "97b47fb57a03eab68391792d81b8240fb2bc1288b82c6e6654e268202ff30276"
+      "bytes": 12841,
+      "sha256": "961e348746940577feb6addec692160281333d1961ac1536925b69ed4d61a396"
     }
   ]
 }
