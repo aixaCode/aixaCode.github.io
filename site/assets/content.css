@@ -321,7 +321,10 @@ html[data-theme="dark"] .workflow-track .review { background: #291b0d; color: #f
   .toc { position: static; margin: 0 0 40px; padding: 20px 0 0; border-left: 0; border-top: 1px solid var(--line); }
   .decision-table, .decision-table thead, .decision-table tbody, .decision-table tr, .decision-table th, .decision-table td { display: block; width: 100%; }
   .decision-table thead { display: none; }
-  .decision-table tr { margin-bottom: 16px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 2px 24px 2px 2px; background: var(--card); }
+  .decision-table tr { position: relative; margin-bottom: 30px; padding: 26px 22px 20px; border: 0; border-radius: 2px 2px 14px 2px; background: var(--white, var(--card)); box-shadow: 0 1px 0 var(--line), 0 12px 24px -18px rgba(76,51,44,.5); }
+  .decision-table tbody tr:nth-child(even) { background: var(--butter, #fbf0c8); box-shadow: 0 1px 0 var(--butter-line, #e8d79e), 0 12px 24px -18px rgba(76,51,44,.5); }
+  .decision-table tr::before { content: ''; position: absolute; top: -10px; left: 50%; width: 80px; height: 20px; margin-left: -40px; background: var(--tape, rgba(233,185,165,.62)); transform: rotate(-3deg); }
+  .decision-table table, .decision-table { margin-top: 36px; }
   .decision-table td { padding: 12px 0 0; border: 0; font-size: .95rem; line-height: 1.55; color: var(--subtle); }
   .decision-table td:first-child { padding: 0 0 4px; font-family: var(--serif); font-size: 1.55rem; line-height: 1.15; color: var(--fg); }
   .decision-table td[data-label]::before { content: attr(data-label); display: block; margin-bottom: 4px; color: var(--accent); font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; }

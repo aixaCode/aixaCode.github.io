@@ -130,11 +130,27 @@
 @media(max-width:860px){.content-page .lead-hero{grid-template-columns:1fr;gap:36px}.lead-photo{max-width:380px}.leadership-pillars{grid-template-columns:1fr}}
 @media(max-width:720px){.content-page .callout.note{transform:none;margin-left:0}}
 .content-page figcaption a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
-.question-cards{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-.question-card{background:var(--white);border:1px solid var(--rule);border-radius:2px 28px 2px 2px;padding:26px 28px;display:flex;flex-direction:column;gap:14px}
+.question-cards{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 30px}
+.question-card{position:relative;background:var(--white);border-radius:2px 2px 14px 2px;padding:32px 30px 26px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 0 var(--rule),0 12px 24px -18px rgba(76,51,44,.5);transform:rotate(-.5deg)}
+.question-card:nth-child(4n+2),.question-card:nth-child(4n+3){background:var(--butter);box-shadow:0 1px 0 var(--butter-line),0 12px 24px -18px rgba(76,51,44,.5)}
+.question-card:nth-child(even){transform:rotate(.5deg)}
+.question-card::before{content:'';position:absolute;top:-11px;left:50%;width:84px;height:22px;margin-left:-42px;background:var(--tape);transform:rotate(-3deg)}
+.question-card:nth-child(even)::before{transform:rotate(2deg)}
 .question-card p{margin:0}
 .question-pattern{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
 .question-ask{font-family:var(--serif);font-size:28px;line-height:1.15;color:var(--ink)}
-.question-watch{margin-top:auto!important;padding-top:14px;border-top:1px dashed var(--rule);font-size:15px;line-height:1.55;color:var(--muted)}
+.question-watch{margin-top:auto!important;padding-top:14px;border-top:1px dashed var(--line-strong);font-size:15px;line-height:1.55;color:var(--muted)}
 .question-watch span{font-weight:600;color:var(--ink)}
-@media(max-width:720px){.question-cards{grid-template-columns:1fr;gap:16px}.question-card{padding:22px}.question-ask{font-size:25px}}
+@media(max-width:720px){.question-cards{grid-template-columns:1fr;gap:34px}.question-card{padding:28px 22px 22px}.question-card,.question-card:nth-child(even){transform:none}.question-card:nth-child(4n+2),.question-card:nth-child(4n+3){background:var(--white);box-shadow:0 1px 0 var(--rule),0 12px 24px -18px rgba(76,51,44,.5)}.question-card:nth-child(even){background:var(--butter);box-shadow:0 1px 0 var(--butter-line),0 12px 24px -18px rgba(76,51,44,.5)}.question-ask{font-size:25px}}
+.cv-page .contact a{color:var(--accent);text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:4px}
+.cv-page .contact a:hover{text-decoration-color:currentColor}
+@media(max-width:720px){.cv-page .contact{flex-direction:row;flex-wrap:wrap;gap:8px 18px;font-size:14px;line-height:1.5}.cv-page .contact>span{flex-basis:100%}.cv-page .subtitle{font-size:17px;line-height:1.5}}
+/* CV header: taped role note */
+.cv-page .subtitle{position:relative;display:inline-block;margin-top:30px;padding:16px 22px 14px;background:var(--butter);color:var(--ink);border-radius:2px 2px 12px 2px;box-shadow:0 1px 0 var(--butter-line),0 10px 20px -16px rgba(76,51,44,.45);transform:rotate(-.6deg)}
+.cv-page .subtitle::before{content:'';position:absolute;top:-10px;left:28px;width:70px;height:20px;background:var(--tape);transform:rotate(-4deg)}
+@media(max-width:720px){.cv-page .subtitle{transform:none}}
+/* Case studies: sparkle bullets and paper tables, matching Leadership */
+.content-page .case-section ul:not([class]){list-style:none;padding-left:0;display:grid;gap:14px}
+.content-page .case-section ul:not([class])>li{position:relative;padding-left:30px}
+.content-page .case-section ul:not([class])>li::before{content:'';position:absolute;left:0;top:.45em;width:15px;height:15px;background:var(--accent);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z'/%3E%3Cpath d='M19 16.5v3M17.5 18h3'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z'/%3E%3Cpath d='M19 16.5v3M17.5 18h3'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+@media(min-width:721px){.content-page .decision-table{background:var(--white);border-radius:2px 2px 14px 2px;box-shadow:0 1px 0 var(--rule),0 14px 28px -22px rgba(76,51,44,.5)}.content-page .decision-table th,.content-page .decision-table td{padding:16px 18px}.content-page .decision-table thead th{color:var(--accent);border-bottom:1px dashed var(--line-strong)}.content-page .decision-table tbody td{border-bottom:1px dashed var(--rule)}.content-page .decision-table tbody tr:last-child td{border-bottom:0}.content-page .decision-table tbody td:first-child{font-family:var(--serif);font-size:1.3rem;line-height:1.2;color:var(--ink)}}
