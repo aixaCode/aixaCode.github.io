@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "e97bbc901ea42298aa5b82d25d9480dc4af43241c61c4a0c72c1b5c3d227571d",
+  "artifact_sha256": "a1dd495a9ee4e95a99969ab611c2e5afefef83b060ea730139aef17ee8a65434",
   "files": [
     {
       "path": ".nojekyll",
@@ -964,23 +964,23 @@
     },
     {
       "path": "projects/accounting-agent.html",
-      "bytes": 14164,
-      "sha256": "bb4d2ecb4d00b8d1fd43991e9d6f8b68c1a6d209a65a506bb33e3760bb17936b"
+      "bytes": 13781,
+      "sha256": "d049f82f59891094a267addd285e1705ebc15bfdb9ffaed53b31a4dd3915c842"
     },
     {
       "path": "projects/ai-personal-assistant.html",
-      "bytes": 21680,
-      "sha256": "e1d38bdf7c2ab8649c030a2ab49855ca797807971ab9705d9281ff668bde244e"
+      "bytes": 20117,
+      "sha256": "c46118f587ca5a704544349b1e9d6428fd489009a34ff8105000c2110f04e9bf"
     },
     {
       "path": "projects/animal-park-management.html",
-      "bytes": 16062,
-      "sha256": "205f181e2a111226c3c0a768c7aed024d3b3d811b3250c5d1c18b312e225cce0"
+      "bytes": 15123,
+      "sha256": "6bd2dd233b692b5c3059733c9a5461a801c513607e4f5bbadc979f945d89ec0e"
     },
     {
       "path": "projects/engineering-platform.html",
-      "bytes": 11186,
-      "sha256": "1c8e2fb593a2001b995e81c981070e11edc43e60d5231367a24cefc667b4b728"
+      "bytes": 10711,
+      "sha256": "b22aaa989cd1553ceaca4fa7576adb6c29dcff7be7f94cef1f2014012c4d38ae"
     },
     {
       "path": "projects/index.html",
@@ -989,18 +989,18 @@
     },
     {
       "path": "projects/launcher.html",
-      "bytes": 8948,
-      "sha256": "c5c6e3d2bb3e082f6788b02366b18343dbecf7272a96781b4f833a4b656890b9"
+      "bytes": 8824,
+      "sha256": "7c4b6fe2bbc1fda6cc3f8f28b02f2d284bca8411a8b930e378cca78a4b50a8a5"
     },
     {
       "path": "projects/scaling-engineering-org.html",
-      "bytes": 10978,
-      "sha256": "f6f5cede7b1236d358123247c7183d17fa5b0d03ee99c7f133195219d6b18af2"
+      "bytes": 10742,
+      "sha256": "5839310d9cb676c082a7a23d9b78bab7c4c1c381efb366ef548f14a54897d29a"
     },
     {
       "path": "projects/unity-explorer.html",
-      "bytes": 13012,
-      "sha256": "1bfd631a9c4bb213dc4482e2756643b43bd7c25ec58a59696e0b24e50cc0f1b4"
+      "bytes": 12316,
+      "sha256": "cf76083ea4c0bc919df3e7b8e7609cfa9b92aed174146d2514aa695413ee4e58"
     },
     {
       "path": "robots.txt",

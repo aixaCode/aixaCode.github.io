@@ -11,7 +11,7 @@
 <div>
 <section class="case-section" id="overview">
 <h2>Overview</h2>
-<p>Animal Park is a full iOS and Android game build rather than a single feature demo. The backend supports player progress, inventory and map state, public profiles, clubs, club chat, tournaments, remote configuration and environment-specific deployment. The Unity/C# client is built as IL2CPP artefacts for Android and iOS, with separate development, staging and production environments.</p>
+<p>The backend handles player progress, inventory and map state, public profiles, clubs, club chat, tournaments, remote configuration and environment-specific deployment.</p>
 <p>The engineering challenge is the normal one in live games: keep iteration fast without letting saves, social systems or live configuration become unsafe or inconsistent.</p>
 <figure class="game-shots"><ul><li><img src="../assets/images/animal-park/screen-1.webp" alt="Park view with enclosures, paths and animals" width="332" height="720" loading="lazy" decoding="async"/></li><li><img src="../assets/images/animal-park/screen-5.webp" alt="Tile-matching puzzle board with level goals" width="332" height="720" loading="lazy" decoding="async"/></li><li><img src="../assets/images/animal-park/screen-6.webp" alt="Club chat with messages from other players" width="332" height="720" loading="lazy" decoding="async"/></li><li><img src="../assets/images/animal-park/screen-8.webp" alt="Event map with a timed challenge" width="332" height="720" loading="lazy" decoding="async"/></li></ul><figcaption>Store screenshots from the Animal Park press kit.</figcaption></figure></section>
 <section class="case-section" id="requirements">
@@ -50,13 +50,13 @@
 </section>
 <section class="case-section" id="client">
 <h2>Unity client &amp; release automation</h2>
-<p>The Unity/C# client is built as IL2CPP artefacts for Android and iOS, with separate development, staging and production environments. Gameplay code is organised by domain — core simulation, level generation, online services, rewards and collection, ads/analytics/IAP integrations, UI — with editor tests alongside. Content ships through Addressables with separate dev and production build layouts, so asset iteration does not require client releases.</p>
-<p>The DevOps path is the part that makes a one-studio game operable. TeamCity drives the Unity builds through a custom editor build layer (build manifests, build tags and TeamCity service-message integration live in the project as code). fastlane owns everything store-facing:</p>
+<p>The Unity/C# client is built as IL2CPP artefacts for Android and iOS, with separate development, staging and production environments. Gameplay code is organised by domain (core simulation, level generation, online services, rewards and collection, ads, analytics and IAP, UI), with editor tests alongside. Content ships through Addressables with separate dev and production build layouts, so asset iteration does not require client releases.</p>
+<p>The build and release path is what lets one person run the game. TeamCity drives the Unity builds through a custom editor build layer (build manifests, build tags and TeamCity service-message integration live in the project as code). fastlane owns everything store-facing:</p>
 <ul>
-<li><strong>Dev distribution</strong> — Firebase App Distribution with generated changelogs per build.</li>
-<li><strong>iOS</strong> — Xcode build lanes and TestFlight upload via App Store Connect API keys.</li>
-<li><strong>Android</strong> — Google Play upload and track promotion from testing to production.</li>
-<li><strong>Operations</strong> — git tagging per build and Crashlytics dSYM symbol upload, so crash reports stay symbolicated.</li>
+<li><strong>Dev distribution:</strong> Firebase App Distribution with generated changelogs per build.</li>
+<li><strong>iOS:</strong> Xcode build lanes and TestFlight upload via App Store Connect API keys.</li>
+<li><strong>Android:</strong> Google Play upload and track promotion from testing to production.</li>
+<li><strong>Operations:</strong> git tagging per build and Crashlytics dSYM symbol upload, so crash reports stay symbolicated.</li>
 </ul>
 </section>
 <section class="case-section" id="how-i-build">
@@ -92,7 +92,7 @@ await db.runTransaction(async (transaction) =&gt; {
 <tbody>
 <tr><td>Firebase Cloud Functions and Firestore</td><td>Fast to build, good fit for mobile backend iteration and authenticated callable APIs.</td><td>Requires care around query shape, transactions and document-level consistency.</td></tr>
 <tr><td>Callable modules by feature</td><td>Keeps progress, clubs, chat, tournaments and config understandable as separate domains.</td><td>Shared invariants must be kept in utilities and tests to avoid drift.</td></tr>
-<tr><td>Remote config by version</td><td>Lets the game tune behaviour without client releases.</td><td>Configuration becomes part of production state and needs discipline.</td></tr>
+
 <tr>
 <td>No always-warm server for new players</td>
 <td>Keeps hosting cost in line with uneven traffic.</td>
@@ -103,13 +103,7 @@ await db.runTransaction(async (transaction) =&gt; {
 </section>
 <section class="case-section" id="results">
 <h2>Current state</h2>
-<ul>
-<li>Live on iOS and Android; the latest store releases are version 1.1.20.</li>
-<li>End-to-end mobile build path across Unity client, backend functions, Addressables content and store-facing release automation.</li>
-<li>Server-side ownership for the risky paths: saves, club membership, chat and tournament score updates.</li>
-<li>Separated dev, stage and production environments so backend and client changes can be tested without touching live state.</li>
-<li>Release automation covers generated changelogs, TestFlight, Google Play tracks and Crashlytics symbol upload.</li>
-</ul>
+<p>Live on iOS and Android; the latest store release is version 1.1.20.</p>
 </section>
 <section class="case-section" id="lessons">
 <h2>Lessons learned</h2>

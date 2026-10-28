@@ -2,7 +2,7 @@
 <section class="hero">
 <p class="eyebrow mono"> Architecture case study</p>
 <h1>Folder-First Company Accounts</h1>
-<p class="lead">I built a private, folder-first system for company and personal financial records. The important part is that the records remain understandable and useful without this application, a database or a particular AI provider.</p>
+<p class="lead">I built a private, folder-first system for company and personal financial records. The records stay understandable and useful without this application, a database or a particular AI provider.</p>
 <p class="stack">Python / original PDF, CSV and XLSX evidence / portable JSON and Markdown / deterministic accounting rules / AI-assisted document reading / reproducible reports / Proxmox LXC</p>
 <div aria-label="Project topics" class="topic-tags"><a href="index.html?filter=ai">AI</a></div>
 <div class="actions"><span class="meta">Internal/private system. Implementation details are based on local project code.</span><a class="btn" href="index.html">All projects</a></div>
@@ -41,11 +41,11 @@
 <table class="decision-table">
 <thead><tr><th>Component</th><th>Responsibility</th><th>Design choice</th></tr></thead>
 <tbody>
-<tr><td><code>fx.py</code></td><td>Converts non-GBP transactions to GBP.</td><td>No external FX API: month-level rates are derived from the statements' own conversion rows, falling back to the latest prior rate, then an explicit configured approximation.</td></tr>
+<tr><td><code>fx.py</code></td><td>Converts non-GBP transactions to GBP.</td><td>No external FX API; rates come from the statements' own conversion rows.</td></tr>
 <tr><td><code>categorize.py</code> + <code>rules.py</code></td><td>Categorises every transaction.</td><td>First matching rule wins; refund pairing nets same-merchant debit/credit pairs so they drop off the P&amp;L but stay visible to the accountant, flagged with the paired transaction id.</td></tr>
-<tr><td><code>match suggestions</code></td><td>Suggests transaction ↔ invoice matches.</td><td>Unmatched transactions are processed in chunks of up to 25 and cached per transaction. A failed chunk is retried later without discarding successful results.</td></tr>
+<tr><td><code>match suggestions</code></td><td>Suggests transaction ↔ invoice matches.</td><td>Batched and cached per transaction.</td></tr>
 <tr><td><code>tax.py</code></td><td>P&amp;L and finance/tax estimates.</td><td>Applicable tax rules come from period-specific profiles; outputs remain explicitly labelled as estimates and personal records stay outside company calculations.</td></tr>
-<tr><td><code>corrections.py</code></td><td>Sanctioned manual fixes for misfiled, mismatched or double-counted invoices.</td><td>Pure file and cache surgery — no AI calls and no accounting maths in the module.</td></tr>
+<tr><td><code>corrections.py</code></td><td>Sanctioned manual fixes for misfiled, mismatched or double-counted invoices.</td><td>Only file moves and cache changes: no AI calls and no accounting maths.</td></tr>
 <tr><td>Document index</td><td>Records content identity, source path, file metadata, entity or person ownership and accounting period.</td><td>The JSON index is rebuilt from canonical originals and supports deterministic path-based discovery; richer extracted metadata remains a separate evolving layer.</td></tr>
 <tr><td>Lossless intake</td><td>Inspects every dropped file, hashes its bytes and routes it to canonical storage, review or failure.</td><td>Duplicate, unsupported and ambiguous files are preserved in explicit states with manifests and move journals.</td></tr>
 <tr><td>Entity profiles</td><td>Define period boundaries, reporting currency, statement formats and enabled calculations.</td><td>Unsupported jurisdictional calculations fail closed until the policy is validated.</td></tr>
@@ -88,7 +88,7 @@ journal("complete", source, destination, digest)</code></pre>
 <section class="case-section" id="lessons">
 <h2>Lessons learned</h2>
 <ul>
-<li>AI is useful for reading untidy documents. It should not quietly turn a suggestion into an accounting decision.</li>
+
 <li>I trust small, inspectable scripts more than a general agent with broad permissions.</li>
 <li>The durable product is the organised evidence and its contracts. The dashboard is useful, but it is still only a view.</li>
 </ul>

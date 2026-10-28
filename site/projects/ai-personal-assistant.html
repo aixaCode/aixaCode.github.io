@@ -17,18 +17,7 @@
 </section>
 <section class="case-section" id="requirements">
 <h2>Requirements</h2>
-<ul>
-<li>Run locally on a developer-controlled machine, with private workspace data outside the Git repository.</li>
-<li>Serve one household with stable, attributed members and shared approved information.</li>
-<li>Support hosted and local models through explicit provider adapters and configured fallback routes.</li>
-<li>Execute tools only through deterministic authorization, not through prompt instruction alone.</li>
-<li>Support CLI, private Telegram, email ingress and calendar-aware workflows without losing conversation continuity.</li>
-<li>Produce an auditable execution history for tool decisions and confirmations.</li>
-<li>Accept concurrent messages durably and recover unfinished work after model limits, process restarts or infrastructure failure.</li>
-<li>Keep permanent knowledge, original documents and approved interpretations human-readable and recoverable.</li>
-<li>Keep embeddings, indexes and dashboards replaceable; preserve operational records with verified backups and exports.</li>
-<li>Let a family propose and improve readable skills through conversation, with versioning, checks, approval and rollback.</li>
-</ul>
+<ul><li>Run on hardware I control, with private household data outside the Git repository.</li><li>Serve one household with stable, attributed members and shared approved information.</li><li>Work with hosted and local models through explicit adapters, with no silent provider switch.</li><li>Let code, not the prompt, decide which tools may run, and keep an auditable record of those decisions.</li><li>Accept messages durably across CLI, Telegram and email, and recover unfinished work after model limits, restarts or failures.</li><li>Keep permanent knowledge and original documents human-readable; treat indexes and dashboards as replaceable.</li><li>Let the family propose and improve skills through conversation, with checks, approval and rollback.</li></ul>
 </section>
 <section class="case-section" id="architecture">
 <h2>Architecture</h2>
@@ -48,14 +37,14 @@
 <div class="spec-grid">
 <div class="spec"><h3>Interaction contract</h3><p>Every channel supplies the same member, source, conversation, attachment and capability context to the runtime.</p></div>
 <div class="spec"><h3>Family identity</h3><p>External channel identities map to stable household members. Conversations stay separate and actions remain attributable.</p></div>
-<div class="spec"><h3>Model providers</h3><p>Provider adapters own the complete tool-using turn. Fallback is limited to configured routes; it does not authorize an arbitrary provider change or expand tool permissions.</p></div>
+<div class="spec"><h3>Model providers</h3><p>Provider adapters own the complete tool-using turn. Fallback is limited to configured routes; it does not authorise an arbitrary provider change or expand tool permissions.</p></div>
 <div class="spec"><h3>Permission engine</h3><p><code>src/permissions.ts</code> evaluates tool metadata, asks for human confirmation when required and logs allow/deny decisions.</p></div>
 <div class="spec"><h3>Safe file layer</h3><p><code>src/files.ts</code> blocks traversal and symlink escapes. Dedicated handlers then narrow writes to their own notes, knowledge, document, memory or skill locations.</p></div>
 <div class="spec"><h3>Durable intake</h3><p><code>src/durable-jobs.ts</code> persists Telegram messages, PDFs and email before processing. It deduplicates message IDs, recovers interrupted jobs and applies bounded retry with subscription-reset awareness.</p></div>
-<div class="spec"><h3>Capability catalogue</h3><p>Capabilities group tools with the settings, storage, workers and health checks they require. Configuration can disable them; only the permission gate can authorize them.</p></div>
+<div class="spec"><h3>Capability catalogue</h3><p>Capabilities group tools with the settings, storage, workers and health checks they require. Configuration can disable them; only the permission gate can authorise them.</p></div>
 <div class="spec"><h3>Versioned skills</h3><p>Conversational changes create inspectable proposals. Checks and human approval activate an exact immutable version; rollback preserves history.</p></div>
 <div class="spec"><h3>Document pipeline</h3><p>Original evidence is retained alongside a validated, versioned JSON record with provenance, ambiguities and correction history. Integrations consume that portable boundary.</p></div>
-<div class="spec"><h3>Telegram state</h3><p><code>src/telegram-state.ts</code> persists sessions and reminders, serializes each conversation and lets confirmation replies unblock an active tool call. Shared scheduled work executes once before delivery to multiple recipients.</p></div>
+<div class="spec"><h3>Telegram state</h3><p><code>src/telegram-state.ts</code> persists sessions and reminders, serialises each conversation and lets confirmation replies unblock an active tool call. Shared scheduled work executes once before delivery to multiple recipients.</p></div>
 <div class="spec"><h3>Portable storage</h3><p>Markdown, original files and versioned JSON hold permanent information. Search indexes and dashboard views are replaceable projections. Lifecycle-bearing runtime records require their own verified backups and exports.</p></div>
 <div class="spec"><h3>Configuration boundary</h3><p>A validated, secret-free configuration describes household identity, providers, storage and enabled capabilities. Migration and activation are explicit.</p></div>
 <div class="spec"><h3>Recovery</h3><p>SQLite stores runtime and lifecycle state. Versioned, checksummed JSON exports provide a portable recovery route, but original documents alone do not replace backups of operational records. Restore must be verified against a new empty database.</p></div>
@@ -74,7 +63,7 @@ if (attachments.some(isPdf)) {
   throw new Error(`${providerId} cannot read PDF documents.`);
 }</code></pre>
 <p>The generic tool-loop runtime converts each tool's Zod schema to JSON Schema, validates returned arguments before calling the handler, limits the number of turns, aborts on timeout and refuses unavailable tools. I keep provider sessions behind application-owned IDs, so channel records do not inherit a provider's identity model.</p>
-<p>For documents, I use content-addressed extraction revisions. A revision ID hashes the original bytes, extractor identity, extractor version and normalized payload. Approval re-hashes the source, rejects unresolved ambiguity and supersedes the previous approved revision:</p>
+<p>For documents, I use content-addressed extraction revisions. A revision ID hashes the original bytes, extractor identity, extractor version and normalised payload. Approval re-hashes the source, rejects unresolved ambiguity and supersedes the previous approved revision:</p>
 <pre class="code-block" data-label="pseudo-code"><code>revisionId = sha256({
   sourceSha256,
   extractor,
@@ -111,7 +100,7 @@ approve only if currentSourceHash === sourceSha256
 </section>
 <section class="case-section" id="runs">
 <h2>Where it runs</h2>
-<p>Luke runs on a small home server next to the house automations and my finance tools, each in its own container. The same machine serves this website. Releases are versioned, so a bad deploy can go back to the previous working version.</p><p>Local control is the main path. The house keeps working without the internet, and remote access is a narrow, optional path into the local controller. Anything important keeps a physical fallback, because a bad deployment here can turn off a light somebody is using.</p><p>Admin access to the server is time-boxed. Coding agents can always inspect it read-only, but root needs a tap from me, and agents cannot change their own access rules.</p>
+<p>Luke runs in its own container on a small home server. Releases are versioned, so a bad deploy can go back to the previous working version.</p><p>The house keeps working without the internet. Anything important keeps a physical fallback, because a bad deployment here can turn off a light somebody is using.</p><p>Admin access to the server is time-boxed. Coding agents can always inspect it read-only, but root needs a tap from me, and agents cannot change their own access rules.</p>
 <figure class="article-figure sketch-flow-figure project-flow-figure">
 <h3 class="diagram-title">Local control is the main path. Remote access is optional.</h3>
 <picture>
@@ -124,19 +113,7 @@ approve only if currentSourceHash === sourceSha256
 <section class="case-section" id="results">
 <h2>Where it is now</h2>
 <p>Between June and October 2026 the project went through more than 1,000 commits, with a dated decision log of about 2,900 lines.</p>
-<ul>
-<li>CLI, private Telegram and allow-listed email intake working with durable session resume and persistent request queuing.</li>
-<li>Stable member identities implemented across channels, attachments and scheduled work.</li>
-<li>Permission gate, safe file layer and append-only audit log implemented in code.</li>
-<li>Google Calendar, Telegram-first email drafts, structured reminders, accounting intake, document organisation and skill-loading tools integrated behind the same authorization path.</li>
-<li>Queryable operational objects and provenance-aware facts separate active commitments from narrative knowledge.</li>
-<li>Concurrent requests, subscription limits and restarts no longer require users to resend accepted work.</li>
-<li>Shared scheduled routines execute once and fan out to all intended recipients.</li>
-<li>Security and reliability tests cover configuration, permissions, safe files, calendar, email, durable jobs, operational state and Telegram state.</li>
-<li>Agent SDK and generic chat-completions provider loops implemented behind the same permission-gated capability registry.</li><li>The codebase includes authenticated web interactions and a household dashboard with read-only projections and narrowly defined commands, alongside CLI, Telegram and email.</li>
-<li>Universal document records preserve original evidence, extraction revisions, approval and correction history.</li>
-<li>Conversational skills can be proposed, checked, approved, versioned and rolled back without changing code-level permissions.</li>
-</ul>
+<ul><li>CLI, private Telegram and allow-listed email intake, with durable session resume and request queuing.</li><li>Stable member identities across channels, attachments and scheduled work.</li><li>Permission gate, safe file layer and append-only audit log in code, with security and reliability tests around them.</li><li>Calendar, email drafts, reminders, accounting intake and document tools behind the same permission path.</li><li>Skills that can be proposed, checked, approved, versioned and rolled back without changing code-level permissions.</li></ul>
 </section>
 <section class="case-section" id="lessons">
 <h2>Lessons</h2>

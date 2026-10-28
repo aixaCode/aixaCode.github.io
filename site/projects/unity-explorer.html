@@ -16,7 +16,7 @@
 <figure class="product-shot"><img src="../assets/images/decentraland/explorer-in-world.webp" alt="Two avatars in Decentraland outside a neon-lit theatre, one in a space suit and one glowing with stars and planets" width="1600" height="801" loading="lazy" decoding="async"/><figcaption>Decentraland in the Unity Explorer client. Image from decentraland.org.</figcaption></figure></section>
 <section class="case-section" id="goals">
 <h2>What changed</h2>
-<ul><li>Replaced an architecture that could not sustainably support the open-world direction with a modular Unity client designed around streaming, observability, creator content and release confidence.</li><li>Moved high-density social experiences toward Pulse's server-authoritative multiplayer model, targeting reliable shared state at approximately 100-user density.</li><li>Worked directly on the distributed asset-bundle converter: SQS-queued processing and headless Unity workers turn creator GLTF/GLB assets into optimised client content.</li><li>Moved performance work toward a stable 60 FPS with approximately 100 concurrent users while reducing CPU, memory and GPU memory pressure.</li><li>Connected telemetry to prioritisation: crashes, hangs, frame time, loading and release regressions became inputs to technical direction.</li><li>Improved release discipline to support approximately 75 public builds per year, including a 52-day period without a hotfix.</li></ul>
+<ul><li>Rebuilt the client as a modular Unity/C# application designed for streaming the world, creator content and weekly releases, with telemetry built in.</li><li>Moved busy social spaces to <a href="https://github.com/decentraland/Pulse">Pulse</a>, a server-authoritative multiplayer service, aiming for reliable shared state with about 100 people in one place.</li><li>Worked directly on the asset-bundle converter that turns creator GLTF/GLB assets into optimised client content.</li><li>Pushed performance towards a stable 60 FPS with about 100 concurrent users, cutting CPU, memory and GPU memory pressure along the way.</li><li>Connected telemetry to prioritisation: crashes, hangs, frame time, loading and release regressions became inputs to technical direction.</li><li>Tightened release discipline to about 75 public builds a year, including one 52-day run without a hotfix.</li></ul>
 </section>
 <section class="case-section" id="architecture">
 <h2>Architecture</h2>
@@ -40,7 +40,7 @@
 </section>
 <section class="case-section" id="creator-pipeline">
 <h2>Creator content pipeline</h2>
-<p>I worked directly on the asset-bundle converter that connects Decentraland's creator tools to the production client. Creators build scenes with the TypeScript SDK and publish their original GLTF/GLB assets to Catalyst. Catalyst remains the content-addressed source of truth; optimisation is a derived, replaceable distribution step rather than a mutation of the creator's source content.</p>
+<p>The asset-bundle converter connects Decentraland's creator tools to the production client. Creators build scenes with the TypeScript SDK and publish their original GLTF/GLB assets to Catalyst. Catalyst stays the content-addressed source of truth.</p>
 <figure class="article-figure sketch-flow-figure project-flow-figure">
 <h3 class="diagram-title">Creator source stays intact while a replaceable pipeline optimises delivery.</h3>
 <picture>
@@ -49,8 +49,8 @@
 </picture>
 <figcaption>Optimisation creates replaceable delivery assets; it does not mutate the creator's published source. Explorer can still fall back to the original content.</figcaption>
 </figure>
-<p>The dependency graph matters because changes cross several ownership boundaries: SDK contracts shape creator output, Catalyst owns canonical content and manifests, the converter produces platform-specific derivatives, and Explorer consumes both the source metadata and optimised bundles. SQS decouples deployment from conversion, absorbs changes in demand and lets conversion capacity scale horizontally without blocking creators.</p>
-<p>The outcome is faster runtime loading and distribution of optimised content while preserving portable GLTF/GLB assets as the canonical source. If the optimisation strategy changes, bundles can be regenerated from Catalyst instead of asking creators to republish their scenes.</p>
+<p>The dependency graph matters because changes cross several ownership boundaries: SDK contracts shape creator output, Catalyst owns canonical content and manifests, the converter produces platform-specific derivatives, and Explorer consumes both the source metadata and optimised bundles.</p>
+<p>The result is faster loading without touching the creator's GLTF/GLB source. If the optimisation strategy changes, we regenerate bundles from Catalyst instead of asking creators to republish their scenes.</p>
 </section>
 <section class="case-section" id="hard-problems">
 <h2>Decisions that mattered</h2>
@@ -58,7 +58,7 @@
 </section>
 <section class="case-section" id="lessons">
 <h2>Lessons learned</h2>
-<ul><li>The rebuild became real when the new client could ship every week, not when the architecture looked complete.</li><li>CRDTs helped reconcile state but did not answer who held authority in multiplayer.</li><li>Peer-to-peer became too fragile as more players shared the same space.</li><li>Crash, loading and frame-time data gave us a better backlog than opinion alone.</li><li>For a social product, unreliable presence is a product failure.</li></ul>
+<ul><li>The rebuild became real when the new client could ship every week, not when the architecture looked complete.</li><li>For a social product, unreliable presence is a product failure.</li></ul>
 </section>
 </div>
 <aside class="toc">
