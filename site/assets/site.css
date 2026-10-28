@@ -71,3 +71,10 @@
 .game-over .about-actions a:first-child::before{content:'\25B6';margin-right:8px;font-size:.7em;vertical-align:1px;animation:blink 1.1s steps(2,start) infinite}
 @keyframes blink{to{visibility:hidden}}
 @media(max-width:720px){.article-body .q{transform:none;margin-inline:0;padding:26px 20px 22px}.article-body .pull{padding-left:36px}.about-tile{box-shadow:8px 8px 0 -2px var(--peach)}}
+.game-shots{margin:38px 0 8px}
+.game-shots ul{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin:0;padding:0;list-style:none}
+.game-shots img{width:100%;height:auto;border:6px solid var(--white);border-radius:22px;box-shadow:0 1px 0 var(--rule),0 14px 26px -18px rgba(76,51,44,.55);transform:rotate(-1.2deg)}
+.game-shots li:nth-child(even) img{transform:rotate(1.2deg)}
+.game-shots figcaption{margin-top:16px;color:var(--subtle);font-size:.82rem}
+@media(max-width:720px){.game-shots ul{grid-template-columns:repeat(2,1fr);gap:18px}.game-shots img{transform:none!important}}
+
