@@ -77,4 +77,21 @@
 .game-shots li:nth-child(even) img{transform:rotate(1.2deg)}
 .game-shots figcaption{margin-top:16px;color:var(--subtle);font-size:.82rem}
 @media(max-width:720px){.game-shots ul{grid-template-columns:repeat(2,1fr);gap:18px}.game-shots img{transform:none!important}}
+/* Code samples as small notebook editor cards. */
+.code-block{position:relative;margin:34px 0;padding:52px 0 0;border:1px solid var(--rule);border-radius:14px;background:var(--white);box-shadow:0 1px 0 var(--rule),0 16px 30px -24px rgba(76,51,44,.5);overflow:hidden}
+.code-block::before{content:'';position:absolute;top:0;left:0;right:0;height:38px;background:#f6e9dc;border-bottom:1px solid var(--rule);
+  background-image:radial-gradient(circle at 20px 19px,#e9b9a5 5px,transparent 5.5px),radial-gradient(circle at 38px 19px,#f1d89a 5px,transparent 5.5px),radial-gradient(circle at 56px 19px,#b9cfae 5px,transparent 5.5px)}
+.code-block[data-label]::after{content:attr(data-label);position:absolute;top:10px;left:78px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--muted)}
+.code-block code,.article-body .code-block code{display:block;padding:4px 24px 22px;overflow-x:auto;font-family:var(--mono);font-size:13.5px;line-height:1.55;color:var(--ink);white-space:pre}
+.article-body pre.code-block{padding:52px 0 0;background:var(--white);line-height:1.55}
+.tok-comment{color:#7f6a5b;font-style:italic}
+.tok-string{color:#5f7a4f}
+.tok-keyword{color:var(--accent);font-weight:500}
+.tok-key{color:#7a4f6d}
+/* Decision lists: a small sparkle per item instead of ruled lines. */
+.case-section .list-clean{border-top:0;display:grid;gap:22px;margin-top:8px}
+.case-section .list-clean li{position:relative;padding:0 0 0 30px;border-bottom:0;color:#6b574b;line-height:1.6}
+.case-section .list-clean li::before{content:'';display:inline-block;width:15px;height:15px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z'/%3E%3Cpath d='M19 16.5v3M17.5 18h3'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z'/%3E%3Cpath d='M19 16.5v3M17.5 18h3'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;position:absolute;left:0;top:5px;color:var(--accent)}
+.case-section .list-clean strong{display:block;margin-bottom:4px;color:var(--ink);font-weight:600}
+@media(max-width:720px){.code-block code,.article-body .code-block code{font-size:12.5px;padding:4px 18px 18px}.case-section .list-clean{gap:18px}}
 

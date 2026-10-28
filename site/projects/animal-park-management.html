@@ -66,7 +66,7 @@
 <section class="case-section" id="implementation">
 <h2>Implementation detail</h2>
 <p>The highest-risk backend paths are the ones where a client claims identity or ordering: chat, saves and tournament scores. Those paths use server-side membership checks, server timestamps, save-index validation and transactions instead of trusting client state.</p>
-<pre class="code-block"><code>// Score reporting is accepted only when the authenticated user
+<pre class="code-block" data-label="tournaments.js"><code>// Score reporting is accepted only when the authenticated user
 // belongs to the claimed club and the club is in the active tournament.
 if (!caller || caller.userData.clubId !== request.data.clubId) {
     return utils.err("permission-denied")
