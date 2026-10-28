@@ -101,3 +101,32 @@
 .product-shot-small img{max-width:620px}
 .product-shot figcaption{margin-top:16px;color:var(--subtle);font-size:.82rem}
 @media(max-width:720px){.product-shot img{transform:none}}
+/* About: linked focus titles, talks section, softer portrait frame. */
+.about-tile{border-radius:999px 999px 22px 22px;box-shadow:10px 10px 0 -2px var(--peach)}
+.focus-grid h3 a{color:inherit;text-decoration:none;background-image:linear-gradient(var(--accent),var(--accent));background-size:0 1.5px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .2s}
+.focus-grid h3 a:hover,.focus-grid h3 a:focus-visible{background-size:100% 1.5px}
+.about-talks{padding:72px 0 24px}
+.talks-grid{display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:56px;align-items:start;margin-top:34px}
+.talks-grid .product-shot{margin:0}
+.talks-list{list-style:none;margin:0;padding:0;display:grid;gap:30px}
+.talks-list li{display:grid;gap:6px;padding-left:30px;position:relative}
+.talks-list li::before{content:'';position:absolute;left:0;top:3px;width:16px;height:16px;background:var(--accent);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z'/%3E%3C/svg%3E") center/contain no-repeat}
+.talks-list strong{font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.2}
+.talks-list span:not(.label){color:var(--muted)}
+.talks-list .text-link{justify-self:start;margin-top:4px}
+@media(max-width:820px){.talks-grid{grid-template-columns:1fr;gap:36px}.talks-grid .product-shot{max-width:420px}}
+/* Leadership: photo in the hero, softer cards, sparkle lists, taped note. */
+.content-page .lead-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:64px;align-items:center}
+.lead-photo{margin:0}.lead-photo figcaption a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.leadership-pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
+.content-page .pillar{border-radius:16px;min-height:0;box-shadow:0 1px 0 var(--rule),0 14px 26px -22px rgba(76,51,44,.45)}
+.content-page .body-section .list-clean{border-top:0;display:grid;gap:22px;margin-top:8px;max-width:62ch}
+.content-page .body-section .list-clean li{position:relative;padding:0 0 0 30px;border-bottom:0;color:#6b574b;line-height:1.6}
+.content-page .body-section .list-clean li::before{content:'';width:15px;height:15px;background:var(--accent);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z'/%3E%3Cpath d='M19 16.5v3M17.5 18h3'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z'/%3E%3Cpath d='M19 16.5v3M17.5 18h3'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;position:absolute;left:0;top:6px}
+.content-page .body-section .list-clean strong{display:block;margin-bottom:4px;color:var(--ink);font-weight:600}
+.content-page .body-section .list-clean .text-link{display:inline-block;margin-top:6px;font-size:.9rem}
+.content-page .callout.note{position:relative;max-width:46ch;margin:40px 0 8px 12px;padding:30px 28px 24px;border:0;background:var(--butter,#f8ecc4);transform:rotate(-1deg);box-shadow:0 14px 24px -18px rgba(76,51,44,.5);font-size:1.05rem;color:var(--ink)}
+.content-page .callout.note::before{content:'';position:absolute;top:-11px;left:50%;width:92px;height:24px;margin-left:-46px;background:var(--tape,rgba(239,202,184,.75));transform:rotate(2deg)}
+@media(max-width:860px){.content-page .lead-hero{grid-template-columns:1fr;gap:36px}.lead-photo{max-width:380px}.leadership-pillars{grid-template-columns:1fr}}
+@media(max-width:720px){.content-page .callout.note{transform:none;margin-left:0}}
+.content-page figcaption a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
