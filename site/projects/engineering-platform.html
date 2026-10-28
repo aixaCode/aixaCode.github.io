@@ -12,7 +12,7 @@
 <section class="case-section" id="problem">
 <h2>Problem</h2>
 <p>With frequent releases, information was spread across GitHub, Sentry, Unity Cloud and several reports. I built one view for the questions I kept asking in priority and release reviews. Scheduled agents collect the data and prepare summaries, with links back to the underlying issues and pull requests.</p>
-</section>
+<figure class="product-shot"><img src="../assets/images/dashboard/sample-summary.webp" alt="Dashboard summary with a yellow health line, four headline numbers and two cards: what to know today and top risks" width="1600" height="750" loading="lazy" decoding="async"/><figcaption>The daily view, shown with made-up sample data.</figcaption></figure></section>
 <section class="case-section" id="checks">
 <h2>Checks on every pull request</h2>
 <div class="spec-grid">
@@ -57,7 +57,7 @@
 <li><strong>Operations:</strong> CI health, release deltas, Sentry signals, Unity Cloud build costs.</li>
 </ul>
 
-</section>
+<figure class="product-shot"><img src="../assets/images/dashboard/sample-charts.webp" alt="Four dashboard charts: release cadence, open pull requests by reason they wait, lead time to production and escaped defects per release" width="1600" height="856" loading="lazy" decoding="async"/><figcaption>Flow and quality charts from the same sample.</figcaption></figure></section>
 <section class="case-section" id="hard-problems">
 <h2>Decisions that mattered</h2>
 <ul class="list-clean"><li><strong>AI checks run before people, not instead of them.</strong> Every pull request still needs developer and QA approval. The AI check raises the floor before people spend attention.</li><li><strong>Ask for something concrete.</strong> A pass or fail, a pixel diff, a frame-time change. Output that repeatedly changed nothing in review was removed.</li><li><strong>Pin every metric definition.</strong> Each metric has a fixed formula, window and exclusions, recorded next to the code. When a definition changes, the next report says so, so a delta is never a quiet redefinition.</li><li><strong>Link every number to its records.</strong> Ratios come with the exact issues and pull requests counted, so anyone can re-derive them.</li><li><strong>Turn corrections into rules.</strong> A lessons file records each mistake as a rule the next run applies: cumulative totals are not trends, duplicates are excluded and named, partial windows are flagged.</li></ul>
