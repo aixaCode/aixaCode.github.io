@@ -23,13 +23,7 @@
 <div class="q"><span>Who can access the system?</span><span>What happens when a dependency is unavailable?</span><span>Can a failed operation be retried safely?</span><span>Who can diagnose a problem at 2am?</span><span>How do we reverse the change?</span></div>
 <p>AI can suggest answers to all of these questions. It cannot know which tradeoff an organisation is prepared to own unless that context has been made explicit. It also cannot be accountable when the answer is wrong.</p>
 <p>I see a similar gap in real-time products. A feature that works with one user, one machine and controlled content may say very little about how it behaves with many avatars, unpredictable assets, network handoffs and a fixed frame budget. The code can be correct while the product is unusable.</p>
-<figure class="article-figure sketch-flow-figure">
-<picture>
-<source media="(max-width: 640px)" srcset="../assets/article-diagrams/demo-to-production-mobile-v6.svg" width="650" height="1274"/>
-<img alt="A prompt, generated specification and working happy path lead to four additional production obligations: permissions, recovery, observability and ownership." decoding="async" loading="lazy" src="../assets/article-diagrams/demo-to-production-v6.svg" width="1100" height="819"/>
-</picture>
-<figcaption id="demo-caption">The generated path is visible. Most production obligations remain unanswered until someone designs and owns them.</figcaption>
-</figure>
+
 <p>The demo is still valuable. It has reduced the cost of learning whether an idea is possible. It has not removed the work required to decide whether that idea is safe, operable and worth maintaining.</p>
 <h2 id="section-3">Thorough-looking specifications can hide missing decisions</h2>
 <p>Before AI, an incomplete technical proposal often looked incomplete. Missing sections, rough notes and unresolved questions were visible.</p>

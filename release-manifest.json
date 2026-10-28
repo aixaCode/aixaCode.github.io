@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "088d45706083282b36a2083261a6541c0e4ab879b844e86d929de310b5dd2951",
+  "artifact_sha256": "7865bb41690f9cdcd31b4942c8b9211f8062dd7491f1fd64adf4a0227db80549",
   "files": [
     {
       "path": ".nojekyll",
@@ -88,19 +88,9 @@
       "sha256": "886875c330c1f4b6161f45f4974eb0b1dd32accf5ac535eab46d3e34352d8098"
     },
     {
-      "path": "assets/article-diagrams/demo-to-production-mobile-v6.svg",
-      "bytes": 54755,
-      "sha256": "3c06f038459ea121f4c80c2671f6c992483147a5d5471225e837c71b0b6fe4b6"
-    },
-    {
       "path": "assets/article-diagrams/demo-to-production-v2.svg",
       "bytes": 21972,
       "sha256": "4fe6d3060354b64a5e0d0963e7a92b1025a22b252d4220b455a4372b4f6c62c2"
-    },
-    {
-      "path": "assets/article-diagrams/demo-to-production-v6.svg",
-      "bytes": 56338,
-      "sha256": "a5d153306c83cdf273253251c384f901a699bb0da04ba87e668753e4cfaf0a36"
     },
     {
       "path": "assets/article-diagrams/development-feedback-loop-mobile-v2.svg",
@@ -148,19 +138,9 @@
       "sha256": "80f244fcb663f220ce07968d55cffad1fcf1cda9b857b32de2e485b59675eebf"
     },
     {
-      "path": "assets/article-diagrams/feedback-core-path-mobile-v6.svg",
-      "bytes": 53239,
-      "sha256": "e2b78cf1abc08fc72079aee1471b54ad0222b19f255c2184d8b1d612e041df03"
-    },
-    {
       "path": "assets/article-diagrams/feedback-core-path-v2.svg",
       "bytes": 18411,
       "sha256": "ae904b31ec2b2befc503fd5bea1e19fca03b4a8128e61dc438766763035f40ea"
-    },
-    {
-      "path": "assets/article-diagrams/feedback-core-path-v6.svg",
-      "bytes": 53926,
-      "sha256": "94dd96c24bb936c20ca3772328e747fe72bd4541f46620514a154999fc0f9e54"
     },
     {
       "path": "assets/article-diagrams/feedback-pattern-mobile-v2.svg",
@@ -348,19 +328,9 @@
       "sha256": "1835e8b8880cd4dc199a37dddda5ba035e9d142bac899306f713d3f22b5f504e"
     },
     {
-      "path": "assets/article-diagrams/winnable-improvement-plan-mobile-v6.svg",
-      "bytes": 53762,
-      "sha256": "262e90f4286fb35d0814ca98654fdbdf9443e9a4d51df101f743c6a1b08425e0"
-    },
-    {
       "path": "assets/article-diagrams/winnable-improvement-plan-v2.svg",
       "bytes": 20990,
       "sha256": "31a7b94a25bc05eb12151d1c1ffbe6dbb50bfcebdf365590a5ab43a7c9f9f28c"
-    },
-    {
-      "path": "assets/article-diagrams/winnable-improvement-plan-v6.svg",
-      "bytes": 54595,
-      "sha256": "ac5261f99f1b0fca8cda59add8345fb492d08bc146326cf4e67e483cad2e162f"
     },
     {
       "path": "assets/content.css",
@@ -944,8 +914,8 @@
     },
     {
       "path": "posts/ai-makes-building-easy-production-is-hard.html",
-      "bytes": 17547,
-      "sha256": "f31329c0808dc73cbed3d02335bf8e269fce4b6f60df0a3636824caae5bfc1c0"
+      "bytes": 16890,
+      "sha256": "54e0b50c756d77c5393debe95a35db8cddc65ff91b5ad7eda4e7ae2249f17b37"
     },
     {
       "path": "posts/before-you-remove-code-review-name-the-risk.html",
@@ -959,13 +929,13 @@
     },
     {
       "path": "posts/feedback-is-the-performance-system.html",
-      "bytes": 17994,
-      "sha256": "942d675655afc6bad249017b235b6fe91db253e37a6eb50cdf09555daa5ccacd"
+      "bytes": 17383,
+      "sha256": "1943b237d33b8f1597a304b852c0d4003b5ce69a44cbe76682c49a93256a8818"
     },
     {
       "path": "posts/make-improvement-plans-winnable.html",
-      "bytes": 20985,
-      "sha256": "a107eafa94aeaa4c08e113134bc0ecd56118c1eb791634a7b11c0f653b0e5ef4"
+      "bytes": 20227,
+      "sha256": "7dd05b8b9b7a3285173052f9d361fb206d50a9d257439cfead92fc8bba4871a5"
     },
     {
       "path": "posts/prioritization-is-constraint-management.html",
