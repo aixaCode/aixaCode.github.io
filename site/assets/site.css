@@ -266,3 +266,15 @@
 .metric:nth-child(3){background:var(--white);transform:rotate(-.5deg)}
 .metric strong{font-family:var(--serif);font-weight:400;color:var(--ink)}
 .metric span{color:#6b574b}
+@media(max-width:720px){.site-header[data-open=true] .primary-nav{transform-origin:50% 0;animation:menu-drop .42s cubic-bezier(.2,.8,.3,1.15) both}
+.site-header[data-open=true] .primary-nav::before{animation:menu-tape .35s ease-out .18s both}
+.site-header[data-open=true] .primary-nav a{animation:menu-item .4s var(--ease,ease) both}
+.site-header[data-open=true] .primary-nav a:nth-child(1){animation-delay:.12s}
+.site-header[data-open=true] .primary-nav a:nth-child(2){animation-delay:.18s}
+.site-header[data-open=true] .primary-nav a:nth-child(3){animation-delay:.24s}
+.site-header[data-open=true] .primary-nav a:nth-child(4){animation-delay:.3s}
+.site-header[data-open=true] .primary-nav a::before{animation:menu-doodle .5s ease-out both;animation-delay:inherit}}
+@keyframes menu-drop{from{opacity:0;transform:translateY(-14px) rotate(-1.5deg) scale(.96)}}
+@keyframes menu-tape{from{opacity:0;transform:rotate(-12deg) scale(1.4)}}
+@keyframes menu-item{from{opacity:0;transform:translateX(-14px)}}
+@keyframes menu-doodle{from{transform:rotate(-40deg) scale(.4)}}
