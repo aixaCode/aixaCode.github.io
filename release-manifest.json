@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "62dc02493325f183d42a10284f844639a61d5db65b2af4d487151a59be5c6bd7",
+  "artifact_sha256": "bfcdca7750ec5ae49f195f812430676d2e6ff7169e2e4acbceb6f004fee56441",
   "files": [
     {
       "path": ".nojekyll",
@@ -14,8 +14,8 @@
     },
     {
       "path": "about.html",
-      "bytes": 8005,
-      "sha256": "8b3427ae38983cddf644e9a4ddf15ca665c7204eeef9715b7eb35df57ceca0b0"
+      "bytes": 7949,
+      "sha256": "defa11bc51909c673bbad2c910e9181d06c6e9afd731c9161c601465e4d00db6"
     },
     {
       "path": "apple-touch-icon.png",
@@ -884,13 +884,13 @@
     },
     {
       "path": "index.html",
-      "bytes": 10189,
-      "sha256": "98c4395032a41380a3ec2f3cc0c7996d5277d9f93b725d0874d76706d78b4847"
+      "bytes": 10125,
+      "sha256": "83bb4c21397398ec69f003264dd9ec112646dc4bff9e1ebd1a2ef066a6c08f79"
     },
     {
       "path": "leadership.html",
-      "bytes": 12010,
-      "sha256": "83af4727e227bf7f051b3d42e3f9cbb0bc2adc3d4a10b29e4c11e0387af65132"
+      "bytes": 12009,
+      "sha256": "393ebc4e21bf616dc908d77f3413c0e4b55e7bee0c752ed55c1fd12b95363423"
     },
     {
       "path": "posts/ai-makes-building-easy-production-is-hard.html",
@@ -954,8 +954,8 @@
     },
     {
       "path": "projects/index.html",
-      "bytes": 6605,
-      "sha256": "f660794102a41ef56e485ce4ec1ec789171438e729d27efb7783cdfc60b7ec5e"
+      "bytes": 6556,
+      "sha256": "3b9f594149140b1187c443c090ad5b664bf3e0aa8895434650efdce25e1a5df0"
     },
     {
       "path": "projects/launcher.html",
@@ -989,8 +989,8 @@
     },
     {
       "path": "writing.html",
-      "bytes": 12841,
-      "sha256": "f8e1473e8608279edc9f9de0770e87f0a032f23eaf3a76ddb63e3da94a38243b"
+      "bytes": 12836,
+      "sha256": "a0d867277fe034df5ba21818367718167a910bbcc9b3ab770510e383e0894301"
     }
   ]
 }
