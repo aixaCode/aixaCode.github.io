@@ -278,3 +278,5 @@
 @keyframes menu-tape{from{opacity:0;transform:rotate(-12deg) scale(1.4)}}
 @keyframes menu-item{from{opacity:0;transform:translateX(-14px)}}
 @keyframes menu-doodle{from{transform:rotate(-40deg) scale(.4)}}
+@media(min-width:721px) and (hover:hover){.primary-nav a:hover::before{animation:doodle-wiggle .6s ease-in-out both}}
+@keyframes doodle-wiggle{0%{transform:rotate(0)}20%{transform:rotate(-18deg) scale(1.15)}40%{transform:rotate(12deg) scale(1.15)}60%{transform:rotate(-8deg) scale(1.08)}80%{transform:rotate(4deg)}100%{transform:rotate(-8deg)}}
