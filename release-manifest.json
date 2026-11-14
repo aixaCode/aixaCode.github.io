@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "0573e1f930d05b17a2ea35e7b8d040c0afdb3e92d232fbc841dd7d0d92f6c80c",
+  "artifact_sha256": "ebd9ae5362b9846dc17f3b34deb3eb847238846c459ea0fc703e46a8439027b7",
   "files": [
     {
       "path": ".nojekyll",
@@ -934,13 +934,13 @@
     },
     {
       "path": "projects/accounting-agent.html",
-      "bytes": 14360,
-      "sha256": "40e24c2ff42f877153a13e5456a8d2a9af4111e494cf9ac70b105d6bb181fb4e"
+      "bytes": 14365,
+      "sha256": "ad812f802b8c1e07ab2b80e4eda46dc4d3b71917dc7aa4e3dc023e56102dda7a"
     },
     {
       "path": "projects/ai-personal-assistant.html",
-      "bytes": 20396,
-      "sha256": "28e4fa8f0085ded0684e1f8aee1e5ac512de02f7124760a5f2c9a6db037163d8"
+      "bytes": 20378,
+      "sha256": "0dd9cdad4403d5a8aeed434370959ee287c6755ba85164d8654c7a80f5144579"
     },
     {
       "path": "projects/animal-park-management.html",
@@ -969,8 +969,8 @@
     },
     {
       "path": "projects/unity-explorer.html",
-      "bytes": 12315,
-      "sha256": "fb0adf1b5fca537f53e9cf828730d7dd791b95558e159e22d491d09b9ffb505d"
+      "bytes": 12335,
+      "sha256": "1c025095476497055e08bb914e569c62a797da14a9f334a6f93465e89ecf82b2"
     },
     {
       "path": "robots.txt",
