@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "8481e4fd58e7cf3b0f5fc2207254fcaed3ed62bc27b1b9fb86b4f107ab16870d",
+  "artifact_sha256": "c45604b868bdafd1a2977780e13628473bdf06752fca5269f7605a43c8afd7f2",
   "files": [
     {
       "path": ".nojekyll",
@@ -844,13 +844,13 @@
     },
     {
       "path": "cv.html",
-      "bytes": 14467,
-      "sha256": "ddc7a2e53b2d531e802db04f14e6275c25f0c0d25d3033fb5b4a39a82b929429"
+      "bytes": 14470,
+      "sha256": "13c439ca2c3484900476d21f642542c61e4b20afae18ef0df8e28eac65eedd4d"
     },
     {
       "path": "cv.pdf",
-      "bytes": 9153,
-      "sha256": "b32e09c83ac2717bc151a54b6870c5dd777efa7c2be5552203ae205beed62c9f"
+      "bytes": 9165,
+      "sha256": "b3fe9b022e1562797203a655290fbb3739660bb3429932de16f484ea85e13ea6"
     },
     {
       "path": "favicon-32.png",
