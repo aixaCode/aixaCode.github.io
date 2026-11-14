@@ -16,7 +16,7 @@
 <section class="case-section" id="checks">
 <h2>Checks on every pull request</h2>
 <div class="spec-grid">
-<div class="spec"><h3>AI review on every PR</h3><p>Each pull request carries an AI review status check that analyses correctness, performance and error handling and sets pass/fail. It runs before developer and QA approval, not instead of it.</p></div>
+<div class="spec"><h3>AI review on every PR</h3><p>Each pull request carries an AI review status check that analyses correctness, performance and error handling and sets pass/fail. It runs before developer and QA approval. For simple fixes and chores, a passing AI review could stand in for the developer review; QA approval was always required.</p></div>
 <div class="spec"><h3>Visual regression as a comment</h3><p>A PR comment triggers a pixel-diff suite against committed image baselines and posts the verdict back to the PR; a second command regenerates baselines when a change is intentional. Rendering regressions show up in review instead of depending on whether QA happened to spot them.</p></div>
 <div class="spec"><h3>Performance signal per PR</h3><p>Successful builds dispatch frame-time benchmarks on a dedicated machine fleet, and the results come back to the PR as a comment with CPU, GPU and exception data. A performance regression is visible before merge, not after release.</p></div>
 </div>

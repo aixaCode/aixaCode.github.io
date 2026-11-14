@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "c84342d61e6121dc85f58bdc9ed71729c07a81d037b0ca2750b56545b718d567",
+  "artifact_sha256": "8481e4fd58e7cf3b0f5fc2207254fcaed3ed62bc27b1b9fb86b4f107ab16870d",
   "files": [
     {
       "path": ".nojekyll",
@@ -844,13 +844,13 @@
     },
     {
       "path": "cv.html",
-      "bytes": 14445,
-      "sha256": "8c045b69862764013cc01307d5ff54124878cbdb1223ee1351f012162f067b77"
+      "bytes": 14467,
+      "sha256": "ddc7a2e53b2d531e802db04f14e6275c25f0c0d25d3033fb5b4a39a82b929429"
     },
     {
       "path": "cv.pdf",
-      "bytes": 9152,
-      "sha256": "b4ccad39b5e48f720ea8bed0cb0f2c761ca8155007a54e9c69fdf8cbc7988a52"
+      "bytes": 9153,
+      "sha256": "b32e09c83ac2717bc151a54b6870c5dd777efa7c2be5552203ae205beed62c9f"
     },
     {
       "path": "favicon-32.png",
@@ -949,8 +949,8 @@
     },
     {
       "path": "projects/engineering-platform.html",
-      "bytes": 11424,
-      "sha256": "574bc31bb44af09cb9fffa09d7e9efc2201b232fe7b7b043c315a8aa44bf9908"
+      "bytes": 11528,
+      "sha256": "8d7e28385084d4b9824d854fdd4844bff2297f2ac864ba2af7bd23ef4173b41d"
     },
     {
       "path": "projects/index.html",
@@ -964,13 +964,13 @@
     },
     {
       "path": "projects/scaling-engineering-org.html",
-      "bytes": 11105,
-      "sha256": "0c767995a5b646b4317f6ed6a224f2efedbb9b97c5b883d3bcbc786104321556"
+      "bytes": 11102,
+      "sha256": "09f54c48ec00e380852c14b8f7871a8e989de5a2204102badaa5e8cd2cf0b6bd"
     },
     {
       "path": "projects/unity-explorer.html",
-      "bytes": 12335,
-      "sha256": "1c025095476497055e08bb914e569c62a797da14a9f334a6f93465e89ecf82b2"
+      "bytes": 12332,
+      "sha256": "b87422febaccaf388b6abbeab83136e628ef973f6956491e3515ddcc52fcf3bd"
     },
     {
       "path": "robots.txt",
