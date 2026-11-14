@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "ebd9ae5362b9846dc17f3b34deb3eb847238846c459ea0fc703e46a8439027b7",
+  "artifact_sha256": "c84342d61e6121dc85f58bdc9ed71729c07a81d037b0ca2750b56545b718d567",
   "files": [
     {
       "path": ".nojekyll",
@@ -14,8 +14,8 @@
     },
     {
       "path": "about.html",
-      "bytes": 7949,
-      "sha256": "d5f55ae761865c9e76ac407f2dad4540960cdc15d4e4908b465d767dfceec1d5"
+      "bytes": 7950,
+      "sha256": "ed4991f701bc7df81fe8542f55128e1fb06b16560e110928a76f03f72eb26628"
     },
     {
       "path": "apple-touch-icon.png",
@@ -195,7 +195,7 @@
     {
       "path": "assets/article-diagrams/pip-diagnosis-mobile-v2.svg",
       "bytes": 20399,
-      "sha256": "c2eb8b702031eb32bdc86df342856499d18924b7b6930ca65408702ed8356a02"
+      "sha256": "18bc63af8c55ed38a8165c29076c3c1e33eb9323dac064f5f347251225d3c2d1"
     },
     {
       "path": "assets/article-diagrams/pip-diagnosis-mobile-v6.svg",
@@ -315,7 +315,7 @@
     {
       "path": "assets/article-diagrams/risk-based-assurance-mobile-v2.svg",
       "bytes": 20965,
-      "sha256": "e9aa201b1bcb4fafa8bbc9ca24acde1f48f64822cc5336101aa5508a1e15642d"
+      "sha256": "c0f05355dfb6fb864fb713ea07ac89e5392dae29c0c2acba7a970d429a798886"
     },
     {
       "path": "assets/article-diagrams/risk-based-assurance-mobile-v6.svg",
@@ -659,8 +659,8 @@
     },
     {
       "path": "assets/project-diagrams/creator-content-pipeline.svg",
-      "bytes": 15129,
-      "sha256": "54f1a44bb8f77f5f6ee043703ec05bcc47753d68eb4461bd5046131d4e0413dd"
+      "bytes": 15126,
+      "sha256": "051dd2a48651e0166a0ae9fee0a52fd25c9c3fae021afa80833de160527b5dde"
     },
     {
       "path": "assets/project-diagrams/decision-ownership-shift-mobile-v6.svg",
@@ -844,13 +844,13 @@
     },
     {
       "path": "cv.html",
-      "bytes": 14457,
-      "sha256": "9acc0039aaaae10987e3375f31c1dcebecdeb0ea112cedf2156cdfe6228b3fbe"
+      "bytes": 14445,
+      "sha256": "8c045b69862764013cc01307d5ff54124878cbdb1223ee1351f012162f067b77"
     },
     {
       "path": "cv.pdf",
-      "bytes": 9227,
-      "sha256": "ce6f48d0a839f86c21a6502548fa5d73a9ed6fbb243cb7fe1ae999053b2efc35"
+      "bytes": 9152,
+      "sha256": "b4ccad39b5e48f720ea8bed0cb0f2c761ca8155007a54e9c69fdf8cbc7988a52"
     },
     {
       "path": "favicon-32.png",
@@ -870,7 +870,7 @@
     {
       "path": "feed.xml",
       "bytes": 3922,
-      "sha256": "54a944a9d98e5502940ab7f22002eb2290cdd97b9ce700e3943dbd4eee0ee007"
+      "sha256": "454139b19ba2a5479aa40255d5819d424a3ade42f6544b50a85e8945b2d12277"
     },
     {
       "path": "icon-192.png",
@@ -884,8 +884,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 10125,
-      "sha256": "43ecbaf5a711826f86d47bed6444181cd48dc3e282de5a8d1510ceaa0ab7e303"
+      "bytes": 10135,
+      "sha256": "9138865158015a72782a6473cf41799b78938b8bdac5f59303b4a8590f50800b"
     },
     {
       "path": "leadership.html",
@@ -895,7 +895,7 @@
     {
       "path": "posts/ai-makes-building-easy-production-is-hard.html",
       "bytes": 16934,
-      "sha256": "6db538ae397005c556738e830a733d96ef1edbb8fc86c46a00f6e6bd0c535f28"
+      "sha256": "38c60f0f23086ca4008928c743c08ea8569704077003deed253624173551df03"
     },
     {
       "path": "posts/before-you-remove-code-review-name-the-risk.html",
@@ -920,7 +920,7 @@
     {
       "path": "posts/prioritization-is-constraint-management.html",
       "bytes": 12001,
-      "sha256": "8bf406818e957e140ce53360f6c12ab0aa447060d95db9bb58d44f410e291ba3"
+      "sha256": "375f90ef72e3524b6a0f780c89341d28727e433ec1438e8bad786ab635224e24"
     },
     {
       "path": "posts/technical-direction-is-not-a-technology-decision.html",
@@ -990,7 +990,7 @@
     {
       "path": "writing.html",
       "bytes": 12836,
-      "sha256": "b19f445b976016b0d67813f58b1ad2598ba54b1c6173413c1ef2ed80bc7dcdfc"
+      "sha256": "93aa93ed5ea25e4bd531ce99f72412ab0a8e9161d9f14fd49b3c1185eb2d30c3"
     }
   ]
 }
