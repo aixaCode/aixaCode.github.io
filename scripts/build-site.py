@@ -119,9 +119,9 @@ def build(files):
             info.uid = info.gid = 0
             tar.addfile(info, io.BytesIO(data))
     checksum = hashlib.sha256(archive.read_bytes()).hexdigest()
-    (DIST / 'site.tar.sha256').write_text(f'{checksum}  site.tar\n')
+    (DIST / 'site.tar.sha256').write_text(f'{checksum}  site.tar\n', newline='\n')
     (DIST / 'manifest.json').write_text(json.dumps({'schema': 1, 'artifact_sha256': checksum,
-                                                   'files': records}, indent=2) + '\n')
+                                                   'files': records}, indent=2) + '\n', newline='\n')
     # Sidecar stays outside the published tree. The trusted receiver recreates the
     # same deterministic tar from committed public/ bytes and checks this inventory.
     (ROOT / 'release-manifest.json').write_bytes((DIST / 'manifest.json').read_bytes())
