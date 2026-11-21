@@ -49,4 +49,28 @@
       history.replaceState({},'',location.pathname + (button.dataset.filter === 'all' ? '' : '?filter=' + encodeURIComponent(button.dataset.filter)));
     }));
   }
+  const race = document.querySelector('.dl-race');
+  if (race && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    const [oldFill, newFill] = race.querySelectorAll('.dl-fill');
+    const done = race.querySelector('.dl-done');
+    const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+    const run = async () => {
+      for (;;) {
+        oldFill.style.transition = newFill.style.transition = 'none';
+        oldFill.style.width = newFill.style.width = '0';
+        done.style.opacity = 0;
+        await wait(600);
+        oldFill.style.transition = 'width 7s linear';
+        newFill.style.transition = 'width .45s ease-out';
+        oldFill.style.width = newFill.style.width = '100%';
+        await wait(500);
+        done.style.opacity = 1;
+        await wait(9000);
+      }
+    };
+    const watch = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) { watch.disconnect(); run(); }
+    }, { threshold: 0.6 });
+    watch.observe(race);
+  }
 })();

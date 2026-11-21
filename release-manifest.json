@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "artifact_sha256": "c45604b868bdafd1a2977780e13628473bdf06752fca5269f7605a43c8afd7f2",
+  "artifact_sha256": "ca51e2084626c7cf9cc8b2971c578f527470295aacc4708ffa27fb831540eadf",
   "files": [
     {
       "path": ".nojekyll",
@@ -10,12 +10,12 @@
     {
       "path": "404.html",
       "bytes": 6224,
-      "sha256": "70d73cd325961013b717785e285817370faa9bee042be0cad83298d73a88294a"
+      "sha256": "8d0fdfd855145429af9623cd5d82ad2ea8f5470da8ab67d30626f3671b862779"
     },
     {
       "path": "about.html",
       "bytes": 7950,
-      "sha256": "ed4991f701bc7df81fe8542f55128e1fb06b16560e110928a76f03f72eb26628"
+      "sha256": "24f15960d2b553d733be1e8e0c984499b860cf179baa2dee72974ef582d01782"
     },
     {
       "path": "apple-touch-icon.png",
@@ -824,13 +824,13 @@
     },
     {
       "path": "assets/site.css",
-      "bytes": 70287,
-      "sha256": "dd1233d56c0b2966be7a9d5dba34773ef95bc6ab4ebd78f782a52e7d94b278ab"
+      "bytes": 71907,
+      "sha256": "196a0af94fd438b4f7487c6ccbe6a31eb5777cd2248045b6a29c637aa17ba835"
     },
     {
       "path": "assets/site.js",
-      "bytes": 3025,
-      "sha256": "ddc552a0b300e8767b71d8dd0211cb7d8839552bde1cc9be9510db3851c9916c"
+      "bytes": 4049,
+      "sha256": "bae2ecbea85dcbf79c3dcbe439b88191d250e501bb2f3ac7880a346793338077"
     },
     {
       "path": "assets/underline-hero.svg",
@@ -845,7 +845,7 @@
     {
       "path": "cv.html",
       "bytes": 14470,
-      "sha256": "13c439ca2c3484900476d21f642542c61e4b20afae18ef0df8e28eac65eedd4d"
+      "sha256": "87babc005e5ac3a51c43e3a6507b2723a4788e453ba678c4dbc8e8f145c39b48"
     },
     {
       "path": "cv.pdf",
@@ -884,93 +884,93 @@
     },
     {
       "path": "index.html",
-      "bytes": 10135,
-      "sha256": "9138865158015a72782a6473cf41799b78938b8bdac5f59303b4a8590f50800b"
+      "bytes": 10537,
+      "sha256": "7fa2dab63bebae3c6ea5957edbf75fc7c9ebeecb32d51f90d08c40efb1fa671b"
     },
     {
       "path": "leadership.html",
       "bytes": 12009,
-      "sha256": "b7887980c521e4be2110495fd31b05d2913415f92dc4c1bd83c1ed2d09ef6a03"
+      "sha256": "dcce488ad454c40541c094080b8c3b8af5ec9e78726a54c1c6749fc094699a24"
     },
     {
       "path": "posts/ai-makes-building-easy-production-is-hard.html",
       "bytes": 16934,
-      "sha256": "38c60f0f23086ca4008928c743c08ea8569704077003deed253624173551df03"
+      "sha256": "1050ecac960fe7d4ff2f45d92eb0498419e5a693ce2fe82cc153d258561dd1c2"
     },
     {
       "path": "posts/before-you-remove-code-review-name-the-risk.html",
       "bytes": 19834,
-      "sha256": "ed0066aaecaad2ff1f06a6a8ab512e70cb99651a434cd4d2a558c8110d1c8336"
+      "sha256": "ca2bbd369e02ebcec86bee32acb7322675ff2a5947df7a981a92e7d2f05cc6d7"
     },
     {
       "path": "posts/career-ladder-should-reduce-surprises.html",
       "bytes": 17536,
-      "sha256": "aa559d196d355aff053c64898f223611abc54ae2ea8b246c9a23088013a5cca3"
+      "sha256": "372c49e48b297325bc6f0f5a72da00530150fff3da03547cc60eb6ca6dc9d956"
     },
     {
       "path": "posts/feedback-is-the-performance-system.html",
       "bytes": 17531,
-      "sha256": "517bab5132fff5303437d5cb12a666364fe6cc59ca73d1d922ce5a17bc02b12a"
+      "sha256": "673dfabd07b5e59f2bb7458e97c64baaca3d4242738bd0e5d2aca408e2cef242"
     },
     {
       "path": "posts/make-improvement-plans-winnable.html",
       "bytes": 20422,
-      "sha256": "8877430abc380f50faa3b31c9cd118297446356af1cb801a7bfa52e0f2ebe79d"
+      "sha256": "14558f68a13407e0c23174fe0121366bef8063bf7ce001ccf4103f1167b704ad"
     },
     {
       "path": "posts/prioritization-is-constraint-management.html",
       "bytes": 12001,
-      "sha256": "375f90ef72e3524b6a0f780c89341d28727e433ec1438e8bad786ab635224e24"
+      "sha256": "dd59cf0c9721161025d821fdca6faabc2e0c1e9998e13ef19c7be03bc2401081"
     },
     {
       "path": "posts/technical-direction-is-not-a-technology-decision.html",
       "bytes": 7822,
-      "sha256": "c26d95dd6259d1e54a2d833d409619b47614b570a2d4e982502bc9ec0113c9f7"
+      "sha256": "6ca4ce842b60edffc10a016f732d3c7f29c5012eb05271deebb0f5f8548e794a"
     },
     {
       "path": "posts/use-ai-to-find-evidence-not-score-engineers.html",
       "bytes": 23009,
-      "sha256": "70a01211a6930b0b06c2ccbce3e87a2bef525fa0cc410a4114d4efa87393d05d"
+      "sha256": "e85e2b539daaf3fb48e7a1870b371380a689ed6947e9dce7235afeca99655acb"
     },
     {
       "path": "projects/accounting-agent.html",
       "bytes": 14365,
-      "sha256": "ad812f802b8c1e07ab2b80e4eda46dc4d3b71917dc7aa4e3dc023e56102dda7a"
+      "sha256": "2d7e9bf56670244a55c2695477db4837af666158ce213b91bc730d221b4a90f7"
     },
     {
       "path": "projects/ai-personal-assistant.html",
       "bytes": 20378,
-      "sha256": "0dd9cdad4403d5a8aeed434370959ee287c6755ba85164d8654c7a80f5144579"
+      "sha256": "47ff94ac2f3d11da1cd7bb7cf156d64d6349d674bee5e0ddd383337f873782fc"
     },
     {
       "path": "projects/animal-park-management.html",
       "bytes": 15575,
-      "sha256": "35a86cd5a4e963d0e3ae9f3ed4bb1048e46d1a32f453649a928b725495e282b3"
+      "sha256": "10f65c29edae83c2c193e6e37c365bcb9bed81f29e34ec438e3b4083f98fc835"
     },
     {
       "path": "projects/engineering-platform.html",
       "bytes": 11528,
-      "sha256": "8d7e28385084d4b9824d854fdd4844bff2297f2ac864ba2af7bd23ef4173b41d"
+      "sha256": "e75cdd5bfc2601b101a545a7eaa4d713dba6502144e684989547ed079c1d8f08"
     },
     {
       "path": "projects/index.html",
       "bytes": 6556,
-      "sha256": "f8ead146e43c1945709b1092c7342084c0556eb90af5a5f736e2804f5f524e9f"
+      "sha256": "f6828c0371f65b8fbca89c02a8aef2bb1112f983c62c23f2e4f4d0641975af40"
     },
     {
       "path": "projects/launcher.html",
-      "bytes": 8823,
-      "sha256": "2de14bce0f7f62efd098d623c4fe3aa0d40550f0b92b2733b2f9715016b55684"
+      "bytes": 9342,
+      "sha256": "96e3115d8457d6913b16356fb75c1610772476bb3f473e70885701c93055dd7e"
     },
     {
       "path": "projects/scaling-engineering-org.html",
       "bytes": 11102,
-      "sha256": "09f54c48ec00e380852c14b8f7871a8e989de5a2204102badaa5e8cd2cf0b6bd"
+      "sha256": "172512bab02c45c925584d2d381f30a1cb8d6ac364b4ea5745c8c38f2594574b"
     },
     {
       "path": "projects/unity-explorer.html",
       "bytes": 12332,
-      "sha256": "b87422febaccaf388b6abbeab83136e628ef973f6956491e3515ddcc52fcf3bd"
+      "sha256": "ca66f0ccbf334658eedb1f1388c46988abbf760f20b1af23c4ca20a3083235e0"
     },
     {
       "path": "robots.txt",
@@ -990,7 +990,7 @@
     {
       "path": "writing.html",
       "bytes": 12836,
-      "sha256": "93aa93ed5ea25e4bd531ce99f72412ab0a8e9161d9f14fd49b3c1185eb2d30c3"
+      "sha256": "2fef5ed06ca50b5eedccebeaa11260e0c651e63a56da52a6020e391ea070f3bf"
     }
   ]
 }

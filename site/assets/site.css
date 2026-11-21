@@ -280,3 +280,21 @@
 @keyframes menu-doodle{from{transform:rotate(-40deg) scale(.4)}}
 @media(min-width:721px) and (hover:hover){.primary-nav a:hover::before{animation:doodle-wiggle .6s ease-in-out both}}
 @keyframes doodle-wiggle{0%{transform:rotate(0)}20%{transform:rotate(-18deg) scale(1.15)}40%{transform:rotate(12deg) scale(1.15)}60%{transform:rotate(-8deg) scale(1.08)}80%{transform:rotate(4deg)}100%{transform:rotate(-8deg)}}
+
+/* Launcher case study: download race. Off under prefers-reduced-motion (shows the finished state). */
+.dl-race{margin:28px 0 8px;max-width:620px;background:var(--white);border:1px solid #ead8c7;box-shadow:0 12px 32px #603a2410;padding:22px 26px 20px}
+.dl-race .dl-label{font:600 11px/1 var(--mono);letter-spacing:.12em;color:var(--muted);margin:0 0 16px}
+.dl-race .dl-note{margin:14px 0 0;font-size:13px;color:var(--muted)}
+.dl-row{margin:12px 0}
+.dl-name{display:flex;justify-content:space-between;font-size:14px;color:var(--ink);margin-bottom:6px}
+.dl-name span:last-child{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.dl-track{height:12px;background:#f3e6d8;border-radius:6px;overflow:hidden}
+.dl-fill{height:100%;width:100%;border-radius:6px;background:#c4a28b}
+.dl-new .dl-fill{background:var(--accent)}
+.dl-done{font-weight:600;letter-spacing:.08em;color:var(--accent);transition:opacity .3s}
+
+/* Home: a rubber duck peeks over the notebook card now and then. Hidden under prefers-reduced-motion. */
+.peek{position:absolute;left:30px;bottom:100%;width:64px;height:58px;overflow:hidden;pointer-events:none;display:none}
+.peek svg{position:absolute;left:0;bottom:-2px;width:64px;height:64px;transform:translateY(100%);transform-origin:50% 100%}
+@media (prefers-reduced-motion:no-preference){.peek{display:block}.peek svg{animation:peek 20s ease-in-out 4s infinite}}
+@keyframes peek{0%{transform:translateY(100%)}3%{transform:translateY(8%)}6%{transform:translateY(8%) rotate(-7deg)}9%{transform:translateY(8%) rotate(6deg)}12%{transform:translateY(8%) rotate(0)}15%,100%{transform:translateY(100%)}}
